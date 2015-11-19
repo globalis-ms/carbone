@@ -16,7 +16,7 @@ Un certain nombre de librairies ou de classes « métiers » complémentaires so
 
 Au delà d'une simple collection de scripts, CARBONE vient également apporter une réponse au problème d'architecture d'un site Web dynamique en proposant un découpage et une organisation. Ceci fait de CARBONE une méthode de développement à part entière ayant fait ses preuves sur de nombreux développements.
 
-A titre indicatif, CARBONE a servi de socle à plusieurs centaines de projets dont la majorité sont toujours en production.
+À titre indicatif, CARBONE a servi de socle à plusieurs centaines de projets dont la majorité sont toujours en production.
 
 ## Points forts
 
