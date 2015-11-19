@@ -1,0 +1,5018 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="expires" content="-1" />
+<meta http-equiv="pragma" content="no-cache" />
+<meta name="robots" content="all" />
+<meta name="author" content="Armel FAUVEAU" />
+<meta name="description" content="Documentation CARBONE V5.3" />
+
+<title>Documentation CARBONE V5.3 Version 1.0 (06-06-2015) - Documentation CARBONE V5.3</title>
+
+<link rel="stylesheet" type="text/css" media="screen" href="./share/css/screen.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="./share/css/dhtmlx.folder.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="./share/css/listing.css" />
+<link rel="stylesheet" type="text/css" media="print" href="./share/css/print.css" />
+<link rel="stylesheet" type="text/css" media="print" href="./share/css/dhtmlx.folder.css" />
+<link rel="stylesheet" type="text/css" media="print" href="./share/css/listing.css" />
+
+<script type="text/javascript" src="./share/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="./share/js/jquery.corner.min.js"></script>
+<script type="text/javascript" src="./share/js/dhtmlx.common.min.js"></script>
+<script type="text/javascript" src="./share/js/dhtmlx.folder.min.js"></script>
+<script type="text/javascript" src="./share/js/folder.min.js"></script>
+<script type="text/javascript" src="./share/js/listing.min.js"></script>
+<script type="text/javascript" src="./share/js/jquery.main.min.js"></script>
+
+</head>
+<body>
+
+<!-- START NAVIGATION -->
+<div id="nav"><div id="nav_inner"></div></div>
+<div id="nav2">
+  <a name="top"></a>
+  <div id="index">
+    <img src="./share/image/nav_toggle.jpg"  title="Table des matières" alt="Table des matières" />
+  </div>
+</div>
+<img src="./share/image/logo.png" title="Globalis" alt="Globalis" style="padding: 0 0 10px 35px;"/>
+<div id="title" class="clear">
+  <div class="left">
+    Documentation CARBONE V5.3
+  </div>
+  <div class="right">
+     <a href="./index.html">Table des matières</a>
+  </div>
+</div>
+<!-- STOP NAVIGATION -->
+
+
+<!-- START HEADER -->
+<div id="subtitle" class="clear">
+  <div class="left">
+      
+  </div>
+  <div class="right">
+      
+  </div>
+</div>
+<!-- STOP HEADER -->
+
+<br clear="all" />
+
+<!-- START CONTENT -->
+<div id="content">
+<table style="width:100%; border:none;">
+<tr>
+<td valign="top" style="border:none; width:33%">
+<h3>Présentation</h3>
+<ul>
+<li><a href="./presentation/avant.html">Avant propos</a></li>
+<li><a href="./presentation/apercu.html">Aperçu</a></li>
+<li><a href="./presentation/perimetre.html">Périmètre fonctionnel</a></li>
+<li><a href="./presentation/prerequis.html">Prérequis</a></li>
+<li><a href="./presentation/evolution.html">Les dernières évolutions</a></li>
+<li><a href="./presentation/licence.html">Licence</a></li>
+</ul>
+<h3>Règles de codage</h3>
+<ul>
+<li><a href="./regle/indentation.html">Indentation et tabulation</a></li>
+<li><a href="./regle/nommage_php.html">Nommage des classes, fonctions, variables et constantes</a></li>
+<li><a href="./regle/nommage_fs.html">Nommage des fichiers</a></li>
+<li><a href="./regle/nommage_sgbd.html">Nommage des bases, tables et champs</a></li>
+<li><a href="./regle/commentaire.html">Commentaires</a></li>
+<li><a href="./regle/parametrage.html">Paramétrage du serveur</a></li>
+<li><a href="./regle/interdit.html">Interdits</a></li>
+</ul>
+</td>
+<td valign="top"  style="border:none; width:33%">
+<h3>Architecture&nbsp;de&nbsp;l'arborescence</h3>
+<ul>
+<li><a href="./architecture_arbo/htaccess.html">Le fichier .htaccess</a></li>
+<li><a href="./architecture_arbo/include.html">Le répertoire include/</a></li>
+<li><a href="./architecture_arbo/web.html">Le répertoire web/</a></li>
+<li><a href="./architecture_arbo/autre.html">Les autres répertoires et fichiers</a></li>
+<li><a href="./architecture_arbo/exemple.html">Un exemple d'arborescence</a></li>
+</ul>
+<h3>Architecture du code</h3>
+<ul>
+<li><a href="./architecture_code/script.html">Autopsie d'un script PHP type</a></li>
+<li><a href="./architecture_code/page.html">Autopsie d'une page HTML type</a></li>
+<li><a href="./architecture_code/bootstrap.html">Bootstrap de CARBONE</a></li>
+<li><a href="./architecture_code/workflow.html">Workflow</a></li>
+</ul>
+<h3>Briques élémentaires</h3>
+<ul>
+<li><a href="./brique/class_db.html">Abstraction SGBD: class_db.php</a></li>
+<li><a href="./brique/class_session.html">Session: class_session.php</a></li>
+<li><a href="./brique/class_xml.html">Parsing XML: class_xml.php</a></li>
+<li><a href="./brique/lib_form.html">Formulaires: lib_form.php</a></li>
+<li><a href="./brique/lib_backoffice.html">CRUD: lib_backoffice.php</a></li>
+<li><a href="./brique/lib_carbone.html">Librairie CARBONE: lib_carbone.php</a></li>
+<li><a href="./brique/lib_test.html">Tests: lib_test.php</a></li>
+<li><a href="./brique/lib_debug.html">Debuggage: lib_debug.php</a></li>
+<li><a href="./brique/javascript.html">Javascript</a></li>
+</ul>
+</td>
+<td valign="top"  style="border:none; width:33%">
+<h3>Sécurité</h3>
+<ul>
+<li><a href="./securite/regle.html">Les règles à respecter</a></li>
+<li><a href="./securite/session.html">A propos des sessions</a></li>
+<li><a href="./securite/navigation.html">A propos de la navigation</a></li>
+</ul>
+<h3>Analyse&nbsp;fonctionnelle&nbsp;et&nbsp;organique</h3>
+<ul>
+<li><a href="./analyse/presentation.html">Présentation</a></li>
+<li><a href="./analyse/fonctionnelle.html">L'analyse fonctionnelle</a></li>
+<li><a href="./analyse/organique.html">L'analyse organique</a></li>
+<li><a href="./analyse/etude.html">Etude de cas</a></li>
+<li><a href="./analyse/remarque.html">Remarques</a></li>
+</ul>
+<h3>Divers</h3>
+<ul>
+<li><a href="./divers/avant.html">Avant de commencer</a></li>
+<li><a href="./divers/test.html">Conduite de tests</a></li>
+<li><a href="./divers/decouplage.html">Découplage de CARBONE</a></li>
+<li><a href="./divers/production.html">Mise en production</a></li>
+<li><a href="./divers/faq.html">FAQ: Frequently Asked Questions</a></li>
+<li><a href="./divers/outil.html">Outils préconisés</a></li>
+<li><a href="./divers/doc.html">Compléter la documentation</a></li>
+</ul>
+</td>
+</tr>
+</table>
+<h1>Avant propos</h1>
+
+<h2>Périmètre de cette documentation</h2>
+<p>
+Cette documentation technique a pour ambition de présenter le framework CARBONE. 
+Elle s'adresse donc à un public de développeurs ou de chefs de projet ayant déjà une première expérience de PHP et du développement Web. 
+</p>
+
+<h2>Comment lire cette documentation</h2>
+<p>
+Cette documentation est découpée en plusieurs sections, comportant chacune plusieurs pages. 
+A tout moment, il est possible de revenir à l'<a href="../index.html">index</a> de cette documentation afin d'afficher la table des matières. 
+Il est aussi possible, à tout moment, d'afficher le détail de la table des matières, sans pour autant quitter la page courante, en cliquant sur le lien graphique en haut de page. Cliquer à nouveau sur ce lien pour la faire disparaitre. 
+</p>
+<p>
+D'un point de vue général, il est possible de naviguer d'une page à l'autre par le biais de lien suivant / précédent.
+</p>
+<p>
+Une version de cette documentation sous la forme d'<a href="../documentation.html">une seule et unique page</a> est également implicitement disponible.
+</p>
+<p>
+Si une page dispose de titres et sous titres, il est possible de faire apparaître un index propre à la page en cliquant sur le premier titre (titre de niveau 1) : par exemple ici, en cliquant sur « Avant propos ».
+</p>
+<p>
+Cette documentation comporte également quelques arborescences (fichiers, répertoires). Dans la majorité des cas, ces arborescences sont dynamiques. A ce titre, un clic sur un répertoire vous permettra de découvrir ce qu'il contient.
+</p>
+
+<h2>Comment aider à améliorer cette documentation</h2>
+
+<p>
+Une faute de frappe ou d'orthographe ? Un point important non détaillé ou pas assez explicite ? Ne pas hésiter à noter vos corrections ou suggestions ! Cela permettra d'améliorer le niveau de qualité de cette documentation et d'en faire profiter tout le monde.
+</p><h1>Le framework CARBONE en quelques mots</h1>
+
+<p>
+Afin d'accélérer et faciliter le développement et la maintenance d'applications Web
+dynamique, GLOBALIS s'est dotée d'un framework appelé CARBONE. Développé et maintenu depuis 2001, ce dernier offre diverses fonctionnalités telles :
+</p>
+<ul>
+<li>le support d'une couche d'abstraction SGBD,</li>
+<li>le support d'une couche sessions,</li>
+<li>la gestion du profiling et du contrôle d'accès (site, rubrique),</li>
+<li>la gestion des formulaires et des contrôles de saisie,</li>
+<li>le support CRUD<sup>[<a href="#note1" id="rev-note1">1</a>]</sup> étendu,</li>
+<li>la gestion de la navigation,</li>
+<li>le support multilingue,</li>
+<li>etc.</li>
+</ul>
+<p>
+Un certain nombre de librairies ou de classes « métiers » complémentaires sont également disponibles ou peuvent-être associés à celles proposées en standard. C'est en particulier le cas de FPDF pour la génération de documents PDF à la volée. 
+Il est ainsi possible d'enrichir facilement les possibilité de CARBONE afin de coller le mieux possible aux exigences du CDC <sup>[<a href="#note2" id="rev-note2">2</a>]</sup>.
+</p>
+<p>
+Au delà d'une simple collection de scripts, CARBONE vient également apporter une
+réponse au problème d'architecture d'un site Web dynamique en proposant un
+découpage et une organisation. Ceci fait de CARBONE une méthode de
+développement à part entière ayant fait ses preuves sur de nombreux
+développements. </p>
+<p>
+A titre indicatif, CARBONE a servi de socle à plusieurs centaines de projets dont la majorité sont toujours en production.
+</p>
+
+<p>
+Ses points forts sont nombreux. On peut citer :
+</p>
+
+<ul>
+<li>prérequis et exigeance limités,</li>
+<li>cross plateform<sup>[<a href="#note3" id="rev-note3">3</a>]</sup>,</li>
+<li>compatible PHP4, PHP5, PHP5.3, PHP5.4,</li>
+<li>très rapide,</li>
+<li>empreinte mémoire très faible,</li>
+<li>courbe d'apprentissage optimale et cycle de formation court,</li>
+<li>stable,</li>
+<li>sécurisé,</li>
+<li>régulièrement maintenu.</li>
+</ul>
+
+<p>
+CARBONE est un socle idéal pour des projets Intranet allant jusqu'à 150 jours / homme.
+</p>
+<h1>Périmètre fonctionnel du framework CARBONE</h1>
+
+<p>
+CARBONE trouve principalement son intérêt dans le développement d'applications à
+forte valeur ajoutée, d'Intranets et plus simplement de Backoffices <sup>[<a href="#note4" id="rev-note4">4</a>]</sup>
+d'administration.
+</p>
+<p>
+CARBONE n'apporte pas de réponse forte au développement de sites Frontoffice <sup>[<a href="#note5" id="rev-note5">5</a>]</sup>
+même s'il peut, tout de même, être utilisé en partie. A ce titre, et même si cela resterait envisageable, développer un CMS <sup>[<a href="#note6" id="rev-note6">6</a>]</sup> ou un site de commerce en ligne à l'aide de CARBONE, ne présenterait aucun intérêt. 
+</p>
+<p>
+En complément, et comme déjà évoqué précédement, CARBONE est un socle idéal pour des projets Intranet allant jusqu'à une centaine de jours / homme. 
+Pour des projets plus ambitieux, il sera judicieux de porter son choix sur un framework plus complet.
+</p><h1>Prérequis du framework CARBONE</h1>
+
+<p>
+CARBONE est généralement utilisé sur plate-forme LAMP <sup>[<a href="#note7" id="rev-note7">7</a>]</sup>. Néanmoins, il reste tout à
+fait opérationnel avec d'autres OS (FreeBSD, MacOSX, Windows, etc.), d'autres
+serveurs HTTP (en particulier IIS) et d'autres SGBDR (en particulier PostgreSQL).
+</p>
+
+<p>
+Aucune dépendance particulière n'est à signaler, modulo celles évidentes <sup>[<a href="#note8" id="rev-note8">8</a>]</sup>. 
+En particulier, CARBONE ne nécessite pas la présence d'extensions exotiques oubliées dans PECL, ou de tel ou tel package PEAR. 
+Enfin, CARBONE est entièrement compatible avec PHP4, PHP5, PHP5.3 et PHP5.4. 
+</p>
+
+<p>
+Peu exigeant et facile à déployer, il n'est pas nécessaire, par exemple, de disposer d'un hébergement dédié pour déployer CARBONE. De nombreux projets ont été installés avec succès sur des serveurs mutualisés bas de gamme.
+</p>
+<h1>Les dernières évolutions</h1>
+
+<p>Nous allons présenter ici les principales évolutions des versions 4.6, 5.0 et 5.1 de CARBONE.</p>
+
+<h2>Version 5.1</h2>
+
+<h3>Améliortation de la gestion des ACL</h3>
+
+<p>Il n'est plus nécessaire de gérer des constantes ACL_RUBRIQUE. En complément, il est possible de filtrer les actions autorisées. 
+
+<h3>Améliortation de la gestion des messages</h3>
+
+<p>Il est possible d'afficher des messages de différentes manières ('normal', 'modal' ou 'session') avec différents niveaux de colorisation ('error', 'warning', info' ou 'success').
+
+<h2>Version 5.0</h2>
+
+<h3>Intégration du framework Bootstrap (version 2)</h3>
+
+<p><a href="http://twitter.github.com/bootstrap/">Bootstrap</a> est un framework CSS destiné aux applications Web. Développé par Twitter et distribué sous licence Apache 2, c'est un outil à considérer lors du développement rapide d'applications Web. L'utilisation combinée du HTML, du CSS, et du JavaScript propose au développeur des méthodes de développement très efficaces. Il sert désormais de socle à CARBONE, comme le fait déjà <a href="http://jquery.com">jQuery</a> en qualité de framework JavaScript.</p>
+
+<p>C'est la grosse évolution majeure de cette nouvelle version, apportant une meilleure intégration de HTML5 et CSS3</p>
+
+<h3>Passage en UTF-8</h3>
+
+<p>Passage au format UTF-8 par défaut.</p>
+
+<h3>Corrections et améliorations diverses</h3>
+
+<p>On peut aussi noter de nombreuses corrections et améliorations diverses</p>
+<ul>
+	<li>Ajout d'un fichier robots.txt à la racine,</li>
+	<li>Export au format CSV (en plus de PDF et Excel),</li>
+	<li>Refonte de la barre de debug,</li>
+	<li>Corrections de bugs divers.</li>
+</ul>
+
+<h2>Version 4.6</h2>
+
+<h3>Refonte de l'arborescence</h3>
+
+<p>Afin de mieux structurer l'arborescence de CARBONE, quelques modifications ont été apportées.</p>
+
+<h4>Le répertoire include/</h4>
+<p>
+Le répertoire include/ est désormais décomposé en plusieurs sous répertoires : config/, langue/ et lib/. Le sous répertoire config/ contient les scripts config.php (anciennement global_config.php) et navigation.php. Le sous répertoire langue/ contient les fichiers de langues. Le sous répertoire lib/ contient les librairies et classes essentielles au bon fonctionnement du framework (à noter que global_lib.php a été renommé en lib_carbone.php). Le reste des scripts se trouve à la racine de include/, comme avant. C'est le cas des scripts start_*.php, stop_*.php, open.php et close.php.
+</p>
+
+<p>
+A noter qu'il n'y a plus de notion de variables et constantes préfixées GLB_ ou $gbl_ (pour &laquo; globale &raquo;) et LCL_ et $lcl_ (pour &laquo; locale &raquo;). En particulier, les variables et constantes présentes dans include/config.php sont désormais préfixées CFG_ et $cfg_.
+</p>
+
+<h4>Le répertoire web/</h4>
+<p>
+Les répertoires js/, image/, theme/, cache/ et upload/ sont désormais centralisés dans un répertoire web/ présent à la racine.
+</p>
+
+<h3>Simplification du &laquo; bootstrap &raquo;</h3>
+
+Les fichiers local_lib.php et local_config.php sont désormais optionnels. Ils sont éventuellement appelés depuis include/start_php.php (qui teste la présence de ces 2 fichiers pour savoir s'il faut les inclure ou non).
+Le &laquo; bootstrap &raquo; du framework se résume donc en début de script à :
+
+<pre class="code">
+// Chargement du framework
+
+require 'start_php.php';
+</pre>
+
+<h3>Refonte jQuery</h3>
+
+Le framework CARBONE utilise désormais jQuery 1.4 comme socle technique Javascript. En complément, d'autres modifications ont été apportées.
+
+<h4>Eléments de formulaire</h4>
+
+<p>
+Les éléments de formulaire &laquo; multiselect &raquo; et &laquo; calendar &raquo;, ainsi que les options d'autocompletion, etc. ont été supprimés (include/lib_form.php). L'idée est de nettoyer le code du coeur de CARBONE comportant encore du Javascript intrusif.
+</p>
+<ul>
+<li>Un champ &laquo; calendar &raquo; est un simple champ input,</li>
+<li>Un champ &laquo; multiselect &raquo; est un simple champ select multiple.</li>
+</ul>
+<p>
+Il suffit ensuite d'effectuer les appels jQuery nécessaires pour appliquer le comportement souhaité.
+En particulier, le plugin multiselect a été recodé. Il gère lui même la création d'un second container afin d'y faire transiter les données sélectionnées. En complément d'autres options sont dispo, comme par exemple, la préservation de l'ordre des éléments. 
+</p>
+
+<h4>Gestion des alertes</h4>
+
+<p>
+Dans le même esprit, la gestion des alertes a également été totalement repensée (en particulier au niveau de la brique Backoffice). Il est désormais possible de gérer des notifications ou des demandes de confirmation, de façon plus évoluée qu'avec de simples alert() en Javascript. Un plugin &laquo; notice &raquo; a été écrit dans ce but. Le plugin backoffice a également été amélioré. Des fichiers readme.txt sont disponibles pour de plus amples informations.
+</p>
+
+<h3>Amélioration de la brique Backoffice</h3>
+
+<p>
+La plus grosse évolution concerne la mise en place d'une seconde fonction utilisateur permettant d'affiner la requête avant de la jouer. Attention, la clé &laquo; select_user_function &raquo;	désigne désormais la fonction optionnelle à appeler pour affiner la requête si besoin. Et la clé &laquo; result_user_function &raquo; désigne, quant à elle, la fonction optionnelle à appeler pour affiner les résultats (comme dans les versions précédentes de CARBONE, il peut donc y avoir une confusion ici).
+</p>
+
+<p>
+En complément, d'autres améliorations mineures ont été apportées. Par exemple, la présence d'action n'est plus obligatoire, ce qui permet d'utiliser la brique Backoffice afin de présenter uniquement des résultats. Le fonctionnement Ajax a été corrigé. La navigation propose désormais des raccourcis début/fin (et la fonction navig_string() a été déplacée dans lib_backoffice.php). Etc.
+</p>
+
+<h3>Extension de la gestion des ACL</h3>
+
+<p>
+Pour qu'une rubrique ou sous-rubrique soit affichée, au niveau de la navigation, il faut que l'une ou l'autre des conditions suivantes soient vérifiées :
+</p>
+
+<ul>
+<li>ou bien l'ACL associée à la rubrique (définie par le clé &laquo; acl &raquo; dans le script include/navigation.php) est vide,</li>
+<li>ou bien l'intersection entre l'ACL associée à l'utilisateur courant et l'ACL associée à la rubrique n'est pas vide.</li>
+</ul>
+
+<p>
+Pour qu'un utilisateur puisse accéder (et exécuter le code associé) à une rubrique, il faut que l'une ou l'autre des conditions suivantes soient vérifiées :
+</p>
+
+<ul>
+<li>ou bien l'ACL associée à la rubrique (et définie par la constante ACL_RUBRIQUE) est vide,</li>
+<li>ou bien l'intersection entre l'ACL associée à l'utilisateur courant et l'ACL associée à la rubrique n'est pas vide.</li>
+</ul>
+
+<h3>Fichier de log SQL et erreur</h3>
+
+<p>
+La gestion du fichier de log SQL a été repensée :
+</p> 
+
+<ul>
+<li>le fichier de log SQL est déployé par défaut dans le répertoire /tmp,</li>
+<li>il reste possible de configurer un autre chemin comme avant, en modifiant la constante CFG_PATH_FILE_LOG_SQL dans include/config.php,</li>
+<li>le fichier de log SQL n'est alimenté que si CFG_DEBUG vaut TRUE (utile en cas d'oubli lors des mises en prod),</li>
+<li>le format du fichier de log SQL a changé afin de supporter les requêtes concurrentes.</li>
+</ul>
+
+<p>
+L'avantage du répertoire /tmp est qu'Apache peut écrire dedans (en général). Par défaut, il n'est donc plus nécessaire d'ajouter des droits d'écriture sur le fichier de log (sauf si le chemin est changé, ou configuration du serveur particulière). Le log des requêtes SQL devrait donc être plus transparent et évite la présence d'un répertoire log à la racine.
+</p>
+
+<p>
+A noter enfin que si CFG_DEBUG vaut FALSE, une requête SQL qui plante n'est plus affichée (comme c'était le cas avant, peu idéal en production...).
+</p>
+
+<h3>Découplage</h3>
+
+<p>
+Evolution majeure, il est désormais possible de &laquo; découpler &raquo; CARBONE en frontoffice/backoffice. Un script permet de le faire automatiquement.
+</p>
+
+<h3>Evolutions diverses</h3>
+
+<p>
+Refactoring de code et correction de bugs divers sont également à notifier. La documentation a été modifiée. Le framework CARBONE est aussi un peu moins gourmand en empreinte mémoire...(eh oui, encore) !
+</p><h1>CARBONE - Licence d'utilisation</h1>
+
+<h2>Article 1</h2>
+<p>
+CARBONE est un framework (cadre d'applications ou cadriciel) conçu et développé
+par la société GLOBALIS media systems. Il est composé d'un ensemble de
+bibliothèques (classes et fonctions) et d'une documentation en facilitant la 
+prise en main.
+
+Utiliser CARBONE revient à en reprendre le code source comme socle pour
+développer des logiciels prêts à l'emploi. 
+</p>
+
+<h2>Article 2</h2>
+<p>
+GLOBALIS concède les droits d'utilisation et de modification de CARBONE et de 
+sa documentation dans le cadre du logiciel pour lequel il a été retenu ainsi 
+que ses éventuelles extensions. Par la suite, ce logiciel peut être installé, 
+utilisé et même distribué à votre convenance, modulo les restrictions 
+suivantes :
+</p>
+<ul>
+<li>la documentation de CARBONE ne peut en aucun cas être distribuée, vendue ou 
+fournie gratuitement à un tiers sans accord explicite de notre part,</li>
+<li>le code source de CARBONE ne peut être distribué, vendu ou fourni
+gratuitement à un tiers qu'en tant que partie d'un logiciel prêt à l'emploi,</li>
+<li>les droits d'utilisation et de modification de CARBONE sont limités au 
+logiciel pour lequel il a été retenu ainsi que ses éventuelles extensions,</li>
+<li>lors de modification de CARBONE ou de sa documentation, les références à 
+GLOBALIS doivent impérativement être conservées en l'état.</li>
+</ul>
+
+<h2>Article 3</h2>
+<p>
+GLOBALIS reste le seul propriétaire de CARBONE et de sa documentation.
+</p>
+<h2>Article 4</h2>
+<p>
+Aucune garantie n'est fournie. GLOBALIS fournit CARBONE et sa documentation en 
+l'état, sans aucune sorte de garantie explicite ou implicite, y compris les 
+garanties de commercialisation ou d'adaptation dans un but particulier. Vous 
+assumez tous les risques quant à la qualité et aux éventuels effets indésirables 
+ou inattendus. Si CARBONE est défectueux, vous assurez le coût de tous les 
+services, corrections ou réparations nécessaires.
+</p>
+<p>
+GLOBALIS ne pourra être tenu pour responsable de tout dommage direct, indirect, 
+secondaire ou accessoire (pertes financières dues au manque à gagner, à 
+l'interruption d'activité ou à la perte de données, etc.) découlant de 
+l'utilisation de CARBONE et sa documentation ou de l'impossibilité d'utiliser 
+celui-ci.
+</p>
+
+<h2>Article 5</h2>
+<p>
+L'ensemble du présent texte doit être présent sur l'ensemble des logiciels 
+développés à l'aide CARBONE sous la forme d'un fichier licence.txt placé à la 
+racine de l'applicatif.
+</p>
+<h2>Article 6</h2>
+<p>
+Si vous utilisez CARBONE, GLOBALIS media systems se réserve la possibilité de 
+communiquer à ce sujet sur son site internet www.globalis-ms.com et sur sa 
+lettre d'information.
+</p>
+<pre class="info">
+GLOBALIS media systems 
+6bis, rue Auguste Vitu - 75015 Paris 
+Tél. : 01 82 83 51 70 
+Fax : 01 82 83 51 71
+Mail : armel.fauveau@globalis-ms.com 
+</pre><h1>Indentation et tabulation</h1>
+
+<p>
+Prendre un soin particulier à l'indentation du code.
+Quel que soit l'éditeur utilisé, veiller à remplacer les tabulations par 4 espaces (se
+reporter au manuel de l'éditeur pour effectuer ce paramétrage).
+</p><h1>Nommage des classes, fonctions, variables et constantes</h1>
+
+<p>
+Les noms de classes, fonctions, variables et constantes sont composés de lettres ou
+chiffres et toujours au singulier (exception faite des mots invariables, comme 
+« divers »). L'utilisation d'underscore comme séparateur est autorisé.
+Les noms de constantes sont obligatoirement en majuscules. Les noms de classes,
+fonctions et variables sont en minuscules.
+</p>
+
+<pre class="code">
+&lt;?php
+define('ma_constante', 10); // INCORRECT
+define('MA_CONSTANTE', 10); // CORRECT
+
+$MaVariable = 10;  // INCORRECT
+$maVariable = 10;  // INCORRECT
+$ma_variable = 10; // CORRECT
+
+function GetListUsers()
+{
+// INCORRECT
+}
+
+function getListUsers()
+{
+// INCORRECT
+}
+
+function get_list_user()
+{
+// CORRECT
+}
+?&gt;
+</pre>
+
+<p>
+Dans la mesure du possible, utilisez des noms de classes, fonctions, variables ou constantes explicites ! La longueur n'aura aucun effet sur les performances <sup>[<a href="#note9" id="rev-note9">9</a>]</sup>.
+</p><h1>Nommage des fichiers</h1>
+<p>
+D'un point de vue général, les noms de fichiers sont en minuscules, composés de
+lettres ou chiffres et toujours au singulier (exception faite des mots invariables, comme 
+« divers »). L'utilisation d'underscore comme séparateur est autorisé.
+</p>
+<p>
+Concernant les extensions, il convient de respecter les règles suivantes :
+</p>
+<ul>
+<li>fichiers contenant du code HTML seul : xxx.html</li>
+<li>fichiers contenant du code PHP : xxx.php</li>
+<li>fichiers contenant une librairie de classes : class_xxx.php</li>
+<li>fichiers contenant une librairie de fonctions : lib_xxx.php</li>
+<li>fichiers de données de référence (liste de codes postaux, de villes, etc.) : xxx.dat</li>
+<li>fichiers de feuilles de style CSS : xxx.css ou xxx.php si css dynamique (à placer dans le répertoire css/)</li>
+</ul>
+<p>
+Concernant les fichiers Javascript (à placer dans le répertoire js/), plusieurs cas de figure sont à distinguer :
+</p>
+<ul>
+<li>fichiers Javascript : xxx.js</li>
+<li>fichiers Javascript reposant sur le socle jQuery : jquery.xxx.js</li>
+<li>fichiers Javascript compressés « minify » : xxx.min.js</li>
+<li>fichiers Javascript compressés « minify » reposant sur le socle jQuery : jquery.xxx.min.js</li>
+</ul><h1>Nommage des bases, tables et champs</h1>
+<p>
+D'un point de vue général, les noms de bases, tables et champs sont en minuscules,
+composés de lettres ou chiffres et toujours au singulier (exception faite des mots
+invariables, comme « divers »). L'utilisation d'underscore comme séparateur est
+autorisé.
+</p>
+<p>
+Si une table comporte un champ faisant office de clef primaire, nommer ce champ
+avec la syntaxe suivante : table_id
+</p>
+
+<pre class="code">
+CREATE TABLE `user` (
+    `user_id` int(11) unsigned NOT NULL auto_increment,
+    `actif` tinyint(3) unsigned NOT NULL default '0',
+    `password` varchar(255) NOT NULL default '',
+    `nom` varchar(255) NOT NULL default '',
+    `prenom` varchar(255) NOT NULL default '',
+    `email` varchar(255) NOT NULL default '',
+    `poste` varchar(255) NOT NULL default '',
+    `acl` varchar(255) NOT NULL default '',
+    `theme` varchar(255) NOT NULL default '',
+    `langue` varchar(255) NOT NULL default '',
+    `last` datetime default NULL,
+    PRIMARY KEY (`user_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+</pre>
+
+<p>
+Attention, lors du nommage, à l'utilisation de mots réservés (mots utilisés dans le
+langage SQL, etc.).
+</p><h1>Commentaires</h1>
+<p>
+Apporter un soin particulier à l'ajout de commentaires. En particulier, voici un exemple d'entête de commentaire 
+qu'il conviendrait de faire figurer au dessus des définitions de fonctions, classes et autres méthodes.
+</p>
+<pre class="code">
+/*
+ * Fonction delete_accent($chaine)
+ * -----
+ * Supprime les caract&egrave;res accentu&eacute;s d'une chaine
+ * -----
+ * @param   string      $chaine                 la chaine &agrave; traiter
+ * -----
+ * @return  string                              la chaine filtr&eacute;e de ses accents
+ * -----
+ * $Author: armel $
+ * $Copyright: GLOBALIS media systems $
+ */
+
+function delete_accent($chaine) {
+    return(utf8_encode(strtr(utf8_decode($chaine),
+        utf8_decode('&Agrave;&Aacute;&Acirc;&Atilde;&Auml;&Aring;&agrave;&aacute;&acirc;&atilde;&auml;&aring;&Ograve;&Oacute;&Ocirc;&Otilde;&Ouml;&Oslash;&ograve;&oacute;&ocirc;&otilde;&ouml;&oslash;&Egrave;&Eacute;&Ecirc;&Euml;&egrave;&eacute;&ecirc;&euml;&Ccedil;&ccedil;&Igrave;&Iacute;&Icirc;&Iuml;&igrave;&iacute;&icirc;&iuml;&Ugrave;&Uacute;&Ucirc;&Uuml;&ugrave;&uacute;&ucirc;&uuml;&yuml;&Ntilde;&ntilde;'),
+        utf8_decode('AAAAAAaaaaaaOOOOOOooooooEEEEeeeeCcIIIIiiiiUUUUuuuuyNn'))));
+}
+</pre><h1>Paramétrage du serveur</h1>
+<p>
+D'un point de vue général, s'adapter à la configuration de serveur sur lequel sera
+hébergé et placé en production le projet (serveur dédié, serveur mutualisé, etc.). Si
+besoin, demander des précisions auprès d'un chef de projet technique ou
+fonctionnel. Ne pas hésiter à demander au client un accès à une page phpinfo() type.
+</p>
+<p>
+Une fois ces éléments connus, reproduire le comportement sur le serveur de
+développement (le plus souvent via un .htaccess placé à la racine du répertoire dans
+lequel sera développé le projet).
+</p>
+<p>
+En particulier, bien vérifier les paramétrages suivants : register_globals,
+magic_quote_gpc, memory_limit, etc.
+</p><h1>Interdits</h1>
+<p>
+Dans la mesure du possible, ne pas utiliser :
+</p>
+<ul>
+<li>la fonction eval()<sup>[<a href="#note10" id="rev-note10">10</a>]</sup>.</li>
+<li>la fonction mail()<sup>[<a href="#note11" id="rev-note11">11</a>]</sup>.</li>
+<li>les fonctions natives de gestion des SGBD<sup>[<a href="#note12" id="rev-note12">12</a>]</sup>.</li>
+<li>les fonctions natives de gestion des sessions<sup>[<a href="#note13" id="rev-note13">13</a>]</sup>.</li>
+<li>l'utilisation des balises courtes (short tags) &lt;?...?&gt;<sup>[<a href="#note14" id="rev-note14">14</a>]</sup>.</li>
+</ul>
+<p>
+Sauf cas particulier, ne pas tester ses scripts en local (via EasyPHP par exemple), mais
+utiliser son espace de travail (webperso) sur le serveur de développement.
+</p>
+<p>
+<b>Respecter la structure de CARBONE</b>, tel qu'elle sera décrite dans la suite de cette documentation.
+</p>
+<p>
+D'un point de vue général, <b>ne pas modifier du code propre à CARBONE</b> (lib_carbone.php,
+lib_form.php, couche d'abstraction, couche de sessions, etc.), <b>sans avis de la part
+d'un chef de projet technique</b>.
+</p>
+<p>
+Ne pas polluer le code avec des chaînes (messages, etc.) non localisées dans le ou les
+fichiers de langues.
+</p><h1>Le fichier .htaccess</h1>
+
+<p>
+Le fichier .htaccess <sup>[<a href="#note15" id="rev-note15">15</a>]</sup> présent à la racine du site à deux objectifs :
+</p>
+<ul>
+<li>affiner les paramétrages d'Apache,</li>
+<li>affiner les paramétrages de PHP.</li>
+</ul>
+<p>
+Le fichier .htaccess ressemble généralement à ceci :
+</p>
+
+<pre class="code:firstline[10]">
+#
+# Parametrages Apache
+#
+&lt;Limit GET POST&gt;
+order deny,allow
+deny from all
+allow from 192.168.1. 127. 217.174.200.69 82.224.128.125 81.57.245.54
+&lt;/Limit&gt;
+ErrorDocument 404 /carbone_v46/
+#
+# Evite l'affichage du contenu d'un r&eacute;pertoire d&eacute;pourvu de document d'index (upload, theme, log, etc.) 
+#
+Options -Indexes
+#
+# Parametrages PHP
+#
+php_value   include_path            /usr/local/apache/htdocs/carbone_v46/include:.
+php_value   magic_quotes_gpc        0 
+php_value   max_execution_time      0
+</pre>
+
+<p>
+La première section, dédiée à Apache, permet par exemple ici de limiter l'accès aux
+machines du réseau local ainsi qu'à quelques IP fixes. Elle initialise également l'URL vers laquelle pointer en cas d'erreur HTTP 404.
+Enfin elle interdit l'affichage du « Directory Index » en cas d'absence de fichier index à la racine d'un répertoire.
+</p>
+<p>
+La seconde section, dédiée à PHP, sert à localiser le chemin de recherche des fichiers include et require, initialiser la valeur du
+magic_quote_gpc à off et lever les limitations de consommation en temps cpu.
+</p>
+<p>
+Le paramétrage de loin le plus important est celui concernant le chemin de recherche
+des fichiers include et require. Initialisés ainsi, ces fichiers seront recherchés en
+premier lieu dans le répertoire include se trouvant directement à la racine du site, puis
+dans le répertoire courant.
+</p><h1>Le répertoire include/</h1>
+
+<p>
+Ce répertoire est de loin le plus important de CARBONE. Il contient les principaux scripts composant le coeur du framework ainsi que les informations permettant de paramétrer et décrire l'application (paramètres d'accès à la base de données, description de la navigation, etc.). Sa structure est la suivante  :
+</p>
+
+<center>
+<div class="folder" id="include" style="width:640px; height:210px;" title='/carbone_framework/include/'></div>
+</center>
+
+<p>
+La quasi totalité de ces fichiers sera évidement explorée en détail dans la suite de ce document.
+</p>
+
+<h2>A la racine...</h2>
+
+<p>
+A la racine, nous trouvons les scripts suivants :
+</p>
+
+<table>
+<tr>
+	<th width="25%">Nom du fichier</th>
+	<th>Description fonctionnelle</th>
+</tr>
+<tr>
+	<td>open.php</td>
+	<td>Ouverture session et connexion SGBD</td>
+</tr>
+<tr>
+	<td>close.php</td>
+	<td>Fermeture session et déconnexion SGBD</td>
+</tr>
+<tr>
+	<td>start_php.php</td>
+	<td>Framework loader (bootstrap <sup>[<a href="#note16" id="rev-note16">16</a>]</sup>)</td>
+</tr>
+<tr>
+	<td>stop_php.php</td>
+	<td>Framework unloader</td>
+</tr>
+<tr>
+	<td>start_html.php</td>
+	<td>Entête de pages HTML (redirection en fonction du thème)</td>
+</tr>
+<tr>
+	<td>stop_html.php</td>
+	<td>Pied de pages HTML (redirection en fonction du thème)</td>
+</tr>
+</table>
+
+<h2>Le sous-répertoire config/</h2>
+
+<p>
+Le sous-répertoire config/ contient 2 scripts dont le but est de paramétrer et décrire l'application :
+</p>
+
+<table>
+<tr>
+	<th width="25%">Nom du fichier</th>
+	<th>Description fonctionnelle</th>
+</tr>
+<tr>
+	<td>config.php</td>
+	<td>Fichier de configuration (user, password, chemins, etc.)</td>
+</tr>
+<tr>
+	<td>navigation.php</td>
+	<td>Fichier de description de la navigation</td>
+</tr>
+</table>
+
+<h2>Le sous-répertoire langue/</h2>
+
+<p>
+Le sous-répertoire langue/ sert à localiser les chaînes en fonctions des langues utilisées par l'application. Il est recommandé de localiser les chaînes (libellés, messages, titres de rubriques, etc.) sous forme de constantes et de les centraliser dans ces fichiers. Il doit y avoir autant de fichiers que de langues supportées par l'application. La structure est donc la suivante :
+</p>
+
+<table>
+<tr>
+	<th width="25%">Nom du fichier</th>
+	<th>Description fonctionnelle</th>
+</tr>
+<tr>
+	<td>langue_fr.php</td>
+	<td>Fichier langue fr</td>
+</tr>
+<tr>
+	<td>...</td>
+	<td>...</td>
+</tr>
+<tr>
+	<td>langue_uk.php</td>
+	<td>Fichier langue uk</td>
+</tr>
+</table>
+
+<h2>Le sous-répertoire lib/</h2>
+
+<p>
+Le sous-répertoire lib/ centralise les classes et librairies de fonctions utilisées par le framework. Il a la structure suivante :
+</p>
+
+<center>
+<div class="folder" id="lib" style="width:640px; height:210px;" title='/carbone_framework/include/lib/'></div>
+</center>
+
+<p>
+On y trouve, en particulier :
+</p>
+
+<table>
+<tr>
+	<th width="25%">Nom du fichier</th>
+	<th>Description fonctionnelle</th>
+</tr>
+<tr>
+	<td>class_db.php</td>
+	<td>Classe d'abstraction SGBD <sup>[<a href="#note17" id="rev-note17">17</a>]</sup></td>
+</tr>
+<tr>
+	<td>class_session.php</td>
+	<td>Classe de gestion des sessions</td>
+</tr>
+<tr>
+	<td>lib_carbone.php</td>
+	<td>Librairie de fonctions génériques</td>
+</tr>
+<tr>
+	<td>lib_backoffice.php</td>
+	<td>Librairie CRUD</td>
+</tr>
+<tr>
+	<td>lib_form.php</td>
+	<td>Librairie de gestion des formulaires</td>
+</tr>
+<tr>
+	<td>lib_test.php</td>
+	<td>Librairie de tests génériques </td>
+</tr>
+<tr>
+	<td>lib_debug.php</td>
+	<td>Assistant de debuggage</td>
+</tr>
+<tr>
+	<td>lib_debug_ajax.php</td>
+	<td>Assistant de debuggage (socle Ajax)</td>
+</tr>
+<tr>
+	<td>lib_xml.php</td>
+	<td>Librairie de manipulation de flux XML</td>
+</tr>
+<tr>
+	<td>lib_metier.php</td>
+	<td>Librairie de fonctions eventuellement présente et propre au projet en cours</td>
+</tr>
+<tr>
+	<td>...</td>
+	<td>...</td>
+</tr>
+<tr>
+	<td><i>adodb_carbone/</i></td>
+	<td>Répertoire contenant la classe d'abstraction AdoDB CARBONE</td>
+</tr>
+<tr>
+	<td><i>fpdf/</i></td>
+	<td>Répertoire contenant la classe de génération de PDF à la volée</td>
+</tr>
+</table>
+
+<p>
+Le sous-répertoire lib/ contient quelques sous-répertoires de classes et librairies répondant à des problématiques très précises. C'est le cas de adodb_carbone/ contentant la classe d'abstration AdoDB CARBONE et les drivers supportés (MySQL, MySQLi, PostgreSQL, etc.), ainsi qu'un répertoire fpdf/ permettant de générer des PDF à la volée.
+</p>
+<p>
+Il est classique d'enrichir le sous-répertoire lib/ par d'autres classes et librairies présentant une utilité ponctuelle sur un projet donné.
+</p>
+<h1>Le répertoire web/</h1>
+
+<p>
+Ce répertoire centralise les ressources comme les feuilles de style CSS, scripts Javascript, images, etc. Sa structure est la suivante :
+</p>
+
+<center>
+<div class="folder" id="web" style="width:640px; height:150px;" title='/carbone_framework/web/'></div>
+</center>
+
+<h2>A la racine...</h2>
+<p>
+A la racine, se trouvent généralement 5 sous-répertoires :
+</p>
+
+<table>
+<tr>
+	<th width="25%">Nom du répertoire</th>
+	<th>Description fonctionnelle</th>
+</tr>
+<tr>
+	<td><i>cache/</i></td>
+	<td>Mise en cache des feuilles de style CSS et scripts Javascript compressés</td>
+</tr>
+<tr>
+	<td><i>image/</i></td>
+	<td>Centralise les fichiers images</td>
+</tr>
+<tr>
+	<td><i>js/</i></td>
+	<td>Centralise les scripts Javascript et autres plugins jQuery</td>
+</tr>
+<tr>
+	<td><i>theme/</i></td>
+	<td>Centralise les themes</td>
+</tr>
+<tr>
+	<td><i>upload/</i></td>
+	<td>Stockage des fichiers uploadés</td>
+</tr>
+</table>
+
+<p>
+Nous allons décrire plus précisément 3 d'entre eux : image/, js/ et theme/ 
+</p>
+
+<h2>Le sous-répertoire image/</h2>
+
+<p>
+Ce sous-répertoire contient les images (jpeg, gif voir png) utilisées par l'interface et non localisées au niveau du thème.
+A noter également la présence d'un répertoire image/upload/ contenant une
+collection d'images permettant d'illustrer différents type de données (pdf, texte,
+image, etc.). Ces dernières sont susceptibles d'être utilisées si le site fait appel à du
+upload <sup>[<a href="#note18" id="rev-note18">18</a>]</sup>.
+</p>
+
+<h2>Le sous-répertoire js/</h2>
+
+<p>
+Ce sous-répertoire contient le ou les scripts Javascript. On parlera ici plutôt de plugins. Il a la structure suivante  :
+</p>
+
+<center>
+<div class="folder" id="js" style="width:640px; height:150px;" title='/carbone_framework/web/js/'></div>
+</center>
+
+<p>
+A la racine, se trouve, en particulier, une instance du framework Javascript jQuery. Il sert généralement de socle à l'ensemble des développements Javascript. 
+On trouve ensuite autant de sous-répertoires que de plugins. Chaque sous-répertoire peut contenir un ou plusieurs scripts Javascript. Par convention, il est également recommandé de placer un fichier readme.txt dont le but est de documenter l'ensemble.
+</p>
+
+<p>
+On notera qu'un script ou plugin reposant sur jQuery prend comme préfixe « jquery. ». 
+En complément, un script portant comme suffixe « .min.js » désigne un script dont le code a été compressé et optimisé (en terme de taille) <sup>[<a href="#note19" id="rev-note19">19</a>]</sup>.
+S'il ne l'est pas, le suffixe à retenir sera tout simplement « .js ». Ceci est rappelé dans la section <a href="../regle/nommage_fs.html">Nommage des fichiers</a> de la documentation.
+</p>
+
+<p>
+Dans l'exemple ci dessus, on distingue donc une instance de jQuery ainsi qu'un script debug.js (uniquement utile pour la barre de debuggage). 
+En complément, 4 plugins, tous optimisés, sont également présents.
+</p>
+
+<h2>Le sous-répertoire theme/</h2>
+
+<p>
+Ce sous-répertoire contient le ou les thèmes. Chaque thème se décline à son tour sous la forme d'un répertoire respectant la structure suivante :
+</p>
+
+<center>
+<div class="folder" id="theme_foo" style="width:640px; height:150px;" title='/carbone_framework/web/theme/theme_foo/'></div>
+</center>
+
+<p>
+A la racine, se trouvent 3 fichiers : start_html.php, stop_html.php et navigation.php. 
+Le premier sert à mettre en forme l'entête de la page HTML. Le second sert à mettre en forme le pied de la page HTML. 
+Quant au troisième, navigation.php, il sert à mettre en page la navigation<sup>[<a href="#note20" id="rev-note20">20</a>]</sup>.
+</p>
+
+<p>
+En complement, un thème contient généralement 3 sous-répertoires :
+</p>
+
+<table>
+<tr>
+	<th width="25%">Nom du répertoire</th>
+	<th>Description fonctionnelle</th>
+</tr>
+<tr>
+	<td><i>css/</i></td>
+	<td>Centralise les feuilles de style CSS liées au thème</td>
+</tr>
+<tr>
+	<td><i>image/</i></td>
+	<td>Centralise les fichiers images liées au thème</td>
+</tr>
+<tr>
+	<td><i>js/</i></td>
+	<td>Centralise les scripts Javascript et autres plugins jQuery liés au thème</td>
+</tr>
+</table>
+
+<p>
+Il est possible d'enrichir facilement CARBONE de nouveaux thèmes. Une méthode consiste à partir d'un thème existant et de le modifier.
+</p><h1>Les autres répertoires et fichiers</h1>
+
+<h2>Les répertoires optionnels</h2>
+<p>
+Les répertoires batch/ et data/ sont parfois présents à la racine. Le répertoire batch/ sert à stocker des scripts de maintenance (par exemple des imports / exports CSV). 
+Le repertoire data/ contiendra quant à lui, des données de référence stockées sous forme de fichiers plats (par exemple, une liste de villes, de codes postaux, etc.).. 
+Evidemment, si l'application ne fait pas appel à ces besoins, ces répertoires ne sont pas nécessaires et peuvent être supprimés.
+</p>
+
+<h2>Les autres répertoires et fichiers</h2>
+
+<h3>Les autres répertoires</h3>
+
+<p>
+En plus de la racine et des répertoires que nous venons de lister, CARBONE propose
+de catégoriser et regrouper les grandes fonctionnalités du site par répertoire. Prenons
+l'exemple d'un backoffice fictif de publication d'actualités et de maintien d'un annuaire
+de liens dont le périmètre fonctionnel serait globalement le suivant :
+</p>
+
+<ul>
+<li>accès uniquement après identification et authentification,</li>
+<li>deux types d'utilisateurs : administrateurs et rédacteurs,</li>
+<li>gestion des utilisateurs : ajout, modification, suppression,</li>
+<li>gestion des actualités : ajout, modification, suppression et publication,</li>
+<li>gestion des liens : ajout, modification, suppression et publication.</li>
+</ul>
+
+<p>
+Au niveau du workflow, seuls les administrateurs peuvent gérer les utilisateurs
+confirmer la publication d'une actualité ou d'un lien.
+</p>
+
+<p>
+On distingue donc ici trois grandes fonctionnalités : gestion des utilisateurs, gestion
+des actualités et gestion de liens. L'utilisation de CARBONE suggère donc de créer
+trois répertoires, à la racine, que nous appellerons utilisateur/, actualite/ et lien/. Ces
+répertoires contiendront le ou les scripts en charge d'implémenter les différentes
+fonctionnalités de notre backoffice.
+</p>
+
+<h3>Les autres fichiers</h3>
+
+<p>
+A la racine de chaque répertoire se trouvent facultativement deux fichiers, qui seront chargés par le framework s'ils sont présents.
+</p>
+
+<p>
+Le premier, local_config.php, est une extension locale au fichier
+include/config/config.php. Il permet donc d'affiner certains paramétrages propres au
+répertoire courant et uniquement lui.
+</p>
+
+<p>
+Le second, local_lib.php, est une extension locale aux fichiers include/lib/lib_carbone.php et
+include/lib/lib_monprojet.php. Il permet donc d'enrichir de certaines fonctions ou classes
+les scripts présents dans le répertoire courant et uniquement lui.
+</p>
+
+<p>
+Si, en cours de développement, une fonction ou une classe, présente initialement
+dans le local_lib.php d'un répertoire, vient à être utilisée par des scripts présents dans
+un autre répertoire, alors il est bon de réfléchir à son déplacement vers
+include/lib/lib_carbone.php ou plutôt include/lib/lib_metier.php afin d'en accroître la
+visibilité à l'ensemble de l'application <sup>[<a href="#note21" id="rev-note21">21</a>]</sup>.
+</p>
+
+<p>
+Idem, par exemple, pour des constantes qui seraient déclarées dans local_config.php.
+Il pourrait être judicieux de les déplacer dans include/config/config.php afin d'en
+accroître la visibilité à l'ensemble des scripts.
+</p>
+<h1>Un exemple d'arborescence</h1>
+
+<p>
+Voici un exemple typique d'arborescence d'un projet CARBONE :
+</p>
+
+<center>
+<div class="folder" id="exemple_arborescence" style="width:640px; height:410px;" title='/carbone_framework/'></div>
+</center>
+
+<p>
+On notera en particulier la présence d'un fichier .htaccess à la racine et de quatre répertoires illustrant des rubriques fictives du projet : 
+rubrique_bar/, rubrique_baz/, rubrique_foo/ et rubrique_fum/.
+</p>
+
+<p>
+En complément, on observe également la présence d'un répertoire batch/ généralement utilisé pour stocker des scripts de maintenance (par exemple des imports / exports CSV). 
+Le repertoire data/ contiendra quant à lui, des données de référence stockées sous forme de fichiers plats (par exemple, une liste de ville, de codes postaux, etc.).
+</p><h1>Autopsie d'un script PHP type : index.php</h1>
+<p>
+Voici le code source du script index.php se trouvant traditionnellement à la racine d'un
+site développé avec CARBONE :
+</p>
+<pre class="code">
+&lt;?php
+// Chargement du framework
+
+require 'start_php.php';
+
+// Construction du titre de la page &lt;title&gt;
+
+define('RUBRIQUE_TITRE', STR_ACCUEIL_TITRE);
+
+// D&eacute;but de l'affichage
+
+$marge='&lt;p&gt;'.STR_ACCUEIL_MESSAGE_2.'&lt;/p&gt;';
+
+require 'start_html.php';
+
+//
+// D&eacute;but du traitement
+//
+
+print nl2br(file_get_contents('changelog.txt'));
+
+//
+// Fin du traitement
+//
+
+require 'stop_php.php';
+?&gt;
+</pre>
+<p>
+Ligne 4 du script index.php, on charge le fichier start_php.php. Ce fichier, présent
+dans le répertoire include/, assure le chargement des principales classes et librairies de
+fonctions directement liées à CARBONE. Ce fichier, très important, fait l'objet d'une analyse fine dans la section <a href="../architecture_code/bootstrap.html">Bootstrap</a> de la documentation. 
+A titre d'information, le fichier start_php.php, contient lui-même le code suivant :
+</p>
+
+<pre class="code">
+&lt;?php
+// Level d'erreur: error_reporting(E_ALL | E_STRICT);
+
+error_reporting(E_ALL | E_STRICT);
+
+// Passage en mode Output Buffering
+
+ob_start();
+
+// Require optionnels
+
+if(file_exists('local_config.php'))
+    require 'local_config.php';
+if(file_exists('local_lib.php'))
+    require 'local_lib.php';
+
+// Require obligatoires
+
+require 'config/config.php';        // Fichier de Configuration Globale
+require 'lib/lib_carbone.php';      // Librairie Carbone
+require 'lib/class_db.php';         // Class Abstraction SGBD
+require 'lib/class_session.php';    // Class Session
+require 'open.php';                 // Ouverture SGBD et Session
+?&gt;
+</pre>
+
+<p>
+Ligne 14 du script index.php, on charge le fichier start_html.php. Ce fichier, présent
+dans le répertoire include, contient le code HTML commun à l'entête de chaque page.
+A ce stade, le script index.php contient globalement toute « l'intelligence » dont il a
+besoin : variables et constantes, fonctions et classes globales, etc. La connexion au
+SGBD est également effective ainsi que le support des sessions. La sortie HTML a
+débuté et la navigation est en place. Le traitement propre au script peut commencer.
+A partir de maintenant, les sorties diverses (echo, print, printf, etc.) viendront enrichir
+la zone principale de la page. C'est le cas à la ligne 20 qui provoque l'affichage d'un
+message d'accueil.
+</p>
+<p>
+Ligne 26 du script index.php, on charge le fichier close_php.php. Ce fichier, présent
+dans le répertoire include/, contient lui-même le code suivant :
+</p>
+
+<pre class="code">
+&lt;?php
+require 'stop_html.php';            // Stop HTML
+require 'close.php';                // Fermeture SGBD
+?&gt;
+</pre>
+
+<p>
+Le fichier stop_html.php, présent dans le répertoire include/, contient le code HTML
+commun au pied de chaque page. Quant à close.php, lui aussi présent dans le
+répertoire include/, il est chargé de fermer proprement la connexion au SGBD et la
+session.
+</p><h1>Autopsie d'une page HTML type</h1>
+<p>
+CARBONE propose de construire le code HTML d'une page à l'aide des fichiers
+start_html.php et stop_html.php. Une page type a la mise en page suivante :
+</p>
+<center>
+<table style="width:640px;">
+<tr>
+<td colspan="3" style="height:40px; background-color:#eee;">Entête Application</td>
+</tr>
+<tr>
+<td colspan="3" style="height:20px; background-color:#eee;">Entête Rubrique</td>
+</tr>
+<tr>
+<td style="width:25%; background-color:#eee;">
+Zone Navigation
+<ul>
+<li>Rubrique 1</li>
+<li>Rubrique 2</li>
+<li>Rubrique 3</li>
+</ul>
+<p>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...
+</p>
+<ul>
+<li>Rubrique n</li>
+</ul>
+</td>
+<td style="width:50%;">Corps de Page</td>
+<td style="width:25%;">Marge</td>
+</tr>
+<tr>
+<td colspan="3" style="height:10px; background-color:#ddd;">Pied de Page</td>
+</tr>
+</table>
+</center>
+<p>
+Les 2 zones « Entête Application » et « Entête Rubrique » ainsi que la « Zone Navigation » sont gérées par le fichier start_html.php.
+</p>
+<p>
+La zone « Pied de Page », quant à elle, est gérée par le fichier stop_html.php.
+</p>
+<p>
+La zone principale « Corps de Page » et éventuellement, si elle existe, la zone secondaire « Marge » <sup>[<a href="#note22" id="rev-note22">22</a>]</sup>, sont gérées par le script lui même.
+</p>
+<p>
+La majorité des applications reposant sur CARBONE exploitent donc une mise en page très classique suivant un format sur 2 ou 3 colonnes. 
+Ce type de présentation convient le plus souvent. Mais il est évidement possible de sortir de ce type de mise en page afin de coller à des besoins plus spécifiques. 
+Il suffit pour cela d'adapter les fichiers start_html.php et stop_html.php. 
+Il est également possible, même si ce cas de figure est rare, de proposer une mise en page différente en fonction d'une rubrique ou, par exemple, du profil d'un utilisateur <sup>[<a href="#note23" id="rev-note23">23</a>]</sup>.
+</p><h1>Bootstrap de CARBONE</h1>
+<p>
+Nous allons ici détailler le bootstrap<sup>[<a href="#note24" id="rev-note24">24</a>]</sup> de CARBONE.
+</p>
+<p>
+Comme nous l'avons déjà évoqué dans la section <a href="../architecture_code/script.html">Autopsie d'un script PHP type</a> de la documentation, le début d'un script commence généralement par la séquence :
+</p>
+<pre class="code">
+&lt;?php
+// Chargement du framework
+
+require 'start_php.php';
+</pre>
+
+<p>
+Le fichier start_php.php, présent dans le répertoire include/, contient théoriquement le code suivant :
+</p>
+
+<pre class="code">
+&lt;?php
+// Level d'erreur: error_reporting(E_ALL | E_STRICT);
+
+error_reporting(E_ALL | E_STRICT);
+
+// Passage en mode Output Buffering
+
+ob_start();
+
+// Require optionnels
+
+if(file_exists('local_config.php'))
+    require 'local_config.php';
+if(file_exists('local_lib.php'))
+    require 'local_lib.php';
+
+// Require obligatoires
+
+require 'config/config.php';        // Fichier de Configuration Globale
+require 'lib/lib_carbone.php';      // Librairie Carbone
+require 'lib/class_db.php';         // Class Abstraction SGBD
+require 'lib/class_session.php';    // Class Session
+require 'open.php';                 // Ouverture SGBD et Session
+?&gt;
+</pre>
+<p>
+La ligne 4 a pour but d'initialiser le niveau d'erreur. Positionné à &laquo; E_ALL | E_STRICT &raquo;, nous avons ici la garantie de travailler avec le niveau d'erreur le plus strict. Par exemple, la moindre variable qui sera utilisée sans avoir été initialisée engendrera une erreur de type NOTICE. 
+Il conviendra de modifier ce niveau lors de l'étape de mise en production (consulter la section <a href="../divers/mise_production.html">Mise en production</a> de la documentation pour de plus amples informations).
+</p>
+<p>
+La ligne 8 permet d'utiliser la fonctionnalité « Output Buffering » de PHP <sup>[<a href="#note25" id="rev-note25">25</a>]</sup>.
+</p>
+<p>
+Les lignes 12 à 15 vérifient la présence éventuelle des fichiers local_config.php et local_lib.php afin de savoir s'il faut les inclure ou non <sup>[<a href="#note26" id="rev-note26">26</a>]</sup>.
+</p>
+<p>
+Les lignes suivantes servent à charger une demie douzaine de fichiers, tous présents dans le répertoire include/, include/config/ et include/lib/. 
+</p>
+<p>
+La ligne 19 permet d'inclure le fichier config/config.php. Sorte de « Carte d'Identité » de l'application, il contient les constantes et variables majeures (chemin, information de connexion à la base de données, valeurs par défaut, etc.).
+</p>
+<p>
+La ligne 20 permet d'inclure le fichier lib/lib_carbone.php. Il comporte des fonctions généralement utiles à l'ensemble de CARBONE.
+</p>
+<p>
+La ligne 21 permet d'inclure le fichier lib/class_db.php. Ce fichier s'occupe de charger la classe d'abstraction SGBD (AdoDB Carbone ou AdoDB) et le driver (MySQL, PostgreSQL, etc.) souhaité <sup>[<a href="#note27" id="rev-note27">27</a>]</sup>.
+</p>
+<p>
+La ligne 22 permet d'inclure le fichier lib/class_session.php  Ce fichier s'occupe de charger la classe de gestion des sessions.
+</p>
+<p>
+La ligne 23 permet d'inclure le fichier open.php. Ce fichier a des objectifs multiples : ouvrir la connexion au SGBD, ouvrir la session, vérifier les sécurités d'accès à la rubrique courante, charger le fichier de langue et de navigation, etc.
+</p>
+<p>
+A ce niveau, le gros du framework CARBONE a donc démarré. La connexion à la base de données est effective, la session ouverte, les chemins connus, les règles de navigation également.
+</p>
+
+<h2>Cas pratique</h2>
+
+<p>
+Dans la pratique, il convient d'enrichir le script start_php.php en procédant à l'inclusion d'un fichier supplémentaire comportant une « Librairie Métier » propre à l'application. 
+Cette librairie embarquera idéalement des règles de gestion, tests, procédures propres à l'application en court de développement. Le fichier start_php.php contiendra alors le code suivant (ligne 22) :
+</p>
+
+<pre class="code">
+&lt;?php
+// Level d'erreur: error_reporting(E_ALL | E_STRICT);
+
+error_reporting(E_ALL | E_STRICT);
+
+// Passage en mode Output Buffering
+
+ob_start();
+
+// Require optionnels
+
+if(file_exists('local_config.php'))
+    require 'local_config.php';
+if(file_exists('local_lib.php'))
+    require 'local_lib.php';
+
+// Require obligatoires
+
+require 'config/config.php';        // Fichier de Configuration Globale
+require 'lib/lib_carbone.php';      // Librairie Carbone
+
+require 'lib/lib_metier.php';       // Librairie M&eacute;tier
+
+require 'lib/class_db.php';         // Class Abstraction SGBD
+require 'lib/class_session.php';    // Class Session
+require 'open.php';                 // Ouverture SGBD et Session
+?&gt;
+</pre>
+<p>
+Si cette librairie lib/lib_metier.php <sup>[<a href="#note28" id="rev-note28">28</a>]</sup> embarque une fonctionnalité qui pourrait présenter un intérêt pour les projets futurs, elle pourra prétendre intégrer le coeur de CARBONE (lib_test.php, lib_carbone.php, etc.) à l'occasion d'une mise à jour du framework.
+</p>
+
+<h2>Différence entre local_lib.php, lib/lib_carbone.php, lib/lib_metier.php</h2>
+
+<p>
+CARBONE propose de découper l'application par rubriques et de regrouper chaque rubrique dans un répertoire spécifique. Les fichiers local_lib.php et local_config.php sont facultativement présents à la racine de chacun de ces répertoires s'ils sont nécessaires. 
+</p>
+<p>
+Le fichier local_lib.php contiendra des fonctions ou classes propres à la rubrique en cours. C'est donc une librairie locale, comme le suggère son nommage et dont la portée n'ira pas au delà du répertoire dans lequel elle est déposée. 
+</p>
+<p>
+Le fichier lib/lib_carbone.php, présent dans le répertoire include, embarque quant à lui des fonctions ou classes communes à l'ensemble de l'application. La portée est donc globale et accessible depuis chaque rubrique.
+</p>
+<p>
+Il en va de même de la lib/lib_metier.php, si ce n'est qu'elle contient des fonctions ou classes propres à l'application en court de développement.
+</p><h1>Workflow</h1>
+<center>
+<img src="./share/image/workflow.png" alt="Workflow" />
+</center>
+<p>
+Le schéma ci-dessus illustre le workflow complet d'un traitement de données prévoyant l'affichage par défaut d'une brique « backoffice » et la gestion des actions CRUD, avec traitement des données saisies par le biais d'un formulaire, gestion des tests unitaires (primaires et secondaires) et opérations en base. 
+La traduction de ce workflow, en PHP et à l'aide de CARBONE, est visible dans le script simple.php présent dans le répertoire utilisateur/ de CARBONE. 
+</p>
+<p>
+Il est nécessaire de bien le comprendre dans la mesure ou il permet de faire face à la majorité des cas de traitement de données. 
+Il permet également de prendre conscience qu'un traitement même séquentiel et procédural, bien architecturé, permet de traiter tout un tas de cas de figures comportant des règles de gestion précises.
+Qui plus est, l'ensemble est réalisable en quelques centaines de lignes.
+</p>
+<p>
+Il est évidemment possible d'implémenter ce workflow en plusieurs scripts, afin par exemple de séparer la partie « backoffice » et la partie traitement des données saisies par le biais d'un formulaire.
+Une telle déclinaison, plus modulaire, est visible dans les scripts split.php (qui fait alors office de controleur), split_bo.php et split_form.php, présents dans le répertoire utilisateur/ de CARBONE.
+</p>
+<h1>Classe d'abstraction SGBD : class_db.php</h1>
+<p>
+CARBONE propose deux couches d'abstraction <sup>[<a href="#note29" id="rev-note29">29</a>]</sup> SGBD : AdoDB et AdoDB CARBONE. La
+seconde est une version ultra simplifiée de la première. Si les principaux
+développements sont réalisés avec MySQL, l'utilisation d'un autre SGBD sera
+grandement simplifiée. D'où un gain important pour le développeur et des possibilités
+intéressantes d'évolution et de modularité.
+Dans la pratique, la version simplifiée, AdoDB CARBONE, sera suffisante. Le recours à
+AdoDB sera réservé à des développements très spécifiques (impliquant plusieurs
+SGBD ou nécessitant un niveau d'abstraction élevé).
+</p>
+
+<h2>Paramétrages</h2>
+<p>
+Les paramétrages liés au SGBD sont définis dans le fichier include/config/config.php.
+On y trouve en particulier les informations suivantes :
+</p>
+<pre class="code">
+// Database
+
+define ('CFG_CLASS', 'adodb_carbone');  // Class d'abstraction utilis&eacute;e
+define ('CFG_TYPE', 'mysql');           // Type de sgbd cibl&eacute; (mysql, postgres, ...)
+
+define ('CFG_HOST', 'localhost');       // Host
+define ('CFG_USER', 'username');        // User
+define ('CFG_PASS', 'password');        // Pass
+define ('CFG_BASE', 'carbone_v45');     // Base
+
+// Tables
+
+define ('CFG_TABLE_PREFIX', '');                            // Prefix sur les tables (public. pour postgres)
+define ('CFG_TABLE_SESSION', CFG_TABLE_PREFIX.'session');   // Table session
+define ('CFG_TABLE_USER', CFG_TABLE_PREFIX.'user');         // Table user
+define ('CFG_TABLE_DATA', CFG_TABLE_PREFIX.'data');         // Table data
+</pre>
+<p>
+Les lignes 3 et 4 servent à définir la couche d'abstraction qui sera utilisée (adodb ou
+adodb_carbone) ainsi que le type de SGBD cible. A noter que adodb_carbone ne
+supporte qu'un nombre limité de SGBD : mysql, postgres, mssql, sqlite.
+</p>
+<p>
+Les lignes 6 à 8 définissent host, username et password d'accès au SGBD. La ligne 9
+précise le nom de la base. Quant aux lignes 13 et suivantes, elles définissent un
+préfixe de table <sup>[<a href="#note30" id="rev-note30">30</a>]</sup> (par défaut vide) ainsi que chacune des tables qui seront utilisées
+par l'application.
+</p>
+<p>
+Par la suite, en particulier lors de la construction des requêtes, ce sont ces constantes
+qui permettront de référencer telle ou telle table, ceci afin de gagner en modularité <sup>[<a href="#note31" id="rev-note31">31</a>]</sup>.
+</p>
+
+<h2>Connexion</h2>
+
+<p>
+Cette étape est assurée par le script include/open.php. Elle est transparente pour le
+développeur.
+</p>
+
+<h2>Utilisation</h2>
+
+<p>
+Nous allons détailler succinctement les méthodes proposées par AdoDB CARBONE. Ces
+méthodes sont suffisantes dans 99% des cas. Elles sont totalement compatibles avec
+AdoDB (qui en propose, elle, beaucoup plus).
+</p>
+
+<h3>Connexion : connect()</h3>
+
+<pre class="code">
+//
+// M&eacute;thode connect()
+// Ouvertue de la connexion SGBD
+//
+
+$db = ADONewConnection(CFG_TYPE);
+$db-&gt;connect(CFG_HOST, CFG_USER, CFG_PASS, CFG_BASE);
+
+if(!$db){
+    die(&quot;Pas de connexion&quot;);
+}
+</pre>
+
+<h3>Déconnexion : close()</h3>
+
+<pre class="code">
+//
+// M&eacute;thode close()
+// Fermeture de la connexion SGBD
+//
+
+$db-&gt;close();
+</pre>
+
+<h3>Requête : execute()</h3>
+
+<pre class="code">
+//
+// M&eacute;thode execute()
+// Exemple de requ&ecirc;te INSERT
+//
+
+$sql = 'INSERT INTO '.CFG_TABLE_USER.' ';
+$sql.= '(nom, prenom, email, password) ';
+$sql.= 'VALUES (';
+$sql.= $db-&gt;qstr(uniqid('nom_')).', ';
+$sql.= $db-&gt;qstr(uniqid('prenom_')).', ';
+$sql.= $db-&gt;qstr(uniqid('email_')).', ';
+$sql.= $db-&gt;qstr(uniqid('password_'));
+$sql.= ')';
+
+$db-&gt;execute($sql);
+</pre>
+
+<h3>Décompte du nombre d'enregistrement : recordcount()</h3>
+
+<pre class="code">
+//
+// M&eacute;thode recordcount()
+// Exemple de calcul de nombre d'enregistrement
+//
+
+$sql = 'SELECT nom, prenom FROM '.CFG_TABLE_USER;
+
+$recordset = $db-&gt;execute($sql);
+print_r($recordset-&gt;recordcount());
+</pre>
+
+<h3>Last insert id : insert_id()</h3>
+
+<pre class="code">
+//
+// M&eacute;thode insert_id()
+// Exemple de r&eacute;cup&eacute;ration de dernier id
+//
+
+$id=$db-&gt;insert_id(CFG_TABLE_USER, 'user_id');
+print_r($id);
+</pre>
+
+<h3>Requête SELECT...LIMIT : selectlimit()</h3>
+
+<pre class="code">
+//
+// M&eacute;thode selectlimit()
+// Exemple de requ&ecirc;te SELECT...LIMIT (ici 3 enregistrements &agrave; partir du premier)
+//
+
+$sql = 'SELECT nom, prenom, email FROM '.CFG_TABLE_USER;
+
+$recordset = $db-&gt;selectlimit($sql, 3, 0);
+while ($row = $recordset-&gt;fetchrow()) {
+    print_r($row);
+}
+</pre>
+
+<h3>Remontée d'une colonne d'une ligne : getone()</h3>
+
+<pre class="code">
+//
+// M&eacute;thode getone()
+// Exemple de remont&eacute;e d'une colonne d'une ligne
+//
+
+$sql = 'SELECT nom FROM '.CFG_TABLE_USER.' ';
+$sql.= 'WHERE user_id='.$id;
+
+print_r($db-&gt;getone($sql));
+</pre>
+
+<h3>Remontée de plusieurs colonnes d'une ligne : getrow()</h3>
+
+<pre class="code">
+//
+// M&eacute;thode getrow()
+// Exemple de remont&eacute;e de plusieurs colonnes d'une ligne
+//
+
+$sql = 'SELECT nom, prenom FROM '.CFG_TABLE_USER.' ';
+$sql.= 'WHERE user_id='.$id;
+
+print_r($db-&gt;getrow($sql));
+</pre>
+
+<h3>Remontée de plusieurs colonnes de plusieurs lignes : fetchrow()</h3>
+
+<pre class="code">
+//
+// M&eacute;thode fetchrow()
+// Exemple de remont&eacute;e de plusieurs colonnes de plusieurs lignes
+//
+
+$sql = 'SELECT nom, prenom, email FROM '.CFG_TABLE_USER;
+
+$recordset = $db-&gt;execute($sql);
+while ($row = $recordset-&gt;fetchrow()) {
+    print_r($row);
+}
+</pre><h1>Classe session : class_session.php</h1>
+<p>
+CARBONE dispose de son propre support de gestion des sessions. Le support natif,
+disponible depuis PHP4, n'a pas été retenu car peu fiable.
+</p>
+
+<h2>Paramétrages</h2>
+<p>
+A l'image de la couche d'abstraction SGBD, les paramétrages liés aux sessions sont
+définis dans le fichier include/config/config.php. On y trouve en particulier les
+informations suivantes :
+</p>
+<pre class="code:firstline[19]">
+// Session
+
+define ('CFG_SESSION_TABLE',  CFG_TABLE_SESSION);   // Table session
+define ('CFG_SESSION_PATH',  '/carbone_v46/');      // Racine du site, utile uniquement pour le mode cookie
+define ('CFG_SESSION_NAME',  'sid');                // Nom de l'identifiant de session utilis&eacute;
+define ('CFG_SESSION_DELAY', '3600');               // D&eacute;lai session (en s)
+define ('CFG_SESSION_TRANS', 'cookie');             // Mode de transmission : url, cookie
+define ('CFG_SESSION_LEVEL', '0');                  // Mode de s&eacute;curit&eacute; (champ de bit)
+</pre>
+<p>
+La ligne 21 précise le nom de la table qui sera utilisé pour stocker les sessions. La
+ligne 22 précise le domaine (au sens répertoire) de validité du cookie (uniquement
+utilisé si le mode de transmission est de type cookie). La ligne 23 précise le nom de
+l'id de session qui sera utilisé par la suite. La ligne 24 fixe le délai de péremption d'une
+session ouverte (ici 1 heure, soit 3600 secondes). Quant à la ligne 25, elle précise le
+mode de transmission de l'id de session. Il est possible de choisir url ou cookie. Par
+url <sup>[<a href="#note32" id="rev-note32">32</a>]</sup>, l'id de session transitera via la méthode GET. Par cookie, l'id de session
+transitera sous forme d'un cookie de session (cookie qui n'est pas écrit sur le disque
+du poste client, mais qui persiste uniquement en mémoire jusqu'à fermeture du
+navigateur). Enfin, la ligne 26 vient préciser le mode de sécurité souhaité. La
+constante CFG_SESSION_LEVEL contient une valeur correspondante à un
+champ de bits. Les différentes combinaisons possibles sont les suivantes :
+</p>
+<ul>
+<li>CFG_SESSION_LEVEL vaut "0" : Aucune protection particulière</li>
+<li>CFG_SESSION_LEVEL vaut "3" : Contrôle du HTTP_USER_AGENT + Session volatile</li>
+<li>CFG_SESSION_LEVEL vaut "5" : Contrôle du HTTP_USER_AGENT + Token de session</li>
+<li>CFG_SESSION_LEVEL vaut "6" : Session volatile + Token de session</li>
+<li>CFG_SESSION_LEVEL vaut "7" : Contrôle du HTTP_USER_AGENT + Session volatile + Token de session</li>
+</ul>
+<p>
+Consulter la section <a href="../securite/session.html">A propos des sessions</a> de la documentation pour de plus amples informations.
+</p>
+
+<h2>Connexion</h2>
+<p>
+Cette étape est assurée par le script include/open.php. Elle est transparente pour le
+développeur.
+</p>
+
+<h2>Utilisation</h2>
+<p>
+Voici un exemple de code montrant comment enregistrer une donnée en session, et comment la récupérer :
+</p>
+<pre class="code">
+$foo=&quot;bidule&quot;;
+
+// Enregistrement d'une donn&eacute;e (paire cl&eacute;/valeur)
+
+$session-&gt;register($foo, '12345');
+
+// R&eacute;cupp&eacute;ration de la donn&eacute;e
+
+echo $session-&gt;get_var($foo);       // Retournera 12345
+echo $session-&gt;get_var('bidule');   // Retournera &eacute;galement 12345
+
+// Suppression de la donn&eacute;e
+
+$session-&gt;unregister($foo);
+
+$bar=$session-&gt;get_var($foo);
+if(empty($bar))
+    echo &quot;oui&quot;;                     // Retournera oui
+else
+    echo &quot;non&quot;;  
+</pre>
+<p>
+Voir le code de la classe session pour en comprendre le fonctionnement en détail.
+</p>
+<h2>Remarque importante</h2>
+<p>
+Pour que les données soient correctement enregistrées en session (et donc persistantes de page en page), il est impératif de &laquo; commiter &raquo; la session courante. Cette opération est réalisée lorsque la session est fermée (via la méthode $session->close() qui est appelée automatiquement dans le script include/stop.php).
+Il est donc conseillé de veiller à fermer correctement la session en cours, en particulier lors d'une redirection prématurée. A ce titre, la fonction redirect() (présente dans include/lib/lib_carbone.php), permet d'effectuer une redirection proprement (en fermant correctement la session et la connexion au SGBD).
+</p><h1>Classe de parsing XML : class_xml.php</h1>
+<p>
+CARBONE propose une classe permettant de parser et manipuler le contenu d'un fichier XML. Basée sur l'extension « XML Parser » de PHP permettant de mettre en place un parser XML, elle est compatible avec PHP4.
+</p>
+
+<h2>Exemple simple</h2>
+
+<p>Voici un exemple d'utilisation de cette classe :</p>
+
+<pre class="code">&lt;?php
+require 'class_xml.php';
+
+// Contenu XML, ici en cha&icirc;ne de caract&egrave;res mais il peut &ecirc;tre dans un fichier
+$string = file_get_contents('fichier_xml.xml');
+
+// Initialisation d'une instance de la classe gxml
+$xml = new gxml();
+// Parsing du XML
+$xml-&gt;parse($string);
+
+// Exemple d'appel pour r&eacute;cup&eacute;rer des informations du flux XML
+$liste_element = $xml-&gt;find_element('balise');
+?&gt;</pre>
+
+<p>Le principe est de fournir à une instance de la classe gxml, une chaîne de caractères correspondant à un flux XML. Ce flux sera converti en un tableau d'éléments. Des méthodes de requêtage permettent alors de récupérer les informations de ce tableau de parsing.</p>
+
+<h2>Informations récupérées</h2>
+
+<p>Avant de voir les différentes méthodes permettant de manipuler les données, voici la description d'un item pouvant être récupéré :</p>
+
+<pre class="code">Array
+(
+    [index] =&gt; 28
+    [tag] =&gt; utilisateur
+    [level] =&gt; 1
+    [attributes] =&gt; Array
+        (
+            [id] =&gt; 45
+            [name] =&gt; &quot;DUPONT&quot;
+            [firstname] =&gt; &quot;Roger&quot;
+        )
+
+    [cdata] =&gt; ''
+    [child] =&gt; Array
+        (
+            [0] =&gt; 29
+            [1] =&gt; 35
+        )
+
+    [parent] =&gt; 13
+)</pre>
+
+<ul>
+<li>la clé « index » indique le numéro d'ordre dans le tableau de parsing.</li>
+<li>la clé « tag » correspond au tagName de la balise.</li>
+<li>la clé « level » correspond à la profondeur de la balise dans le flux XML. L'élément racine aura un level à 0, les premiers sous-éléments auront un level à 1, etc.</li>
+<li>la clé « attributes » contient un tableau des attributs de la balise.</li>
+<li>la clé « cdata » contient le contenu #PCDATA, si l'élément ne possède de contenu #PCDATA, cette clé contiendra une chaîne vide.</li>
+<li>la clé « child » contient un tableau avec les clés « index » des sous-éléments de l'élément courant.</li>
+<li>la clé « parent » contient le numéro d'index du parent de l'élément courant. Pour l'élément racine cette valeur vaut 0.</li>
+</ul>
+
+<p>En règle générale, même s'il est possible d'avoir les deux à la fois, un élément XML aura soit un contenu « cdata », soit une liste de sous-éléments « child ».</p>
+
+<h2>Utilisation</h2>
+
+<p>Nous allons détailler succinctement les méthodes proposées par la classe gxml.</p>
+
+<h3>Constructeur</h3>
+
+<p>new <strong>gxml</strong> ( <em>array</em> $exception = array(), <em>string</em> $encoding = "ISO-8859-1" )</p>
+
+<table>
+<tr>
+	<th width="30%">Paramètres</th>
+	<th>Description</th>
+</tr>
+<tr>
+	<td>$exception (facultatif)</td>
+	<td>Permet de préciser des noms de balise qui ne seront pas parsées. Utile si une balise contient du code html que l'on veut récupérer en tant que #PCDATA.</td>
+</tr>
+<tr>
+	<td>$encoding (facultatif)</td>
+	<td>Ce paramètre permet d'indiquer au parser quel encodage utiliser. L'encoding par défaut est l'ISO-8859-1.</td>
+</tr>
+</table>
+
+<p>Exemple d'utilisation :</p>
+
+<pre class="code">&lt;?php
+require 'class_xml.php';
+
+$string = file_get_contents('fichier_utf8.xml');
+
+$xml = new gxml(array('article'), 'UTF-8'));
+$xml-&gt;parse($string);
+
+?&gt;</pre>
+
+<p>Pour cet exemple, les sous-élements des balises &lt;article&gt; ne seront pas parsés. Tous les sous-éléments présents entre &lt;article&gt; et &lt;/article&gt; seront considérés comme #PCDATA. De plus on indique au parser que l'encodage attendu en retour est l'UTF-8.</p>
+
+<h3>parse()</h3>
+
+<p><strong>parse</strong> ( <em>string</em> $string, <em>boolean</em> $parser_free = TRUE )</p>
+
+<p>Lance le parsing d'un flux xml. Retourne TRUE si le parsing a été effectué correctement, FALSE sinon.</p>
+
+<table>
+<tr>
+	<th width="30%">Paramètres</th>
+	<th>Description</th>
+</tr>
+<tr>
+	<td>$string</td>
+	<td>Flux XML à parser</td>
+</tr>
+<tr>
+	<td>$parser_free (facultatif)</td>
+	<td>Indique si le parser doit être détruit après le parsing. TRUE par défaut</td>
+</tr>
+</table>
+
+<p>Exemple d'utilisation :</p>
+
+<pre class="code">&lt;?php
+require 'class_xml.php';
+
+$string = file_get_contents('fichier_xml.xml');
+
+$xml = new gxml();
+$xml-&gt;parse($string);
+
+?&gt;</pre>
+
+<h3>error()</h3>
+
+<p>Retourne la dernière erreur levée par le parseur. Cette méthode n'a pas de paramètre.</p>
+
+<p>Exemple d'utilisation :</p>
+
+<pre class="code">&lt;?php
+require 'class_xml.php';
+
+$string = file_get_contents('fichier_xml.xml');
+
+$xml = new gxml();
+if(!$xml-&gt;parse($string)) {
+    echo $xml-&gt;error();
+}
+
+?&gt;</pre>
+
+<h3>parser_free()</h3>
+
+<p>Tentative de destruction du parser courant. Cette méthode n'a pas de paramètre.</p>
+
+<p>Exemple d'utilisation :</p>
+
+<pre class="code">&lt;?php
+require 'class_xml.php';
+
+$string = file_get_contents('fichier_xml.xml');
+
+$xml = new gxml();
+if(!$xml-&gt;parse($string)) {
+    echo $xml-&gt;error();
+}
+
+//
+// Ici on effectue un traitement quelconque
+//
+
+$xml-&gt;parser_free();
+
+?&gt;</pre>
+
+<h3>get_element()</h3>
+
+<p><strong>get_element</strong> ( <em>integer</em> $index )</p>
+
+<p>Retourne les données d'un élément du fichier xml à partir de son numéro d'index dans le tableau de parsing.</p>
+
+<table>
+<tr>
+	<th width="30%">Paramètres</th>
+	<th>Description</th>
+</tr>
+<tr>
+	<td>$index</td>
+	<td>Numéro d'index dans le tableau de parsing</td>
+</tr>
+</table>
+
+<p>Exemple d'utilisation :</p>
+
+<pre class="code">&lt;?php
+require 'class_xml.php';
+
+$string = file_get_contents('fichier_xml.xml');
+
+$xml = new gxml();
+$xml-&gt;parse($string);
+
+$element = $xml-&gt;get_element(30);
+
+?&gt;</pre>
+
+<h3>find_element()</h3>
+
+<p><strong>find_element</strong> ( <em>string</em> $tag_name, <em>array</em> $filter = array(), <em>array</em> $attr = array(), <em>boolean</em> $first = FALSE, <em>boolean</em> $return_cdata = FALSE )</p>
+
+<p>Retourne une liste d'éléments correspondant à un nom de balise.</p>
+
+<table>
+<tr>
+	<th width="30%">Paramètres</th>
+	<th>Description</th>
+</tr>
+<tr>
+	<td>$tag_name</td>
+	<td>Nom des balises recherchées.</td>
+</tr>
+<tr>
+	<td>$filter (facultatif)</td>
+	<td>Permet de filtrer par rapport aux données du tableau de parsing.</td>
+</tr>
+<tr>
+    <td>$attr (facultatif)</td>
+    <td>Permet de filtrer par rapport aux attributs xml des éléments.</td>
+</tr>
+<tr>
+    <td>$first (facultatif)</td>
+    <td>Permet de retourner uniquement le premier élément correspondant. FALSE par défaut.</td>
+</tr>
+<tr>
+    <td>$return_cdata (facultatif)</td>
+    <td>Permet de retourner uniquement le cdata des éléments correspondants. FALSE par défaut.</td>
+</tr>
+</table>
+
+<p>Exemple d'utilisation :</p>
+
+<pre class="code">&lt;?php
+require 'class_xml.php';
+
+$string = file_get_contents('fichier_xml.xml');
+
+$xml = new gxml();
+$xml-&gt;parse($string);
+
+$liste_user = $xml-&gt;find_element('utilisateur', array('level' =&gt; 3), array('name' =&gt; 'DUPONT'));
+?&gt;</pre>
+
+<p>On cherche ici les balises &lt;utilisateur&gt; qui ont un niveau de profondeur de 3 et dont l'attribut « name » vaut "Dupont".</p>
+
+<h3>find_child()</h3>
+
+<p><strong>find_child</strong> ( <em>integer</em> $element_index, <em>string</em> $path, <em>array</em> $attr = array(), <em>boolean</em> $first = FALSE, <em>boolean</em> $return_cdata = FALSE )</p>
+
+<p>Retourne une liste de sous-éléments par rapport à l'index d'un élément et à un chemin donné.</p>
+
+<table>
+<tr>
+	<th width="30%">Paramètres</th>
+	<th>Description</th>
+</tr>
+<tr>
+	<td>$element_index</td>
+	<td>Numéro d'index de l'élément parent dans le tableau de parsing.</td>
+</tr>
+<tr>
+	<td>$path</td>
+	<td>Chemin XML à partir de l'élément parent des sous-éléments recherchés.</td>
+</tr>
+<tr>
+    <td>$attr (facultatif)</td>
+    <td>Permet de filtrer par rapport aux attributs XML des éléments.</td>
+</tr>
+<tr>
+    <td>$first (facultatif)</td>
+    <td>Permet de retourner uniquement le premier élément correspondant. FALSE par défaut.</td>
+</tr>
+<tr>
+    <td>$return_cdata (facultatif)</td>
+    <td>Permet de retourner uniquement le cdata des éléments correspondants. FALSE par défaut.</td>
+</tr>
+</table>
+
+<p>Exemple d'utilisation :</p>
+
+<pre class="code">&lt;?php
+require 'class_xml.php';
+
+$string = file_get_contents('fichier_xml.xml');
+
+$xml = new gxml();
+$xml-&gt;parse($string);
+
+$liste_societe = $xml-&gt;find_element('societe');
+
+foreach($liste_societe as $societe) {
+
+    $liste_ville = $xml-&gt;find_child($societe-&gt;index, 'client/ville', array('departement' =&gt; 30));
+
+}
+?&gt;</pre>
+
+<p>On cherche ici, pour chaque balise &lt;societe&gt;, les balises &lt;ville&gt; sous-éléments d'une balise &lt;client&gt; et dont l'attribut « departement » vaut "30".</p>
+
+<h3>to_iso()</h3>
+
+<p><strong>to_iso</strong> ( <em>string</em> $flux, <em>string</em> $charset_in = "UTF-8", <em>string</em> $method = "iconv" )</p>
+
+<p>Convertie une chaîne de caractères en ISO-8859-1.</p>
+
+<table>
+<tr>
+	<th width="30%">Paramètres</th>
+	<th>Description</th>
+</tr>
+<tr>
+    <td>$flux</td>
+    <td>Chaîne de caractères à convertir.</td>
+</tr>
+<tr>
+    <td>$charset_in (facultatif)</td>
+    <td>Charset du flux entrant. UTF-8 par défaut.</td>
+</tr>
+<tr>
+    <td>$method (facultatif)</td>
+    <td>Méthode PHP à utiliser (iconv ou utf8_decode). iconv par défaut.</td>
+</tr>
+</table>
+
+<p>Exemple d'utilisation :</p>
+
+<pre class="code">&lt;?php
+require 'class_xml.php';
+
+$string = file_get_contents('fichier_xml.xml');
+
+$xml = new gxml();
+
+$string = $xml-&gt;to_iso($string);
+
+$xml-&gt;parse($string);
+
+$xml-&gt;debug();
+
+?&gt;</pre>
+
+<h3>debug()</h3>
+
+<p>Affiche le contenu du tableau de parsing. Cette méthode n'a pas de paramètre.</p>
+
+<p>Exemple d'utilisation :</p>
+
+<pre class="code">&lt;?php
+require 'class_xml.php';
+
+$string = file_get_contents('fichier_xml.xml');
+
+$xml = new gxml();
+$xml-&gt;parse($string);
+
+$xml-&gt;debug();
+
+?&gt;</pre>
+
+<h2>Manipulation de gros fichiers</h2>
+
+<p>Dans certains cas, si la taille de la chaîne XML à parser est trop importante, un dépassement de la mémoire allouée au script peut survenir. Il peut être alors possible de procéder à un parsing de la chaîne de caractères par étapes de la manière suivante :</p>
+
+<pre class="code">&lt;?php
+require 'class_xml.php';
+
+$handle = fopen('xml/partenaires.xml', 'r');
+
+while (!feof($handle)) {
+
+    $string='';
+    $buffer = fgets($handle);
+
+    if(strstr($buffer,'&lt;partenaire&gt;')) {
+        while (!strstr($buffer,'&lt;/partenaire&gt;')) {
+            $string.=$buffer;
+            $buffer = fgets($handle);
+        }
+        $string.=$buffer;
+    }
+    else {
+        unset($string);
+        continue;
+    }
+
+    // Initialisation de l'objet XML
+    if(isset($xml)) {
+        unset($xml);
+    }
+
+    $xml = new gxml();
+    $xml-&gt;parse($string);
+
+    // Recherche des diff&eacute;rents partenaires dans le flux XML
+    $partenaires = $xml-&gt;find_element('partenaire');
+
+}
+
+?&gt;</pre>
+
+<p>Ici on parse chaque balise &lt;partenaire&gt; indépendamment des autres. Le principe est le même sauf qu'au lieu de manipuler un tableau de n éléments, on manipule n tableaux de 1 seul élément.</p><h1>Formulaires : lib_form.php</h1>
+<p>
+CARBONE propose une collection de fonctions permettant de simplifier et
+d'automatiser la création et le contrôle de formulaire. L'idée est de décrire l'ensemble
+du formulaire par le biais d'un tableau associatif <sup>[<a href="#note33" id="rev-note33">33</a>]</sup>, chaque élément du formulaire étant
+lui même décrit par un tableau associatif.
+</p>
+<p>
+Débutons par un exemple :
+</p>
+
+<pre class="code">
+// Construction du Formulaire
+
+$form_structure = array(
+    'form' =&gt; array(
+        'item' =&gt; 'form',
+        'action' =&gt; $url,
+        'legende' =&gt; STR_FORM_LEGENDE,
+    ),
+
+    'login_email' =&gt; array(
+        'item' =&gt; 'input', 
+        'tpl' =&gt; '[(3){libelle}(4){form}(5){legende}]', 
+        'libelle' =&gt; STR_LOGIN_LIBELLE_EMAIL, 
+        'legende' =&gt; STR_LOGIN_LEGENDE_EMAIL, 
+        'accesskey' =&gt; 'E',
+        'value' =&gt; $data['login_email'],
+        'test' =&gt; array(
+            'test_user_function' =&gt; 'test_mail',
+            'test_error_message' =&gt; STR_FORM_E_FATAL_FIELD_SAISIE,
+        ),
+        'require' =&gt; TRUE, 
+        'js' =&gt; 'onfocus=&quot;this.className=\'focus\';&quot; onblur=&quot;this.className=\'normal\';&quot;',
+    ),
+
+    'login_password' =&gt; array(
+        'item' =&gt; 'input',
+        'tpl' =&gt; '[(3){libelle}(4){form}(5){legende}]', 
+        'libelle' =&gt; STR_LOGIN_LIBELLE_PASSWORD,
+        'legende' =&gt; STR_LOGIN_LEGENDE_PASSWORD, 
+        'accesskey' =&gt; 'P',
+        'value' =&gt; $data['login_password'],
+        'type' =&gt; 'password',
+        'require' =&gt; TRUE, 
+        'js' =&gt; 'onfocus=&quot;this.className=\'focus\';&quot; onblur=&quot;this.className=\'normal\';&quot;',
+    ),
+
+    'submit' =&gt; array(
+        'item' =&gt; 'button',
+        'tpl' =&gt; '[(3){libelle}(9){form} ...', 
+        'value' =&gt; STR_FORM_SUBMIT,
+        'type' =&gt; 'submit',
+    ),
+
+    'reset' =&gt; array(
+        'item' =&gt; 'button',
+        'tpl' =&gt; '{form}]', 
+        'value' =&gt; STR_FORM_RESET,
+        'type' =&gt; 'reset',
+    ),
+
+);
+</pre>
+
+<p>
+Ce tableau décrit un formulaire d'identification / authentification avec :
+</p>
+
+<ul>
+<li>un champ input (type « text » par défaut) de saisie du login <sup>[<a href="#note34" id="rev-note34">34</a>]</sup>,</li>
+<li>un champ input (type « password ») de saisie du mot de passe,</li>
+<li>un bouton type « submit » de soumission,</li>
+<li>un bouton type « reset » de réinitialisation.</li>
+</ul>
+
+<p>
+Quelques clés (dont l'ordre importe peu) sont communes à la majorité des éléments,
+c'est en particulier le cas des clés suivantes :
+</p>
+
+<ul>
+<li>la clé « item »  a pour but de décrire le type ou la famille d'élément de
+formulaire que nous définissons par la suite dans le tableau : input, textarea,
+button, select, etc. Cette clé est parfois complétée par la clé « type » afin, par exemple ici, de distinguer un 
+champ input de type « text » d'un champ input de type « password »,</li>
+<li>la clé « libelle »  permet de définir le titre que l'on désire voir afficher devant
+l'élément formulaire (donc à gauche du champ),</li>
+<li>la clé « legende »  permet de définir une légende (qui sera affichée à droite du
+champ),</li>
+<li>la clé « require » , quant à elle, prend la valeur TRUE ou FALSE. Si elle est
+initialisée à TRUE alors le champ sera considéré comme obligatoire au
+moment de la soumission. Dès lors, suite à la soumission du formulaire, si un
+tel champ est vide, un message d'erreur sera affiché (automatiquement),</li>
+<li>la clé « js »  permet éventuellement d'associer un événement et traitement Javascript à
+un champ. Par extension, il permet également de jouer sur les comportements CSS,</li>
+<li>la clé « tpl »  est en charge de décrire la mise en page de l'élément en cours de
+définition.</li>
+<li>la clé « test »  permet de définir un appel vers une fonction de test et de
+renseigner le message d'erreur qui sera éventuellement affiché.</li>
+</ul>
+
+<p>
+Quelque peu spécifique, la clé « tpl »  sera décrite un peu plus tard. Nous commencerons
+par lister les différents « item » que sait gérer CARBONE par le biais de cette librairie
+de gestion de formulaires.
+</p>
+
+<h2>Présentation des différents items</h2>
+
+<!-- -->
+<!-- Element form -->
+<!-- -->
+
+<h3>Item « form » : initialisation du formulaire</h3>
+
+<table>
+<tr>
+	<th width="30%">Clé</th>
+	<th>Description fonctionnelle</th>
+</tr>
+<tr>
+	<td>item</td>
+	<td><b>form</b></td>
+</tr>
+<tr>
+	<td>action</td>
+	<td>URL du script vers lequel poster</td>
+</tr>
+<tr>
+	<td>name</td>
+	<td>Tag name</td>
+</tr>
+<tr>
+	<td>method</td>
+	<td>Par défaut POST</td>
+</tr>
+<tr>
+	<td>target</td>
+	<td>Par défaut _SELF</td>
+</tr>
+<tr>
+	<td>legende</td>
+	<td>Légende (global à l'ensemble du formulaire)</td>
+</tr>
+<tr>
+	<td>format</td>
+	<td>Par défaut 'horizontal' (sinon 'inline')</td>
+</tr>
+<tr>
+	<td>js</td>
+	<td>Chaîne JS avec événements et traitements, mise en forme CSS</td>
+</tr>
+</table>
+
+<pre class="code">
+'form' =&gt; array(
+    'item' =&gt; 'form',
+    'action' =&gt; $url,
+    'legende' =&gt; STR_FORM_LEGENDE,
+),
+</pre>
+
+<!-- -->
+<!-- Element hidden -->
+<!-- -->
+
+<h3>Item « hidden » : champ caché</h3>
+
+<table>
+<tr>
+	<th width="30%">Clé</th>
+	<th>Description fonctionnelle</th>
+</tr>
+<tr>
+	<td>item</td>
+	<td><b>hidden</b></td>
+</tr>
+<tr>
+	<td>value</td>
+	<td>Valeur</td>
+</tr>
+</table>
+
+<pre class="code">
+'foo' =&gt; array(
+    'item' =&gt; 'hidden',
+    'value' =&gt; $data['foo'],
+),
+</pre>
+
+<!-- -->
+<!-- Element input -->
+<!-- -->
+
+<h3>Item « input » : champ de saisie texte simple</h3>
+
+<table>
+<tr>
+	<th width="30%">Clé</th>
+	<th>Description fonctionnelle</th>
+</tr>
+<tr>
+	<td>item</td>
+	<td><b>input</b></td>
+</tr>
+<tr>
+	<td>tpl</td>
+	<td>Template d'affichage</td>
+</tr>
+<tr>
+	<td>libelle</td>
+	<td>Libellé du champ</td>
+</tr>
+<tr>
+	<td>value</td>
+	<td>Valeur</td>
+</tr>
+<tr>
+	<td>legende</td>
+	<td>Légende du champ</td>
+</tr>
+<tr>
+	<td>maxlength</td>
+	<td>Longueur maximale du champ (avant blocage de la saisie)</td>
+</tr>
+<tr>
+	<td>prepend</td>
+	<td>Icone à placer devant le champ</td>
+</tr>
+<tr>
+	<td>append</td>
+	<td>Icone à placer derrière le champ</td>
+</tr>
+<tr>
+	<td>placeholder</td>
+	<td>Placeholder du champ</td>
+</tr>
+<tr>
+	<td>accesskey</td>
+	<td>Lettre (accessible via la combinaison de touches Alt+Shift+Lettre)</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>Type de saisie : text (par défaut), password, etc.</td>
+</tr>
+<tr>
+	<td>test</td>
+	<td>
+        Tableau de test comportant :
+        <ul>
+        <li>test_user_function : le nom de la fonction utilisateur</li>
+        <li>test_error_message : le libellé du message d'erreur</li>
+        </ul>
+        </td>
+</tr>
+<tr>
+	<td>require</td>
+	<td>Champ requis (TRUE) ou non (FALSE)</td>
+</tr>
+<tr>
+	<td>js</td>
+	<td>Chaîne JS avec événements et traitements, mise en forme CSS</td>
+</tr>
+</table>
+
+<pre class="code">
+'foo' =&gt; array(
+    'item' =&gt; 'input',
+    'tpl' =&gt; '[(3){libelle}(4){form}(5){legende}]', 
+    'libelle' =&gt; STR_LIBELLE_FOO,
+    'value' =&gt; $data['foo'],
+    'maxlength' =&gt; 255,
+    'require' =&gt; TRUE,
+    'js' =&gt; 'style=&quot;text-transform: uppercase;&quot; ',
+),
+</pre>
+
+<!-- -->
+<!-- Element checkbox -->
+<!-- -->
+
+<h3>Item « checkbox » : champ case à cocher</h3>
+
+<table>
+<tr>
+	<th width="30%">Clé</th>
+	<th>Description fonctionnelle</th>
+</tr>
+<tr>
+	<td>item</td>
+	<td><b>checkbox</b></td>
+</tr>
+<tr>
+	<td>tpl</td>
+	<td>Template d'affichage</td>
+</tr>
+<tr>
+	<td>libelle</td>
+	<td>Libellé du champ</td>
+</tr>
+<tr>
+	<td>legende</td>
+	<td>Légende du champ</td>
+</tr>
+<tr>
+	<td>checked</td>
+	<td>Eléments selectionnés</td>
+</tr>
+<tr>
+	<td>checkbox</td>
+	<td>Tableau de 0 à n avec tous les éléments</td>
+</tr>
+<tr>
+	<td>test</td>
+	<td>
+        Tableau de test comportant :
+        <ul>
+        <li>test_user_function : le nom de la fonction utilisateur</li>
+        <li>test_error_message : le libellé du message d'erreur</li>
+        </ul>
+        </td>
+</tr>
+<tr>
+	<td>format</td>
+	<td>Par défaut 'inline' (sinon 'vertical')</td>
+</tr>
+<tr>
+	<td>require</td>
+	<td>Champ requis (TRUE) ou non (FALSE)</td>
+</tr>
+<tr>
+	<td>js</td>
+	<td>Chaîne JS avec événements et traitements, mise en forme CSS</td>
+</tr>
+</table>
+
+<pre class="code">
+'foo' =&gt; array(
+    'item' =&gt; 'checkbox',
+    'tpl' =&gt; '[(3){libelle}(6){form}(3){legende}]', 
+    'libelle' =&gt; STR_LIBELLE_FOO,
+    'checked' =&gt; $data['champ2'],
+    'checkbox' =&gt; array(
+        array('value' =&gt; '0', 'label' =&gt; STR_NON, 'tpl' =&gt; ' {form} {label} '),
+        array('value' =&gt; '1', 'label' =&gt; STR_OUI, 'tpl' =&gt; ' {form} {label} '),
+        array('value' =&gt; '2', 'label' =&gt; STR_MAYBE, 'tpl' =&gt; ' {form} {label} '),
+    ),
+    'require' =&gt; TRUE,
+),
+</pre>
+
+<!-- -->
+<!-- Element radiobox -->
+<!-- -->
+
+<h3>Item « radiobox » : champ radio bouton</h3>
+
+<table>
+<tr>
+	<th width="30%">Clé</th>
+	<th>Description fonctionnelle</th>
+</tr>
+<tr>
+	<td>item</td>
+	<td><b>radiobox</b></td>
+</tr>
+<tr>
+	<td>tpl</td>
+	<td>Template d'affichage</td>
+</tr>
+<tr>
+	<td>libelle</td>
+	<td>Libellé du champ</td>
+</tr>
+<tr>
+	<td>legende</td>
+	<td>Légende du champ</td>
+</tr>
+<tr>
+	<td>checked</td>
+	<td>Eléments selectionnés</td>
+</tr>
+<tr>
+	<td>radiobox</td>
+	<td>Tableau de 0 à n avec tous les éléments</td>
+</tr>
+<tr>
+	<td>test</td>
+	<td>
+        Tableau de test comportant :
+        <ul>
+        <li>test_user_function : le nom de la fonction utilisateur</li>
+        <li>test_error_message : le libellé du message d'erreur</li>
+        </ul>
+        </td>
+</tr>
+<tr>
+	<td>format</td>
+	<td>Par défaut 'inline' (sinon 'vertical')</td>
+</tr>
+<tr>
+	<td>require</td>
+	<td>Champ requis (TRUE) ou non (FALSE)</td>
+</tr>
+<tr>
+	<td>js</td>
+	<td>Chaîne JS avec événements et traitements, mise en forme CSS</td>
+</tr>
+</table>
+
+<pre class="code">
+'foo' =&gt; array(
+    'item' =&gt; 'radiobox',
+    'tpl' =&gt; '[(3){libelle}(6){form}(3){legende}]', 
+    'libelle' =&gt; STR_LIBELLE_FOO,
+    'checked' =&gt; $data['foo'],
+    'radiobox' =&gt; array(
+        array('value' =&gt; '0', 'label' =&gt; STR_NON, 'tpl' =&gt; ' {form} {label} '),
+        array('value' =&gt; '1', 'label' =&gt; STR_OUI, 'tpl' =&gt; ' {form} {label} '),
+    ),
+    'require' =&gt; TRUE,
+),
+</pre>
+
+<!-- -->
+<!-- Element textarea -->
+<!-- -->
+
+<h3>Item « textarea » : champ de saisie texte multilignes</h3>
+
+<table>
+<tr>
+	<th width="30%">Clé</th>
+	<th>Description fonctionnelle</th>
+</tr>
+<tr>
+	<td>item</td>
+	<td><b>textarea</b></td>
+</tr>
+<tr>
+	<td>tpl</td>
+	<td>Template d'affichage</td>
+</tr>
+<tr>
+	<td>libelle</td>
+	<td>Libellé du champ</td>
+</tr>
+<tr>
+	<td>legende</td>
+	<td>Légende du champ</td>
+</tr>
+<tr>
+	<td>value</td>
+	<td>Valeur</td>
+</tr>
+<tr>
+	<td>rows</td>
+	<td>Nombre de lignes</td>
+</tr>
+<tr>
+	<td>cols</td>
+	<td>Nombre de colonnes</td>
+</tr>
+<tr>
+	<td>test</td>
+	<td>
+        Tableau de test comportant :
+        <ul>
+        <li>test_user_function : le nom de la fonction utilisateur</li>
+        <li>test_error_message : le libellé du message d'erreur</li>
+        </ul>
+        </td>
+</tr>
+<tr>
+	<td>require</td>
+	<td>Champ requis (TRUE) ou non (FALSE)</td>
+</tr>
+<tr>
+	<td>js</td>
+	<td>Chaîne JS avec événements et traitements, mise en forme CSS</td>
+</tr>
+</table>
+
+<pre class="code">
+'foo' =&gt; array(
+    'item' =&gt; 'textarea',
+    'tpl' =&gt; '[(3){libelle}(9){form}]', 
+    'libelle' =&gt; STR_LIBELLE_FOO,
+    'value' =&gt; $data['foo'],
+    'rows' =&gt; '10',
+    'cols' =&gt; '30',
+    'require' =&gt; TRUE,
+),
+</pre>
+
+<!-- -->
+<!-- Element select -->
+<!-- -->
+
+<h3>Item « select » : liste </h3>
+
+<table>
+<tr>
+	<th width="30%">Clé</th>
+	<th>Description fonctionnelle</th>
+</tr>
+<tr>
+	<td>item</td>
+	<td><b>select</b></td>
+</tr>
+<tr>
+	<td>tpl</td>
+	<td>Template d'affichage</td>
+</tr>
+<tr>
+	<td>libelle</td>
+	<td>Libellé du champ</td>
+</tr>
+<tr>
+	<td>legende</td>
+	<td>Légende du champ</td>
+</tr>
+<tr>
+	<td>value</td>
+	<td>Valeur</td>
+</tr>
+<tr>
+	<td>selected</td>
+	<td>Chaîne (si select simple) ou tableau (si select multiple) des éléments sélectionnés</td>
+</tr>
+
+<tr>
+	<td>multiple</td>
+	<td>Multiple TRUE ou FALSE</td>
+</tr>
+<tr>
+	<td>optgroup</td>
+	<td>OPTGROUP TRUE ou FALSE</td>
+</tr>
+<tr>
+	<td>size</td>
+	<td>Si multiple, nombre de lignes visibles</td>
+</tr>
+<tr>
+	<td>test</td>
+	<td>
+        Tableau de test comportant :
+        <ul>
+        <li>test_user_function : le nom de la fonction utilisateur</li>
+        <li>test_error_message : le libellé du message d'erreur</li>
+        </ul>
+    </td>
+</tr>
+<tr>
+	<td>require</td>
+	<td>Champ requis (TRUE) ou non (FALSE)</td>
+</tr>
+<tr>
+	<td>js</td>
+	<td>Chaîne JS avec événements et traitements, mise en forme CSS</td>
+</tr>
+</table>
+
+<pre class="code">
+'foo' =&gt; array(
+    'item' =&gt; 'select',
+    'tpl' =&gt; '[(3){libelle}(4){form}(5){legende}]', 
+    'libelle' =&gt; STR_LIBELLE_FOO,
+    'value' =&gt; get_theme(), // Appel d'une fonction externe retournant un tableau &agrave; cl&eacute; des valeurs
+    'selected' =&gt; $data['foo'],
+    'multiple' =&gt; TRUE,
+    'require' =&gt; TRUE,
+    'size' =&gt; 5,
+),
+</pre>
+
+<!-- -->
+<!-- Element button -->
+<!-- -->
+
+<h3>Item « button » : bouton </h3>
+
+<table>
+<tr>
+	<th width="30%">Clé</th>
+	<th>Description fonctionnelle</th>
+</tr>
+<tr>
+	<td>item</td>
+	<td><b>button</b></td>
+</tr>
+<tr>
+	<td>tpl</td>
+	<td>Template d'affichage</td>
+</tr>
+<tr>
+	<td>libelle</td>
+	<td>Libellé du champ</td>
+</tr>
+<tr>
+	<td>legende</td>
+	<td>Légende du champ</td>
+</tr>
+<tr>
+	<td>value</td>
+	<td>Valeur</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>Type de bouton : submit, reset, button, etc.</td>
+</tr>
+<tr>
+	<td>require</td>
+	<td>Champ requis (TRUE) ou non (FALSE)</td>
+</tr>
+<tr>
+	<td>js</td>
+	<td>Chaîne JS avec événements et traitements, mise en forme CSS</td>
+</tr>
+</table>
+
+<pre class="code">
+'foo' =&gt; array(
+    'item' =&gt; 'button',
+    'tpl' =&gt; '[(3){libelle}(4){form}(5){legende}]', 
+    'value' =&gt; STR_OK,
+    'type' =&gt; 'submit',
+),
+</pre>
+
+<!-- -->
+<!-- Element info -->
+<!-- -->
+
+<h3>Item « info » : champ info</h3>
+
+<table>
+<tr>
+    <th width="30%">Clé</th>
+    <th>Description fonctionnelle</th>
+</tr>
+<tr>
+    <td>item</td>
+    <td><b>info</b></td>
+</tr>
+<tr>
+    <td>value</td>
+    <td>Valeur</td>
+</tr>
+</table>
+
+<pre class="code">
+'foo' =&gt; array(
+    'item' =&gt; 'info',
+    'value' =&gt; STR_MESSAGE,
+),
+</pre>
+
+<h2>Contrôle des données du formulaire</h2>
+
+<p>
+Il est possible d'associer un contrôle des données à une structure de formulaire, au
+fur et mesure pour chacun des champs définis :
+</p>
+
+<ul>
+<li>le premier contrôle se base sur la clé « require » qui permet de définir si un champ
+est requis</li>
+<li>les tests complémentaires sont renseignés à l'aide de la clé « test » qui permet de
+définir la fonction qui devra être utilisée pour tester la conformité des valeurs
+(sous-clé « test_user_function »), le message qui devra être affiché si une erreur est
+rencontrée (sous-clé « test_error_message »).</li>
+</ul>
+
+<p>
+Des fonctions standard sont disponibles pour les tests. 
+Consulter la section <a href="../brique/lib_test.html">Tests: lib_test.php</a> de la documentation pour de plus amples informations. 
+</p>
+
+<h2>Mise en page et template</h2>
+
+<p>
+La clé « tpl », commune à la majorité des éléments que nous venons de lister, est en
+charge de décrire la mise en page de l'élément en cours de définition. Le fonctionnement repose sur le sysème de grille de Bootstrap sur 12 colonnes. Généralement, on trouvera :
+</p>
+<ul>
+<li>en première cellule, le libellé du champ (défini par la clé « libelle »), c'est-à-dire,
+le titre que l'on désire afficher devant l'élément formulaire,</li>
+<li>en seconde cellule, l'élément de formulaire lui-même,</li>
+<li>en troisième cellule, la légende (définie par la clé « legende ») et venant par
+exemple ajouter un commentaire d'aide à la saisie.</li>
+</ul>
+
+<p>
+Un tel template de sortie est décrit pour les champs « email » et « password » de notre tout premier 
+exemple de structure de formulaire que nous avons présenté en introduction. A ce titre, nous avions précisé le formalisme :
+</p>
+
+<pre class="code">
+...
+    'tpl' =&gt; '[(3){libelle}(4){form}(5){legende}]',
+...
+</pre>
+
+<p>
+Les crochets suggèrent l'ouverture et la fermeture d'une ligne. Quant aux parenthèses, elles suggèrent les ruptures entre les cellules et précisent les largeurs. Ici, le template de sortie sera équivalent à :
+</p>
+
+<pre class="code">
+&lt;div class=&quot;col-xs-3&quot;&gt;{libelle}&lt;/div&gt;
+&lt;div class=&quot;col-xs-4&quot;&gt;{form}&lt;/div&gt;
+&lt;div class=&quot;col-xs-5&quot;&gt;{legende}&lt;/div&gt;
+</pre>
+
+<p>
+On notera au passage que la somme des largeurs est bien égale à 12 (= 3 + 4 + 5), notre grille étant composée de 12 colonnes.
+</p>
+
+<p>
+Si la clé « tpl » avait contenu ceci :
+</p>
+
+<pre class="code">
+...
+    'tpl' =&gt; '[(3){libelle}(9){form}]',
+...
+</pre>
+
+<p>
+Le template de sortie aurait été équivalent à :
+</p>
+
+<pre class="code">
+&lt;div class=&quot;col-xs-3&quot;&gt;{libelle}&lt;/div&gt;
+&lt;div class=&quot;col-xs-9&quot;&gt;{form}&lt;/div&gt;
+</pre>
+
+<p>
+Plus compliqué, le cas des deux champs  « submit » et  « reset », on remarque que le
+template de sortie est un peu différent :
+</p>
+
+
+<pre class="code">
+'submit' =&gt; array(
+    'item' =&gt; 'button',
+    'tpl' =&gt; '[(3){libelle}(9){form} ...', 
+    'value' =&gt; STR_FORM_SUBMIT,
+    'type' =&gt; 'submit',
+),
+
+'reset' =&gt; array(
+    'item' =&gt; 'button',
+    'tpl' =&gt; '{form}]', 
+    'value' =&gt; STR_FORM_RESET,
+    'type' =&gt; 'reset',
+),
+</pre>
+
+<p>
+Le template défini au niveau du champ « submit » va débuter une nouvelle ligne. Le
+libellé est vide (car non défini explicitement par la clé « libelle »). La première cellule
+sera donc vide elle aussi. La seconde cellule comportera le bouton « submit ». Mais la
+ligne n'est pas fermée (pas de crochet fermant en fin de template).
+</p>
+<p>
+On reste donc au niveau de la seconde cellule pour poursuivre avec le champ « reset » .
+Le bouton « reset »  sera donc affiché lui aussi dans la seconde cellule et la ligne sera fermée.
+</p>
+<p>
+Récapitulons en présentant un schéma de la sortie qu'engendrera le premier exemple de structure de formulaire :
+</p>
+
+<center>
+<table style="width:640px;">
+
+<tr>
+<td style="width:180px;">Libellé Email</td>
+<td style="width:240px;"><input type="text" /></td>
+<td style="width:300px;">Légende Email</td>
+</tr>
+
+<tr>
+<td style="width:180px;">Libellé Password</td>
+<td style="width:240px;"><input type="password" /></td>
+<td style="width:300px;">Légende Password</td>
+</tr>
+
+<tr>
+<td style="width:180px; background: url(../share/image/background.png);"><i>Cellule vide</i></td>
+<td colspan="2" style="width:540px;"><input type="button" value="Submit" /> <input type="button" value="Reset" /></td>
+</tr>
+
+</table>
+</center>
+
+<h2>Remarque à propos des légendes</h2>
+
+<p>
+Comme nous l'avons vu, lors de la définition d'un élément de formulaire, il est
+possible de préciser une légende (aide à la saisie, message de mise en garde, etc.). Si
+la chaîne définissant cette légende débute par un _ (underscore), le message sera
+affiché sous la forme d'un « tooltip ».
+</p>
+
+<h2>Gestion des messages d'erreurs</h2>
+
+<h3>Considérations générales</h3>
+
+<p>
+Généralement, la vérification de la saisie d'un formulaire se déroule en 2 étapes:
+<ul>
+    <li> Etape 1 - Tests primaires: vérification des champs requis et contrôle de conformité vis à vis des tests unitaires</li>
+    <li> Etape 2 - Tests secondaires : vérification de règles de gestion « métiers »</li>
+</ul>
+</p>
+
+<h3>Construction des messages d'erreurs</h3>
+
+<p>
+La structure d'un formulaire est initialement envoyée à la fonction form_check() qui va retourner un tableau associatif $form_error contenant le resultat des tests primaires.
+</p>
+
+<pre class="code">
+// form_check retourne un tableau ayant la structure suivante :
+//
+//     $form_error=array(
+//        'fatal' =&gt; array(),
+//        'warning' =&gt; array(),
+//     );
+//
+//     'fatal' contient les erreurs bloquantes
+//     'warning' contiendra les erreurs non bloquantes &eacute;ventuellements issues des tests secondaires
+
+$form_error=form_check($form_structure);
+</pre>
+
+<p>
+Par convention, le tableau $form_error['fatal'] contiendra des erreurs bloquantes, alors que $form_error['warning'] contiendra éventuellement des erreurs non bloquantes ayant, par exemple, un caractère informatif (mais n'empéchant pas la validation des données).
+</p>
+
+<p>
+Si, à l'issue de l'appel à la fonction form_check(), le tableau $form_error['fatal'] est vide, on peut alors entamer une phase de tests secondaires. Par exemple, vérifier lors de la création d'un compte utilisateur, que le login n'existe pas déjà en base. Ou encore, que le mot de passe n'est pas équivalent au prénom, pour anticiper des problématiques de sécurité, etc. Les règles de gestion « métiers » sont vastes et dépendront du projet. Il est alors possible de compléter, lors de ces tests secondaires, les tableaux $form_error['fatal'] et  $form_error['warning'], en fonction du caractère bloquant ou non des erreurs à lever.
+</p>
+
+<p>
+Si une erreur concerne un ou plusieurs champs en particulier, il est possible de l'indiquer clairement
+</p>
+
+<pre class="code">
+// Message 'fatal' non li&eacute; &agrave; un &eacute;l&eacute;ment de formulaire en particulier
+$form_error['fatal'][] = STR_UTILISATEUR_E_FATAL_1;
+...
+// Message 'fatal' li&eacute; au champ 'password
+$form_error['fatal']['password'] = STR_UTILISATEUR_E_FATAL_2;'
+...
+// Message 'warning' li&eacute; aux champs 'prenom' et 'password'
+$form_error['warning']['prenom, password'] = STR_UTILISATEUR_E_WARNING_1;
+</pre>
+
+<p>
+Préciser à quel champ se réfère un message, permettra de le mettre en évidence par la colorisation du label du champ (ou de plusieurs champs).
+</p>
+
+<h3>Affichage des messages d'erreurs</h3>
+
+<p>
+L'affichage des messages d'erreurs est réalisée par l'appel à la fonction form_message(), qui peut recevoir différents arguments. Seuls les 2 premiers arguments sont requis. La description fonctionnelle est la suivante:
+</p>
+
+<table>
+<tr>
+    <th width="30%">Argument</th>
+    <th>Description fonctionnelle</th>
+</tr>
+<tr>
+    <td>libelle</td>
+    <td>Le libellé du message (par exemple, STR_FORM_E_FATAL ou STR_FORM_E_WARNING)</td>
+</tr>
+<tr>
+    <td>message</td>
+    <td>Le message ou le tableau de messages à afficher (par exemple $form_error['fatal'])</td>
+</tr>
+<tr>
+    <td>css</td>
+    <td>La css d'affichage: 'error' (par défaut), 'warning', 'info' ou 'success'
+        <ul>
+            <li>error: rouge (défaut)</li>
+            <li>warning: orange</li>
+            <li>info: bleu</li>
+            <li>success: vert</li>
+        </ul>
+    </td>
+</tr>
+<tr>
+    <td>type</td>
+    <td>Le type de message: 'normal' (par défaut), 'modal' ou 'session'
+        <ul>
+            <li>normal: affichage dans la page (défaut)</li>
+            <li>modal: affichage dans une fenêtre modal</li>
+            <li>session: affichage différé dans le coin haut droit</li>
+        </ul>
+    </td>
+</tr>
+<tr>
+    <td>selecteur</td>
+    <td>La colorisation des labels: 'TRUE' (par défaut) ou 'FALSE'</td>
+</tr>
+</table>
+
+<pre class="code">
+// Affichage des messages d'erreurs 'fatal' (par d&eacute;faut)
+echo form_message(STR_FORM_E_FATAL, $form_error['fatal']);
+...
+// Affichage d'un simple message d'erreur 'warning' en bleu (css 'info') et de type 'session'
+echo form_message(STR_FORM_E_WARNING, STR_UTILISATEUR_E_INFO_1, 'info', 'session');
+</pre>
+<h2>Remarque à propos de l'affichage des messages</h2>
+
+<p>
+Hors context des formulaires, il est possible d'utiliser la fonction message() afin d'afficher des messages sur une page. La fonction form_message() n'est qu'un alias de la fonction message(). Cette fonction, présente dans la lib_carbone.php, reçoit donc les mêmes arguments et fonctionne de la même manière.
+</p>
+<h1>CRUD : lib_backoffice.php</h1>
+<h2>Remarques préliminaires</h2>
+<p>
+CARBONE intègre une brique, appelée « backoffice » et définie dans include/lib_backoffice.php. Elle a pour but d'implémenter le support CRUD et plus encore. On peut citer les fonctionnalités suivantes :
+</p>
+
+<ul>
+<li>regrouper dans un tableau des données issues d'enregistrements en base,</li>
+<li>gérer une navigation page par page,</li>
+<li>permettre d'associer des tris sur les colonnes,</li>
+<li>permettre d'associer des actions (ADD, EDIT, DEL, etc.) sur les lignes,</li>
+<li>proposer des filtres,</li>
+<li>exporter les données dans divers formats (pdf, excel, etc.),</li>
+<li>etc.</li>
+</ul>
+
+<p>
+A l'image de la librairie de gestion de formulaire, la structure repose sur un tableau associatif que nous allons décrire succinctement. Précisons également qu'en complément de ce tableau, il est également possible de passer un second argument permettant de pointer vers une ressource de connexion à la base de données (par défaut, $db).
+</p>
+
+<h2>Description de la structure</h2>
+
+<p>La structure peut être décomposée en 6 grandes sections :</p>
+
+<ul>
+<li>paramètres généraux,</li>
+<li>filtres,</li>
+<li>requête, données et actions,</li>
+<li>navigation,</li>
+<li>debuggage,</li>
+<li>export.</li>
+</ul>
+
+<h3>Paramètres généraux</h3>
+
+<p>
+Les paramètres généraux sont définies par le biais de 3 clés.
+</p>
+
+<h4>La clé « context »</h4>
+
+<p>
+Cette clé assure la définition du contexte afin de conserver les données en session. 
+En effet, la brique « backoffice » offre un comportement persistant. 
+Il est donc nécessaire de garder, en session, un certain nombre de choses, comme par exemple, le tri en cours, la page, le nombre d'éléments affichés par page, etc.
+Sa structure est la suivante :
+</p>
+
+<pre class="code">
+'context' =&gt; array(
+    'name' =&gt; 'utilisateur',
+),
+</pre>
+
+<table>
+<tr>
+	<th width="30%">Clé</th>
+	<th>Description fonctionnelle</th>
+</tr>
+<tr>
+	<td>name</td>
+	<td>Nom du contexte</td>
+</tr>
+</table>
+
+<p>
+Le nom du contexte sera choisi avec soin. Sauf cas particulier, il conviendra de choisir un nom unique qui ne risquera pas d'être partagé par une autre brique « backoffice ». 
+</p>
+
+<h4>La clé « script »</h4>
+
+<p>
+Cette clé permet de définir vers quel script et avec quels paramètres doivent pointer les traitements et actions. 
+Sa structure est la suivante :
+</p>
+
+<pre class="code">
+'script' =&gt; array(
+    'name'=&gt; basename($_SERVER['PHP_SELF']),
+    'action'=&gt; array('label' =&gt; 'action'),
+    'id' =&gt;    array('label' =&gt; 'id', 'value' =&gt; 'user_id'),
+),
+</pre>
+
+<table class='cle'>
+<tr>
+	<th width="30%">Clé</th>
+	<th>Description fonctionnelle</th>
+</tr>
+<tr>
+	<td>name</td>
+	<td>Nom du script vers lequel pointer</td>
+</tr>
+<tr>
+	<td>
+        action
+        <ul>
+        <li>label</li>
+        </ul>
+        </td>
+	<td>Libellé de l'action (tel qu'il sera passé en GET)</td>
+</tr>
+<tr>
+	<td>
+        id
+        <ul>
+        <li>label</li>
+        <li>value</li>
+        </ul>        
+        </td>
+	<td>Libellé de l'id (tel qu'il sera passé en GET) et la valeur à utiliser (nom du champ, idéalement clé primaire, de la requête)</td>
+</tr>
+</table>
+
+<h4>La clé « config »</h4>
+
+<p>
+Cette clé permet d'affiner le comportement et l'affichage de la brique « backoffice ». 
+Sa structure est la suivante :
+</p>
+
+<pre class="code">
+'config' =&gt; array(
+    'css' =&gt; 'backoffice',
+    'tpl' =&gt; '{filtre}{total}{outside}{data}{navig_export}',
+    'action'=&gt; array('empty'=&gt;TRUE, 'hide'=&gt;TRUE, 'width'=&gt;'40%', 'token'=&gt;TRUE, 'legende'=&gt;TRUE),
+    'total' =&gt; TRUE,
+    'total_string' =&gt; STR_UTILISATEUR_LIBELLE_NOMBRE,
+    'view_empty' =&gt; FALSE,
+    'help' =&gt; array(
+        'outil' =&gt;          STR_BACKOFFICE_HELP_OUTIL,
+        'filtre' =&gt;         STR_BACKOFFICE_HELP_FILTRE,
+        'data' =&gt;           STR_BACKOFFICE_HELP_DATA,
+        'order' =&gt;          STR_BACKOFFICE_HELP_ORDER,
+        'action' =&gt;         STR_BACKOFFICE_HELP_ACTION,
+        'navigation' =&gt;     STR_BACKOFFICE_HELP_NAVIGATION,
+        'export' =&gt;         STR_BACKOFFICE_HELP_EXPORT,
+    ),
+    'type' =&gt; 'string',
+    'ajax' =&gt; TRUE,
+    'logical' =&gt; 'AND',
+),
+</pre>
+
+<table>
+<tr>
+	<th width="30%">Clé</th>
+	<th>Description fonctionnelle</th>
+</tr>
+<tr>
+	<td>css</td>
+	<td>Feuille de style CSS utilisée</td>
+</tr>
+<tr>
+	<td>tpl</td>
+	<td>Template d'affichage</td>
+</tr>
+<tr>
+	<td>
+        action
+        <ul>
+        <li>empty</li>
+        <li>hide</li>
+        <li>width</li>
+        <li>token</li>
+        <li>legende</li>
+        </ul>
+        </td>
+	<td>
+	<ul>
+        <li>Si « empty » vaut TRUE, alors les actions vides seront
+	remplacées par des espaces (HTML) garantissant un alignement
+	des cellules d'action local.</li>
+        <li>Si « hide » vaut TRUE, possibilité de masquer la zone
+	d'action local.
+        </li>
+        <li>Si « width » est renseignée, permet de spécifier la largeur
+	de la zone d'action local.
+	</li>
+        <li>
+	Si « token » vaut TRUE, ajout d'un token de session en GET.
+        </li>
+        <li>
+    Si « legende » vaut TRUE, ajout d'une legende associée aux actions « local » (à la place des actions « global » qui ne seront donc pas visibles dans ce cas).
+        </li>
+        </ul>
+	</td>
+</tr>
+<tr>
+	<td>total</td>
+	<td>Si TRUE, affichage du nombre total d'enregistrements retournés</td>
+</tr>
+<tr>
+	<td>total_string</td>
+	<td>Chaîne à utiliser pour l'affichage du nombre total d'enregistrement retournés</td>
+</tr>
+<tr>
+	<td>view_empty</td>
+	<td>Si TRUE, affichage de la brique « backoffice » même si aucun enregistrement ne remonte</td>
+</tr>
+<tr>
+	<td>
+        help
+        <ul>
+        <li>outil</li>
+        <li>filtre</li>
+        <li>data</li>
+        <li>order</li>
+        <li>action</li>
+        <li>navigation</li>
+        <li>export</li>
+        </ul>
+        </td>
+	<td>Gestion des messages d'aide à l'attention des utilisateurs</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>
+    <ul>
+    <li>Si « print », affiche le flux HTML de retour de la brique « backoffice »</li>
+    <li>Si « string », retourne le flux HTML sans l'afficher (pour traitement ultérieur par exemple)</li>
+    </ul>
+    </td>
+</tr>
+<tr>
+	<td>ajax</td>
+	<td>Si TRUE, utilisation d'ajax sur les tris, navigation, etc.</td>
+</tr>
+<tr>
+	<td>logical</td>
+	<td>
+	<ul>
+	<li>Si « OR » ou « AND », permet de combiner les filtres entre eux</li>
+	<li>Si vide (ou indéfinie), les filtres deviennent exclusifs</li>
+	</ul>
+	</td>
+</tr>
+</table>
+
+<h3>Filtres</h3>
+
+<p>Il est possible de proposer l'affinage des résultats retournés par le biais de filtres. C'est le but de cette section.</p>
+
+
+<h4>La clé « filtre »</h4>
+
+<p>
+Cette clé permet de décrire la gestion des filtres. Sa structure est la suivante :
+</p>
+
+<pre class="code">
+'filtre' =&gt; array(
+    array(	
+        'field'=&gt;'nom', 
+        'label'=&gt;STR_UTILISATEUR_LIBELLE_NOM,
+        'type'=&gt;'input',
+        'like'=&gt;TRUE
+    ),
+
+    array(	
+        'field'=&gt;'prenom',
+        'label'=&gt;STR_UTILISATEUR_LIBELLE_PRENOM,
+        'type'=&gt;'alpha',
+        'like'=&gt;TRUE
+    ),
+
+    array(	
+        'field'=&gt;'theme',
+        'label'=&gt;STR_UTILISATEUR_LIBELLE_POSTE,
+        'type'=&gt;'liste',
+        'value'=&gt;array(
+            'Directeur'=&gt;'Directeur',
+            'Commercial'=&gt;'Commercial',
+            'D&eacute;veloppeur'=&gt;'D&eacute;veloppeur',
+            'Stagiaire'=&gt;'Stagiaire'
+        ),
+        'like'=&gt;FALSE,
+        'logical'=&gt;'OR'
+    ),
+
+    array(	
+        'field'=&gt;'actif',
+        'label'=&gt;STR_UTILISATEUR_LIBELLE_STATUS,
+        'type'=&gt;'select',
+        'value'=&gt;array(
+            ''=&gt;STR_UTILISATEUR_LIBELLE_TOUS,
+            '1'=&gt;STR_UTILISATEUR_LIBELLE_ACTIF,
+            '0'=&gt;STR_UTILISATEUR_LIBELLE_INACTIF),
+        'like'=&gt;FALSE
+    ),
+),
+</pre>
+
+<table>
+<tr>
+	<th width="30%">Clé</th>
+	<th>Description fonctionnelle</th>
+</tr>
+<tr>
+	<td>field</td>
+	<td>Champ ou tableau des champs (de la requête) sur lequel porte la recherche</td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>Libellé du champ qui sera affiché</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>
+	Précise le type de filtre : « alpha » pour les lettres de l'alphabet, « num » pour les chiffres, « liste » pour une liste explicite de valeurs, « select » pour un champ select, « input » pour un champ de saisie libre	
+	</td>
+</tr>
+<tr>
+	<td>value</td>
+	<td>
+	Tableau de paires clés/valeurs, à préciser pour les filtres de type « liste » ou « select »
+	</td>
+</tr>
+<tr>
+	<td>like</td>
+	<td>Si TRUE, recherche de type LIKE, si FALSE recherche de type = (au sens SQL). Il est également possible de spécifier un pattern plus précis (« %value », « value% » ou « %value% »)</td>
+</tr>
+<tr>
+	<td>logical</td>
+	<td>Si « OR » ou « AND », permet de combiner les valeurs du filtre entre elles (uniquement utilisable pour les filtres de type « alpha », « num », et « liste »)</td>
+</tr>
+</table>
+
+<p>
+On remarquera que le nombre de filtres n'est pas limité. Par défaut, les filtres sont exclusifs. Afin de les rendre associatifs, il faut renseigner la clé « logical » initialisée dans la clé « config » à la valeur désirée (« OR » ou « AND »). Idem à propos des filtres de type « alpha », « num », et « liste ». Une seule valeur sera sélectionnée à moins de définir la clé « logical » associée au filtre.
+</p>
+
+<h3>Requête, données et actions</h3>
+
+<p>L'objectif de cette section est de décrire la requête à jouer, les données que l'on attend ainsi que les actions que l'on désire proposer.</p>
+
+<h4>La clé « requete »</h4>
+
+<p>
+Cette clé permet de définir la requête à jouer ainsi que le nom de 2 éventuelles fonctions utilisateur à appeler pour affiner la requête SQL qui sera jouée et les résultats retournés, si besoin. 
+Sa structure est la suivante : 
+</p>
+
+<pre class="code">
+'requete' =&gt; array(
+    'select'=&gt;'SELECT user_id, nom, prenom, theme FROM '.CFG_TABLE_USER.' ORDER BY nom, prenom ASC',
+    'select_user_function'=&gt; 'select_utilisateur',
+    'result_user_function'=&gt; 'result_utilisateur',
+),
+</pre>
+
+<table>
+<tr>
+	<th width="30%">Clé</th>
+	<th>Description fonctionnelle</th>
+</tr>
+<tr>
+	<td>select</td>
+	<td>Requête à jouer</td>
+</tr>
+<tr>
+	<td>select_user_function</td>
+	<td>Fonction optionnelle à appeler pour affiner la requête si besoin</td>
+</tr>
+<tr>
+	<td>result_user_function</td>
+	<td>Fonction optionnelle à appeler pour affiner les résultats (data et action) de la requête si besoin</td>
+</tr>
+</table>
+
+<h4>La clé « data »</h4>
+
+<p>
+Cette clé permet de décrire les champs qui seront affichés sous forme de colonnes, ainsi que quelques comportements associés.
+Sa structure est la suivante : 
+</p>
+
+<pre class="code">
+'data' =&gt; array(
+    array(
+        'field'=&gt;'theme',
+        'label'=&gt;STR_UTILISATEUR_LIBELLE_THEME,
+        'order'=&gt;TRUE,
+        'export'=&gt;FALSE,
+        'rowspan'=&gt;TRUE
+    ),
+    array(
+        'field'=&gt;'nom',
+        'label'=&gt;STR_UTILISATEUR_LIBELLE_NOM,
+        'order'=&gt;TRUE,
+        'export'=&gt;TRUE,
+        'rowspan'=&gt;TRUE
+    ),
+    array(
+        'field'=&gt;'prenom',
+        'label'=&gt;STR_UTILISATEUR_LIBELLE_PRENOM,
+        'order'=&gt;TRUE,
+        'export'=&gt;TRUE,
+        'rowspan'=&gt;TRUE
+    ),
+),
+</pre>
+
+<table>
+<tr>
+	<th width="30%">Clé</th>
+	<th>Description fonctionnelle</th>
+</tr>
+<tr>
+	<td>field</td>
+	<td>Champ sur lequel porte l'affichage</td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>Libellé du champ qui sera affiché</td>
+</tr>
+<tr>
+	<td>order</td>
+	<td>Si TRUE, la colonne pourra être triée</td>
+</tr>
+<tr>
+	<td>export</td>
+	<td>Si TRUE, la colonne sera prise en compte dans les exports (PDF, Excel, etc.)</td>
+</tr>
+<tr>
+	<td>rowspan</td>
+	<td>Si TRUE, les lignes similaires seront groupées</td>
+</tr>
+</table>
+
+<h4>La clé « action »</h4>
+
+<p>Cette clé permet de décrire les actions proposées. Sa structure est la suivante :</p>
+
+<pre class="code">
+'action' =&gt; array(
+    array(
+        'field'=&gt;'add',
+        'label'=&gt;STR_FORM_ADD,
+        'type'=&gt;'global',
+        'js'=&gt;'',
+        'format' =&gt; 'button'
+    ),
+    array(
+        'field'=&gt;'edit',
+        'label'=&gt;STR_FORM_EDIT,
+        'type'=&gt;'local',
+        'js'=&gt;''
+    ),
+    array(
+        'field'=&gt;'del',	   
+        'label'=&gt;STR_FORM_DELETE,
+        'type'=&gt;'local',
+        'js'=&gt;'onclick=&quot;return confirm(\''.STR_FORM_DELETE_CONFIRMATION.' %s %s\');&quot;',
+        'on'=&gt;array('prenom', 'nom')
+    ),
+),
+</pre>
+
+<table>
+<tr>
+	<th width="30%">Clé</th>
+	<th>Description fonctionnelle</th>
+</tr>
+<tr>
+	<td>field</td>
+	<td>Identifiant de l'action</td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>Libellé de l'action qui sera affiché</td>
+</tr>
+<tr>
+	<td>js</td>
+	<td>Script Javascript complémentaire (confirmation, etc.)</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>Si « outside » action en dehors de la brique, « global » action global pour la brique, « local » action local de ligne, « group » action à selection multiple</td>
+</tr>
+<tr>
+	<td>format</td>
+	<td>Si « bouton » action symbolisée par un bouton, « image » action symbolisée par une image, sinon, chaine de caractère</td>
+</tr>
+<tr>
+	<td>script</td>
+	<td>Si l'action nécessite de pointer vers un script précis différent de celui défini dans la sous clé « name » de la clé « script »</td>
+</tr>
+</table>
+
+<h3>Navigation</h3>
+
+<p>
+La brique « backoffice » intègre un mécanisme de navigation multipage. Il est possible de jouer sur divers paramètres comme le nombre d'éléments à afficher par page, le nombre de page à afficher, etc. C'est l'objectif de cette section. 
+</p>
+
+<h4>La clé « navigation »</h4>
+
+<p>Cette clé permet de paramétrer la navigation. Sa structure est la suivante :</p>
+
+<pre class="code">
+'navigation' =&gt; array(
+    'page' =&gt; 10,
+    'item' =&gt; 10,
+    'choix_item' =&gt; array(5,10,15,20,0),
+),
+</pre>
+
+<table>
+<tr>
+	<th width="30%">Clé</th>
+	<th>Description fonctionnelle</th>
+</tr>
+<tr>
+	<td>page</td>
+	<td>Nombre de pages à afficher <sup>[<a href="#note35" id="rev-note35">35</a>]</sup></td>
+</tr>
+<tr>
+	<td>item</td>
+	<td>Nombre d'éléments par page</td>
+</tr>
+<tr>
+	<td>choix_item</td>
+	<td>Tableau de valeurs possibles pour le choix du nombre d'éléments par page</td>
+</tr>
+</table>
+
+<h3>Export</h3>
+
+<p>
+Il est possible d'exporter les données affichées vers un format PDF ou Excel.</p>
+
+<h4>La clé « export »</h4>
+
+<p>Sa structure est la suivante :</p>
+
+<pre class="code">
+'export' =&gt; array(
+    'format'    =&gt; array('pdf', 'excel'),    // pdf ou excel
+),
+</pre>
+
+<table>
+<tr>
+	<th width="30%">Clé</th>
+	<th>Description fonctionnelle</th>
+</tr>
+<tr>
+	<td>format</td>
+	<td>Le tableau du ou des formats proposés</td>
+</tr>
+</table>
+
+<h3>Javascript</h3>
+
+<p>
+Il est possible d'étendre le comportement de la brique « backoffice » via l'utilisation de code Javascript.</p>
+
+<h4>La clé « js »</h4>
+
+<p>Sa structure est la suivante :</p>
+
+<pre class="code">
+'js' =&gt; '
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        $(function() {   
+            // Confirmation sur action del
+            
+            $(&quot;.del_local&quot;).backoffice_confirm(&quot;'.STR_FORM_DELETE_CONFIRMATION.' %5 %4 ?&quot;);
+            
+            // Confirmation sur action group
+            
+            $(&quot;.del_group&quot;).backoffice_group(&quot;'.STR_FORM_DELETE_ALL.' ?&quot;);
+            $(&quot;.active_group&quot;).backoffice_group(&quot;'.STR_FORM_ACTIVE_ALL.' ?&quot;);
+            $(&quot;.desactive_group&quot;).backoffice_group(&quot;'.STR_FORM_DESACTIVE_ALL.' ?&quot;);
+        });
+    &lt;/script&gt;
+',
+</pre>
+
+<p>
+Il est nécessaire d'appliquer du code Javascript à la brique « backoffice » via cette clé, si le mode Ajax est utilisé.
+</p>
+
+<h2>Remarques diverses</h2>
+
+<p>
+La prise en main et la maîtrise de la brique « backoffice » nécessite du temps. La complexité de sa structure reste cependant toute relative. 
+Ne pas perdre de vue qu'il ne s'agit que d'un simple tableau à clés. 
+Bien utilisée, elle permet de faire face à une très large majorité de cas. 
+</p>
+
+<p>
+Ne pas négliger l'importance des fonctions utilisateur (select_user_function et result_user_function) qu'il est toujours possible d'appeler afin d'affiner la requête SQL ainsi que le retour de la requête. 
+</p>
+
+<p>
+Il peut arriver, parfois, qu'il soit nécessaire de construire une requête à la volée, en fonction de paramètres (via les méthodes GET, POST ou via les sessions). Il suffit, dans ce cas, de construire la requête au dessus de la structure, avant de l'y injecter.
+</p>
+
+<p>
+Si les mécanismes de filtres ne sont pas suffisants, il est toujours possible de générer un formulaire (à l'aide de la librairie de gestion des formulaires) afin de s'adapter aux besoins. Dans ce cas, là aussi, il est probable qu'il faudra fabriquer une requête dépendant des choix du formulaire. 
+</p>
+
+<p>
+Combiner un filtre de type « input » avec le plugin jQuery « autocomplete » permet d'intégrer, proprement, un filtrage mettant en oeuvre de l'auto-completion.  
+</p>
+<h1>Librairie CARBONE : lib_carbone.php</h1>
+<p>
+CARBONE dispose d'une librairie jouant un double rôle. D'une part, elle comporte une collection de fonctions qui peuvent s'avérer utiles dans la majorité des projets. 
+D'autre part, elle sert également à diverses optimisations afin de limiter l'empreinte mémoire de CARBONE.
+</p>
+
+<h2>Les fonctions utiles</h2>
+
+<p>
+Voici une liste des principales fonctions que l'on retrouve dans la librairie :
+</p>
+
+<table>
+<tr>
+	<th width="20%">Nom de la fonction</th>
+	<th>Description fonctionnelle</th>
+</tr>
+<tr>
+	<td>print_rh()</td>
+	<td>Réécriture de la fonction print_r() encapsulant le résultat entre balises &lt;pre&gt; et &lt;/pre&gt;</td>
+</tr>
+<tr>
+	<td>abstract_string()</td>
+	<td>Découpage intelligent d'une chaine trop longue</td>
+</tr>
+<tr>
+	<td>delete_accent()</td>
+	<td>Suppression des caractères accentués d'une chaine</td>
+</tr>
+<tr>
+	<td>date_iso_to()</td>
+	<td>Conversion d'une date au format ISO vers un autre format</td>
+</tr>
+<tr>
+	<td>date_to_iso()</td>
+	<td>Conversion d'une date vers le format ISO</td>
+</tr>
+<tr>
+	<td>email()</td>
+	<td>Expédition de mail au format Text ou HTML</td>
+</tr>
+<tr>
+	<td>add_upload()</td>
+	<td>Gestion des ajouts d'un fichier uploadé</td>
+</tr>
+<tr>
+	<td>del_upload()</td>
+	<td>Gestion des suppressions d'un fichier uploadé</td>
+</tr>
+<tr>
+	<td>get_file_info()</td>
+	<td>Retourne des informations concernant un fichier : poids, dimensions, etc.</td>
+</tr>
+<tr>
+	<td>get_url()</td>
+	<td>Constructeur d'url</td>
+</tr>
+<tr>
+	<td>utf8_encode_mixed()</td>
+	<td>Permet d'encoder un tableau (et eventuellement les clés) en UTF8</td>
+</tr>
+<tr>
+	<td>utf8_decode_mixed()</td>
+	<td>Permet de décoder un tableau (et eventuellement les clés) en UTF8</td>
+</tr>
+</table>
+
+<h2>Les fonctions d'optimisation</h2>
+
+<p>La librairie comporte également certaines fonctions d'optimisation. On peut en citer :</p>
+
+<table>
+<tr>
+	<th width="20%">Nom de la fonction</th>
+	<th>Description fonctionnelle</th>
+</tr>
+<tr>
+	<td>load_head()</td>
+	<td>Loader de scripts Javascript et feuilles de styles CSS</td>
+</tr>
+<tr>
+	<td>optimize_head()</td>
+	<td>Optimisations diverses des scripts Javascript et feuilles de styles CSS</td>
+</tr>
+<tr>
+	<td>load_js()</td>
+	<td>Loader de scripts Javascript</td>
+</tr>
+<tr>
+	<td>form()</td>
+	<td>Loader de la lib_form.php</td>
+</tr>
+<tr>
+	<td>backoffice()</td>
+	<td>Loader de la lib_backoffice.php</td>
+</tr>
+</table>
+
+<p>
+La fonction load_js() permet d'éviter de charger plusieurs fois le même script Javascript. Elle permet également de privilégier le chargement d'une version compressée « minify » de chaque script. 
+Quant aux fonctions form() et backoffice(), si elles sont invoquées, elles vont provoquer le chargement des librairies lib_form.php et lib_backoffice.php. 
+</p><h1>Lib de tests: lib_test.php</h1>
+<p>
+CARBONE dispose d'une librairie de tests génériques permettant de traiter quelques cas
+récurrents en développement Web. A savoir :
+</p>
+
+<table>
+<tr>
+	<th width="20%">Nom de la fonction</th>
+	<th>Description fonctionnelle</th>
+</tr>
+<tr>
+	<td>test_upload()</td>
+	<td>Permet de tester si un UPLOAD s'est bien déroulé ou non</td>
+</tr>
+<tr>
+	<td>test_alpha()</td>
+	<td>Permet de tester qu'une chaîne en entrée est bien alphabétique</td>
+</tr>
+<tr>
+	<td>test_alphanum()</td>
+	<td>Permet de tester qu'une chaîne en entrée est bien alphanumérique</td>
+</tr>
+<tr>
+	<td>test_integer()</td>
+	<td>Permet de tester qu'une chaîne en entrée est bien un entier (signé ou non)</td>
+</tr>
+<tr>
+	<td>test_integer_positive()</td>
+	<td>Permet de tester qu'une chaîne en entrée est bien un entier positif non nul</td>
+</tr>
+<tr>
+	<td>test_float()</td>
+	<td>Permet de tester qu'une chaîne en entrée est bien un flottant (signé ou non)</td>
+</tr>
+<tr>
+	<td>test_mail()</td>
+	<td>Permet de tester qu'une chaîne est une adresse email valide</td>
+</tr>
+<tr>
+	<td>test_url()</td>
+	<td>Permet de tester qu'une chaîne est une url valide</td>
+</tr>
+<tr>
+	<td>test_date()</td>
+	<td>Permet de vérifier si la chaîne en entrée est une date au format dd-mm-yyyy</td>
+</tr>
+<tr>
+	<td>test_iso_date()</td>
+	<td>Permet de tester qu'une chaîne est une date au format ISO 8601 (yyyy-mm-dd)</td>
+</tr>
+<tr>
+	<td>test_iso_time()</td>
+	<td>Permet de tester qu'une chaîne est une heure au format ISO 8601 (hh:ii:ss)</td>
+</tr>
+<tr>
+	<td>test_date_time()</td>
+	<td>Permet de vérifier si la chaîne en entrée est une date au format dd-mm-yyyy hh:ii:ss</td>
+</tr>
+<tr>
+	<td>test_iso_date_time()</td>
+	<td>Permet de tester qu'une chaîne est un date au format ISO 8601 (yyyy-mm-dd hh:ii:ss)</td>
+</tr>
+<tr>
+	<td>test_exist()</td>
+	<td>
+        Permet de vérifier si la variable en entrée existe.
+        <br/>
+        Attention, 0 (entier) ou "0" (chaîne) retourne empty par défaut. D'ou l'utilité de cette fonction
+        </td>
+</tr>
+<tr>
+	<td>test_length()</td>
+	<td>Permet de vérifier si la longueur de la chaîne en entrée est égale à la valeur limite</td>
+</tr>
+<tr>
+	<td>test_max_length()</td>
+	<td>Permet de vérifier si la longueur de la chaîne en entrée est inférieure ou égale à la valeur limite</td>
+</tr>
+<tr>
+	<td>test_min_length()</td>
+	<td>Permet de vérifier si la longueur de la chaîne en entrée est supérieure ou égale à la valeur limite</td>
+</tr>
+<tr>
+	<td>test_ip()</td>
+	<td>Permet de vérifier si la chaîne en entrée est bien une ip valide</td>
+</tr>
+</table>
+
+<p>
+Le plus généralement, ces fonctions retournent TRUE ou FALSE en sortie, exception faite de test_upload().
+</p>
+
+
+
+
+
+
+
+
+
+
+
+
+<h1>Assistant de debuggage: lib_debug.php</h1>
+<p>
+CARBONE propose quelques fonctions permettant d'aider au debuggage
+d'applications. Elles sont définies dans les fichiers include/lib/lib_carbone.php et include/lib/lib_debug.php.
+</p>
+<p>
+La première, print_rh() <sup>[<a href="#note36" id="rev-note36">36</a>]</sup>, a pour but de surcharger la fonction print_r(), native à PHP,
+en encadrant automatiquement le flux de sortie par les balises &lt;pre&gt; et &lt;/pre&gt;.
+La fonction print_rh() reçoit le nom de la variable à « dumper » en argument.
+</p>
+<p>
+La seconde, print_rc(), a pour but de produire une sortie au format JSON et de l'afficher dans la console du navigateur.
+Cela permet de ne pas « casser » la mise en page HTML par un affichage non intrusif. 
+La fonction print_rc() reçoit le nom de la variable à « dumper » en argument.
+</p>
+<p>
+Beaucoup plus évoluée, CARBONE propose également une barre de debuggage qu'il est possible d'activer en initialisant à TRUE la constante CFG_DEBUG dans include/config/config.php.
+</p>
+<p>
+La barre de debuggage de CARBONE permet d'afficher les informations suivantes :
+</p>
+<ul>
+<li>la version de l'application,</li>
+<li>la taille de l'empreinte mémoire utilisée par le script ainsi que celle de la page HTML (en Ko),</li>
+<li>le temps d'exécution du script (en ms),</li>
+<li>le log des requêtes SQL jouées par le script (hors requêtes « session ») <sup>[<a href="#note37" id="rev-note37">37</a>]</sup>,</li>
+<li>le scope (variables, constantes, $_GET, $_POST, etc.),</li>
+<li>etc.</li>
+</ul>
+
+<p>
+A noter que la fenêtre secondaire d'affichage des informations peut-être déplacée par
+simple drag and drop.
+</p><h1>Javascript</h1>
+<p>
+CARBONE intègre quelques scripts Javascript reposant le plus souvent sur jQuery.
+</p>
+
+<h2>jQuery en bref</h2>
+<p>
+jQuery est un framework Javascript Open Source simplifiant grandement l'écriture de script. 
+Il est rapide et concis. Il propose des méthodes puissantes et précises pour parcourir l'arbre DOM et interagir avec lui. 
+Il vient également simplifier les appels Ajax.
+</p>
+<p>
+Il présente aussi l'énorme avantage d'assurer une abstraction vis à vis du navigateur cible. Il n'est donc plus nécessaire de perdre du temps à valider son code en fonction de tel ou tel navigateur. 
+</p>
+<p>
+Pour finir, jQuery permet une séparation parfaite entre code HTML et traitement coté client. A ce titre, il est dit « non intrusif ». Pour mieux se fixer les idées, mais sans entrer dans des détails trop techniques dépassant le cadre de cette documentation, il faut savoir que cette documentation utilise jQuery. Par exemple, l'effet obtenu en cliquant sur le lien graphique Table des matières est géré par le biais de jQuery. 
+Idem pour l'affichage de l'index propre à cette page, que l'on peut faire apparaître en cliquant sur le premier titre de cette page.
+</p>
+<p>
+Pourtant, un examen rapide du code HTML de la page actuelle ne laisse apparaître aucune trace d'action de type Onclick ou autre. Le code HTML n'a pas été pollué et surchargé inutilement. 
+</p>
+
+<h2>Les principaux scripts</h2>
+
+<table>
+<tr>
+	<th width="30%">Nom du script</th>
+	<th>Description fonctionnelle</th>
+</tr>
+<tr>
+	<td>autocomplete</td>
+	<td>Gestion de l'auto completion sur des champs input</td>
+</tr>
+<tr>
+	<td>notice</td>
+	<td>Gestion des notices et confirmations</td>
+</tr>
+<tr>
+	<td>corner</td>
+	<td>Gestion des arrondis</td>
+</tr>
+<tr>
+	<td>infobulle</td>
+	<td>Gestion de fenêtres contextuelles flottantes</td>
+</tr>
+<tr>
+	<td>textarea</td>
+	<td>Gestion des champs textarea (redimensionnement, limite de saisie)</td>
+</tr>
+<tr>
+	<td>multiselect</td>
+	<td>Gestion des champs multiselect</td>
+</tr>
+<tr>
+	<td>calendar</td>
+	<td>Gestion des champs calendrier</td>
+</tr>
+<tr>
+	<td>wysiwyg</td>
+	<td>Gestion des champs d'édition WYSIWYG</td>
+</tr>
+<tr>
+	<td>backoffice</td>
+	<td>Gestion des briques  « backoffice »</td>
+</tr>
+</table>
+
+<p>
+Ces scripts reposent sur jQuery. Evidement, cette liste est non exhaustive et il est toujours possible d'enrichir cette liste en intégrant ou en codant de nouveaux scripts, reposant ou non sur jQuery, mais répondant à une problématique précise.
+</p><h1>Les règles à respecter</h1>
+<p>
+Afin d'éviter le plus possible les problèmes de sécurité liés aux failles XSS, CSRF,
+injections SQL et vols de session, quelques règles sont à respecter :
+</p>
+<ul>
+<li>
+contrôler les données entrantes lors du traitement
+des formulaires (tests unitaires, secondaires, etc.)<sup>[<a href="#note38" id="rev-note38">38</a>]</sup>;
+</li>
+<li>
+utiliser $db->qstr() systématiquement dans les requêtes;
+</li>
+<li>
+abuser des htmlspecialchars() et htmlentities() lors des affichages que vous
+auriez à prendre en charge;
+</li>
+<li>
+utiliser la fonction get_url();
+</li>
+<li>
+renforcer la sécurité des sessions via la constante
+CFG_SESSION_LEVEL et eventuellement le token de session sur des
+actions critiques.
+</li>
+</ul>
+<p>
+Les données retournées par la brique backoffice ou lors de l'affichage d'un formulaire
+en mode view, font l'objet d'un traitement (htmlspecialchars(), htmlentities(),
+striptags(), etc.). Il est cependant possible de lever ce traitement en prefixant le
+champ par un _ (underscore).
+</p><h1>A propos des sessions</h1>
+<p>
+La classe de session propose divers mécanismes de sécurité afin de pallier aux risques
+de vols de session. La constante CFG_SESSION_LEVEL permet d'opter pour tel
+ou tel mécanisme. S'agissant d'un champ de bit, il est possible de les cumuler.
+</p>
+
+<table>
+<tr>
+	<th width="30%">Champ de bits</th>
+	<th>Description du mécanisme</th>
+</tr>
+<tr>
+	<td width="30%">000 (tout les bits à zéro)</td>
+	<td>Aucun mécanisme</td>
+</tr>
+<tr>
+	<td>001 (premier bit à 1)</td>
+	<td>Contrôle sur le HTTP_USER_AGENT. Dans ce mode, 2 navigateurs d'origine ou de version différentes ne peuvent pas partager la même session à un instant donné (par exemple, IE9 et Firefox 21) !</td>
+</tr>
+<tr>
+	<td>010 (second bit à 1)</td>
+	<td>Session volatile. Dans ce mode, l'id de session change de page en page au cours de la navigation.</td>
+</tr>
+<tr>
+	<td>100 (troisième bit à 1)</td>
+	<td>Token de session. Ajoute un token de session qui peut être utilisé par la suite au niveau de la brique « backoffice » si $config['action']['token']=TRUE</td>
+</tr>
+</table>
+
+<p>
+Il est donc possible d'allumer, par exemple, les 2 premiers contrôle
+(HTTP_USER_AGENT et session volatile) en affectant à la constante CFG_SESSION_LEVEL la valeur binaire 011, soit 3 en décimale.
+A noter les points suivants :
+</p>
+
+<ul>
+<li>
+un identifiant de session standard prend 32 octets. Si le contrôle sur le
+HTTP_USER_AGENT est activé, cet identifiant passe à 40 octets;
+</li>
+<li>
+si les sessions volatiles sont activées, en mode de transmission de type url,
+l'utilisation du F5 (afin de rafraîchir la page depuis le navigateur) ne
+fonctionne pas. Attention également aux appels Ajax (par exemple au niveau de la brique « backoffice »).
+</li>
+</ul><h1>A propos de la navigation</h1>
+<p>
+La gestion de la navigation dans CARBONE n'est pas toujours facile à appréhender au début. Elle repose pourtant sur une approche simple et souple consistant à décrire la navigation, mais aussi les ACL <sup>[<a href="#note39" id="rev-note39">39</a>]</sup> afin de sécuriser au mieux les accès aux différentes rubriques et fonctionnalités (et éviter les risques d'injections URL).
+</p>
+<p>
+En premier lieu, la gestion de la navigation repose sur 3 choses :
+</p>
+<ul>
+<li>Le script navigation.php, présent à la racine du répertoire include/config/,</li>
+<li>Le script navigation.php, présent à la racine du répertoire du thème utilisé,</li>
+<li>Les ACL.</li>
+</ul>
+
+<h2>Le script navigation.php, présent à la racine du répertoire include/config/</h2>
+<p>
+Ce script a pour objectif de décrire la navigation au sens logique du terme (définition des urls, des droits d'accès, etc.). La description de la navigation suit une structure classique de tableau à clés que l'on peut expliciter ainsi :
+</p>
+
+<table>
+<tr>
+	<th width="20%">Clé</th>
+	<th>Requis</th>
+	<th>Description fonctionnelle</th>
+</tr>
+<tr>
+	<td>level</td>
+	<td>oui</td>
+	<td>niveau de l'arborescence (1=rubrique, 2 = sous-rubrique, etc.)</td>
+</tr>
+<tr>
+	<td>libelle</td>
+	<td>non</td>
+	<td>libelle de la rubrique (ou sous-rubrique, etc.) qui sera affiché</td>
+</tr>
+<tr>
+	<td>url</td>
+	<td>non</td>
+	<td>url vers laquelle pointer</td>
+</tr>
+<tr>
+	<td>acl</td>
+	<td>non</td>
+	<td>une ou plusieurs valeurs séparées par des &laquo; pipes &raquo;</td>
+</tr>
+<tr>
+    <td><i>array</i></td>
+    <td>non</td>
+    <td>un tableau à clés des ACL pointant vers une ou plusieurs valeurs séparées par des &laquo; pipes &raquo;</td>
+</tr>
+<tr>
+	<td>class</td>
+	<td><i>non</i></td>
+	<td>class CSS (et donc, image pour illustrer la rubrique)</td>
+</tr>
+<tr>
+	<td>titre</td>
+	<td><i>non</i></td>
+	<td>titre (à afficher dans un attribut &laquo; title &raquo;, par exemple)</td>
+</tr>
+<tr>
+	<td>js</td>
+	<td><i>non</i></td>
+	<td>bout de code Javascript (pour un évenement &laquo; onclick &raquo;, par exemple)</td>
+</tr>
+</table>
+
+<p>
+Il convient de comprendre que cette structure n'est qu'une proposition. Elle peut évidement être adaptée, voir enrichie, afin de coller à des besoins spécifiques en fonction des projets. 
+Il est utopique de mettre en place une logique de navigation permettant de répondre à l'ensemble des besoins fonctionnels. 
+La navigation est trop dépendante des règles de gestion propres à chaque projet. CARBONE se contente uniquement de proposer une structure générique qu'il convient d'adapter.
+</p>
+
+<p>
+Voici un exemple de structure :
+</p>
+
+<pre class="code:firstline[25]">
+array(
+    'level'     =&gt; 1,
+    'libelle'   =&gt; STR_RUBRIQUE_FOO,
+    'url'       =&gt; '',
+    'acl'       =&gt; 'admin|user',
+    'class'     =&gt; 'icon-user icon-white',
+),
+
+array(
+    'level'     =&gt; 2,
+    'libelle'   =&gt; STR_RUBRIQUE_FOO_1,
+    'url'       =&gt; $session-&gt;url(CFG_PATH_HTTP.'/foo/foo_1.php'),
+    'acl'       =&gt; 'admin|user',
+    'user'      =&gt; array(
+        'get'   =&gt; array(
+            'action'    =&gt; 'view|active,desactive',
+            'id'        =&gt; '1'
+        ),
+        'post'  =&gt; 'nom|prenom|submit',
+        'data'  =&gt; 'nom|prenom',
+        'filtre'=&gt; 'nom',
+        'export'=&gt; 'pdf',
+    ),
+),
+
+array(
+    'level'     =&gt; 2,
+    'libelle'   =&gt; STR_RUBRIQUE_FOO_2,
+    'url'       =&gt; $session-&gt;url(CFG_PATH_HTTP.'/foo/foo_2.php'),
+    'acl'       =&gt; 'admin',
+),
+
+array(
+    'level'     =&gt; 2,
+    'libelle'   =&gt; STR_RUBRIQUE_FOO_3,
+    'url'       =&gt; $session-&gt;url(CFG_PATH_HTTP.'/foo/foo_3.php'),
+    'acl'       =&gt; 'admin',
+),
+</pre>
+
+<p>
+Dans l'exemple ci dessus, nous avons défini une rubrique &laquo; foo &raquo; contenant 3 sous-rubriques. 
+</p>
+
+<h2>Le script navigation.php, présent à la racine du répertoire du thème utilisé</h2>
+<p>
+Ce script, quant à lui, sert à mettre en forme cette navigation au sens présentation du terme (par exemple, avec des menus déroulants ou non, horizontalement ou verticalement, etc.).
+Il est presque toujours nécessaire d'adapter cette présentation, dans la mesure ou elle doit s'inscrire dans la charte graphique du projet.
+</p>
+
+<h2>Les ACL</h2>
+<p>
+Les ACL se composent d'une ou plusieurs valeurs, séparées par des &laquo; pipes &raquo;. Nous les retrouvons à 2 endroits :
+</p>
+
+<ul>
+<li>au niveau du profil de l'utilisateur (clé &laquo; acl &raquo; dans le tableau $cfg_profil défini dans include/config/config.php),</li>
+<li>au niveau du tableau de navigation (clé &laquo; acl &raquo; associée à chaque rubrique ou sous-rubrique, etc. définies dans le script include/config/navigation.php),</li>
+</ul>
+
+<h2>Principe de fonctionnement</h2>
+
+<h3>Affichage</h3>
+<p>
+Pour qu'une rubrique ou sous-rubrique soit affichée, au niveau de la navigation, il faut que l'une ou l'autre des conditions suivantes soient vérifiées :
+<p>
+
+<ul>
+<li>ou bien l'ACL associée à la rubrique (définie par le clé &laquo; acl &raquo; dans le script include/config/navigation.php) est vide,</li>
+<li>ou bien l'intersection entre l'ACL associée à l'utilisateur courant et l'ACL associée à la rubrique n'est pas vide.</li>
+</ul>
+
+<p>
+Par exemple, reprenons l'exemple de la structure ci dessus. Imaginons que la clé &laquo; acl &raquo; de l'utilisateur courant (définie dans $cfg_profil) vaut 'user' ou 'user|guest'. Le menu de navigation de cet utilisateur affichera la rubrique &laquo; foo &raquo;, mais uniquement la première sous-rubrique. Si la clé &laquo; acl &raquo; de l'utilisateur courant vaut 'guest', il ne verra rien. Et enfin, si la clé &laquo; acl &raquo; de l'utilisateur courant vaut 'admin', alors il verra l'ensemble de la navigation. 
+</p>
+
+<h3>Contrôle d'accès</h3>
+
+<p>
+Même principe que précédement, pour qu'un utilisateur puisse accéder (et exécuter le code associé) à une rubrique, il faut que l'une ou l'autre des conditions suivantes soient vérifiées :
+</p>
+
+<ul>
+<li>ou bien l'ACL associée à la rubrique (définie par le clé &laquo; acl &raquo; dans le script include/config/navigation.php) est vide,</li>
+<li>ou bien l'intersection entre l'ACL associée à l'utilisateur courant et l'ACL associée à la rubrique n'est pas vide.</li>
+</ul>
+
+<p>
+Il est cependant possible d'aller plus loin que le simple accès à la ressource URL elle même. Il est également possible de filtrer l'accès à d'autres ressources potentiellement sensibles. À savoir :
+</p>
+
+<ul>
+<li>données injectées en GET</li>
+<li>données injectées en POST</li>
+<li>ressources de type &laquo; filtre &raquo; (liées aux briques &laquo; backoffice &raquo;)</li>
+<li>ressources de type &laquo; data &raquo; (liées aux briques &laquo; backoffice &raquo;)</li>
+<li>ressources de type &laquo; export &raquo; (liées aux briques &laquo; backoffice &raquo;)</li>
+</ul>
+
+<p> Par exemple, toujours à partir de l'exemple de la structure ci dessus. Imaginons que la clé &laquo; acl &raquo; de l'utilisateur courant (définie dans $cfg_profil) vaut 'user'. Cet utilisateur pourra accéder à la première sous-rubrique. Par contre, il ne pourra :
+</p>
+
+<ul>
+<li>soumettre en GET qu'une &laquo; action &raquo; valant 'view', 'active' ou 'desactive' et appliquée à l'&laquo; id &raquo; valant '1',</li>
+<li>soumettre en POST des données 'nom', 'prenom' et 'submit',</li>
+<li>voir que les données 'nom' et 'prenom' (dans la brique &laquo; backoffice &raquo;)</li>
+<li>filtrer les données uniquement sur le 'nom' (dans la brique &laquo; backoffice &raquo;)</li>
+<li>profiter uniquement de l'export 'pdf' (dans la brique &laquo; backoffice &raquo;)</li>
+</ul>
+
+<h3>Remarque</h3>
+<p>
+Le système d'ACL vise à éviter les injections URL <sup>[<a href="#note40" id="rev-note40">40</a>]</sup> que ce soit dans le but de forcer un accès à une rubrique à laquelle il n'a pas droit, ou à une action. Dans ce cas, il sera redirigé vers une page d'erreur.
+</p>
+
+<p>
+Il peut arriver que vous ayez à gérer des pages &laquo; orphelines &raquo;. C'est-à-dire, une ressource non visible depuis la navigation, mais uniquement accessible depuis une page. Si une telle page nécessite l'usage d'ACL, une solution consiste à la déclarer dans le tableau de navigation avec un &laquo; level &raquo; à zéro.
+</p><h1>Présentation</h1>
+
+<p>
+L'analyse fonctionnelle et organique devrait être effectuée avant tout développement
+et codage d'une application. C'est une étude préalable nécessaire.
+Les objectifs sont multiples :
+</p>
+<ul>
+<li>s'imprégner du cahier des charges et de son périmètre (fonctionnel),</li>
+<li>faire émerger les points durs, les imprécisions, les zones d'ombres,</li>
+<li>découper le développement de façon modulaire,</li>
+<li>tout envisager afin de ne plus avoir à « inventer » durant la phase de codage,</li>
+<li>gagner en productivité.</li>
+</ul>
+<p>
+Dernière particularité d'une analyse fonctionnelle et organique : elle est indépendante
+du langage (qui sera utilisé lors de la phase de codage).
+</p><h1>L'analyse fonctionnelle</h1>
+<p>
+L'analyse fonctionnelle répond à la question : « <i>Qu'est-ce que je cherche à faire ?</i> ». 
+Elle permet un premier découpage préliminaire du projet en modules fonctionnels.
+A ce titre, elle met en lumière :
+</p>
+<ul>
+<li>les entrées,</li>
+<li>les sorties,</li>
+<li>les calculs.</li>
+</ul>
+<p>L'analyse organique viendra préciser les choses.</p><h1>L'analyse organique</h1>
+<p>
+L'analyse organique répond à la question : « <i>Comment vais-je le faire ?</i> ». 
+Découpage plus fin, chaque module fonctionnel est analysé et étudié de façon
+organique. Ces modules peuvent être à nouveau découpés.
+Cette étape détaille l'algorithmique du projet et fait remonter les tests.
+</p><h1>Etude de cas</h1>
+<p>
+Soit le cahier des charges suivant : « <i>Ecrire une application permettant de résoudre
+une équation du second degré</i> ».
+</p>
+<h2>Analyse préalable</h2>
+<p>
+S'imprégner de cette problématique simple permet de faire remonter un premier
+soucis non détaillé explicitement dans le cahier des charges : Cette résolution doit-elle
+porter uniquement sur l'ensemble des Réels (R) ou également sur l'ensemble des Complexes (C). 
+</p>
+<p>
+Ce point dur est efficacement remonté par cette analyse préalable.
+</p>
+<p>
+Le développeur doit en faire part à son chef de projet et/ou directement au client.
+Afin de simplifier la problématique, nous allons considérer que nous ne devons travailler que dans (R).
+</p>
+
+<h2>Analyse Fonctionnelle</h2>
+<p>
+Que cherche t-on à faire ? : résoudre une équation du second degré dans (R).
+On peut faire émerger 3 grands modules :
+</p>
+<ul>
+<li>module d'entrées : saisie de l'équation,</li>
+<li>module de calcul (des solutions),</li>
+<li>module de sorties : affichage des solutions.</li>
+</ul>
+<h2>Analyse Organique</h2>
+<p>
+Comment va t-on le faire ?
+On peut détailler la problématique de façon organique ainsi :
+</p>
+<h3>Module d'entrées</h3>
+<ul>
+<li>Entrées : les paramètres de l'équation</li>
+<li>Sorties : message</li>
+</ul>
+<p>
+L'équation peut-être mise sous la forme : ax²+bx+c=0
+</p>
+<p>
+La saisie portera donc sur a,b et c.
+</p>
+<ul>
+<li>Tests : on fera un test afin de vérifier que a,b et c sont de type numérique. Et on
+prendra soin de vérifier que a est non nul (car sinon, nous aurions à faire à une
+équation du premier degré).</li>
+</ul>
+<h3>Module de calcul</h3>
+<p>
+Il peut être découpé en 2.
+</p>
+<h4>Calcul du discriminant</h4>
+<ul>
+<li>Entrées : a,b et c</li>
+<li>Sorties : delta</li>
+</ul>
+<p>
+Recevra en argument a,b et c.
+</p>
+<p>
+Retournera delta=b²-4ac.
+</p>
+<h4>Calcul des solutions éventuelles</h4>
+<ul>
+<li>Entrées : a,b,c,delta</li>
+<li>Sorties : x1, x2 (tableau de solutions, vide si aucune)</li>
+</ul>
+<p>
+Recevra a,b et c ainsi que delta.
+</p>
+<p>
+Retournera un tableau de solutions en fonction du signe de delta.
+</p>
+<ul>
+<li>Si delta > 0 -> 2 solutions (-b-sqrt(delta)/2a) et (-b+sqrt(delta)/2a)</li>
+<li>Si delta =0 -> 1 solution (-b/2a)</li>
+<li>Si delta <0 -> pas de solution dans (R).</li>
+</ul>
+
+<h3>Module de sorties</h3>
+<ul>
+<li>Entrées : x1, x2</li>
+<li>Sorties : messages</li>
+</ul>
+<p>
+Recevra en argument la ou les solutions et les affichera à l'écran.
+</p><h1>Remarques</h1>
+<p>
+L'analyse fonctionnelle et organique est ici très succincte. Même pour une
+problématique aussi simpliste que celle que nous étudions ici à titre d'exemple, il
+serait nécessaire de préciser un peu plus les choses. Par exemple, dans le cas du
+module d'entrées (des paramètres de l'équation), doit-on ou non proposer de
+recommencer si a est nul ? Cette question ne devra pas intervenir lors de la phase de
+codage, mais dès à présent lors de l'étape d'analyse.
+</p>
+<p>
+Plusieurs remarques complémentaires s'imposent :
+</p>
+<ul>
+<li>on a fait émerger l'ensemble des problèmes,</li>
+<li>le développement sera modulaire,</li>
+<li>un passage dans l'ensemble des complexes (C) ne poserait pas de soucis particulier <sup>[<a href="#note41" id="rev-note41">41</a>]</sup>,</li>
+<li>plus rien n'est à inventer lors de la phase de codage,</li>
+<li>nous sommes restés indépendant du langage.</li>
+</ul>
+<p>
+Plus important encore, le développement pourrait être confié à un ou plusieurs
+développeurs n'ayant pas nécessairement connaissance du cahier des charges initial
+(dans sa globalité).
+</p><h1>Avant de commencer un projet</h1>
+<p>
+Avant de commencer un projet CARBONE, veillez aux points suivants :
+</p>
+
+<ul>
+<li>déployer la dernière version stable de CARBONE,</li>
+<li>bien lire le cahier des charges et s'imprégner du cadre fonctionnel du projet,</li>
+<li>faire remonter les points durs et les incohérences,</li>
+<li>rassembler le plus d'informations possibles concernant l'environnement de production cible.</li>
+</ul>
+
+<p>
+Il est, en particulier, essentiel de connaitre la nature de l'hébergement qui accueillera l'application en production. Il est évident qu'un hébergement dédié offrira plus de liberté qu'un hébergement mutualisé. En complément :
+</p>
+
+<ul>
+<li>reproduire le plus fidèlement possible l'environnement de production cible (via .htaccess et autres paramétrages),</li>
+<li>découper l'application et mettre en place l'arborescence,</li>
+<li>architecturer la ou les bases de données,</li>
+<li>soigner la navigation et les droits d'accès.</li>
+</ul>
+
+<p>
+Il est alors utile de faire un premier nettoyage du code. Supprimer les librairies ou classes qui ne serviront pas (on peut penser à la classe d'abstraction AdoDB si AdoDB CARBONE suffit). Idem parmis les scripts Javascript. Etc.
+</p>
+
+<p>
+Idéalement, commencer à écrire les fonctions ou classes qui viendront enrichir la lib_metier.php.
+</p>
+<h1>La conduite de tests</h1>
+<p>
+Les tests font partie du travail au même titre que le code. Le développeur
+est personnellement responsable des tests sur ses formulaires. Cette liste
+est non exhaustive mais présente les éléments minimaux à tester :
+</p>
+<ul>
+<li>vérifier le bon fonctionnement en contrôlant l'ensemble des actions possibles
+(ajout, modification, suppression),</li>
+<li>vérifier le bon fonctionnement des champs obligatoires,</li>
+<li>vérifier le bon fonctionnement des tests primaires et secondaires,</li>
+<li>vérifier l'ordre des champs afin de contrôler que les
+enregistrements se font dans les bons champs correspondants (en base). Par
+exemple, saisir "nom" dans l'élément de formulaire "nom", "prénom" dans l'élément
+de formulaire "prénom", etc.</li>
+<li>vérifier l'impact de la saisie de caractères accentués, apostrophe,
+double quote, retour à la ligne, etc. (exemple : c'est noël),</li>
+<li>vérifier les caractères spéciaux (exemple : ¹²³¼½¾©®),</li>
+<li>vérifier les longueurs max dans les input text ou les textarea,</li>
+<li>vérifier que les champs emails sont valides (exemple : patrick.lefort@m.astelit.ru), idem pour les dates, les urls, etc.</li>
+<li>vérifier le comportement du formulaire avec des saisies vides,</li>
+<li>vérifier avec un soin particulier le traitement des champs upload (taille max,
+extension, gestion des fichiers vides, etc.) ainsi que la suppression des fichiers sur
+le serveur,</li>
+<li>vérifier d'un point de vue général les valeurs limites (exemple : le champ de
+formulaire de type input text attend une valeur de 1 à 10, je teste avec 0 et 11, je
+peux uploader un fichier de 2 Mo max, je teste avec 2*1024*1024+1 octets, etc.),</li>
+<li>vérifier le comportement de l'ensemble avec différents navigateurs et différents
+OS. En particulier, si Firefox est utile pour le développeur, il ne représente qu'une
+partie du marché. Donc attention à bien valider l'ensemble sous Chrome, 
+Internet Explorer et plus généralement sous le ou les navigateurs cibles.</li>
+</ul>
+<p>
+En complément, un scénario de test devrait se faire en plusieurs étapes :
+</p>
+<ul>
+<li>effectuer une saisie vide (afin de vérifier les champs requis, etc.),</li>
+<li>effectuer une saisie intelligente,</li>
+<li>effectuer une saisie idiote.</li>
+</ul><h1>Découplage de CARBONE</h1>
+<p>
+Il est possible de &laquo; découpler &raquo; CARBONE afin de mettre en place un Frontoffice et un Backoffice, tout en centralisant le coeur du framework<sup>[<a href="#note42" id="rev-note42">42</a>]</sup>.
+</p>
+<p>
+Le script decouplage.php, disponible dans le répertoire divers/outils/, permet de déployer automatiquement une version de CARBONE &laquo;découplée&raquo; vers un répertoire cible. 
+</p>
+
+<pre class="code">
+chrome:outils armel$ php decouplage.php 
+usage : php engine [OPTION]... DIRECTORY
+Install CARBONE in the target DIRECTORY
+
+-h, --help	print this help.
+-d, --debug	print debugging information.
+-fo=&lt;name&gt;	frontoffice directory name (default is 'fo').
+-bo=&lt;name&gt;	backoffice directory name (default is 'bo').
+</pre>
+
+<p>
+Le script va effectuer plusieurs opérations, dans le répertoire cible :
+</p>
+
+<ul>
+<li>création d'un répertoire fo/</li>
+<li>création d'un répertoire bo/</li>
+<li>copie du répertoire include/</li>
+<li>copie du répertoire web/</li>
+</ul>
+
+<p>
+Les répertoires fo/ et bo/ <sup>[<a href="#note43" id="rev-note43">43</a>]</sup> contiendront l'ensemble des rubriques fonctionnelles présentées en exemple dans CARBONE (profil, utilisateur, etc.). Ces 2 répertoires contiendront également une copie du fichier .htaccess (à la racine).
+</p>
+
+<p>
+Le répertoire include/ sera patché afin de :
+</p>
+
+<ul>
+<li>découpler le fichier start_php.php en start_php_fo.php et start_php_bo.php</li>
+<li>découpler le fichier open.php en open_fo.php et open_bo.php</li>
+<li>découpler le fichier config/config.php en config/config_fo.php et config/config_bo.php</li>
+<li>découpler le fichier config/navigation.php en config/navigation_fo.php et config/navigation_bo.php</li>
+</ul>
+
+<p>
+Enfin, l'appel au bootstrap de CARBONE sera patché dans l'ensemble des scripts présents dans les répertoires fo/ et bo/, afin de pointer respectivement vers start_php_fo.php et start_php_bo.php (en début de script).
+</p>
+
+<p>
+Si tout se déroule correctement, le script (en mode &laquo; debug &raquo;) devrait afficher ceci :
+</p>
+
+<pre class="code">
+chrome:outils armel$ php decouplage.php -fo=front -bo=back -d webperso/carbone_decouplage/
+..............................................................................................................
+Clone back: OK
+..............................................................................................................
+Clone front: OK
+Patch .htaccess in front: OK
+Patch .htaccess in back: OK
+......................................
+Clone CARBONE: OK
+Patch scripts /include/open_front.php: OK
+Patch scripts /include/open_back.php: OK
+Patch scripts /include/start_php_front.php: OK
+Patch scripts /include/start_php_back.php: OK
+Patch scripts /include/config/navigation_front.php: OK
+Patch scripts /include/config/navigation_back.php: OK
+Patch scripts /include/config/config_front.php: OK
+Patch scripts /include/config/config_back.php: OK
+Patch scripts in include: OK
+Patch scripts in front: OK
+Patch scripts in back: OK
+</pre>
+
+<p>
+En cas de problème, le script devrait retourner des messages de type &laquo; FAIL &raquo; auxquels il conviendra d'être attentif. Demander l'avis d'un chef de projet technique si ces messages apparaissent.
+</p><h1>Mise en production d'un projet</h1>
+<p>
+Lors de la mise en production d'un projet CARBONE, veillez aux points suivants :
+</p>
+<ul>
+<li>s'assurer que plus aucune sortie de débogage ne persiste. En particulier, désactiver le débuggeur (constante CFG_DEBUG à FALSE dans le fichier include/config/config.php);</li>
+<li>supprimer l'affichage de messages d'erreurs en modifiant le niveau de reporting.
+Généralement, il suffit d'éditer le fichier include/start_php.php et remplacer
+error_reporting(E_ALL) par error_reporting(0);</li>
+<li>supprimer les zones de codes commentées et devenues totalement inutiles;</li>
+<li>apporter un soin tout particulier aux commentaires. En particulier, vérifier que chaque fonction, classe ou méthode de classe dispose bien d'un minimum de commentaire expliquant ce qu'elle fait;</li>
+<li>supprimer les fichiers et répertoires inutiles. En particulier, le fichier phpinfo.php souvent présent à la racine, ainsi que d'éventuels fichiers (.bak, .old, .sql, .csv, etc.). Penser également à supprimer la documentation de CARBONE si non explicitement vendu au client (se renseigner si besoin);</li>
+<li>vérifier et lever les restrictions d'accès éventuelles (.htaccess ou httpd.conf genre &lt;Limit GET POST&gt;). Inversement, s'assurer que certains répertoires ne sont pas « browsables » par tout le monde (répertoire « upload », « data », etc.). L'ajout de la ligne « IndexIgnore * » dans un .htaccess suffit. S'il est impossible de mettre en place un fichier .htaccess, mettre un fichier index.html ou index.php, vide, à la racine du répertoire que l'on ne désire pas rendre « browsable »;</li>
+<li>si nécessaire, livrer une base propre (sans trace de test). Idem pour l'éventuel répertoire « upload » qui devrait logiquement être vide;</li>
+<li>prendre un soin particulier à la rédaction de la documentation. Corriger les fautes d'orthographe, faire des phrases courtes, être le plus clair possible. Ne pas hésiter à se faire relire (après avoir fait l'effort de l'avoir fait soit même). Attention, la documentation doit faire référence aux informations de production (user, password, host, db pour la base de données, chemin HTTP et fichiers, accès SSH et FTP, etc.). Penser à préciser les droits de certains répertoires si nécessaire (droits en lecture et écriture du répertoire « upload » par exemple, etc.);</li>
+<li>vérifier les droits sur certains répertoires éventuels (par exemple ceux recevant des fichiers par upload);</li>
+<li>supprimer les constantes inutiles et non utilisées dans le ou les fichiers de langue;</li>
+<li>vérifier que les scripts Javascript embarqués dans chaque page sont réellements utilisés;</li>
+<li>si possible, faire une archive (code, dump SQL structure et données, données de références, scripts divers, entrées éventuelles dans la crontab, etc.). En confier une version au client et en rapporter une autre chez GLOBALIS pour être conservée. Faire en sorte que les versions de production et de développement soit à jour;</li> 
+</ul>
+
+
+<p>
+Suite à la mise en production et la clôture du projet, ne pas hésiter à faire un point
+technique avec un chef de projet si des améliorations de CARBONE pourraient être
+apportées en vue de simplifier les projets futurs. Par exemple, ajouter à la
+lib_carbone.php une nouvelle fonction utile, enrichir la lib_test.php, etc.
+</p><h1>FAQ : Frequently Asked Questions</h1>
+
+<h2>Comment charger un Javascript</h2>
+
+<p>
+Les scripts Javascript sont stockés dans le répertoire js/.
+Afin de provoquer le chargement d'un ou plusieurs scripts, vous devez utiliser la constante LOAD_JAVASCRIPT. Cette constante est prévue pour contenir la liste des scripts à charger. Chaque nom de script est séparé par un | (Alt Gr 6). 
+Cette constante doit impérativement être déclarée avant le chargement du start_html.php.
+</p>
+
+<pre class="code">
+define('LOAD_JAVASCRIPT','autocomplete/jquery.autocomplete.js|infobulle/jquery.infobulle.js');
+</pre>
+
+<p>
+Ceci provoquera le chargement automatique du script jquery.autocomplete.js présent dans js/autocomplete/ et jquery.infobulle.js présent dans js/infobulle/. 
+Il n'est pas nécessaire de charger explicitement jQuery. CARBONE se charge de détecter s'il est requis ou non.
+</p>
+
+<h2>J'ai déployé CARBONE et je ne parviens pas à me loguer</h2>
+
+<p>
+Si vous avez l'impression que vous rebouclez à l'infini entre la page Login (login.php) et la page
+destination (généralement index.php), c'est probablement que l'enregistrement des
+sessions ne fonctionne pas correctement.
+</p>
+<p>
+Vérifier les paramètres de connexion à la base de données ainsi que l'existence d'une table session.
+</p>
+<p>
+Faire également attention à la constante CFG_SESSION_PATH, si vous utilisez la transmission par cookie. Cette constante est initilialisée automatiquement par le biais d'informations retournées par le serveur. Mais il arrive que, en particulier sous Windows, ces informations soient vides. 
+Retenir que :
+</p>
+<ul>
+<li>si l'adresse IP de votre serveur est <i>192.168.1.1</i></li>
+<li>si votre projet se trouve dans le répertoire <i>mon_projet</i><sup>[<a href="#note44" id="rev-note44">44</a>]</sup></li>
+<li>si il est théoriquement accessible par l'URL <i>http://192.168.1.1/mon_projet/</i></li>
+</ul>
+<p>
+Alors la constante CFG_SESSION_PATH devrait être initialisé à : <i>/mon_projet/</i>
+</p>
+<p>
+CFG_PATH_FILE et CFG_PATH_HTTP sont également initialisées automatiquement. Et il conviendra éventuellement de fixer en dur la valeur si besoin.
+</p>
+
+<h2>L'affichage retourné par la brique « backoffice » ne semble pas cohérent</h2>
+
+<p>
+Vérifier le context ! S'il partage le même nom qu'une autre brique « backoffice », il y aura des effets de bords indésirables (sur les tris, la pagination, etc.).
+</p>
+
+<h2>Impossible d'uploader un fichier</h2>
+
+<p>
+En premier lieu, bien vérifier que vous avez les droits sur le répertoire (généralement upload). Un chmod 777 fera l'affaire. 
+Ensuite, bien étudier si nécessaire l'exemple présent dans CARBONE (rubrique exemple, sous rubrique file).
+</p>
+
+<h2>Le script de ma page comporte une boucle infinie</h2>
+
+<p>
+En cas de script provoquant, par exemple, une boucle infinie, il arrive parfois qu'un processus Apache consomme une part importante du temps CPU de la machine, pénalisant ainsi l'ensemble des autres processus (et l'ensemble des utilisateurs). 
+Pour vérifier qu'un tel processus Apache tourne effectivement en boucle et le supprimer, suivre la procédure suivante :
+</p>
+
+<ul>
+<li>se connecter en SSH sur le serveur</li>
+<li>lancer la commande top</li>
+<li>isoler le PID du processus gourmand</li>
+<li>ecrire le script PHP suivant et le placer dans son espace web perso</li>
+</ul>
+
+<pre class="code">
+&lt;?php
+$cmd='/bin/kill -9 '.$_GET['pid'];
+echo $cmd;
+exec($cmd);
+?&gt;
+</pre>
+
+<ul>
+<li>l'appeler depuis un navigateur en passant en GET le PID problématique</li>
+<li>contrôler avec la commande top que tout est rentré dans l'ordre</li>
+</ul>
+
+<p>
+Petite explication : Apache tourne avec les droits de l'utilisateur nobody faisant parti du groupe nogroup. Il faut donc être également nobody (ou root) pour pouvoir détruire un processus Apache. 
+Le fait de faire exécuter la commande kill via un script PHP lancé par Apache, permet de prendre ces droits. Ce n'est pas vous en tant qu'utilisateur qui effectuez le kill du processus, mais bien nobody.
+</p>
+
+<h2>Je n'ai aucun moyen de basculer désactiver magic_quotes_gpc</h2>
+
+<p>
+Si vous ne pouvez pas désactiver magic_quotes_gpc et que celui ci est à ON (par exemple, sur un serveur mutualisé n'offrant aucun moyen d'affiner la configuration), un script est prévu à cet effet. 
+Il s'agit du script magic.php présent dans le répertoire divers/outils/. Il suffit de le placer dans le répertoire include/ et de l'appeler, idéalement depuis include/start_php.php. 
+Prendre soin d'éditer le script magic.php et de préciser, en fin de script, quelles données filtrer (par défaut, $_POST et $_GET).
+</p>
+
+<h2>Je n'ai aucun moyen de modifier le include_path</h2>
+
+<p>
+Une solution consiste à définir précisement le chemin d'appel du script start_php.php et de modifier l'include_path (via la fonction ini_set() de PHP) dans ce script.
+</p>
+
+<h2>Plus rien ne marche</h2>
+
+<p>En dernier recours, demander de l'aide à un chef de projet technique.</p>
+<h1>Outils préconisés</h1>
+<p>
+Les outils préconisés sont les suivants :
+</p>
+
+<table>
+<tr>
+	<th>Type</th>
+	<th>Préconisation</th>
+</tr>
+<tr>
+	<td>Editeur</td>
+	<td>
+	Sublime Text 2 ou 3
+	<br/>
+	Notepad++
+	<br/>
+	Coda
+	<br/>
+	NetBeans
+	<br/>
+	Vim
+	</td>
+</tr>
+<tr>
+	<td>Client FTP</td>
+	<td>
+	Filezilla
+	</td>
+</tr>
+<tr>
+	<td>Client SSH</td>
+	<td>
+	Secure CRT
+	<br/>
+	PuTTY
+	</td>
+</tr>
+<tr>
+	<td>Navigateur</td>
+	<td>
+	Chrome
+	<br/>
+	Mozilla Firefox
+	<br/>
+	Internet Explorer
+	<br/>
+	Safari
+	</td>
+</tr>
+</table><h1>Compléter la documentation</h1>
+<h2>Remarque préliminaire</h2>
+<p>
+Le projet CARBONE DOC a pour but de faciliter la maintenance et l'enrichissement de la documentation du framework CARBONE. 
+Ceci étant, au delà du framework CARBONE, ce projet peut parfaitement être utilisé pour la documentation technique de n'importe quel autre projet.
+</p>
+<h2>Structure globale</h2>
+<p>
+Le projet CARBONE DOC se compose d'un répertoire comportant 3 scripts PHP à la racine, ainsi que 2 sous répertoires. 
+Le script config.php est de loin le plus important. C'est en particulier lui qui définit le titre de la documentation ou encore son numéro de version, mais surtout l'index de cette documentation. 
+La description de cet index suit le formalisme suivant :
+</p>
+
+<pre class="code">
+
+$cfg_index   = array (
+    'foo' =&gt; array(
+        'Section Foo',
+         array(
+            'foo'     =&gt; 'Titre Foo',
+            'bar'     =&gt; 'Titre Bar',
+            'baz'     =&gt; 'Titre Baz',
+        ),
+    ),
+    'bar' =&gt; array(
+        'Section Bar',
+        array(
+            'foo'     =&gt; 'Titre Foo',
+            'bar'     =&gt; 'Titre Bar',
+            'baz'     =&gt; 'Titre Baz',
+            'fum'     =&gt; 'Titre Fum',
+            'qux'     =&gt; 'Titre Qux',
+        ),
+    ),
+);
+?&gt;
+</pre>
+
+<p>
+Nous avons ici défini 2 grandes sections, « foo »  et « bar », comportant chacune plusieurs pages.
+La première clé correspond au nom de répertoire de stockage des templates de chaque section. Cette clé pointe sur un premier tableau. 
+Le premier élément correspond au titre de la section tel qu'il apparaîtra dans l'index. Le second élément pointe vers un second tableau. 
+Ce second tableau se compose de paires clé / valeur. La clé est le nom du template (fichier html avant mise en forme, donc sans header/footer/traitements divers et portant l'extension .tpl).
+La valeur correspond au titre de la page tel qu'il apparaîtra dans l'index (et dans la balise &lt;title&gt; de la page HTML).
+</p>
+
+<center>
+<div class="folder" id="carbone_doc" style="width:640px; height:140px;" title='/carbone_doc/'></div>
+</center>
+
+<p>
+Le script engine.php est le moteur de parsing. C'est lui que l'on invoque pour générer (ou regénérer) la documentation. Il s'execute en ligne de commande en précisant le repertoire cible dans lequel sera générée la documention. 
+</p>
+
+<pre class="code">
+armel@chrome:~$ php engine.php
+usage : php engine [OPTION]... DIRECTORY
+Compile and create the documention in the target DIRECTORY
+
+-h, --help      print this help.
+-d, --debug     print lots of debugging information.
+-f, --full      create also one big page.
+-c, --clean     delete everything in the target directory.
+
+armel@chrome:~$ php engine.php webperso/doc_carbone/
+</pre>
+
+<p>
+Le script engine.php génère dans le répertoire cible:
+</p>
+
+<ul>
+<li>l'index de la documentation (ainsi que l'index glissant en haut de page) : index.html,</li>
+<li>l'ensemble des pages composant chaque section,</li>
+<li>eventuellement, l'index propre à une page en particulier <sup>[<a href="#note45" id="rev-note45">45</a>]</sup>.</li>
+<li>eventuellement, si l'option -f ou --full est invoquée, une version de la documentation sous forme de fichier unique : documentation.html,</li>
+</ul>
+
+<p>
+Il duplique également le répertoire share/ (comportant css/, js/, image/ et éventuellement structure/, php/ et xsl/ si des arborescences sont à afficher) dans le répertoire cible.
+</p>
+
+<p>
+Pour chaque template, le script engine va y associer le template d'entête et de pied de page. Il va également parser un certain nombre de choses à mettre en forme comme les notes de bas de page, les sections de code, etc.
+</p>
+
+<h2>Le répertoire share/</h2>
+
+<p>
+Ce répertoire comporte divers sous répertoires permettant de stocker, en particulier, les feuilles de style CSS (répertoire css/), les scripts Javascript (répertoire js/) et les images (répertoire image/). 
+Il sert également à décrire la structure d'arborescences qui seront utilisées dans la documentation (structure comportant répertoires et fichiers vides composant l'arborescence ou les arborescences à décrire). Le répertoire php/ contiendra alors le script permettant de rendre cette structure « browseable » ainsi qu'un répertoire xsl/ (comportant une feuille xsl de mise en forme).
+</p>
+
+<h2>Le répertoire template/</h2>
+
+<p>
+Ce répertoire comporte l'ensemble des templates de la documentation. A la racine se trouvent généralement 3 templates génériques : header.tpl, footer.tpl et todo.tpl. Les 2 premiers servent à décrire l'entête et le pied de page de chaque page composant la documentation. Quant à todo.tpl, il sert de template générique si un template de page vient à manquer.
+</p>
+
+<p>
+En complément, on retrouve autant de répertoires que de sections décrites dans le tableau $cfg_index du script config.php. Et dans chaque répertoire, autant de templates que de pages, elles aussi décrites dans le tableau $cfg_index du script config.php. 
+On notera au passage qu'un template porte l'extension .tpl. 
+</p>
+
+<h2>Syntaxe d'un template</h2>
+
+<p>
+Aucune syntaxe particulière n'est requise. Un template accepte la syntaxe HTML traditionnelle. Cependant, on cherchera à limiter le plus possible le nombre de balises utilisées. 
+A titre d'exemple, cette documentation technique en utilise une douzaine: &lt;h[234]&gt;, &lt;p&gt;, &lt;pre&gt;, &lt;ul&gt;, &lt;li&gt;, &lt;table&gt;, &lt;tr&gt;, &lt;th&gt;, &lt;td&gt;, &lt;sup&gt; et à de rares occasions &lt;img&gt;, &lt;div&gt; et &lt;center&gt; (pour des raisons pratiques...).
+</p>
+<p>
+On notera également que la mise en forme de l'ensemble dépendra évidemment du ou des feuilles de style CSS qui lui seront appliquées et qu'il conviendra d'adapter en fonction des besoins.
+</p>
+
+<p>
+Néanmoins, le moteur prend en charge quelques opérations permettant de simplifier et optimiser certaines choses. Par exemple, 
+</p>
+<ul>
+<li>il prend en charge la gestion des notes de bas de page à introduire à l'aide des balises &lt;sup&gt; et &lt;/sup&gt;,</li>
+<li>il assure la mise en forme automatique de séquences de code, la numérotation des lignes, ainsi que l'encodage au format HTML pour peu que le code soit placé entre les balises &lt;pre class="code"&gt; et &lt;/pre&gt;,</li>
+<li>il permet l'intégration d'arborescence,</li>
+<li>il optmise le chargement des scripts Javascript et des feuilles de styles CSS<sup>[<a href="#note46" id="rev-note46">46</a>]</sup>.</li>
+</ul>
+
+<p>
+Il est évidement possible d'enrichir l'ensemble si besoin.
+</p>
+
+<p>
+Le moteur s'occupe également de remplacer certaines variables de template. Elles sont initialisées dans le fichier config.php, par le biais de constantes, ou calculées à partir des informations contenues dans le tableau à clés $gbl_cfg_index() :
+</p>
+
+<table>
+<tr>
+	<th width="30%">Variables de template</th>
+	<th>Description fonctionnelle</th>
+</tr>
+<tr>
+	<td>&#123;doc_title&#125;</td>
+	<td>Constante définie dans CFG_TITRE</td>
+</tr>
+<tr>
+	<td>&#123;doc_author&#125;</td>
+	<td>Constante définie dans CFG_AUTEUR</td>
+</tr>
+<tr>
+	<td>&#123;doc_version&#125;</td>
+	<td>Constante définie dans CFG_VERSION</td>
+</tr>
+<tr>
+	<td>&#123;doc_date&#125;</td>
+	<td>Constante définie dans CFG_DATE</td>
+</tr>
+<tr>
+	<td>&#123;page_title&#125;</td>
+	<td>Valeur définie dans $cfg_index (titre de la page)</td>
+</tr>
+<tr>
+	<td>&#123;section_title&#125;</td>
+	<td>Valeur définie dans $cfg_index (section et titre de la page)</td>
+</tr>
+<tr>
+	<td>&#123;page_prev&#125;</td>
+	<td>Valeur définie dans $cfg_index (titre de la page précédente)</td>
+</tr>
+<tr>
+	<td>&#123;page_next&#125;</td>
+	<td>Valeur définie dans $cfg_index (titre de la page suivante)</td>
+</tr>
+</table>
+
+<h2>A propos des séquences de code</h2>
+
+<p>Une séquence de code est intégrée dans une page par le biais du code suivant :</p>
+
+<pre class="code">
+&lt;pre class=&quot;code&quot;&gt;
+&lt;?php
+//
+// Suite de Fibonacci
+//
+function fib($n) {
+    if ($n &lt; 2)
+        return(1);
+    else
+        return(fib($n-2) + fib($n-1));
+}
+
+print fib($argv[1]);
+?&gt;
+&lt;/pre&gt;
+</pre>
+
+<p>
+A noter qu'une mise en forme sommaire, en particulier sur la détection des commentaires et des variables, est effectuée.
+De plus, il est possible de surcharger la classe « code » en la complétant par « :firstline[n] ». Ceci permet de gérer plus finement la numérotation des lignes en précisant un indice de début.
+</p>
+
+<pre class="code:firstline[10]">
+&lt;pre class=&quot;code:firstline[10]&quot;&gt;
+//
+// Suite de Fibonacci
+//
+&lt;?php
+function fib($n) {
+    if ($n &lt; 2)
+        return(1);
+    else
+        return(fib($n-2) + fib($n-1));
+}
+
+print fib($argv[1]);
+?&gt;
+&lt;/pre&gt;
+</pre>
+
+
+<h2>A propos des arborescences</h2>
+
+<p>Une arborescence est intégrée dans une page par le biais du code suivant :</p>
+
+<pre class="code">
+&lt;center&gt;
+&lt;div class=&quot;folder&quot; id=&quot;foo&quot; style=&quot;width:640px; height:140px;&quot; title='/path/'&gt;&lt;/div&gt;
+&lt;/center&gt;
+</pre>
+
+<p>
+Quelques remarques s'imposent. En premier lieu, l'attribut id doit être unique. Ne pas oublier qu'une version de la documentation sur une seule page est également générée par le moteur, si souhaité. Si l'attribut id n'est pas unique, il y aura des conflits. 
+Donc bien faire en sorte de choisir un id dont l'unicité est totale vis-à-vis de l'ensemble des pages et non, uniquement, de la page courante. 
+Quant à l'attribut title, il indique un chemin qui correspondra à la racine de l'arborescence que l'on désire visualiser. A noter que le premier slash (/) désigne la racine du répertoire structure/ qui contient les diverses arborescences que l'on compte utiliser. 
+Enfin, le style appliqué ici est juste une suggestion de présentatioon, surtout pour le width. Fixé à 640px, cela évite les surprises en cas d'impression sur papier.
+</p><div class="note">
+<p>[<a href="#rev-note1" id="note1">1</a>] CRUD : Create, Read, Update, Delete.</p>
+
+<p>[<a href="#rev-note2" id="note2">2</a>] CDC : Cahier Des Charges.</p>
+
+<p>[<a href="#rev-note3" id="note3">3</a>] Tant au niveau de l'OS (Unix, Windows, etc.) que du serveur HTTP (Apache, IIS, lighthttp, etc.) ou encore du SGBD.</p>
+
+<p>[<a href="#rev-note4" id="note4">4</a>] Frontal d'administration d'un site dynamique. Ce dernier est généralement accessible aux seuls
+administrateurs du site et permet, typiquement, la mise à jour d'informations.</p>
+
+<p>[<a href="#rev-note5" id="note5">5</a>] Partie d'un site dynamique visible par tous (par opposition à la notion de Backoffice).</p>
+
+<p>[<a href="#rev-note6" id="note6">6</a>] Content Management System, en français Gestion de contenu.</p>
+
+<p>[<a href="#rev-note7" id="note7">7</a>] LAMP désigne Linux Apache MySQL et PHP/Perl/Python. Seul PHP nous intéresse ici.</p>
+
+<p>[<a href="#rev-note8" id="note8">8</a>] Comme par exemple support de MySQL ou de PostgreSQL, si l'on désire utiliser ces SGBD, ou de la GD si l'on souhaite générer des graphiques à la volée.</p>
+
+<p>[<a href="#rev-note9" id="note9">9</a>] A l'inverse, opter pour des noms courts concernant les classes et id CSS, la feuille de style chargée par le client, n'en sera que plus légère.</p>
+
+<p>[<a href="#rev-note10" id="note10">10</a>] Pour des raisons de sécurité.</p>
+
+<p>[<a href="#rev-note11" id="note11">11</a>] Utiliser en priorité la fonction email() présente dans la librairie lib_carbone.php</p>
+
+<p>[<a href="#rev-note12" id="note12">12</a>] Utiliser la couche d'abstraction présente dans la classe class_db.php</p>
+
+<p>[<a href="#rev-note13" id="note13">13</a>] Utiliser la couche de sessions présente dans la classe class_session.php</p>
+
+<p>[<a href="#rev-note14" id="note14">14</a>] Toujours utiliser &lt;?php...?&gt;</p>
+
+<p>[<a href="#rev-note15" id="note15">15</a>] Un fichier .htaccess n'est pas uniquement un moyen de mettre en place une identification / authentification HTTP. Il permet beaucoup d'autres choses comme affiner les paramétrages du httpd.conf
+et du php.ini afin de localiser certaines options dans le répertoire courant (et ses fils).</p>
+
+<p>[<a href="#rev-note16" id="note16">16</a>] A ne pas confondre avec le framework HTML & CSS également utilisé par CARBONE.</p>
+
+<p>[<a href="#rev-note17" id="note17">17</a>] Le sous-répertoire adodb_carbone/ (ou adodb/) contient, quant à lui, les drivers (un par SGBD supporté) permettant de pointer vers le SGBD cible.</p>
+
+<p>[<a href="#rev-note18" id="note18">18</a>] Fonctionnalité permettant au client d'envoyer un fichier complet au serveur.</p>
+
+<p>[<a href="#rev-note19" id="note19">19</a>] Carbone est supposé privilégier le chargement des scripts en version « minify ».</p>
+
+<p>[<a href="#rev-note20" id="note20">20</a>] Une confusion existe souvent ici. Le script include/config/navigation.php a pour objectif de décrire la navigation au sens logique du terme (définition des urls, des droits d'accès, etc.). Le script navigation.php présent à la racine d'un thème, quant à lui, se charge de mettre en forme cette navigation (par exemple, avec des menus déroulants ou non, horizontalement ou verticalement, etc.).</p>
+
+<p>[<a href="#rev-note21" id="note21">21</a>] En pratique, le script include/lib/lib_carbone.php regroupe des fonctions et classes régulièrement utilisées par
+l'ensemble des projets développés avec CARBONE. Afin d'éviter de le polluer avec des fonctions ou classes
+utilisées un peu partout par un site donné, mais spécifique à celui-ci (donc probablement inintéressantes
+dans le cadre de projets futurs), CARBONE préconise de créer en plus de lib_carbone.php un autre « container »
+de fonctions et classes « métier », portant le nom du projet. Par exemple include/lib/lib_<i>projet_foo_bar</i>.php.</p>
+
+<p>[<a href="#rev-note22" id="note22">22</a>] Les gabarits de mise en page que propose CARBONE gèrent souvent une variable magique $marge. Si cette variable n'est pas vide, son contenu sera affiché.</p>
+
+<p>[<a href="#rev-note23" id="note23">23</a>] un chef de projet technique ayant une bonne connaissance de CARBONE sera plus à même de répondre à ce type de cas de figure. Il faut juste retenir que c'est faisable !</p>
+
+<p>[<a href="#rev-note24" id="note24">24</a>] En informatique, on désigne par  « bootstrap » un petit programme d'amorçage qui permet d'en lancer un plus gros. Ne pas confondre ici ce terme avec le framework HTML & CSS Bootstrap qui sert de socle à CARBONE.</p>
+
+<p>[<a href="#rev-note25" id="note25">25</a>] Cette fonctionnalité permet ici de lever les restrictions liées à l'envoi de données du serveur vers le client en cas de redirections tardives via la fonction header("Location:...").</p>
+
+<p>[<a href="#rev-note26" id="note26">26</a>] Depuis CARBONE V4.6, l'inclusion de ces 2 fichiers est optionnelle.</p>
+
+<p>[<a href="#rev-note27" id="note27">27</a>] Dont le choix est précisement fait dans le fichier include/config/config.php précédemment cité.</p>
+
+<p>[<a href="#rev-note28" id="note28">28</a>] Ce nommage est ici donné à titre d'exemple. Il convient de nommer cette librairie en fonction du nom du projet, par exemple, lib_<i>projet_foo_bar</i>.php.</p>
+
+<p>[<a href="#rev-note29" id="note29">29</a>] Attention, PDO, intégré à PHP5.1 n'est pas une couche d'abstraction. PDO propose uniquement
+d'harmoniser et standardiser les appels et retours vers les SGBD majeurs.</p>
+
+<p>[<a href="#rev-note30" id="note30">30</a>] Ce préfixe est utile si l'application doit utiliser une base existante et contenant une table portant le même
+nom qu'une table utilisée par le framework, par exemple, session ou user.</p>
+
+<p>[<a href="#rev-note31" id="note31">31</a>] Si l'on désire changer le nom d'une table en cours de développement ou lors d'une évolution future, une simple édition du fichier include/config/config.php suffira.</p>
+
+<p>[<a href="#rev-note32" id="note32">32</a>] Attention ici ! Si vous optez pour la transmission de l'id de session par url (via la méthode GET), cela interdit
+par la suite la possibilité de copier/coller des urls (si un utilisateur désir indiquer une url à un autre
+utilisateur). Idem, avec des effets plus sournois comme l'analyse de REFERER dans le logs d'Apache. Un
+danger existe donc ici. Il conviendra d'être vigilant.</p>
+
+<p>[<a href="#rev-note33" id="note33">33</a>] Un tableau associatif est un tableau à clés.</p>
+
+<p>[<a href="#rev-note34" id="note34">34</a>] L'adresse email est souvent choisie comme login car elle présente l'avantage d'être unique et de pouvoir
+implémenter simplement un système de rappel de mot de passe par email (tout le monde se souvient de
+son email).</p>
+
+<p>[<a href="#rev-note35" id="note35">35</a>] Si n, le nombre de page indiqué, est pair, le nombre de page effectivement affiché sera n+1. C'est un effet voulu afin de centrer correctement le système de &laquo; navigation glissante &raquo; proposé par CARBONE.</p>
+
+<p>[<a href="#rev-note36" id="note36">36</a>] Historiquement, c'est la première fonction à avoir été écrite lors du démarrage du projet CARBONE. Pour des raisons d'optimisation, cette fonction a été déplacée depuis CARBONE Version 4.5 dans include/lib/lib_carbone.php.</p>
+
+<p>[<a href="#rev-note37" id="note37">37</a>] Attention, cette fonctionnalité ne fonctionnera que si le fichier dont le chemin est initialisé par la
+constante CFG_PATH_FILE_LOG_SQL dans le fichier include/config/config.php existe et s'il est en
+lecture et écriture.</p>
+
+<p>[<a href="#rev-note38" id="note38">38</a>] La lib_test.php est là pour
+vous y aider. Si besoin, écrire les fonctions de tests supplémentaires.</p>
+
+<p>[<a href="#rev-note39" id="note39">39</a>] Access Control List.</p>
+
+<p>[<a href="#rev-note40" id="note40">40</a>] Un utilisateur pourrait par exemple chercher à accéder à une rubrique dont il connait la forme de l'URL, mais sans avoir un accès direct depuis la navigation.</p>
+
+<p>[<a href="#rev-note41" id="note41">41</a>] Il suffira d'impacter le module de calcul des solutions, sans pour autant remettre en cause le reste du développement.</p>
+
+<p>[<a href="#rev-note42" id="note42">42</a>] Afin d'éviter de la duplication de code et faciliter les mises à jour.</p>
+
+<p>[<a href="#rev-note43" id="note43">43</a>] Il est possible de changer le nom de ces répertoires en utilisant l'option -fo et -bo comme le suggère l'aide.</p>
+
+<p>[<a href="#rev-note44" id="note44">44</a>] Par rapport au DOCUMENT ROOT.</p>
+
+<p>[<a href="#rev-note45" id="note45">45</a>] Si une page est composée de plusieurs titres &lt;h2&gt;, &lt;h3&gt; voir &lt;h4&gt;, le moteur va générer un index propre à cette page. Cet index est masqué par défaut. Pour le visualiser, il faudra cliquer sur le titre &lt;h1&gt;.</p>
+
+<p>[<a href="#rev-note46" id="note46">46</a>] Cette opération est effectuée par la fonction optimize_js() présente dans le fichier lib.php. Dans la mesure ou cette fonction supprime les lignes inutiles embarquées par le template header.tpl, il est probable que des adaptations seront nécessaires si le template header.tpl vient à changer.</p>
+</div></div>
+<!-- STOP CONTENT -->
+
+<!-- START FOOTER -->
+<div id="footer" class="clear">
+  <div class="left">
+  Documentation CARBONE V5.3 (Version 1.0) générée par CARBONE DOC (Version 1.3) &middot; Copyright &#169; 1997-2015&nbsp;&middot;&nbsp;<a href="http://www.globalis-ms.com/">Globalis</a>
+  </div>
+  <div class="right">
+  <a href="#top">Haut de page</a>
+  </div>
+  <br/>
+  <br/>
+  <p class="clear">
+  GLOBALIS media systems - Siège social : 6 bis, rue Auguste VITU - 75015 Paris
+  <br/>
+  S.A.R.L au capital de 10 671,43 &euro; - R.C.S Paris B 413 141 193 - SIRET 413 141 193 00024 - APE 741G
+  <br/>
+  Tel: 01 82 83 51 70 / Fax: 01 82 83 51 71 - Web : http://www.globalis-ms.com - Twitter : @GLOBALISms - E-mail : infos@globalis-ms.com
+  </p>
+</div>
+<!-- STOP FOOTER -->
+</body>
+</html>

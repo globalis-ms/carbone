@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="expires" content="-1" />
+<meta http-equiv="pragma" content="no-cache" />
+<meta name="robots" content="all" />
+<meta name="author" content="Armel FAUVEAU" />
+<meta name="description" content="Documentation CARBONE V5.3" />
+
+<title>Documentation CARBONE V5.3 Version 1.0 (06-06-2015) - Découplage de CARBONE</title>
+
+<link rel="stylesheet" type="text/css" media="screen" href="../share/css/screen.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="../share/css/listing.css" />
+<link rel="stylesheet" type="text/css" media="print" href="../share/css/print.css" />
+<link rel="stylesheet" type="text/css" media="print" href="../share/css/listing.css" />
+
+<script type="text/javascript" src="../share/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="../share/js/jquery.corner.min.js"></script>
+<script type="text/javascript" src="../share/js/listing.min.js"></script>
+<script type="text/javascript" src="../share/js/jquery.main.min.js"></script>
+
+</head>
+<body>
+
+<!-- START NAVIGATION -->
+<div id="nav"><div id="nav_inner"></div></div>
+<div id="nav2">
+  <a name="top"></a>
+  <div id="index">
+    <img src="../share/image/nav_toggle.jpg"  title="Table des matières" alt="Table des matières" />
+  </div>
+</div>
+<img src="../share/image/logo.png" title="Globalis" alt="Globalis" style="padding: 0 0 10px 35px;"/>
+<div id="title" class="clear">
+  <div class="left">
+    Divers&nbsp;&#8250;&nbsp;Découplage de CARBONE
+  </div>
+  <div class="right">
+    Dernière édition le 01-02-2014 21:30 par Armel  &#8249;  <a href="../index.html">Table des matières</a>
+  </div>
+</div>
+<!-- STOP NAVIGATION -->
+
+
+<!-- START HEADER -->
+<div id="subtitle" class="clear">
+  <div class="left">
+      <a href="../divers/test.html">Conduite de tests</a> &#8249;&#8249;
+  </div>
+  <div class="right">
+      &#8250;&#8250; <a href="../divers/production.html">Mise en production</a>
+  </div>
+</div>
+<!-- STOP HEADER -->
+
+<br clear="all" />
+
+<!-- START CONTENT -->
+<div id="content">
+<h1>Découplage de CARBONE</h1>
+<p>
+Il est possible de &laquo; découpler &raquo; CARBONE afin de mettre en place un Frontoffice et un Backoffice, tout en centralisant le coeur du framework<sup>[<a href="#note1" id="rev-note1">1</a>]</sup>.
+</p>
+<p>
+Le script decouplage.php, disponible dans le répertoire divers/outils/, permet de déployer automatiquement une version de CARBONE &laquo;découplée&raquo; vers un répertoire cible. 
+</p>
+
+<pre class="code">
+chrome:outils armel$ php decouplage.php 
+usage : php engine [OPTION]... DIRECTORY
+Install CARBONE in the target DIRECTORY
+
+-h, --help	print this help.
+-d, --debug	print debugging information.
+-fo=&lt;name&gt;	frontoffice directory name (default is 'fo').
+-bo=&lt;name&gt;	backoffice directory name (default is 'bo').
+</pre>
+
+<p>
+Le script va effectuer plusieurs opérations, dans le répertoire cible :
+</p>
+
+<ul>
+<li>création d'un répertoire fo/</li>
+<li>création d'un répertoire bo/</li>
+<li>copie du répertoire include/</li>
+<li>copie du répertoire web/</li>
+</ul>
+
+<p>
+Les répertoires fo/ et bo/ <sup>[<a href="#note2" id="rev-note2">2</a>]</sup> contiendront l'ensemble des rubriques fonctionnelles présentées en exemple dans CARBONE (profil, utilisateur, etc.). Ces 2 répertoires contiendront également une copie du fichier .htaccess (à la racine).
+</p>
+
+<p>
+Le répertoire include/ sera patché afin de :
+</p>
+
+<ul>
+<li>découpler le fichier start_php.php en start_php_fo.php et start_php_bo.php</li>
+<li>découpler le fichier open.php en open_fo.php et open_bo.php</li>
+<li>découpler le fichier config/config.php en config/config_fo.php et config/config_bo.php</li>
+<li>découpler le fichier config/navigation.php en config/navigation_fo.php et config/navigation_bo.php</li>
+</ul>
+
+<p>
+Enfin, l'appel au bootstrap de CARBONE sera patché dans l'ensemble des scripts présents dans les répertoires fo/ et bo/, afin de pointer respectivement vers start_php_fo.php et start_php_bo.php (en début de script).
+</p>
+
+<p>
+Si tout se déroule correctement, le script (en mode &laquo; debug &raquo;) devrait afficher ceci :
+</p>
+
+<pre class="code">
+chrome:outils armel$ php decouplage.php -fo=front -bo=back -d webperso/carbone_decouplage/
+..............................................................................................................
+Clone back: OK
+..............................................................................................................
+Clone front: OK
+Patch .htaccess in front: OK
+Patch .htaccess in back: OK
+......................................
+Clone CARBONE: OK
+Patch scripts /include/open_front.php: OK
+Patch scripts /include/open_back.php: OK
+Patch scripts /include/start_php_front.php: OK
+Patch scripts /include/start_php_back.php: OK
+Patch scripts /include/config/navigation_front.php: OK
+Patch scripts /include/config/navigation_back.php: OK
+Patch scripts /include/config/config_front.php: OK
+Patch scripts /include/config/config_back.php: OK
+Patch scripts in include: OK
+Patch scripts in front: OK
+Patch scripts in back: OK
+</pre>
+
+<p>
+En cas de problème, le script devrait retourner des messages de type &laquo; FAIL &raquo; auxquels il conviendra d'être attentif. Demander l'avis d'un chef de projet technique si ces messages apparaissent.
+</p><div class="note">
+<p>[<a href="#rev-note1" id="note1">1</a>] Afin d'éviter de la duplication de code et faciliter les mises à jour.</p>
+
+<p>[<a href="#rev-note2" id="note2">2</a>] Il est possible de changer le nom de ces répertoires en utilisant l'option -fo et -bo comme le suggère l'aide.</p>
+</div></div>
+<!-- STOP CONTENT -->
+
+<!-- START FOOTER -->
+<div id="footer" class="clear">
+  <div class="left">
+  Documentation CARBONE V5.3 (Version 1.0) générée par CARBONE DOC (Version 1.3) &middot; Copyright &#169; 1997-2015&nbsp;&middot;&nbsp;<a href="http://www.globalis-ms.com/">Globalis</a>
+  </div>
+  <div class="right">
+  <a href="#top">Haut de page</a>
+  </div>
+  <br/>
+  <br/>
+  <p class="clear">
+  GLOBALIS media systems - Siège social : 6 bis, rue Auguste VITU - 75015 Paris
+  <br/>
+  S.A.R.L au capital de 10 671,43 &euro; - R.C.S Paris B 413 141 193 - SIRET 413 141 193 00024 - APE 741G
+  <br/>
+  Tel: 01 82 83 51 70 / Fax: 01 82 83 51 71 - Web : http://www.globalis-ms.com - Twitter : @GLOBALISms - E-mail : infos@globalis-ms.com
+  </p>
+</div>
+<!-- STOP FOOTER -->
+</body>
+</html>

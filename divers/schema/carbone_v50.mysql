@@ -1,0 +1,78 @@
+-- phpMyAdmin SQL Dump
+-- version 3.4.8
+-- http://www.phpmyadmin.net
+--
+-- Client: localhost
+-- Généré le : Mer 11 Juillet 2012 à 04:15
+-- Version du serveur: 5.5.19
+-- Version de PHP: 5.3.10
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Base de données: `carbone_v50`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `data`
+--
+
+CREATE TABLE IF NOT EXISTS `data` (
+  `data_id` int(11) NOT NULL AUTO_INCREMENT,
+  `online` tinyint(3) NOT NULL DEFAULT '0',
+  `titre` varchar(255) NOT NULL DEFAULT '',
+  `data_1` text NOT NULL,
+  `data_2` text NOT NULL,
+  `data_3` text NOT NULL,
+  `upload_1` varchar(255) NOT NULL DEFAULT '',
+  `upload_2` varchar(255) NOT NULL DEFAULT '',
+  `url` varchar(255) NOT NULL DEFAULT '',
+  UNIQUE KEY `data_id` (`data_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `session`
+--
+
+CREATE TABLE IF NOT EXISTS `session` (
+  `session_id` varchar(255) NOT NULL DEFAULT '',
+  `data` mediumtext NOT NULL,
+  `expire` varchar(14) DEFAULT NULL,
+  PRIMARY KEY (`session_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `user`
+--
+
+CREATE TABLE IF NOT EXISTS `user` (
+  `user_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `actif` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `password` varchar(255) NOT NULL DEFAULT '',
+  `nom` varchar(255) NOT NULL DEFAULT '',
+  `prenom` varchar(255) NOT NULL DEFAULT '',
+  `email` varchar(255) NOT NULL DEFAULT '',
+  `poste` varchar(255) NOT NULL DEFAULT '',
+  `acl` varchar(255) NOT NULL DEFAULT '',
+  `theme` varchar(255) NOT NULL DEFAULT '',
+  `langue` varchar(255) NOT NULL DEFAULT '',
+  `last` datetime DEFAULT NULL,
+  PRIMARY KEY (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

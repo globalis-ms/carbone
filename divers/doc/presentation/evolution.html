@@ -1,0 +1,279 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="expires" content="-1" />
+<meta http-equiv="pragma" content="no-cache" />
+<meta name="robots" content="all" />
+<meta name="author" content="Armel FAUVEAU" />
+<meta name="description" content="Documentation CARBONE V5.3" />
+
+<title>Documentation CARBONE V5.3 Version 1.0 (06-06-2015) - Les dernières évolutions</title>
+
+<link rel="stylesheet" type="text/css" media="screen" href="../share/css/screen.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="../share/css/listing.css" />
+<link rel="stylesheet" type="text/css" media="print" href="../share/css/print.css" />
+<link rel="stylesheet" type="text/css" media="print" href="../share/css/listing.css" />
+
+<script type="text/javascript" src="../share/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="../share/js/jquery.corner.min.js"></script>
+<script type="text/javascript" src="../share/js/listing.min.js"></script>
+<script type="text/javascript" src="../share/js/jquery.main.min.js"></script>
+
+</head>
+<body>
+
+<!-- START NAVIGATION -->
+<div id="nav"><div id="nav_inner"></div></div>
+<div id="nav2">
+  <a name="top"></a>
+  <div id="index">
+    <img src="../share/image/nav_toggle.jpg"  title="Table des matières" alt="Table des matières" />
+  </div>
+</div>
+<img src="../share/image/logo.png" title="Globalis" alt="Globalis" style="padding: 0 0 10px 35px;"/>
+<div id="title" class="clear">
+  <div class="left">
+    Présentation&nbsp;&#8250;&nbsp;Les dernières évolutions
+  </div>
+  <div class="right">
+    Dernière édition le 02-02-2014 03:12 par Armel  &#8249;  <a href="../index.html">Table des matières</a>
+  </div>
+</div>
+<!-- STOP NAVIGATION -->
+
+
+<!-- START HEADER -->
+<div id="subtitle" class="clear">
+  <div class="left">
+      <a href="../presentation/prerequis.html">Prérequis</a> &#8249;&#8249;
+  </div>
+  <div class="right">
+      &#8250;&#8250; <a href="../presentation/licence.html">Licence</a>
+  </div>
+</div>
+<!-- STOP HEADER -->
+
+<br clear="all" />
+
+<!-- START CONTENT -->
+<div id="content">
+<h1>Les dernières évolutions</h1>
+<div id="mini_index"><h2><a href="#index1" id="rev-index1">Version 5.1</a></h2>
+<h3><a href="#index2" id="rev-index2">Améliortation de la gestion des ACL</a></h3>
+<h3><a href="#index3" id="rev-index3">Améliortation de la gestion des messages</a></h3>
+<h2><a href="#index4" id="rev-index4">Version 5.0</a></h2>
+<h3><a href="#index5" id="rev-index5">Intégration du framework Bootstrap (version 2)</a></h3>
+<h3><a href="#index6" id="rev-index6">Passage en UTF-8</a></h3>
+<h3><a href="#index7" id="rev-index7">Corrections et améliorations diverses</a></h3>
+<h2><a href="#index8" id="rev-index8">Version 4.6</a></h2>
+<h3><a href="#index9" id="rev-index9">Refonte de l'arborescence</a></h3>
+<h4><a href="#index10" id="rev-index10">Le répertoire include/</a></h4>
+<h4><a href="#index11" id="rev-index11">Le répertoire web/</a></h4>
+<h3><a href="#index12" id="rev-index12">Simplification du &laquo; bootstrap &raquo;</a></h3>
+<h3><a href="#index13" id="rev-index13">Refonte jQuery</a></h3>
+<h4><a href="#index14" id="rev-index14">Eléments de formulaire</a></h4>
+<h4><a href="#index15" id="rev-index15">Gestion des alertes</a></h4>
+<h3><a href="#index16" id="rev-index16">Amélioration de la brique Backoffice</a></h3>
+<h3><a href="#index17" id="rev-index17">Extension de la gestion des ACL</a></h3>
+<h3><a href="#index18" id="rev-index18">Fichier de log SQL et erreur</a></h3>
+<h3><a href="#index19" id="rev-index19">Découplage</a></h3>
+<h3><a href="#index20" id="rev-index20">Evolutions diverses</a></h3>
+</div>
+
+
+<p>Nous allons présenter ici les principales évolutions des versions 4.6, 5.0 et 5.1 de CARBONE.</p>
+
+<h2><a href="#rev-index1" id="index1">Version 5.1</a></h2>
+
+
+<h3><a href="#rev-index2" id="index2">Améliortation de la gestion des ACL</a></h3>
+
+
+<p>Il n'est plus nécessaire de gérer des constantes ACL_RUBRIQUE. En complément, il est possible de filtrer les actions autorisées. 
+
+<h3><a href="#rev-index3" id="index3">Améliortation de la gestion des messages</a></h3>
+
+
+<p>Il est possible d'afficher des messages de différentes manières ('normal', 'modal' ou 'session') avec différents niveaux de colorisation ('error', 'warning', info' ou 'success').
+
+<h2><a href="#rev-index4" id="index4">Version 5.0</a></h2>
+
+
+<h3><a href="#rev-index5" id="index5">Intégration du framework Bootstrap (version 2)</a></h3>
+
+
+<p><a href="http://twitter.github.com/bootstrap/">Bootstrap</a> est un framework CSS destiné aux applications Web. Développé par Twitter et distribué sous licence Apache 2, c'est un outil à considérer lors du développement rapide d'applications Web. L'utilisation combinée du HTML, du CSS, et du JavaScript propose au développeur des méthodes de développement très efficaces. Il sert désormais de socle à CARBONE, comme le fait déjà <a href="http://jquery.com">jQuery</a> en qualité de framework JavaScript.</p>
+
+<p>C'est la grosse évolution majeure de cette nouvelle version, apportant une meilleure intégration de HTML5 et CSS3</p>
+
+<h3><a href="#rev-index6" id="index6">Passage en UTF-8</a></h3>
+
+
+<p>Passage au format UTF-8 par défaut.</p>
+
+<h3><a href="#rev-index7" id="index7">Corrections et améliorations diverses</a></h3>
+
+
+<p>On peut aussi noter de nombreuses corrections et améliorations diverses</p>
+<ul>
+	<li>Ajout d'un fichier robots.txt à la racine,</li>
+	<li>Export au format CSV (en plus de PDF et Excel),</li>
+	<li>Refonte de la barre de debug,</li>
+	<li>Corrections de bugs divers.</li>
+</ul>
+
+<h2><a href="#rev-index8" id="index8">Version 4.6</a></h2>
+
+
+<h3><a href="#rev-index9" id="index9">Refonte de l'arborescence</a></h3>
+
+
+<p>Afin de mieux structurer l'arborescence de CARBONE, quelques modifications ont été apportées.</p>
+
+<h4><a href="#rev-index10" id="index10">Le répertoire include/</a></h4>
+
+<p>
+Le répertoire include/ est désormais décomposé en plusieurs sous répertoires : config/, langue/ et lib/. Le sous répertoire config/ contient les scripts config.php (anciennement global_config.php) et navigation.php. Le sous répertoire langue/ contient les fichiers de langues. Le sous répertoire lib/ contient les librairies et classes essentielles au bon fonctionnement du framework (à noter que global_lib.php a été renommé en lib_carbone.php). Le reste des scripts se trouve à la racine de include/, comme avant. C'est le cas des scripts start_*.php, stop_*.php, open.php et close.php.
+</p>
+
+<p>
+A noter qu'il n'y a plus de notion de variables et constantes préfixées GLB_ ou $gbl_ (pour &laquo; globale &raquo;) et LCL_ et $lcl_ (pour &laquo; locale &raquo;). En particulier, les variables et constantes présentes dans include/config.php sont désormais préfixées CFG_ et $cfg_.
+</p>
+
+<h4><a href="#rev-index11" id="index11">Le répertoire web/</a></h4>
+
+<p>
+Les répertoires js/, image/, theme/, cache/ et upload/ sont désormais centralisés dans un répertoire web/ présent à la racine.
+</p>
+
+<h3><a href="#rev-index12" id="index12">Simplification du &laquo; bootstrap &raquo;</a></h3>
+
+
+Les fichiers local_lib.php et local_config.php sont désormais optionnels. Ils sont éventuellement appelés depuis include/start_php.php (qui teste la présence de ces 2 fichiers pour savoir s'il faut les inclure ou non).
+Le &laquo; bootstrap &raquo; du framework se résume donc en début de script à :
+
+<pre class="code">
+// Chargement du framework
+
+require 'start_php.php';
+</pre>
+
+<h3><a href="#rev-index13" id="index13">Refonte jQuery</a></h3>
+
+
+Le framework CARBONE utilise désormais jQuery 1.4 comme socle technique Javascript. En complément, d'autres modifications ont été apportées.
+
+<h4><a href="#rev-index14" id="index14">Eléments de formulaire</a></h4>
+
+
+<p>
+Les éléments de formulaire &laquo; multiselect &raquo; et &laquo; calendar &raquo;, ainsi que les options d'autocompletion, etc. ont été supprimés (include/lib_form.php). L'idée est de nettoyer le code du coeur de CARBONE comportant encore du Javascript intrusif.
+</p>
+<ul>
+<li>Un champ &laquo; calendar &raquo; est un simple champ input,</li>
+<li>Un champ &laquo; multiselect &raquo; est un simple champ select multiple.</li>
+</ul>
+<p>
+Il suffit ensuite d'effectuer les appels jQuery nécessaires pour appliquer le comportement souhaité.
+En particulier, le plugin multiselect a été recodé. Il gère lui même la création d'un second container afin d'y faire transiter les données sélectionnées. En complément d'autres options sont dispo, comme par exemple, la préservation de l'ordre des éléments. 
+</p>
+
+<h4><a href="#rev-index15" id="index15">Gestion des alertes</a></h4>
+
+
+<p>
+Dans le même esprit, la gestion des alertes a également été totalement repensée (en particulier au niveau de la brique Backoffice). Il est désormais possible de gérer des notifications ou des demandes de confirmation, de façon plus évoluée qu'avec de simples alert() en Javascript. Un plugin &laquo; notice &raquo; a été écrit dans ce but. Le plugin backoffice a également été amélioré. Des fichiers readme.txt sont disponibles pour de plus amples informations.
+</p>
+
+<h3><a href="#rev-index16" id="index16">Amélioration de la brique Backoffice</a></h3>
+
+
+<p>
+La plus grosse évolution concerne la mise en place d'une seconde fonction utilisateur permettant d'affiner la requête avant de la jouer. Attention, la clé &laquo; select_user_function &raquo;	désigne désormais la fonction optionnelle à appeler pour affiner la requête si besoin. Et la clé &laquo; result_user_function &raquo; désigne, quant à elle, la fonction optionnelle à appeler pour affiner les résultats (comme dans les versions précédentes de CARBONE, il peut donc y avoir une confusion ici).
+</p>
+
+<p>
+En complément, d'autres améliorations mineures ont été apportées. Par exemple, la présence d'action n'est plus obligatoire, ce qui permet d'utiliser la brique Backoffice afin de présenter uniquement des résultats. Le fonctionnement Ajax a été corrigé. La navigation propose désormais des raccourcis début/fin (et la fonction navig_string() a été déplacée dans lib_backoffice.php). Etc.
+</p>
+
+<h3><a href="#rev-index17" id="index17">Extension de la gestion des ACL</a></h3>
+
+
+<p>
+Pour qu'une rubrique ou sous-rubrique soit affichée, au niveau de la navigation, il faut que l'une ou l'autre des conditions suivantes soient vérifiées :
+</p>
+
+<ul>
+<li>ou bien l'ACL associée à la rubrique (définie par le clé &laquo; acl &raquo; dans le script include/navigation.php) est vide,</li>
+<li>ou bien l'intersection entre l'ACL associée à l'utilisateur courant et l'ACL associée à la rubrique n'est pas vide.</li>
+</ul>
+
+<p>
+Pour qu'un utilisateur puisse accéder (et exécuter le code associé) à une rubrique, il faut que l'une ou l'autre des conditions suivantes soient vérifiées :
+</p>
+
+<ul>
+<li>ou bien l'ACL associée à la rubrique (et définie par la constante ACL_RUBRIQUE) est vide,</li>
+<li>ou bien l'intersection entre l'ACL associée à l'utilisateur courant et l'ACL associée à la rubrique n'est pas vide.</li>
+</ul>
+
+<h3><a href="#rev-index18" id="index18">Fichier de log SQL et erreur</a></h3>
+
+
+<p>
+La gestion du fichier de log SQL a été repensée :
+</p> 
+
+<ul>
+<li>le fichier de log SQL est déployé par défaut dans le répertoire /tmp,</li>
+<li>il reste possible de configurer un autre chemin comme avant, en modifiant la constante CFG_PATH_FILE_LOG_SQL dans include/config.php,</li>
+<li>le fichier de log SQL n'est alimenté que si CFG_DEBUG vaut TRUE (utile en cas d'oubli lors des mises en prod),</li>
+<li>le format du fichier de log SQL a changé afin de supporter les requêtes concurrentes.</li>
+</ul>
+
+<p>
+L'avantage du répertoire /tmp est qu'Apache peut écrire dedans (en général). Par défaut, il n'est donc plus nécessaire d'ajouter des droits d'écriture sur le fichier de log (sauf si le chemin est changé, ou configuration du serveur particulière). Le log des requêtes SQL devrait donc être plus transparent et évite la présence d'un répertoire log à la racine.
+</p>
+
+<p>
+A noter enfin que si CFG_DEBUG vaut FALSE, une requête SQL qui plante n'est plus affichée (comme c'était le cas avant, peu idéal en production...).
+</p>
+
+<h3><a href="#rev-index19" id="index19">Découplage</a></h3>
+
+
+<p>
+Evolution majeure, il est désormais possible de &laquo; découpler &raquo; CARBONE en frontoffice/backoffice. Un script permet de le faire automatiquement.
+</p>
+
+<h3><a href="#rev-index20" id="index20">Evolutions diverses</a></h3>
+
+
+<p>
+Refactoring de code et correction de bugs divers sont également à notifier. La documentation a été modifiée. Le framework CARBONE est aussi un peu moins gourmand en empreinte mémoire...(eh oui, encore) !
+</p></div>
+<!-- STOP CONTENT -->
+
+<!-- START FOOTER -->
+<div id="footer" class="clear">
+  <div class="left">
+  Documentation CARBONE V5.3 (Version 1.0) générée par CARBONE DOC (Version 1.3) &middot; Copyright &#169; 1997-2015&nbsp;&middot;&nbsp;<a href="http://www.globalis-ms.com/">Globalis</a>
+  </div>
+  <div class="right">
+  <a href="#top">Haut de page</a>
+  </div>
+  <br/>
+  <br/>
+  <p class="clear">
+  GLOBALIS media systems - Siège social : 6 bis, rue Auguste VITU - 75015 Paris
+  <br/>
+  S.A.R.L au capital de 10 671,43 &euro; - R.C.S Paris B 413 141 193 - SIRET 413 141 193 00024 - APE 741G
+  <br/>
+  Tel: 01 82 83 51 70 / Fax: 01 82 83 51 71 - Web : http://www.globalis-ms.com - Twitter : @GLOBALISms - E-mail : infos@globalis-ms.com
+  </p>
+</div>
+<!-- STOP FOOTER -->
+</body>
+</html>

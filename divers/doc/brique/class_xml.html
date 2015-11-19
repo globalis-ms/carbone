@@ -1,0 +1,523 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="expires" content="-1" />
+<meta http-equiv="pragma" content="no-cache" />
+<meta name="robots" content="all" />
+<meta name="author" content="Armel FAUVEAU" />
+<meta name="description" content="Documentation CARBONE V5.3" />
+
+<title>Documentation CARBONE V5.3 Version 1.0 (06-06-2015) - Parsing XML: class_xml.php</title>
+
+<link rel="stylesheet" type="text/css" media="screen" href="../share/css/screen.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="../share/css/listing.css" />
+<link rel="stylesheet" type="text/css" media="print" href="../share/css/print.css" />
+<link rel="stylesheet" type="text/css" media="print" href="../share/css/listing.css" />
+
+<script type="text/javascript" src="../share/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="../share/js/jquery.corner.min.js"></script>
+<script type="text/javascript" src="../share/js/listing.min.js"></script>
+<script type="text/javascript" src="../share/js/jquery.main.min.js"></script>
+
+</head>
+<body>
+
+<!-- START NAVIGATION -->
+<div id="nav"><div id="nav_inner"></div></div>
+<div id="nav2">
+  <a name="top"></a>
+  <div id="index">
+    <img src="../share/image/nav_toggle.jpg"  title="Table des matières" alt="Table des matières" />
+  </div>
+</div>
+<img src="../share/image/logo.png" title="Globalis" alt="Globalis" style="padding: 0 0 10px 35px;"/>
+<div id="title" class="clear">
+  <div class="left">
+    Briques élémentaires&nbsp;&#8250;&nbsp;Parsing XML: class_xml.php
+  </div>
+  <div class="right">
+    Dernière édition le 01-02-2014 21:29 par Armel  &#8249;  <a href="../index.html">Table des matières</a>
+  </div>
+</div>
+<!-- STOP NAVIGATION -->
+
+
+<!-- START HEADER -->
+<div id="subtitle" class="clear">
+  <div class="left">
+      <a href="../brique/class_session.html">Session: class_session.php</a> &#8249;&#8249;
+  </div>
+  <div class="right">
+      &#8250;&#8250; <a href="../brique/lib_form.html">Formulaires: lib_form.php</a>
+  </div>
+</div>
+<!-- STOP HEADER -->
+
+<br clear="all" />
+
+<!-- START CONTENT -->
+<div id="content">
+<h1>Classe de parsing XML : class_xml.php</h1>
+<div id="mini_index"><h2><a href="#index1" id="rev-index1">Exemple simple</a></h2>
+<h2><a href="#index2" id="rev-index2">Informations récupérées</a></h2>
+<h2><a href="#index3" id="rev-index3">Utilisation</a></h2>
+<h3><a href="#index4" id="rev-index4">Constructeur</a></h3>
+<h3><a href="#index5" id="rev-index5">parse()</a></h3>
+<h3><a href="#index6" id="rev-index6">error()</a></h3>
+<h3><a href="#index7" id="rev-index7">parser_free()</a></h3>
+<h3><a href="#index8" id="rev-index8">get_element()</a></h3>
+<h3><a href="#index9" id="rev-index9">find_element()</a></h3>
+<h3><a href="#index10" id="rev-index10">find_child()</a></h3>
+<h3><a href="#index11" id="rev-index11">to_iso()</a></h3>
+<h3><a href="#index12" id="rev-index12">debug()</a></h3>
+<h2><a href="#index13" id="rev-index13">Manipulation de gros fichiers</a></h2>
+</div>
+
+<p>
+CARBONE propose une classe permettant de parser et manipuler le contenu d'un fichier XML. Basée sur l'extension « XML Parser » de PHP permettant de mettre en place un parser XML, elle est compatible avec PHP4.
+</p>
+
+<h2><a href="#rev-index1" id="index1">Exemple simple</a></h2>
+
+
+<p>Voici un exemple d'utilisation de cette classe :</p>
+
+<pre class="code">&lt;?php
+require 'class_xml.php';
+
+// Contenu XML, ici en cha&icirc;ne de caract&egrave;res mais il peut &ecirc;tre dans un fichier
+$string = file_get_contents('fichier_xml.xml');
+
+// Initialisation d'une instance de la classe gxml
+$xml = new gxml();
+// Parsing du XML
+$xml-&gt;parse($string);
+
+// Exemple d'appel pour r&eacute;cup&eacute;rer des informations du flux XML
+$liste_element = $xml-&gt;find_element('balise');
+?&gt;</pre>
+
+<p>Le principe est de fournir à une instance de la classe gxml, une chaîne de caractères correspondant à un flux XML. Ce flux sera converti en un tableau d'éléments. Des méthodes de requêtage permettent alors de récupérer les informations de ce tableau de parsing.</p>
+
+<h2><a href="#rev-index2" id="index2">Informations récupérées</a></h2>
+
+
+<p>Avant de voir les différentes méthodes permettant de manipuler les données, voici la description d'un item pouvant être récupéré :</p>
+
+<pre class="code">Array
+(
+    [index] =&gt; 28
+    [tag] =&gt; utilisateur
+    [level] =&gt; 1
+    [attributes] =&gt; Array
+        (
+            [id] =&gt; 45
+            [name] =&gt; &quot;DUPONT&quot;
+            [firstname] =&gt; &quot;Roger&quot;
+        )
+
+    [cdata] =&gt; ''
+    [child] =&gt; Array
+        (
+            [0] =&gt; 29
+            [1] =&gt; 35
+        )
+
+    [parent] =&gt; 13
+)</pre>
+
+<ul>
+<li>la clé « index » indique le numéro d'ordre dans le tableau de parsing.</li>
+<li>la clé « tag » correspond au tagName de la balise.</li>
+<li>la clé « level » correspond à la profondeur de la balise dans le flux XML. L'élément racine aura un level à 0, les premiers sous-éléments auront un level à 1, etc.</li>
+<li>la clé « attributes » contient un tableau des attributs de la balise.</li>
+<li>la clé « cdata » contient le contenu #PCDATA, si l'élément ne possède de contenu #PCDATA, cette clé contiendra une chaîne vide.</li>
+<li>la clé « child » contient un tableau avec les clés « index » des sous-éléments de l'élément courant.</li>
+<li>la clé « parent » contient le numéro d'index du parent de l'élément courant. Pour l'élément racine cette valeur vaut 0.</li>
+</ul>
+
+<p>En règle générale, même s'il est possible d'avoir les deux à la fois, un élément XML aura soit un contenu « cdata », soit une liste de sous-éléments « child ».</p>
+
+<h2><a href="#rev-index3" id="index3">Utilisation</a></h2>
+
+
+<p>Nous allons détailler succinctement les méthodes proposées par la classe gxml.</p>
+
+<h3><a href="#rev-index4" id="index4">Constructeur</a></h3>
+
+
+<p>new <strong>gxml</strong> ( <em>array</em> $exception = array(), <em>string</em> $encoding = "ISO-8859-1" )</p>
+
+<table>
+<tr>
+	<th width="30%">Paramètres</th>
+	<th>Description</th>
+</tr>
+<tr>
+	<td>$exception (facultatif)</td>
+	<td>Permet de préciser des noms de balise qui ne seront pas parsées. Utile si une balise contient du code html que l'on veut récupérer en tant que #PCDATA.</td>
+</tr>
+<tr>
+	<td>$encoding (facultatif)</td>
+	<td>Ce paramètre permet d'indiquer au parser quel encodage utiliser. L'encoding par défaut est l'ISO-8859-1.</td>
+</tr>
+</table>
+
+<p>Exemple d'utilisation :</p>
+
+<pre class="code">&lt;?php
+require 'class_xml.php';
+
+$string = file_get_contents('fichier_utf8.xml');
+
+$xml = new gxml(array('article'), 'UTF-8'));
+$xml-&gt;parse($string);
+
+?&gt;</pre>
+
+<p>Pour cet exemple, les sous-élements des balises &lt;article&gt; ne seront pas parsés. Tous les sous-éléments présents entre &lt;article&gt; et &lt;/article&gt; seront considérés comme #PCDATA. De plus on indique au parser que l'encodage attendu en retour est l'UTF-8.</p>
+
+<h3><a href="#rev-index5" id="index5">parse()</a></h3>
+
+
+<p><strong>parse</strong> ( <em>string</em> $string, <em>boolean</em> $parser_free = TRUE )</p>
+
+<p>Lance le parsing d'un flux xml. Retourne TRUE si le parsing a été effectué correctement, FALSE sinon.</p>
+
+<table>
+<tr>
+	<th width="30%">Paramètres</th>
+	<th>Description</th>
+</tr>
+<tr>
+	<td>$string</td>
+	<td>Flux XML à parser</td>
+</tr>
+<tr>
+	<td>$parser_free (facultatif)</td>
+	<td>Indique si le parser doit être détruit après le parsing. TRUE par défaut</td>
+</tr>
+</table>
+
+<p>Exemple d'utilisation :</p>
+
+<pre class="code">&lt;?php
+require 'class_xml.php';
+
+$string = file_get_contents('fichier_xml.xml');
+
+$xml = new gxml();
+$xml-&gt;parse($string);
+
+?&gt;</pre>
+
+<h3><a href="#rev-index6" id="index6">error()</a></h3>
+
+
+<p>Retourne la dernière erreur levée par le parseur. Cette méthode n'a pas de paramètre.</p>
+
+<p>Exemple d'utilisation :</p>
+
+<pre class="code">&lt;?php
+require 'class_xml.php';
+
+$string = file_get_contents('fichier_xml.xml');
+
+$xml = new gxml();
+if(!$xml-&gt;parse($string)) {
+    echo $xml-&gt;error();
+}
+
+?&gt;</pre>
+
+<h3><a href="#rev-index7" id="index7">parser_free()</a></h3>
+
+
+<p>Tentative de destruction du parser courant. Cette méthode n'a pas de paramètre.</p>
+
+<p>Exemple d'utilisation :</p>
+
+<pre class="code">&lt;?php
+require 'class_xml.php';
+
+$string = file_get_contents('fichier_xml.xml');
+
+$xml = new gxml();
+if(!$xml-&gt;parse($string)) {
+    echo $xml-&gt;error();
+}
+
+//
+// Ici on effectue un traitement quelconque
+//
+
+$xml-&gt;parser_free();
+
+?&gt;</pre>
+
+<h3><a href="#rev-index8" id="index8">get_element()</a></h3>
+
+
+<p><strong>get_element</strong> ( <em>integer</em> $index )</p>
+
+<p>Retourne les données d'un élément du fichier xml à partir de son numéro d'index dans le tableau de parsing.</p>
+
+<table>
+<tr>
+	<th width="30%">Paramètres</th>
+	<th>Description</th>
+</tr>
+<tr>
+	<td>$index</td>
+	<td>Numéro d'index dans le tableau de parsing</td>
+</tr>
+</table>
+
+<p>Exemple d'utilisation :</p>
+
+<pre class="code">&lt;?php
+require 'class_xml.php';
+
+$string = file_get_contents('fichier_xml.xml');
+
+$xml = new gxml();
+$xml-&gt;parse($string);
+
+$element = $xml-&gt;get_element(30);
+
+?&gt;</pre>
+
+<h3><a href="#rev-index9" id="index9">find_element()</a></h3>
+
+
+<p><strong>find_element</strong> ( <em>string</em> $tag_name, <em>array</em> $filter = array(), <em>array</em> $attr = array(), <em>boolean</em> $first = FALSE, <em>boolean</em> $return_cdata = FALSE )</p>
+
+<p>Retourne une liste d'éléments correspondant à un nom de balise.</p>
+
+<table>
+<tr>
+	<th width="30%">Paramètres</th>
+	<th>Description</th>
+</tr>
+<tr>
+	<td>$tag_name</td>
+	<td>Nom des balises recherchées.</td>
+</tr>
+<tr>
+	<td>$filter (facultatif)</td>
+	<td>Permet de filtrer par rapport aux données du tableau de parsing.</td>
+</tr>
+<tr>
+    <td>$attr (facultatif)</td>
+    <td>Permet de filtrer par rapport aux attributs xml des éléments.</td>
+</tr>
+<tr>
+    <td>$first (facultatif)</td>
+    <td>Permet de retourner uniquement le premier élément correspondant. FALSE par défaut.</td>
+</tr>
+<tr>
+    <td>$return_cdata (facultatif)</td>
+    <td>Permet de retourner uniquement le cdata des éléments correspondants. FALSE par défaut.</td>
+</tr>
+</table>
+
+<p>Exemple d'utilisation :</p>
+
+<pre class="code">&lt;?php
+require 'class_xml.php';
+
+$string = file_get_contents('fichier_xml.xml');
+
+$xml = new gxml();
+$xml-&gt;parse($string);
+
+$liste_user = $xml-&gt;find_element('utilisateur', array('level' =&gt; 3), array('name' =&gt; 'DUPONT'));
+?&gt;</pre>
+
+<p>On cherche ici les balises &lt;utilisateur&gt; qui ont un niveau de profondeur de 3 et dont l'attribut « name » vaut "Dupont".</p>
+
+<h3><a href="#rev-index10" id="index10">find_child()</a></h3>
+
+
+<p><strong>find_child</strong> ( <em>integer</em> $element_index, <em>string</em> $path, <em>array</em> $attr = array(), <em>boolean</em> $first = FALSE, <em>boolean</em> $return_cdata = FALSE )</p>
+
+<p>Retourne une liste de sous-éléments par rapport à l'index d'un élément et à un chemin donné.</p>
+
+<table>
+<tr>
+	<th width="30%">Paramètres</th>
+	<th>Description</th>
+</tr>
+<tr>
+	<td>$element_index</td>
+	<td>Numéro d'index de l'élément parent dans le tableau de parsing.</td>
+</tr>
+<tr>
+	<td>$path</td>
+	<td>Chemin XML à partir de l'élément parent des sous-éléments recherchés.</td>
+</tr>
+<tr>
+    <td>$attr (facultatif)</td>
+    <td>Permet de filtrer par rapport aux attributs XML des éléments.</td>
+</tr>
+<tr>
+    <td>$first (facultatif)</td>
+    <td>Permet de retourner uniquement le premier élément correspondant. FALSE par défaut.</td>
+</tr>
+<tr>
+    <td>$return_cdata (facultatif)</td>
+    <td>Permet de retourner uniquement le cdata des éléments correspondants. FALSE par défaut.</td>
+</tr>
+</table>
+
+<p>Exemple d'utilisation :</p>
+
+<pre class="code">&lt;?php
+require 'class_xml.php';
+
+$string = file_get_contents('fichier_xml.xml');
+
+$xml = new gxml();
+$xml-&gt;parse($string);
+
+$liste_societe = $xml-&gt;find_element('societe');
+
+foreach($liste_societe as $societe) {
+
+    $liste_ville = $xml-&gt;find_child($societe-&gt;index, 'client/ville', array('departement' =&gt; 30));
+
+}
+?&gt;</pre>
+
+<p>On cherche ici, pour chaque balise &lt;societe&gt;, les balises &lt;ville&gt; sous-éléments d'une balise &lt;client&gt; et dont l'attribut « departement » vaut "30".</p>
+
+<h3><a href="#rev-index11" id="index11">to_iso()</a></h3>
+
+
+<p><strong>to_iso</strong> ( <em>string</em> $flux, <em>string</em> $charset_in = "UTF-8", <em>string</em> $method = "iconv" )</p>
+
+<p>Convertie une chaîne de caractères en ISO-8859-1.</p>
+
+<table>
+<tr>
+	<th width="30%">Paramètres</th>
+	<th>Description</th>
+</tr>
+<tr>
+    <td>$flux</td>
+    <td>Chaîne de caractères à convertir.</td>
+</tr>
+<tr>
+    <td>$charset_in (facultatif)</td>
+    <td>Charset du flux entrant. UTF-8 par défaut.</td>
+</tr>
+<tr>
+    <td>$method (facultatif)</td>
+    <td>Méthode PHP à utiliser (iconv ou utf8_decode). iconv par défaut.</td>
+</tr>
+</table>
+
+<p>Exemple d'utilisation :</p>
+
+<pre class="code">&lt;?php
+require 'class_xml.php';
+
+$string = file_get_contents('fichier_xml.xml');
+
+$xml = new gxml();
+
+$string = $xml-&gt;to_iso($string);
+
+$xml-&gt;parse($string);
+
+$xml-&gt;debug();
+
+?&gt;</pre>
+
+<h3><a href="#rev-index12" id="index12">debug()</a></h3>
+
+
+<p>Affiche le contenu du tableau de parsing. Cette méthode n'a pas de paramètre.</p>
+
+<p>Exemple d'utilisation :</p>
+
+<pre class="code">&lt;?php
+require 'class_xml.php';
+
+$string = file_get_contents('fichier_xml.xml');
+
+$xml = new gxml();
+$xml-&gt;parse($string);
+
+$xml-&gt;debug();
+
+?&gt;</pre>
+
+<h2><a href="#rev-index13" id="index13">Manipulation de gros fichiers</a></h2>
+
+
+<p>Dans certains cas, si la taille de la chaîne XML à parser est trop importante, un dépassement de la mémoire allouée au script peut survenir. Il peut être alors possible de procéder à un parsing de la chaîne de caractères par étapes de la manière suivante :</p>
+
+<pre class="code">&lt;?php
+require 'class_xml.php';
+
+$handle = fopen('xml/partenaires.xml', 'r');
+
+while (!feof($handle)) {
+
+    $string='';
+    $buffer = fgets($handle);
+
+    if(strstr($buffer,'&lt;partenaire&gt;')) {
+        while (!strstr($buffer,'&lt;/partenaire&gt;')) {
+            $string.=$buffer;
+            $buffer = fgets($handle);
+        }
+        $string.=$buffer;
+    }
+    else {
+        unset($string);
+        continue;
+    }
+
+    // Initialisation de l'objet XML
+    if(isset($xml)) {
+        unset($xml);
+    }
+
+    $xml = new gxml();
+    $xml-&gt;parse($string);
+
+    // Recherche des diff&eacute;rents partenaires dans le flux XML
+    $partenaires = $xml-&gt;find_element('partenaire');
+
+}
+
+?&gt;</pre>
+
+<p>Ici on parse chaque balise &lt;partenaire&gt; indépendamment des autres. Le principe est le même sauf qu'au lieu de manipuler un tableau de n éléments, on manipule n tableaux de 1 seul élément.</p></div>
+<!-- STOP CONTENT -->
+
+<!-- START FOOTER -->
+<div id="footer" class="clear">
+  <div class="left">
+  Documentation CARBONE V5.3 (Version 1.0) générée par CARBONE DOC (Version 1.3) &middot; Copyright &#169; 1997-2015&nbsp;&middot;&nbsp;<a href="http://www.globalis-ms.com/">Globalis</a>
+  </div>
+  <div class="right">
+  <a href="#top">Haut de page</a>
+  </div>
+  <br/>
+  <br/>
+  <p class="clear">
+  GLOBALIS media systems - Siège social : 6 bis, rue Auguste VITU - 75015 Paris
+  <br/>
+  S.A.R.L au capital de 10 671,43 &euro; - R.C.S Paris B 413 141 193 - SIRET 413 141 193 00024 - APE 741G
+  <br/>
+  Tel: 01 82 83 51 70 / Fax: 01 82 83 51 71 - Web : http://www.globalis-ms.com - Twitter : @GLOBALISms - E-mail : infos@globalis-ms.com
+  </p>
+</div>
+<!-- STOP FOOTER -->
+</body>
+</html>

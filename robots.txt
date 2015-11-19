@@ -1,0 +1,9 @@
+User-agent: *
+Crawl-delay: 10
+# Directories
+Disallow: /divers/
+Disallow: /include/
+Disallow: /web/
+# Files
+Disallow: /changelog.txt
+Disallow: /licence.txt

@@ -1,0 +1,299 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="expires" content="-1" />
+<meta http-equiv="pragma" content="no-cache" />
+<meta name="robots" content="all" />
+<meta name="author" content="Armel FAUVEAU" />
+<meta name="description" content="Documentation CARBONE V5.3" />
+
+<title>Documentation CARBONE V5.3 Version 1.0 (06-06-2015) - A propos de la navigation</title>
+
+<link rel="stylesheet" type="text/css" media="screen" href="../share/css/screen.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="../share/css/listing.css" />
+<link rel="stylesheet" type="text/css" media="print" href="../share/css/print.css" />
+<link rel="stylesheet" type="text/css" media="print" href="../share/css/listing.css" />
+
+<script type="text/javascript" src="../share/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="../share/js/jquery.corner.min.js"></script>
+<script type="text/javascript" src="../share/js/listing.min.js"></script>
+<script type="text/javascript" src="../share/js/jquery.main.min.js"></script>
+
+</head>
+<body>
+
+<!-- START NAVIGATION -->
+<div id="nav"><div id="nav_inner"></div></div>
+<div id="nav2">
+  <a name="top"></a>
+  <div id="index">
+    <img src="../share/image/nav_toggle.jpg"  title="Table des matières" alt="Table des matières" />
+  </div>
+</div>
+<img src="../share/image/logo.png" title="Globalis" alt="Globalis" style="padding: 0 0 10px 35px;"/>
+<div id="title" class="clear">
+  <div class="left">
+    Sécurité&nbsp;&#8250;&nbsp;A propos de la navigation
+  </div>
+  <div class="right">
+    Dernière édition le 06-06-2014 19:16 par Armel  &#8249;  <a href="../index.html">Table des matières</a>
+  </div>
+</div>
+<!-- STOP NAVIGATION -->
+
+
+<!-- START HEADER -->
+<div id="subtitle" class="clear">
+  <div class="left">
+      <a href="../securite/session.html">A propos des sessions</a> &#8249;&#8249;
+  </div>
+  <div class="right">
+      &#8250;&#8250; <a href="../analyse/presentation.html">Présentation</a>
+  </div>
+</div>
+<!-- STOP HEADER -->
+
+<br clear="all" />
+
+<!-- START CONTENT -->
+<div id="content">
+<h1>A propos de la navigation</h1>
+<div id="mini_index"><h2><a href="#index1" id="rev-index1">Le script navigation.php, présent à la racine du répertoire include/config/</a></h2>
+<h2><a href="#index2" id="rev-index2">Le script navigation.php, présent à la racine du répertoire du thème utilisé</a></h2>
+<h2><a href="#index3" id="rev-index3">Les ACL</a></h2>
+<h2><a href="#index4" id="rev-index4">Principe de fonctionnement</a></h2>
+<h3><a href="#index5" id="rev-index5">Affichage</a></h3>
+<h3><a href="#index6" id="rev-index6">Contrôle d'accès</a></h3>
+<h3><a href="#index7" id="rev-index7">Remarque</a></h3>
+</div>
+
+<p>
+La gestion de la navigation dans CARBONE n'est pas toujours facile à appréhender au début. Elle repose pourtant sur une approche simple et souple consistant à décrire la navigation, mais aussi les ACL <sup>[<a href="#note1" id="rev-note1">1</a>]</sup> afin de sécuriser au mieux les accès aux différentes rubriques et fonctionnalités (et éviter les risques d'injections URL).
+</p>
+<p>
+En premier lieu, la gestion de la navigation repose sur 3 choses :
+</p>
+<ul>
+<li>Le script navigation.php, présent à la racine du répertoire include/config/,</li>
+<li>Le script navigation.php, présent à la racine du répertoire du thème utilisé,</li>
+<li>Les ACL.</li>
+</ul>
+
+<h2><a href="#rev-index1" id="index1">Le script navigation.php, présent à la racine du répertoire include/config/</a></h2>
+
+<p>
+Ce script a pour objectif de décrire la navigation au sens logique du terme (définition des urls, des droits d'accès, etc.). La description de la navigation suit une structure classique de tableau à clés que l'on peut expliciter ainsi :
+</p>
+
+<table>
+<tr>
+	<th width="20%">Clé</th>
+	<th>Requis</th>
+	<th>Description fonctionnelle</th>
+</tr>
+<tr>
+	<td>level</td>
+	<td>oui</td>
+	<td>niveau de l'arborescence (1=rubrique, 2 = sous-rubrique, etc.)</td>
+</tr>
+<tr>
+	<td>libelle</td>
+	<td>non</td>
+	<td>libelle de la rubrique (ou sous-rubrique, etc.) qui sera affiché</td>
+</tr>
+<tr>
+	<td>url</td>
+	<td>non</td>
+	<td>url vers laquelle pointer</td>
+</tr>
+<tr>
+	<td>acl</td>
+	<td>non</td>
+	<td>une ou plusieurs valeurs séparées par des &laquo; pipes &raquo;</td>
+</tr>
+<tr>
+    <td><i>array</i></td>
+    <td>non</td>
+    <td>un tableau à clés des ACL pointant vers une ou plusieurs valeurs séparées par des &laquo; pipes &raquo;</td>
+</tr>
+<tr>
+	<td>class</td>
+	<td><i>non</i></td>
+	<td>class CSS (et donc, image pour illustrer la rubrique)</td>
+</tr>
+<tr>
+	<td>titre</td>
+	<td><i>non</i></td>
+	<td>titre (à afficher dans un attribut &laquo; title &raquo;, par exemple)</td>
+</tr>
+<tr>
+	<td>js</td>
+	<td><i>non</i></td>
+	<td>bout de code Javascript (pour un évenement &laquo; onclick &raquo;, par exemple)</td>
+</tr>
+</table>
+
+<p>
+Il convient de comprendre que cette structure n'est qu'une proposition. Elle peut évidement être adaptée, voir enrichie, afin de coller à des besoins spécifiques en fonction des projets. 
+Il est utopique de mettre en place une logique de navigation permettant de répondre à l'ensemble des besoins fonctionnels. 
+La navigation est trop dépendante des règles de gestion propres à chaque projet. CARBONE se contente uniquement de proposer une structure générique qu'il convient d'adapter.
+</p>
+
+<p>
+Voici un exemple de structure :
+</p>
+
+<pre class="code:firstline[25]">
+array(
+    'level'     =&gt; 1,
+    'libelle'   =&gt; STR_RUBRIQUE_FOO,
+    'url'       =&gt; '',
+    'acl'       =&gt; 'admin|user',
+    'class'     =&gt; 'icon-user icon-white',
+),
+
+array(
+    'level'     =&gt; 2,
+    'libelle'   =&gt; STR_RUBRIQUE_FOO_1,
+    'url'       =&gt; $session-&gt;url(CFG_PATH_HTTP.'/foo/foo_1.php'),
+    'acl'       =&gt; 'admin|user',
+    'user'      =&gt; array(
+        'get'   =&gt; array(
+            'action'    =&gt; 'view|active,desactive',
+            'id'        =&gt; '1'
+        ),
+        'post'  =&gt; 'nom|prenom|submit',
+        'data'  =&gt; 'nom|prenom',
+        'filtre'=&gt; 'nom',
+        'export'=&gt; 'pdf',
+    ),
+),
+
+array(
+    'level'     =&gt; 2,
+    'libelle'   =&gt; STR_RUBRIQUE_FOO_2,
+    'url'       =&gt; $session-&gt;url(CFG_PATH_HTTP.'/foo/foo_2.php'),
+    'acl'       =&gt; 'admin',
+),
+
+array(
+    'level'     =&gt; 2,
+    'libelle'   =&gt; STR_RUBRIQUE_FOO_3,
+    'url'       =&gt; $session-&gt;url(CFG_PATH_HTTP.'/foo/foo_3.php'),
+    'acl'       =&gt; 'admin',
+),
+</pre>
+
+<p>
+Dans l'exemple ci dessus, nous avons défini une rubrique &laquo; foo &raquo; contenant 3 sous-rubriques. 
+</p>
+
+<h2><a href="#rev-index2" id="index2">Le script navigation.php, présent à la racine du répertoire du thème utilisé</a></h2>
+
+<p>
+Ce script, quant à lui, sert à mettre en forme cette navigation au sens présentation du terme (par exemple, avec des menus déroulants ou non, horizontalement ou verticalement, etc.).
+Il est presque toujours nécessaire d'adapter cette présentation, dans la mesure ou elle doit s'inscrire dans la charte graphique du projet.
+</p>
+
+<h2><a href="#rev-index3" id="index3">Les ACL</a></h2>
+
+<p>
+Les ACL se composent d'une ou plusieurs valeurs, séparées par des &laquo; pipes &raquo;. Nous les retrouvons à 2 endroits :
+</p>
+
+<ul>
+<li>au niveau du profil de l'utilisateur (clé &laquo; acl &raquo; dans le tableau $cfg_profil défini dans include/config/config.php),</li>
+<li>au niveau du tableau de navigation (clé &laquo; acl &raquo; associée à chaque rubrique ou sous-rubrique, etc. définies dans le script include/config/navigation.php),</li>
+</ul>
+
+<h2><a href="#rev-index4" id="index4">Principe de fonctionnement</a></h2>
+
+
+<h3><a href="#rev-index5" id="index5">Affichage</a></h3>
+
+<p>
+Pour qu'une rubrique ou sous-rubrique soit affichée, au niveau de la navigation, il faut que l'une ou l'autre des conditions suivantes soient vérifiées :
+<p>
+
+<ul>
+<li>ou bien l'ACL associée à la rubrique (définie par le clé &laquo; acl &raquo; dans le script include/config/navigation.php) est vide,</li>
+<li>ou bien l'intersection entre l'ACL associée à l'utilisateur courant et l'ACL associée à la rubrique n'est pas vide.</li>
+</ul>
+
+<p>
+Par exemple, reprenons l'exemple de la structure ci dessus. Imaginons que la clé &laquo; acl &raquo; de l'utilisateur courant (définie dans $cfg_profil) vaut 'user' ou 'user|guest'. Le menu de navigation de cet utilisateur affichera la rubrique &laquo; foo &raquo;, mais uniquement la première sous-rubrique. Si la clé &laquo; acl &raquo; de l'utilisateur courant vaut 'guest', il ne verra rien. Et enfin, si la clé &laquo; acl &raquo; de l'utilisateur courant vaut 'admin', alors il verra l'ensemble de la navigation. 
+</p>
+
+<h3><a href="#rev-index6" id="index6">Contrôle d'accès</a></h3>
+
+
+<p>
+Même principe que précédement, pour qu'un utilisateur puisse accéder (et exécuter le code associé) à une rubrique, il faut que l'une ou l'autre des conditions suivantes soient vérifiées :
+</p>
+
+<ul>
+<li>ou bien l'ACL associée à la rubrique (définie par le clé &laquo; acl &raquo; dans le script include/config/navigation.php) est vide,</li>
+<li>ou bien l'intersection entre l'ACL associée à l'utilisateur courant et l'ACL associée à la rubrique n'est pas vide.</li>
+</ul>
+
+<p>
+Il est cependant possible d'aller plus loin que le simple accès à la ressource URL elle même. Il est également possible de filtrer l'accès à d'autres ressources potentiellement sensibles. À savoir :
+</p>
+
+<ul>
+<li>données injectées en GET</li>
+<li>données injectées en POST</li>
+<li>ressources de type &laquo; filtre &raquo; (liées aux briques &laquo; backoffice &raquo;)</li>
+<li>ressources de type &laquo; data &raquo; (liées aux briques &laquo; backoffice &raquo;)</li>
+<li>ressources de type &laquo; export &raquo; (liées aux briques &laquo; backoffice &raquo;)</li>
+</ul>
+
+<p> Par exemple, toujours à partir de l'exemple de la structure ci dessus. Imaginons que la clé &laquo; acl &raquo; de l'utilisateur courant (définie dans $cfg_profil) vaut 'user'. Cet utilisateur pourra accéder à la première sous-rubrique. Par contre, il ne pourra :
+</p>
+
+<ul>
+<li>soumettre en GET qu'une &laquo; action &raquo; valant 'view', 'active' ou 'desactive' et appliquée à l'&laquo; id &raquo; valant '1',</li>
+<li>soumettre en POST des données 'nom', 'prenom' et 'submit',</li>
+<li>voir que les données 'nom' et 'prenom' (dans la brique &laquo; backoffice &raquo;)</li>
+<li>filtrer les données uniquement sur le 'nom' (dans la brique &laquo; backoffice &raquo;)</li>
+<li>profiter uniquement de l'export 'pdf' (dans la brique &laquo; backoffice &raquo;)</li>
+</ul>
+
+<h3><a href="#rev-index7" id="index7">Remarque</a></h3>
+
+<p>
+Le système d'ACL vise à éviter les injections URL <sup>[<a href="#note2" id="rev-note2">2</a>]</sup> que ce soit dans le but de forcer un accès à une rubrique à laquelle il n'a pas droit, ou à une action. Dans ce cas, il sera redirigé vers une page d'erreur.
+</p>
+
+<p>
+Il peut arriver que vous ayez à gérer des pages &laquo; orphelines &raquo;. C'est-à-dire, une ressource non visible depuis la navigation, mais uniquement accessible depuis une page. Si une telle page nécessite l'usage d'ACL, une solution consiste à la déclarer dans le tableau de navigation avec un &laquo; level &raquo; à zéro.
+</p><div class="note">
+<p>[<a href="#rev-note1" id="note1">1</a>] Access Control List.</p>
+
+<p>[<a href="#rev-note2" id="note2">2</a>] Un utilisateur pourrait par exemple chercher à accéder à une rubrique dont il connait la forme de l'URL, mais sans avoir un accès direct depuis la navigation.</p>
+</div></div>
+<!-- STOP CONTENT -->
+
+<!-- START FOOTER -->
+<div id="footer" class="clear">
+  <div class="left">
+  Documentation CARBONE V5.3 (Version 1.0) générée par CARBONE DOC (Version 1.3) &middot; Copyright &#169; 1997-2015&nbsp;&middot;&nbsp;<a href="http://www.globalis-ms.com/">Globalis</a>
+  </div>
+  <div class="right">
+  <a href="#top">Haut de page</a>
+  </div>
+  <br/>
+  <br/>
+  <p class="clear">
+  GLOBALIS media systems - Siège social : 6 bis, rue Auguste VITU - 75015 Paris
+  <br/>
+  S.A.R.L au capital de 10 671,43 &euro; - R.C.S Paris B 413 141 193 - SIRET 413 141 193 00024 - APE 741G
+  <br/>
+  Tel: 01 82 83 51 70 / Fax: 01 82 83 51 71 - Web : http://www.globalis-ms.com - Twitter : @GLOBALISms - E-mail : infos@globalis-ms.com
+  </p>
+</div>
+<!-- STOP FOOTER -->
+</body>
+</html>

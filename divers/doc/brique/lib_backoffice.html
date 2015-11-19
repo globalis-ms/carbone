@@ -1,0 +1,734 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="expires" content="-1" />
+<meta http-equiv="pragma" content="no-cache" />
+<meta name="robots" content="all" />
+<meta name="author" content="Armel FAUVEAU" />
+<meta name="description" content="Documentation CARBONE V5.3" />
+
+<title>Documentation CARBONE V5.3 Version 1.0 (06-06-2015) - CRUD: lib_backoffice.php</title>
+
+<link rel="stylesheet" type="text/css" media="screen" href="../share/css/screen.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="../share/css/listing.css" />
+<link rel="stylesheet" type="text/css" media="print" href="../share/css/print.css" />
+<link rel="stylesheet" type="text/css" media="print" href="../share/css/listing.css" />
+
+<script type="text/javascript" src="../share/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="../share/js/jquery.corner.min.js"></script>
+<script type="text/javascript" src="../share/js/listing.min.js"></script>
+<script type="text/javascript" src="../share/js/jquery.main.min.js"></script>
+
+</head>
+<body>
+
+<!-- START NAVIGATION -->
+<div id="nav"><div id="nav_inner"></div></div>
+<div id="nav2">
+  <a name="top"></a>
+  <div id="index">
+    <img src="../share/image/nav_toggle.jpg"  title="Table des matières" alt="Table des matières" />
+  </div>
+</div>
+<img src="../share/image/logo.png" title="Globalis" alt="Globalis" style="padding: 0 0 10px 35px;"/>
+<div id="title" class="clear">
+  <div class="left">
+    Briques élémentaires&nbsp;&#8250;&nbsp;CRUD: lib_backoffice.php
+  </div>
+  <div class="right">
+    Dernière édition le 01-02-2014 21:30 par Armel  &#8249;  <a href="../index.html">Table des matières</a>
+  </div>
+</div>
+<!-- STOP NAVIGATION -->
+
+
+<!-- START HEADER -->
+<div id="subtitle" class="clear">
+  <div class="left">
+      <a href="../brique/lib_form.html">Formulaires: lib_form.php</a> &#8249;&#8249;
+  </div>
+  <div class="right">
+      &#8250;&#8250; <a href="../brique/lib_carbone.html">Librairie CARBONE: lib_carbone.php</a>
+  </div>
+</div>
+<!-- STOP HEADER -->
+
+<br clear="all" />
+
+<!-- START CONTENT -->
+<div id="content">
+<h1>CRUD : lib_backoffice.php</h1>
+<div id="mini_index"><h2><a href="#index1" id="rev-index1">Remarques préliminaires</a></h2>
+<h2><a href="#index2" id="rev-index2">Description de la structure</a></h2>
+<h3><a href="#index3" id="rev-index3">Paramètres généraux</a></h3>
+<h4><a href="#index4" id="rev-index4">La clé « context »</a></h4>
+<h4><a href="#index5" id="rev-index5">La clé « script »</a></h4>
+<h4><a href="#index6" id="rev-index6">La clé « config »</a></h4>
+<h3><a href="#index7" id="rev-index7">Filtres</a></h3>
+<h4><a href="#index8" id="rev-index8">La clé « filtre »</a></h4>
+<h3><a href="#index9" id="rev-index9">Requête, données et actions</a></h3>
+<h4><a href="#index10" id="rev-index10">La clé « requete »</a></h4>
+<h4><a href="#index11" id="rev-index11">La clé « data »</a></h4>
+<h4><a href="#index12" id="rev-index12">La clé « action »</a></h4>
+<h3><a href="#index13" id="rev-index13">Navigation</a></h3>
+<h4><a href="#index14" id="rev-index14">La clé « navigation »</a></h4>
+<h3><a href="#index15" id="rev-index15">Export</a></h3>
+<h4><a href="#index16" id="rev-index16">La clé « export »</a></h4>
+<h3><a href="#index17" id="rev-index17">Javascript</a></h3>
+<h4><a href="#index18" id="rev-index18">La clé « js »</a></h4>
+<h2><a href="#index19" id="rev-index19">Remarques diverses</a></h2>
+</div>
+
+<h2><a href="#rev-index1" id="index1">Remarques préliminaires</a></h2>
+
+<p>
+CARBONE intègre une brique, appelée « backoffice » et définie dans include/lib_backoffice.php. Elle a pour but d'implémenter le support CRUD et plus encore. On peut citer les fonctionnalités suivantes :
+</p>
+
+<ul>
+<li>regrouper dans un tableau des données issues d'enregistrements en base,</li>
+<li>gérer une navigation page par page,</li>
+<li>permettre d'associer des tris sur les colonnes,</li>
+<li>permettre d'associer des actions (ADD, EDIT, DEL, etc.) sur les lignes,</li>
+<li>proposer des filtres,</li>
+<li>exporter les données dans divers formats (pdf, excel, etc.),</li>
+<li>etc.</li>
+</ul>
+
+<p>
+A l'image de la librairie de gestion de formulaire, la structure repose sur un tableau associatif que nous allons décrire succinctement. Précisons également qu'en complément de ce tableau, il est également possible de passer un second argument permettant de pointer vers une ressource de connexion à la base de données (par défaut, $db).
+</p>
+
+<h2><a href="#rev-index2" id="index2">Description de la structure</a></h2>
+
+
+<p>La structure peut être décomposée en 6 grandes sections :</p>
+
+<ul>
+<li>paramètres généraux,</li>
+<li>filtres,</li>
+<li>requête, données et actions,</li>
+<li>navigation,</li>
+<li>debuggage,</li>
+<li>export.</li>
+</ul>
+
+<h3><a href="#rev-index3" id="index3">Paramètres généraux</a></h3>
+
+
+<p>
+Les paramètres généraux sont définies par le biais de 3 clés.
+</p>
+
+<h4><a href="#rev-index4" id="index4">La clé « context »</a></h4>
+
+
+<p>
+Cette clé assure la définition du contexte afin de conserver les données en session. 
+En effet, la brique « backoffice » offre un comportement persistant. 
+Il est donc nécessaire de garder, en session, un certain nombre de choses, comme par exemple, le tri en cours, la page, le nombre d'éléments affichés par page, etc.
+Sa structure est la suivante :
+</p>
+
+<pre class="code">
+'context' =&gt; array(
+    'name' =&gt; 'utilisateur',
+),
+</pre>
+
+<table>
+<tr>
+	<th width="30%">Clé</th>
+	<th>Description fonctionnelle</th>
+</tr>
+<tr>
+	<td>name</td>
+	<td>Nom du contexte</td>
+</tr>
+</table>
+
+<p>
+Le nom du contexte sera choisi avec soin. Sauf cas particulier, il conviendra de choisir un nom unique qui ne risquera pas d'être partagé par une autre brique « backoffice ». 
+</p>
+
+<h4><a href="#rev-index5" id="index5">La clé « script »</a></h4>
+
+
+<p>
+Cette clé permet de définir vers quel script et avec quels paramètres doivent pointer les traitements et actions. 
+Sa structure est la suivante :
+</p>
+
+<pre class="code">
+'script' =&gt; array(
+    'name'=&gt; basename($_SERVER['PHP_SELF']),
+    'action'=&gt; array('label' =&gt; 'action'),
+    'id' =&gt;    array('label' =&gt; 'id', 'value' =&gt; 'user_id'),
+),
+</pre>
+
+<table class='cle'>
+<tr>
+	<th width="30%">Clé</th>
+	<th>Description fonctionnelle</th>
+</tr>
+<tr>
+	<td>name</td>
+	<td>Nom du script vers lequel pointer</td>
+</tr>
+<tr>
+	<td>
+        action
+        <ul>
+        <li>label</li>
+        </ul>
+        </td>
+	<td>Libellé de l'action (tel qu'il sera passé en GET)</td>
+</tr>
+<tr>
+	<td>
+        id
+        <ul>
+        <li>label</li>
+        <li>value</li>
+        </ul>        
+        </td>
+	<td>Libellé de l'id (tel qu'il sera passé en GET) et la valeur à utiliser (nom du champ, idéalement clé primaire, de la requête)</td>
+</tr>
+</table>
+
+<h4><a href="#rev-index6" id="index6">La clé « config »</a></h4>
+
+
+<p>
+Cette clé permet d'affiner le comportement et l'affichage de la brique « backoffice ». 
+Sa structure est la suivante :
+</p>
+
+<pre class="code">
+'config' =&gt; array(
+    'css' =&gt; 'backoffice',
+    'tpl' =&gt; '{filtre}{total}{outside}{data}{navig_export}',
+    'action'=&gt; array('empty'=&gt;TRUE, 'hide'=&gt;TRUE, 'width'=&gt;'40%', 'token'=&gt;TRUE, 'legende'=&gt;TRUE),
+    'total' =&gt; TRUE,
+    'total_string' =&gt; STR_UTILISATEUR_LIBELLE_NOMBRE,
+    'view_empty' =&gt; FALSE,
+    'help' =&gt; array(
+        'outil' =&gt;          STR_BACKOFFICE_HELP_OUTIL,
+        'filtre' =&gt;         STR_BACKOFFICE_HELP_FILTRE,
+        'data' =&gt;           STR_BACKOFFICE_HELP_DATA,
+        'order' =&gt;          STR_BACKOFFICE_HELP_ORDER,
+        'action' =&gt;         STR_BACKOFFICE_HELP_ACTION,
+        'navigation' =&gt;     STR_BACKOFFICE_HELP_NAVIGATION,
+        'export' =&gt;         STR_BACKOFFICE_HELP_EXPORT,
+    ),
+    'type' =&gt; 'string',
+    'ajax' =&gt; TRUE,
+    'logical' =&gt; 'AND',
+),
+</pre>
+
+<table>
+<tr>
+	<th width="30%">Clé</th>
+	<th>Description fonctionnelle</th>
+</tr>
+<tr>
+	<td>css</td>
+	<td>Feuille de style CSS utilisée</td>
+</tr>
+<tr>
+	<td>tpl</td>
+	<td>Template d'affichage</td>
+</tr>
+<tr>
+	<td>
+        action
+        <ul>
+        <li>empty</li>
+        <li>hide</li>
+        <li>width</li>
+        <li>token</li>
+        <li>legende</li>
+        </ul>
+        </td>
+	<td>
+	<ul>
+        <li>Si « empty » vaut TRUE, alors les actions vides seront
+	remplacées par des espaces (HTML) garantissant un alignement
+	des cellules d'action local.</li>
+        <li>Si « hide » vaut TRUE, possibilité de masquer la zone
+	d'action local.
+        </li>
+        <li>Si « width » est renseignée, permet de spécifier la largeur
+	de la zone d'action local.
+	</li>
+        <li>
+	Si « token » vaut TRUE, ajout d'un token de session en GET.
+        </li>
+        <li>
+    Si « legende » vaut TRUE, ajout d'une legende associée aux actions « local » (à la place des actions « global » qui ne seront donc pas visibles dans ce cas).
+        </li>
+        </ul>
+	</td>
+</tr>
+<tr>
+	<td>total</td>
+	<td>Si TRUE, affichage du nombre total d'enregistrements retournés</td>
+</tr>
+<tr>
+	<td>total_string</td>
+	<td>Chaîne à utiliser pour l'affichage du nombre total d'enregistrement retournés</td>
+</tr>
+<tr>
+	<td>view_empty</td>
+	<td>Si TRUE, affichage de la brique « backoffice » même si aucun enregistrement ne remonte</td>
+</tr>
+<tr>
+	<td>
+        help
+        <ul>
+        <li>outil</li>
+        <li>filtre</li>
+        <li>data</li>
+        <li>order</li>
+        <li>action</li>
+        <li>navigation</li>
+        <li>export</li>
+        </ul>
+        </td>
+	<td>Gestion des messages d'aide à l'attention des utilisateurs</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>
+    <ul>
+    <li>Si « print », affiche le flux HTML de retour de la brique « backoffice »</li>
+    <li>Si « string », retourne le flux HTML sans l'afficher (pour traitement ultérieur par exemple)</li>
+    </ul>
+    </td>
+</tr>
+<tr>
+	<td>ajax</td>
+	<td>Si TRUE, utilisation d'ajax sur les tris, navigation, etc.</td>
+</tr>
+<tr>
+	<td>logical</td>
+	<td>
+	<ul>
+	<li>Si « OR » ou « AND », permet de combiner les filtres entre eux</li>
+	<li>Si vide (ou indéfinie), les filtres deviennent exclusifs</li>
+	</ul>
+	</td>
+</tr>
+</table>
+
+<h3><a href="#rev-index7" id="index7">Filtres</a></h3>
+
+
+<p>Il est possible de proposer l'affinage des résultats retournés par le biais de filtres. C'est le but de cette section.</p>
+
+
+<h4><a href="#rev-index8" id="index8">La clé « filtre »</a></h4>
+
+
+<p>
+Cette clé permet de décrire la gestion des filtres. Sa structure est la suivante :
+</p>
+
+<pre class="code">
+'filtre' =&gt; array(
+    array(	
+        'field'=&gt;'nom', 
+        'label'=&gt;STR_UTILISATEUR_LIBELLE_NOM,
+        'type'=&gt;'input',
+        'like'=&gt;TRUE
+    ),
+
+    array(	
+        'field'=&gt;'prenom',
+        'label'=&gt;STR_UTILISATEUR_LIBELLE_PRENOM,
+        'type'=&gt;'alpha',
+        'like'=&gt;TRUE
+    ),
+
+    array(	
+        'field'=&gt;'theme',
+        'label'=&gt;STR_UTILISATEUR_LIBELLE_POSTE,
+        'type'=&gt;'liste',
+        'value'=&gt;array(
+            'Directeur'=&gt;'Directeur',
+            'Commercial'=&gt;'Commercial',
+            'D&eacute;veloppeur'=&gt;'D&eacute;veloppeur',
+            'Stagiaire'=&gt;'Stagiaire'
+        ),
+        'like'=&gt;FALSE,
+        'logical'=&gt;'OR'
+    ),
+
+    array(	
+        'field'=&gt;'actif',
+        'label'=&gt;STR_UTILISATEUR_LIBELLE_STATUS,
+        'type'=&gt;'select',
+        'value'=&gt;array(
+            ''=&gt;STR_UTILISATEUR_LIBELLE_TOUS,
+            '1'=&gt;STR_UTILISATEUR_LIBELLE_ACTIF,
+            '0'=&gt;STR_UTILISATEUR_LIBELLE_INACTIF),
+        'like'=&gt;FALSE
+    ),
+),
+</pre>
+
+<table>
+<tr>
+	<th width="30%">Clé</th>
+	<th>Description fonctionnelle</th>
+</tr>
+<tr>
+	<td>field</td>
+	<td>Champ ou tableau des champs (de la requête) sur lequel porte la recherche</td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>Libellé du champ qui sera affiché</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>
+	Précise le type de filtre : « alpha » pour les lettres de l'alphabet, « num » pour les chiffres, « liste » pour une liste explicite de valeurs, « select » pour un champ select, « input » pour un champ de saisie libre	
+	</td>
+</tr>
+<tr>
+	<td>value</td>
+	<td>
+	Tableau de paires clés/valeurs, à préciser pour les filtres de type « liste » ou « select »
+	</td>
+</tr>
+<tr>
+	<td>like</td>
+	<td>Si TRUE, recherche de type LIKE, si FALSE recherche de type = (au sens SQL). Il est également possible de spécifier un pattern plus précis (« %value », « value% » ou « %value% »)</td>
+</tr>
+<tr>
+	<td>logical</td>
+	<td>Si « OR » ou « AND », permet de combiner les valeurs du filtre entre elles (uniquement utilisable pour les filtres de type « alpha », « num », et « liste »)</td>
+</tr>
+</table>
+
+<p>
+On remarquera que le nombre de filtres n'est pas limité. Par défaut, les filtres sont exclusifs. Afin de les rendre associatifs, il faut renseigner la clé « logical » initialisée dans la clé « config » à la valeur désirée (« OR » ou « AND »). Idem à propos des filtres de type « alpha », « num », et « liste ». Une seule valeur sera sélectionnée à moins de définir la clé « logical » associée au filtre.
+</p>
+
+<h3><a href="#rev-index9" id="index9">Requête, données et actions</a></h3>
+
+
+<p>L'objectif de cette section est de décrire la requête à jouer, les données que l'on attend ainsi que les actions que l'on désire proposer.</p>
+
+<h4><a href="#rev-index10" id="index10">La clé « requete »</a></h4>
+
+
+<p>
+Cette clé permet de définir la requête à jouer ainsi que le nom de 2 éventuelles fonctions utilisateur à appeler pour affiner la requête SQL qui sera jouée et les résultats retournés, si besoin. 
+Sa structure est la suivante : 
+</p>
+
+<pre class="code">
+'requete' =&gt; array(
+    'select'=&gt;'SELECT user_id, nom, prenom, theme FROM '.CFG_TABLE_USER.' ORDER BY nom, prenom ASC',
+    'select_user_function'=&gt; 'select_utilisateur',
+    'result_user_function'=&gt; 'result_utilisateur',
+),
+</pre>
+
+<table>
+<tr>
+	<th width="30%">Clé</th>
+	<th>Description fonctionnelle</th>
+</tr>
+<tr>
+	<td>select</td>
+	<td>Requête à jouer</td>
+</tr>
+<tr>
+	<td>select_user_function</td>
+	<td>Fonction optionnelle à appeler pour affiner la requête si besoin</td>
+</tr>
+<tr>
+	<td>result_user_function</td>
+	<td>Fonction optionnelle à appeler pour affiner les résultats (data et action) de la requête si besoin</td>
+</tr>
+</table>
+
+<h4><a href="#rev-index11" id="index11">La clé « data »</a></h4>
+
+
+<p>
+Cette clé permet de décrire les champs qui seront affichés sous forme de colonnes, ainsi que quelques comportements associés.
+Sa structure est la suivante : 
+</p>
+
+<pre class="code">
+'data' =&gt; array(
+    array(
+        'field'=&gt;'theme',
+        'label'=&gt;STR_UTILISATEUR_LIBELLE_THEME,
+        'order'=&gt;TRUE,
+        'export'=&gt;FALSE,
+        'rowspan'=&gt;TRUE
+    ),
+    array(
+        'field'=&gt;'nom',
+        'label'=&gt;STR_UTILISATEUR_LIBELLE_NOM,
+        'order'=&gt;TRUE,
+        'export'=&gt;TRUE,
+        'rowspan'=&gt;TRUE
+    ),
+    array(
+        'field'=&gt;'prenom',
+        'label'=&gt;STR_UTILISATEUR_LIBELLE_PRENOM,
+        'order'=&gt;TRUE,
+        'export'=&gt;TRUE,
+        'rowspan'=&gt;TRUE
+    ),
+),
+</pre>
+
+<table>
+<tr>
+	<th width="30%">Clé</th>
+	<th>Description fonctionnelle</th>
+</tr>
+<tr>
+	<td>field</td>
+	<td>Champ sur lequel porte l'affichage</td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>Libellé du champ qui sera affiché</td>
+</tr>
+<tr>
+	<td>order</td>
+	<td>Si TRUE, la colonne pourra être triée</td>
+</tr>
+<tr>
+	<td>export</td>
+	<td>Si TRUE, la colonne sera prise en compte dans les exports (PDF, Excel, etc.)</td>
+</tr>
+<tr>
+	<td>rowspan</td>
+	<td>Si TRUE, les lignes similaires seront groupées</td>
+</tr>
+</table>
+
+<h4><a href="#rev-index12" id="index12">La clé « action »</a></h4>
+
+
+<p>Cette clé permet de décrire les actions proposées. Sa structure est la suivante :</p>
+
+<pre class="code">
+'action' =&gt; array(
+    array(
+        'field'=&gt;'add',
+        'label'=&gt;STR_FORM_ADD,
+        'type'=&gt;'global',
+        'js'=&gt;'',
+        'format' =&gt; 'button'
+    ),
+    array(
+        'field'=&gt;'edit',
+        'label'=&gt;STR_FORM_EDIT,
+        'type'=&gt;'local',
+        'js'=&gt;''
+    ),
+    array(
+        'field'=&gt;'del',	   
+        'label'=&gt;STR_FORM_DELETE,
+        'type'=&gt;'local',
+        'js'=&gt;'onclick=&quot;return confirm(\''.STR_FORM_DELETE_CONFIRMATION.' %s %s\');&quot;',
+        'on'=&gt;array('prenom', 'nom')
+    ),
+),
+</pre>
+
+<table>
+<tr>
+	<th width="30%">Clé</th>
+	<th>Description fonctionnelle</th>
+</tr>
+<tr>
+	<td>field</td>
+	<td>Identifiant de l'action</td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>Libellé de l'action qui sera affiché</td>
+</tr>
+<tr>
+	<td>js</td>
+	<td>Script Javascript complémentaire (confirmation, etc.)</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>Si « outside » action en dehors de la brique, « global » action global pour la brique, « local » action local de ligne, « group » action à selection multiple</td>
+</tr>
+<tr>
+	<td>format</td>
+	<td>Si « bouton » action symbolisée par un bouton, « image » action symbolisée par une image, sinon, chaine de caractère</td>
+</tr>
+<tr>
+	<td>script</td>
+	<td>Si l'action nécessite de pointer vers un script précis différent de celui défini dans la sous clé « name » de la clé « script »</td>
+</tr>
+</table>
+
+<h3><a href="#rev-index13" id="index13">Navigation</a></h3>
+
+
+<p>
+La brique « backoffice » intègre un mécanisme de navigation multipage. Il est possible de jouer sur divers paramètres comme le nombre d'éléments à afficher par page, le nombre de page à afficher, etc. C'est l'objectif de cette section. 
+</p>
+
+<h4><a href="#rev-index14" id="index14">La clé « navigation »</a></h4>
+
+
+<p>Cette clé permet de paramétrer la navigation. Sa structure est la suivante :</p>
+
+<pre class="code">
+'navigation' =&gt; array(
+    'page' =&gt; 10,
+    'item' =&gt; 10,
+    'choix_item' =&gt; array(5,10,15,20,0),
+),
+</pre>
+
+<table>
+<tr>
+	<th width="30%">Clé</th>
+	<th>Description fonctionnelle</th>
+</tr>
+<tr>
+	<td>page</td>
+	<td>Nombre de pages à afficher <sup>[<a href="#note1" id="rev-note1">1</a>]</sup></td>
+</tr>
+<tr>
+	<td>item</td>
+	<td>Nombre d'éléments par page</td>
+</tr>
+<tr>
+	<td>choix_item</td>
+	<td>Tableau de valeurs possibles pour le choix du nombre d'éléments par page</td>
+</tr>
+</table>
+
+<h3><a href="#rev-index15" id="index15">Export</a></h3>
+
+
+<p>
+Il est possible d'exporter les données affichées vers un format PDF ou Excel.</p>
+
+<h4><a href="#rev-index16" id="index16">La clé « export »</a></h4>
+
+
+<p>Sa structure est la suivante :</p>
+
+<pre class="code">
+'export' =&gt; array(
+    'format'    =&gt; array('pdf', 'excel'),    // pdf ou excel
+),
+</pre>
+
+<table>
+<tr>
+	<th width="30%">Clé</th>
+	<th>Description fonctionnelle</th>
+</tr>
+<tr>
+	<td>format</td>
+	<td>Le tableau du ou des formats proposés</td>
+</tr>
+</table>
+
+<h3><a href="#rev-index17" id="index17">Javascript</a></h3>
+
+
+<p>
+Il est possible d'étendre le comportement de la brique « backoffice » via l'utilisation de code Javascript.</p>
+
+<h4><a href="#rev-index18" id="index18">La clé « js »</a></h4>
+
+
+<p>Sa structure est la suivante :</p>
+
+<pre class="code">
+'js' =&gt; '
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        $(function() {   
+            // Confirmation sur action del
+            
+            $(&quot;.del_local&quot;).backoffice_confirm(&quot;'.STR_FORM_DELETE_CONFIRMATION.' %5 %4 ?&quot;);
+            
+            // Confirmation sur action group
+            
+            $(&quot;.del_group&quot;).backoffice_group(&quot;'.STR_FORM_DELETE_ALL.' ?&quot;);
+            $(&quot;.active_group&quot;).backoffice_group(&quot;'.STR_FORM_ACTIVE_ALL.' ?&quot;);
+            $(&quot;.desactive_group&quot;).backoffice_group(&quot;'.STR_FORM_DESACTIVE_ALL.' ?&quot;);
+        });
+    &lt;/script&gt;
+',
+</pre>
+
+<p>
+Il est nécessaire d'appliquer du code Javascript à la brique « backoffice » via cette clé, si le mode Ajax est utilisé.
+</p>
+
+<h2><a href="#rev-index19" id="index19">Remarques diverses</a></h2>
+
+
+<p>
+La prise en main et la maîtrise de la brique « backoffice » nécessite du temps. La complexité de sa structure reste cependant toute relative. 
+Ne pas perdre de vue qu'il ne s'agit que d'un simple tableau à clés. 
+Bien utilisée, elle permet de faire face à une très large majorité de cas. 
+</p>
+
+<p>
+Ne pas négliger l'importance des fonctions utilisateur (select_user_function et result_user_function) qu'il est toujours possible d'appeler afin d'affiner la requête SQL ainsi que le retour de la requête. 
+</p>
+
+<p>
+Il peut arriver, parfois, qu'il soit nécessaire de construire une requête à la volée, en fonction de paramètres (via les méthodes GET, POST ou via les sessions). Il suffit, dans ce cas, de construire la requête au dessus de la structure, avant de l'y injecter.
+</p>
+
+<p>
+Si les mécanismes de filtres ne sont pas suffisants, il est toujours possible de générer un formulaire (à l'aide de la librairie de gestion des formulaires) afin de s'adapter aux besoins. Dans ce cas, là aussi, il est probable qu'il faudra fabriquer une requête dépendant des choix du formulaire. 
+</p>
+
+<p>
+Combiner un filtre de type « input » avec le plugin jQuery « autocomplete » permet d'intégrer, proprement, un filtrage mettant en oeuvre de l'auto-completion.  
+</p>
+<div class="note">
+<p>[<a href="#rev-note1" id="note1">1</a>] Si n, le nombre de page indiqué, est pair, le nombre de page effectivement affiché sera n+1. C'est un effet voulu afin de centrer correctement le système de &laquo; navigation glissante &raquo; proposé par CARBONE.</p>
+</div></div>
+<!-- STOP CONTENT -->
+
+<!-- START FOOTER -->
+<div id="footer" class="clear">
+  <div class="left">
+  Documentation CARBONE V5.3 (Version 1.0) générée par CARBONE DOC (Version 1.3) &middot; Copyright &#169; 1997-2015&nbsp;&middot;&nbsp;<a href="http://www.globalis-ms.com/">Globalis</a>
+  </div>
+  <div class="right">
+  <a href="#top">Haut de page</a>
+  </div>
+  <br/>
+  <br/>
+  <p class="clear">
+  GLOBALIS media systems - Siège social : 6 bis, rue Auguste VITU - 75015 Paris
+  <br/>
+  S.A.R.L au capital de 10 671,43 &euro; - R.C.S Paris B 413 141 193 - SIRET 413 141 193 00024 - APE 741G
+  <br/>
+  Tel: 01 82 83 51 70 / Fax: 01 82 83 51 71 - Web : http://www.globalis-ms.com - Twitter : @GLOBALISms - E-mail : infos@globalis-ms.com
+  </p>
+</div>
+<!-- STOP FOOTER -->
+</body>
+</html>

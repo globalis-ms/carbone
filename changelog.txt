@@ -1,0 +1,662 @@
+<b>CARBONE V5.3.001 - 03 juillet 2015 - Pluton</b>
+
+Passage à Bootstrap 3.3.4
+Refonte du système de templating des formulaires en se basant sur Bootstrap (merci RomainG).
+On utilise maintenant le système de grille sur 12 colonnes.
+Permet d'améliorer également les aspects responsives.
+Suppression des anciens constructeurs PHP4 dans class_dession.php, adodb_carbone/drivers/ et fpdf, pour la compatibilité PHP7. Il en reste probablement...
+Mise à jour de la documentation.
+
+<b>CARBONE V5.2.004 - 23 février 2015 - Columbia</b>
+
+Mise en conformité HTML5 du charset dans les thèmes.
+Ajout d'une balise de fermeture manquante, dans la lib_form.php, sur le traitement des champs 'upload' (merci RomainD).
+Amélioration dans la gestion de l'affichage des requêtes SQL depuis la barre de debug (merci Mathieu).
+Correction d'un bug de régression dans la lib_backoffice.php. Si pas d'item, STR_FORM_AFFICHAGE_PAR persistait (merci RomainD).
+Correction d'un bug de régression dans la fonction navig_string() de la lib_backoffice.php. Si moins de n éléments retournés, la fonction navig_string() retournait tout de même 1.
+Correction d'un bug sur la re-ecriture des urls présentes dans les CSS en cas d'activation de l'optimisation Frontend.
+Durcissement des mots de passe et passage à SHA2 (SHA-512).
+Mise en place d'un fichier Makefile.
+
+<b>CARBONE V5.2.002 - 20 novembre 2014 - Philae</b>
+
+Passage sous Bootstrap 3 (bigup RomainD).
+Correction d'un bug de régression sur la récuppération du last insert id (bug lié à l'introduction de la fonctionnalité de profiling SQL).
+Ajout d'un .htaccess à la racine du répertoire upload pour éviter le parsing de code PHP (bonne pratique).
+
+<b>CARBONE V5.1.010 - 12 juin 2014 - Becca</b>
+
+Déplacement de l'initialisation du level d'erreur dans include/config/config.php, en tirant partie de la distinction entre l'environnement de 'dev' et de 'prod' (merci Pierre).
+Profiling SQL avec affichage du temps d'exécution des requêtes lors de l'utilisation du drivers mysqli avec adodb_carbone (merci Mathieu).
+Correction d'un bug sur l'affichage des requêtes SQL (l'ordre était inversé...).
+Au niveau de la brique backoffice, il est désormais possible de préciser son propre format d'export via une call_user_func. Pour implémenter un export au format 'foo', la fonction doit suivre le prototype: function foo(&$data, &$legende, &$name) {} (merci Julien).
+Pour les formats d'export PDF, Excel et CSV, la fonction export() de la brique backoffice a été simplifiée avec externalisation du code des différents formats d'export dans des fichiers séparés (dans include/lib/export).
+
+<b>CARBONE V5.1.009 - 6 juin 2014 - Overlord</b>
+
+En complément de la fonction print_rh(), ajout d'une fonction print_rc() dans la lib_carbone.php permettant d'afficher une variable ou constante dans la console (afin de ne pas perturber l'affichage).
+Correctif d'un bug sur les fonctions check_acl(), check_post(), check_get() de la lib_carbone.php en cas de déploiement à la racine d'un VirtualHost (merci Carine et JulienL).
+Correctif sur la prise en compte de la clé 'js' au niveau des thèmes (merci Carine).
+Amélioration de la gestion des uploads en mode visualisation dans la lib_form.php si la ressource n'est pas une image (merci Carine).
+Correctif d'un bug sur la barre de débugage (impossibilité de déplacer la fenêtre flottante sous FF).
+Amélioration de la gestion des ACL:
+- les accès aux ressources backoffice 'data' peuvent être controlées depuis le tableau de navigation,
+- les accès aux ressources backoffice 'filtre' peuvent être controlées depuis le tableau de navigation,
+- les accès aux ressources backoffice 'export' peuvent être controlées depuis le tableau de navigation.
+
+<b>CARBONE V5.1.008 - 15 mars 2014</b>
+
+Mise à jour de jQuery (1.11.0).
+Attention, cette mise à jour nécessite de charger également jquery-migrate-1.2.1.min.js pour maintenir la compatibilité avec d'anciens plugins.
+Mise à jour de Bootstrap (2.3.2).
+Ajout d'un trim sur les champs POST au niveau de la fonction check_post() de la lib_carbone.php (merci Carine).
+L'idée est d'éviter les saisies vides sur des champs requis.
+Mise à jour du plugin bootstrap datepicker (merci RomainD).
+Ajout d'une fonction is_positive() dans la lib_test (merci RomainD).
+Remise à plat de la gestion et de l'affichage des messages d'erreurs (et des messages en générales):
+- 4 niveaux d'erreurs: error par défaut (rouge), warning (orange), info (bleu) et success (vert),
+- 3 types d'affichage: normal par défaut, modal ou session (affichage différé).
+Voir la documentation et les exemples dans le code (par exemple, dans utilisateur).
+Correction d'un bug dans la fonction delete_accent() de la lib_carbone (mauvaise prise en charge de l'UTF-8).
+Vérification de l'encodage UTF-8 de différents fichiers.
+Correction d'un bug dans le script de découplage (divers/outils/decouplage.php)
+Mise à jour de la documentation.
+
+<b>CARBONE V5.1.007 - 12 octobre 2013</b>
+
+Mise à jour de la documentation (merci Laurent et Stanislas).
+Correction de bugs dans la lib_backoffice:
+- sur l'affichage de la légende des actions locales si aucune data retournée, 
+- balises <span> non fermées sur les TH du tableau data (merci JulienL).
+
+<b>CARBONE V5.1.006 - 27 août 2013</b>
+
+Correction d'un bug sur la fabrication de l'url dans la fonction check_acl() (merci JulienO et Aurélien).
+La légende d'un champ formulaire de type "fieldset" persiste lors de l'affichage en mode "view" (merci Carine).
+Refonte de la gestion des mots de passe et passage en stockage à base de SHA1 et double saisie de confirmation.
+Refonte de la gestion des mots de passe perdus avec mise en place d'un formulaire reset.php. 
+
+<b>CARBONE V5.1.005 - 09 juillet 2013</b>
+
+Ajout d'un attribut data-field sur les tr des éléments de formulaires pour simplifier les manipulations (merci JulienO).
+Correction de bugs dans la lib_backoffice (merci JulienL).
+Ajout d'une constante CFG_VERSION_CARBONE dans le fichier config.php (à dissocier de CFG_VERSION pour l'application).
+Affichage des versions de CARBONE, PHP et MySQL dans la barre de débugage.
+Correction et mise à jour de la documentation.
+
+<b>CARBONE V5.1.004 - 09 juin 2013</b>
+
+Ajout d'un message permettant de revenir à la page précédente, en cas d'erreur, si HTTP_REFERER existe (erreur.php).
+L'action pour la visualisation automatique (action=edit&view=1) devient plus simplement action=view.
+
+Refonte de la gestion des ACL:
+- il n'est plus nécessaire de gérer des constantes ACL_RUBRIQUE,
+- les accès aux ressources URL sont désormais entièrement controlées depuis le tableau de navigation,
+- les accès aux ressources GET peuvent également être controlées depuis le tableau de navigation,
+- les accès aux ressources POST peuvent également être controlées depuis le tableau de navigation.
+
+<b>CARBONE V5.1.003 - 07 juin 2013</b>
+
+Refonte de la rubrique utilisateur (et onglet) pour améliorer la compréhension et prise en mains du framework:
+- 3 profils: administrateur, utilisateur et invité,
+- ajout d'un champ couleur pour le multi-select, 
+- renommage des scripts.
+
+<b>CARBONE V5.1.002 - 07 juin 2013</b>
+
+Refonte de l'écriture des rêquetes avec l'approche INSERT INTO [table] SET.
+Cette approche, similaire à UPDATE, permet de mutualiser du code entre les requêtes UPDATE et INSERT. 
+
+<b>CARBONE V5.1.001 - 06 juin 2013</b>
+
+Ajout de différents data-* dans le flux HTML produit par la lib_backoffice afin de faciliter les modifications du flux HTML via CSS ou JS.
+Une option permet également d'afficher la légende des actions locales en lieu et place des actions globales:
+'action'=> array('empty'=>TRUE, 'hide'=>TRUE, 'width'=>'40%', 'legende'=>TRUE),
+
+----------
+
+<b>CARBONE V5.0.000 Beta 5 - 21 mai 2013</b>
+
+Correction d'un bug lors de la concaténation du plugin "multiselect" avec d'autres scripts JS.
+Exemple de découplage d'un script avec externalisation du formulaire et de la brique backoffice (utilisateur/index_img.php).
+Amélioration de la visualisation en mode automatique (action=edit&view=1): création d'un bouton de retour.
+Correction d'un bug sur la fonction load_profil() (merci Aurélien).
+La selection des requêtes jouées, depuis la fenêtre de débugage, est à nouveau fonctionnelle (merci Aurélien).
+
+<b>CARBONE V5.0.000 Beta 4 - 21 mars 2013</b>
+
+Début de la refonte de la documentation.
+
+<b>CARBONE V5.0.000 Beta 3 - 21 mars 2013</b>
+
+Amélioration de l'accessibilité sur les actions de type "icon" dans la lib_backoffice avec ajout d'un alt + title (merci Julien L).
+Correction de bugs et amélioration de la visualisation en mode automatique (action=edit&view=1):
+- champs de type "select" (merci Elie & George Antoine),
+- champs de type "upload",
+- suppression de l'effet de bord lié à l'eventuel application de plugin JS sur certains champs en mode formulaire.
+
+<b>CARBONE V5.0.000 Beta 2 - 19 février 2013</b>
+
+Correction de bugs sur la lib_backoffice:
+- patch de Lionel (suite à un patch de Bruno),
+- patch de Jean sur l'usage de l'option 'script' avec les actions 'group',
+- correction de bugs et amélioration de la fonction export() avec support du CSV (merci Julien L).
+
+Passage d'un while...list en foreach dans la lib_carbone (load_profil()).
+
+<b>CARBONE V5.0.000 Beta 1 - 25 juillet 2012</b>
+
+Intégration du framework Boostrap (version 2).
+Passage au format UTF-8.
+Ajout d'un fichier build.xml (Phing)
+Ajout d'un fichier robots.txt
+Nettoyage global du code.
+
+----------
+
+<b>CARBONE V4.6.029</b>
+
+Suppression des $cfg_profil (en global) dans la majorité des result_user_function() (cette variable n'était pas utilisée).
+Le champ12_2 dans exemple/formulaire.php était inutile (héritage de l'ancien mode de gestion des multiselects) (merci Franck).
+Mise à jour du plugin jQuery multisect (problème de clone, merci Ludo).
+Correction d'un bug, dans la lib_backoffice sur les actions 'local' utilisant le format 'button' et pointant vers un 'script' (autre que le PHP_SELF) (merci JulienL).
+Amélioration de la fonction optimize_head() dans la lib_carbone afin de prendre en compte les quotes simples ou doubles (merci Lionel).
+
+<b>CARBONE V4.6.028</b>
+
+Correctif sur les window.open() de la lib_form.php (merci Christophe).
+Mise à jour de jQuery (1.5).
+Mise à jour du plugin 'autocomplete' (merci Bruno).
+Mise à jour du plugin 'wysiwyg' à partir de la version jwysiwyg, plus aboutie, désormais sur https://github.com/akzhan/jwysiwyg (merci Christophe).
+Le bouton 'effacer' associé à un filtre de type 'input' (dans la lib_backoffice.php) n'apparait que si le champ est rempli.
+
+<b>CARBONE V4.6.027</b>
+
+Suppression du double open de bases de données dans open.php (pour test).
+Déplacement de l'appel à la select_user_function() dans la lib_backoffice.php (afin de prendre en compte la clause ORDER).
+
+<b>CARBONE V4.6.026</b>
+
+Mise à jour de jQuery (1.4.4).
+Ajout du plugin jQuery formalert (merci Julien).
+Correction de la lib_form (champ 'info' et test empty, merci Bruno).
+Suppression de la clé 'session' (obsolète) dans la lib_backoffice.
+Suppression de la clé 'debug' (visiblement peu ou pas utilisée / doublon avec la barre de debug) dans la lib_backoffice.
+Remplacement d'un require en require_once dans la méthode ADONewConnection() de adodb.inc.php (afin de supporter plusieurs connexions).
+Il est désormais possible de passer un second argument à la fonction backoffice() afin de spécifier une connexion alternative ($db par défaut).
+Proposition de réorganisation du fichier config.php afin de dissocier un environnement de dev et de prod (demande Julien).
+Mise à jour de la doc.
+
+<b>CARBONE V4.6.025</b>
+
+Correction de risques d'injections dans la lib_backoffice (clauses where, order, page, item, export, etc.) (merci Carine).
+Ajout de div/class sur les zones page, item, export (merci Carine).
+
+<b>CARBONE V4.6.024</b>
+
+Mise à jour de la doc (merci Jean et Bruno).
+
+<b>CARBONE V4.6.023</b>
+
+Patch afin de pouvoir préciser un colspan pour les champs layer (merci Carine).
+
+<b>CARBONE V4.6.022</b>
+
+Suppression de la clé 'choix_value' dans la lib_backoffice. Désormais, la clé 'choix_item', optionnelle, contient directement le tableau des valeurs possibles (en lieu et place de la clé 'choix_value').
+Refactoring de code dans divers/outils et ajout d'un générateur de chaines (lorem.php).
+
+<b>CARBONE V4.6.021</b>
+
+Suppression des traces de constantes GBL_ dans la fonction email() de lib_carbone (merci Carine et Mikael).
+Correction au niveau du code HTML produit par la lib_form (merci Carine).
+Correction fonctionnelle du plugin jquery.backoffice.js afin de ne pas nécessairement demander une confirmation sur les actions 'group'.
+Correction au niveau du code HTML produit par la lib_backoffice (merci Carine).
+Prise en charge de l'absence d'actions locales/globales par la lib_backoffice (merci Carine).
+Correction des textes d'aide de la lib_backoffice (merci Carine).
+
+<b>CARBONE V4.6.020</b>
+
+Changement du plugin autocomplete (attention, le bug sur minchar est de retour pour le mode tableau).
+Amélioration du mécanisme de gestion de l'optimisation frontend (merci Lionel).
+
+<b>CARBONE V4.6.019</b>
+
+Correction de bugs de régression dans la lib_backoffice (et création de la clé 'js' si utilisation du mode ajax).
+Refactoring de code.
+
+<b>CARBONE V4.6.018</b>
+
+Introduction de la notion de template dans la lib_backoffice.
+Suppression du menu log de la barre de debug (obsolète).
+
+<b>CARBONE V4.6.017</b>
+
+Refactoring de code et optimisation de la lib_backoffice (gain de 25% de perf en plus) et de la lib_form.
+
+<b>CARBONE V4.6.016</b>
+
+Refactoring de code et fin de contrôle des conventions de codage.
+
+<b>CARBONE V4.6.015</b>
+
+Refactoring de code et début de contrôle des conventions de codage.
+
+<b>CARBONE V4.6.014</b>
+
+Correctif d'un bug sur les infobulles (lib_form.php) et mise à jour de la doc sur la class_xml.php (merci Ludo).
+Création d'un répertoire js/debug/ et déplacement des scripts
+Nettoyage des répertoires images.
+
+<b>CARBONE V4.6.012</b>
+
+Mise à jour du plugin jQuery autocomplete permettant une meilleure gestion en mode array/client (merci Ludo).
+Mise à jour de la fonction email() permettant une meilleure gestion des emails au format UTF8 (merci Lionel).
+Mise à jour du drivers mysqli de la classe AdoDB Carbone (log des messages d'erreurs, etc.).
+
+Mise à jour de la documentation.
+
+Mise à jour du script de découplage et ajout de l'option --fo=&lt;name&gt; et --bo=&lt;name&gt; afin de choisir si besoin le nom du répertoire pour le frontoffice et le backoffice (fo et bo sont les valeurs par défaut).
+Passage des require () en require '' (require, include, etc. ne sont pas des fonctions).
+
+<b>CARBONE V4.6.011</b>
+
+Mise en place du découplage et développement d'un script automatique.
+Il est désormais possible de découpler CARBONE en frontoffice/backoffice.
+La structure de l'arborescence devient alors
+
+/fo
+/bo
+/include
+/web
+
+Le répertoire /include et /web sont communs.
+
+<b>CARBONE V4.6.010</b>
+
+Refactoring de code dans divers/outils/.
+Suppression du fichier include/theme.dat.
+Restructuration du répertoire include.
+
+<b>CARBONE V4.6.009</b>
+
+Correction d'un bug sur la fonction navig_string() quand une seule page s'affiche.
+Déplacement de la fonction navig_string() dans la lib_backoffice.php.
+Mise en prod des notice et confirm. Voir le readme.txt dans web/js/backoffice/ et web/js/notice/ (merci Ludo).
+
+<b>CARBONE V4.6.008</b>
+
+Refactoring de code.
+
+<b>CARBONE V4.6.007</b>
+
+Optimisation et correction de bugs concernant la brique backoffice (meilleure gestion de l'absence des clés, bug navigation, etc.).
+En particulier, il devient possible d'utiliser la brique backoffice sans aucune action afin, par exemple, d'afficher uniquement des données (avec filtres ou non). Un exemple est donné dans utilisateur/index_bis.php.
+
+<b>CARBONE V4.6.006</b>
+
+Optimisation et correction de bugs concernant la brique backoffice en mode ajax.
+
+<b>CARBONE V4.6.005</b>
+
+Les fichiers local_lib.php et local_config.php sont désormais optionnels. Ils sont éventuellement appelés depuis include/start_php.php (qui test la présence de ces 2 fichiers pour savoir s'il faut les inclure ou non).
+Le bootstrap du framework se résume donc à require 'start_php.php' en début de script.
+
+Les éléments de formulaire multiselect et calendar, ainsi que les options d'autocompletion, etc. ont été supprimés (include/lib_form.php). L'idée est de nettoyer le code du coeur de Carbone comportant encore du Javascript intrusif.
+
+- Un champ calendar est un simple champ input.
+- Un champ multiselect est un simple champ select multiple.
+
+Il suffit ensuite d'appliquer les appels jQuery nécessaire pour appliquer le comportement souhaité.
+En particulier, le plugin multiselect a été recodé. Il gère lui même la création d'un second container afin d'y faire transiter les données selectionnées. En complément d'autres options sont dispo, comme par exemple, la préservation de l'ordre des éléments (merci Ludo).
+
+Ces modifications (local_lib.php et local_config.php désormais optionnels et nettoyage du code Javascript intrusif dans include/lib_form.php) font gagner environ 50Ko en empreinte mémoire. 
+
+<b>CARBONE V4.6.004</b>
+
+Déplacement du contrôle sur le changement de profil (theme, langue) de include/open.php vers profil.php.
+Ajout des raccourcis début/fin dans la gestion du multipage (en plus des raccourcis suivant/précédent) et ajout d'un &lt;span&gt; pour faire ressortir la page en cours.
+Nettoyage de code.
+
+<b>CARBONE V4.6.003</b>
+
+Mise à jour de la documentation.
+Test de jQuery Notice.
+
+<b>CARBONE V4.6.002</b>
+
+Refonte de la navigation :
+
+- mise à plat de la structure (include/navigation.php) :
+
+La structure d'une entrée navigation est la suivante
+
+array( 
+    'level'     => integer (requis), niveau de l'arborescence 1 = rubrique, 2 = sous rubrique, etc.
+    'libelle'   => string  (requis), libelle de la rubrique (ou sous rubrique, etc.) qui sera affiché
+    'url'       => string  (requis), url vers laquelle pointer
+    'acl'       => string  (requis), acl (access control list, éventuellement composée de plusieurs valeurs séparées par des pipe)
+    'image'     => string  (option), image pour illustrer la rubrique
+    'titre'     => string  (option), titre (à afficher dans un attribut title, par exemple) 
+    'js'        => string  (option), bout de code javascript (pour un évenement onclick, par exemple)
+);
+
+A noter l'apparition de la clé level qui remplace le hack point/virgule
+
+- amélioration de la gestion des ACL :
+
+Pour qu'une rubrique ou sous rubrique soit affichée, au niveau de la navigation, il faut que l'une ou l'autre des conditions suivantes soient vérifiées :
+
+ou bien l'ACL associée à la rubrique (définie par le clé « acl » dans le script include/navigation.php) est vide,
+ou bien l'intersection entre l'ACL associée à l'utilisateur courant et l'ACL associée à la rubrique n'est pas vide.
+
+Pour qu'un utilisateur puisse accéder (et exécuter le code associé) à une rubrique, il faut que l'une ou l'autre des conditions suivantes soient vérifiées :
+
+ou bien l'ACL associée à la rubrique (et définie par la constante ACL_RUBRIQUE) est vide,
+ou bien l'intersection entre l'ACL associée à l'utilisateur courant et l'ACL associée à la rubrique n'est pas vide.
+
+<b>CARBONE V4.6.001</b>
+
+Création du répertoire include/fpdf/ et déplacement de include/fpdf.php et du répertoire font/ (situé à la racine) dans le répertoire include/fpdf/. En complément, FPDF a été mis à jour avec la dernière version stable.
+Création du répertoire web/ et déplacement des répertoires cache/, js/, image/, upload/ et theme/ dans le répertoire web.
+
+Changement dans la gestion du fichier de log SQL : 
+ 
+- le fichier de log SQL est déployé par défaut dans le répertoire /tmp
+- il reste possible de configurer un autre chemin comme avant, en modifiant la constante CFG_PATH_FILE_LOG_SQL dans global_config.php
+- le fichier de log SQL n'est alimenté que si CFG_DEBUG vaut TRUE (utile en cas d'oubli lors des mises en prod)
+- le format du fichier de log SQL a changé afin de supporter les requêtes concurrentes
+
+L'avantage du répertoire /tmp est qu'Apache peut écrire dedans (en général). Par défaut, il n'est donc plus nécessaire d'ajouter des droits d'écriture sur le fichier de log (sauf si le chemin est changé, ou configuration du serveur particulière). Le log des requêtes SQL devrait donc est plus transparent et évite la présence d'un répertoire log à la racine.
+
+La racine de Carbone ne comporte plus que /include, /web, /divers (à supprimer en prod) et les répertoires associés aux fonctionnalités.
+
+----------
+
+<b>CARBONE V4.5.053</b>
+
+Les fichiers suivants ont tout particulièrement été modifiés : 
+
+- include/lib_form.php
+- include/lib_backoffice.php
+- include/lib_test.php
+- include/global_config.php
+
+Ajout d'un id unique pour les champs formulaire de type 'checkbox' et 'radiobox' (merci Maxime).
+Correction sur les messages d'erreur associés aux champs upload (merci Carine).
+Correction sur le traitement des messages d'erreur définis dans la clé ['test']['test_error_message'] (merci Carine).
+
+Correction d'un bug dans la lib_backoffice.php si passage d'arguments complémentaires en GET dans la clé ['script']['name'] ou si usage des sessions en mode 'url' (merci Bruno). Le bug affectait l'usage des filtres de type 'input'.
+
+Correction d'un bug de régression sur la fonction test_url() et optimisations diverses de la lib_test.php.
+
+Suppression de constantes osbolète dans global_config.php (CFG_LIMITE, CFG_ITEM_LIMITE).
+
+<b>CARBONE V4.5.052</b>
+
+Correction d'un bug sur les actions 'group' (lors de l'absence de selection).
+Mise à jour du code vis à vis des fonctions dépréciées (PHP 5.3).
+
+<b>CARBONE V4.5.050</b>
+
+Correction des requêtes dans le script exemple/file.php
+
+<b>CARBONE V4.5.049</b>
+
+Correction du plugin textarea.
+Correction d'un bug provoquant une interaction entre la gestion des boites multiselect et un hack JS permettant de palier à la mauvaise implémentation du support de la balise &lt;button&gt; sous IE6 et IE7 (merci Ludo). 
+
+<b>CARBONE V4.5.048</b>
+
+Au niveau de la lib_backoffice.php, dans le cas d'un filtre de type like, la clé 'like' peut désormais prendre les valeurs TRUE, FALSE, ou un pattern %value, value% ou %value%. 
+
+<b>CARBONE V4.5.046</b>
+Amélioration de la gestion des boutons (merci Ludo) :
+
+Aucun changement dans la façon de déclarer un bouton coté code. Par contre, il est désormais plus facile de designer des boutons à coup de CSS et d'images (sprite).
+A noter que les boutons, tout en étant graphiques, sont extensibles (la taille s'adapte en fonction de la longueur du libellé).
+Les perspectives d'intégration sont donc intéressantes.
+
+Amélioration de la gestion des champs calendar (merci Ludo) :
+
+La gestion des champs calendar repose désormais sur le widget Datepicker de jQuery UI.
+Ce widget offre de nombreuses perspectives d'intégration intéressantes.
+Voir le fichier readme.txt (js/calendar/readme.txt).
+Un exemple d'intégration se trouve, comme toujours, dans exemple/formulaire.php.
+
+Refonte de la lib_backoffice.php :
+
+La grosse évolution porte sur une refonte de la gestion des recherches et filtres.
+
+En premier lieu, la notion de recherche disparaît. La clé 'recherche' devient donc obsolète. En contre partie, les filtres de type 'input' apparaissent.
+Ceci permet d'envisager la mise en place de plusieurs filtres de type 'input' au lieu d'un seul champ 'input' commun à plusieurs éléments auparavant.
+De plus, avec jQuery et le plugin 'autocomplete', il devient simple d'introduire proprement un comportement de type autocompletion (par exemple pour effectuer une recherche guidée par pays, par status, etc.).
+
+En second lieu, est c'est de loin l'évolution la plus importante, il devient possible de cumuler le comportement des filtres, et ceci, dans toutes les directions.
+Par exemple, sur un filtre de type 'alpha', on peut désormais choisir 'A ou B ou Z', voir 'A et B et Z' et plus uniquement 'A', 'B', 'Z', séparément.
+Il est également possible de cumuler les effets de n filtres entre eux. Les filtres peuvent donc adopter un comportement associatif.
+
+Voir les exemples (fonctionnement et code, en particulier dans la rubrique utilisateur). Consulter également la documentation (divers/doc). Ne pas hésiter à me demander une petite formation/demo rapide si besoin.
+
+Cette évolution devrait, je l'espère, combler une bonne partie des cas de figures qui imposaient encore hier de développer la partie recherche & filtre à l'aide d'un formulaire spécifique permettant de forger la requête à jouer.
+Le spectre fonctionnel de la lib_backoffice ne permettra jamais de répondre à 100% des besoins (et délires) des clients. Mais on s'en approche, du moins je l'espère.
+
+En complément :
+
+Mise à jour de jQuery 1.3.2.
+Correction d'un bug CSS en rapport avec un effet de bord collapse (merci Ludo).
+Correction d'un bug sur le fonctionnement Ajax de la lib_backoffice.php.
+Ajout de la classe class_xml.php dans le répertoire include.
+
+Rock'n roll !
+
+<b>CARBONE V4.5.037</b>
+
+Intégration de jQuery 1.3 !
+
+Poursuite des travaux d'optimisation Web.
+La constante CFG_OPTIMISATION devient CFG_OPTIMISATION_LEVEL.
+A l'image de CFG_SESSION_LEVEL, c'est un <b>champ de bits</b>. Différentes combinaisons sont donc possibles. Ainsi, par exemple, si
+
+- CFG_OPTIMISATION_LEVEL vaut "0" : Aucune optimisation particulière
+- CFG_OPTIMISATION_LEVEL vaut "1" : Mode "Fewer HTTP request" donc regroupement des CSS et JS en un seul fichier
+- CFG_OPTIMISATION_LEVEL vaut "2" : Mode "JS at the bottom" donc déplacement du ou des scripts JS en fin de fichier
+
+Remarque 1 :
+
+Puisque CFG_OPTIMISATION_LEVEL est un <b>champ de bits</b>, si CFG_OPTIMISATION_LEVEL vaut 3, les modes "Fewer HTTP request" et "JS at the bottom" sont donc associés.
+
+Remarque 2 :
+
+Le mode "JS at the bottom" reste expérimental. Bien tester le comportement avant de l'activer en production !
+
+<b>CARBONE V4.5.033</b>
+
+Poursuite des travaux d'optimisation Web.
+Ajout d'un cache autonome ayant pour but de regrouper les JS en un seul fichier afin de limiter le nombre de requêtes HTTP.
+Le principe reste expérimental.
+Pour l'activer, il convient d'initialiser à TRUE la constante CFG_OPTIMISATION présente dans include/global_config.php
+
+define ('CFG_OPTIMISATION', TRUE);
+
+Penser également à faire le bon appel à la fonction optimize_head(), dans le start_html.php du thème :
+
+if(CFG_OPTIMISATION)
+    echo optimize_head($js);
+else
+    echo $js;
+
+Voir le thème jaune, si besoin.
+
+<b>CARBONE V4.5.031</b>
+
+Ajout de $db->qstr() manquants (suggestion Laurent P).
+
+<b>CARBONE V4.5.030</b>
+
+Travaux d'optimisation Web (Deflate, Expires, CSS, JS, etc.).
+Ce point fera l'objet d'une section dans la documentation de Carbone.
+
+<b>CARBONE V4.5.029</b>
+
+Mise en place de l'effet Toggle sur les boutons "Besoin d'aide" (Ludovic).
+Ajout du nombre de requêtes jouées (suggestion Laurent P).
+
+<b>CARBONE V4.5</b>
+
+Refonte du support Javascript et intégration de jQuery.
+Nouvelle version du calendrier.
+Le code HTML contient en moyenne 10% de lignes en moins (même ratio pour la taille)
+Refonte de la documentation.
+
+<b>CARBONE V4.4</b>
+
+Correctif sur les themes jaune et rose (trace de carbone_v41)
+Ajout d'une directives Apache (Options -Indexes) dans le .htaccess afin d'éviter l'affichage du contenu des répertoires dépourvus de document d'index (upload, theme, log, etc.)
+Désormais, il est possible d'ajouter la valeur magique 0 à la clef ['navigation']['choix_value'] de la brique backoffice :
+
+$backoffice['navigation']['choix_value'] => array(5,10,15,20,0),
+
+La valeur 0 permet de proposer l'affichage de l'ensemble des données (idée Julien).
+__________
+
+Correctif sur l'algorithme d'affichage des log SQL si le fichier de log devient trop gros.
+Correctif d'une faille de sécurité (disponibilité du serveur) si on force l'indice d'une page imaginaire au niveau de l'url d'une brique backoffice.
+__________
+
+Importante mise à jour de sécurité contre les risques de failles XSS, CSRF, vol de sessions et les injections SQL.
+Rappels sur les préconisations à respecter obligatoirement :
+
+- Contrôler le plus finement possible les données entrantes lors du traitement des formulaires (tests unitaires, secondaires, etc.).
+- Utiliser $db->qstr() systématiquement dans les requêtes;
+- Abuser des htmlspecialchars() et htmlentities() lors des affichages que vous auriez à prendre en charge;
+- Utiliser la fonction get_url();
+- Utiliser le token de session sur des actions critiques si besoin (me demander des explications si nécessaires).
+
+Les fichiers suivants ont tout particulièrement été modifiés : 
+
+- include/class_session.php
+- include/lib_backoffice.php
+- include/lib_form.php
+- include/global_lib.php
+
+Qu'est-ce qui change ?
+
+En premier lieu, la lib_backoffice.php et lib_form.php (en mode view) appliqueront un htmlentities sur les données. Il est cependant possible de l'éviter (après avoir bien pris en compte les concequences induites...). Pour se faire, préfixer la donnée par un _ (underscore). 
+La class_session.php s'enrichie de plusieurs niveaux de sécurité, via la constante globale CFG_SESSION_LEVEL. Les modes sont les suivants :
+
+- CFG_SESSION_LEVEL vaut "1" : Contrôle du HTTP_USER_AGENT. A ce titre, 2 navigateurs d'origine ou de version différentes ne peuvent pas partager la même session à un instant donné (par exemple, IE7 et Firefox 2) !
+- CFG_SESSION_LEVEL vaut "2" : Session volatile. L'ID de session change de page en page au cours de la navigation.
+- CFG_SESSION_LEVEL vaut "4" : Token de session. Ajoute un token de session qui peut être utilisé par la suite au niveau de la brique backoffice si $config['action']['token']=TRUE
+
+Remarque 1 :
+
+Si CFG_SESSION_TRANS vaut "url" et CFG_SESSION_LEVEL vaut "2" ou "3" (Session volatile), F5 ne marche pas au niveau du navigateur !!!
+
+Remarque 2 :
+
+CFG_SESSION_LEVEL est un <b>champ de bits</b>. Différentes combinaisons sont donc possibles. Ainsi, par exemple, si
+
+- CFG_SESSION_LEVEL vaut "0" : Aucune protection particulière
+- CFG_SESSION_LEVEL vaut "3" : Contrôle du HTTP_USER_AGENT + Session volatile
+- CFG_SESSION_LEVEL vaut "5" : Contrôle du HTTP_USER_AGENT + Token de session
+- CFG_SESSION_LEVEL vaut "6" : Session volatile + Token de session
+- CFG_SESSION_LEVEL vaut "7" : Contrôle du HTTP_USER_AGENT + Session volatile + Token de session
+
+L'idée est clairement ici de réduire les risques de vol de session, même si aucun système n'est infaillible...
+Le système de token de session permet de palier à certaines failles de type CSRF.
+
+Divers : Patch Carine : 2, 5, 6, 8, 9, 10, 11, 12, 13, 21
+
+<b>CARBONE V4.2</b>
+
+include/global_lib.php (fonction backoffice)
+
+- Optimisation d'une requête sur la gestion du multipage
+- Ajout d'une case à cocher permettant de selectionner tout les éléments de type 'action group' (merci Julien)
+- Possibilité de grouper des colonnes dans la recherche (un AS n'est pas utilisable dans la clause WHERE)
+- Suppression des limitations dans le nombre d'actions locales (à partir de 5 actions, des problèmes d'affichage apparaissaient à cause d'un nombre trop important de colspan faisant buguer les navigateurs, IE en tête)
+- Modification de la structure ['script']['action']
+	
+Avant :	$backoffice['script']['action'] => array('label' => 'action', 'colspan'=>TRUE),
+Après : $backoffice['script']['action'] => array('label' => 'action'),
+
+Pour rappel, cette valeur permet de nommer la variable qui sera passée en GET et qui contiendra la valeur de l'action à effectuer. La clef 'colspan' était obsolète ici et n'avait plus de sens.
+
+- Ajout la structure ['config']['action']
+
+Désormais, il est possible d'ajouter la structure suivante :
+
+$backoffice['config']['action'] => array('empty'=>TRUE, 'hide'=>TRUE, 'width'=>'25%'),
+
+La clef 'empty' précise si les actions eventuellement supprimées pour tel ou tel ligne devront être remplacées par une cellule vide ou non (permet de maintenir un alignement des actions).
+La clef 'hide' permet d'autoriser le masquage de la zone d'actions (group et local)
+La clef 'width' permet de préciser la largeur de la zone d'actions (group et local)
+
+Voir l'exemple dans la gestion des utilisateurs.
+
+include/lib_debug.php
+
+- Ajout d'une console de débuggage évoluée
+
+include/lib_test.php
+
+- Suppression de test_orthographe() obsolète (la Google Bar fait double usage)
+- Ajout de test_min_length(), test_max_length() et test_length()
+
+include/lib_test_js.php
+
+- Possibilité de contrôler un formulaire au niveau du post client (en JS). Evidement, les tests sont également réalisés coté serveur au cas ou. Voir la documentation et l'exemple (script 'checkjs.php' dans la rubrique exemple).
+__________
+
+Patch Carine concernant le multibox sous IE7
+__________
+
+include/class_session.php
+
+- Possibilité de contrôler le mode de transmission de l'id de session
+
+Désormais, il est possible de contrôler le mode de transmission de l'id de session.
+Ce mode est initialisé dans le fichier include/global_config.php
+
+define ('CFG_SESSION_TRANS', 'cookie');	// Mode de transmission de l'id par cookie
+ou
+define ('CFG_SESSION_TRANS', 'url');	// Mode de transmission de l'id par url
+
+Divers correctifs (formatage XHTML, bordure(), calendar_fr.js)
+
+La methode $session->url() peut désormais recevoir un second argument optionnel afin de transformer les &amp;amp; en &amp;. A ce titre, en particulier lors de la fabriquation d'une url qui sera utilisée par un header("Location"), il est recommandé de faire désormais un $session->url($url, FALSE).
+
+include/lib_backoffice.php
+
+La fonction backoffice est déportée dans une librairie à part, permettant ainsi de réduire l'empreinte mémoire de l'ordre de 20%.
+Affichage du type d'order ASC ou DESC (passer à display:none; dans la css si une inutile).
+Pas mal de données (export_format, export_value, export_data, etc.) étaient stockées en session afin d'implémenter la fonctionnalité d'export (PDF, Excel). Ce n'est plus le cas désormais. Le contenu de la session n'en est que plus lisible.
+
+include/global_lib.php
+
+Correction d'un bug sur le upload (en cas d'utilisation d'un répertoire de stockage différent de celui par défaut).
+
+include/lib_backoffice.php
+
+Ajout d'une clef 'format'=>'image' et 'src' au niveau des actions pour les remplacer par des images.
+Voir l'exemple dans utilisateur/index_image.php
+Correction d'un bug sur l'indice de page qui passe à zéro (bug Marie)
+__________
+
+include/magic.php
+
+Ajout d'un script permettant de gérer les quotes si impossible de modifier le paramétrage par défaut (utiliser ce script en l'appelant dans include/start_php.php si magic_quotes_gpc est à On et qu'il est impossible de passer à Off via un .htaccess).
+
+include/lib_backoffice.php
+
+Possibilité d'ajouter des actions multiples via les clefs 'field'=>array(), 'label'=>array(), 'js'=>array(), etc. (genre gérer des actions activer/desactiver en gardant l'alignement)
+Possibilité de pointer vers un script particulier via la clef 'script' pour les actions global, outside, etc. (patch Carine)
+Possibilité de configurer le libellé des exports (pdf, excel, etc.) (patch Carine)
+Possibilité de localiser les images des actions locales dans le répertoire image du thème (sinon recherche dans le répertoire image global de Carbone) (patch Carine)
+
+include/class_session.php
+
+91c91
+<         if($value)
+---
+>         if($value!==FALSE)

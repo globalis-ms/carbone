@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="expires" content="-1" />
+<meta http-equiv="pragma" content="no-cache" />
+<meta name="robots" content="all" />
+<meta name="author" content="Armel FAUVEAU" />
+<meta name="description" content="Documentation CARBONE V5.3" />
+
+<title>Documentation CARBONE V5.3 Version 1.0 (06-06-2015) - Les règles à respecter</title>
+
+<link rel="stylesheet" type="text/css" media="screen" href="../share/css/screen.css" />
+<link rel="stylesheet" type="text/css" media="print" href="../share/css/print.css" />
+
+<script type="text/javascript" src="../share/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="../share/js/jquery.corner.min.js"></script>
+<script type="text/javascript" src="../share/js/jquery.main.min.js"></script>
+
+</head>
+<body>
+
+<!-- START NAVIGATION -->
+<div id="nav"><div id="nav_inner"></div></div>
+<div id="nav2">
+  <a name="top"></a>
+  <div id="index">
+    <img src="../share/image/nav_toggle.jpg"  title="Table des matières" alt="Table des matières" />
+  </div>
+</div>
+<img src="../share/image/logo.png" title="Globalis" alt="Globalis" style="padding: 0 0 10px 35px;"/>
+<div id="title" class="clear">
+  <div class="left">
+    Sécurité&nbsp;&#8250;&nbsp;Les règles à respecter
+  </div>
+  <div class="right">
+    Dernière édition le 01-02-2014 21:32 par Armel  &#8249;  <a href="../index.html">Table des matières</a>
+  </div>
+</div>
+<!-- STOP NAVIGATION -->
+
+
+<!-- START HEADER -->
+<div id="subtitle" class="clear">
+  <div class="left">
+      <a href="../brique/javascript.html">Javascript</a> &#8249;&#8249;
+  </div>
+  <div class="right">
+      &#8250;&#8250; <a href="../securite/session.html">A propos des sessions</a>
+  </div>
+</div>
+<!-- STOP HEADER -->
+
+<br clear="all" />
+
+<!-- START CONTENT -->
+<div id="content">
+<h1>Les règles à respecter</h1>
+<p>
+Afin d'éviter le plus possible les problèmes de sécurité liés aux failles XSS, CSRF,
+injections SQL et vols de session, quelques règles sont à respecter :
+</p>
+<ul>
+<li>
+contrôler les données entrantes lors du traitement
+des formulaires (tests unitaires, secondaires, etc.)<sup>[<a href="#note1" id="rev-note1">1</a>]</sup>;
+</li>
+<li>
+utiliser $db->qstr() systématiquement dans les requêtes;
+</li>
+<li>
+abuser des htmlspecialchars() et htmlentities() lors des affichages que vous
+auriez à prendre en charge;
+</li>
+<li>
+utiliser la fonction get_url();
+</li>
+<li>
+renforcer la sécurité des sessions via la constante
+CFG_SESSION_LEVEL et eventuellement le token de session sur des
+actions critiques.
+</li>
+</ul>
+<p>
+Les données retournées par la brique backoffice ou lors de l'affichage d'un formulaire
+en mode view, font l'objet d'un traitement (htmlspecialchars(), htmlentities(),
+striptags(), etc.). Il est cependant possible de lever ce traitement en prefixant le
+champ par un _ (underscore).
+</p><div class="note">
+<p>[<a href="#rev-note1" id="note1">1</a>] La lib_test.php est là pour
+vous y aider. Si besoin, écrire les fonctions de tests supplémentaires.</p>
+</div></div>
+<!-- STOP CONTENT -->
+
+<!-- START FOOTER -->
+<div id="footer" class="clear">
+  <div class="left">
+  Documentation CARBONE V5.3 (Version 1.0) générée par CARBONE DOC (Version 1.3) &middot; Copyright &#169; 1997-2015&nbsp;&middot;&nbsp;<a href="http://www.globalis-ms.com/">Globalis</a>
+  </div>
+  <div class="right">
+  <a href="#top">Haut de page</a>
+  </div>
+  <br/>
+  <br/>
+  <p class="clear">
+  GLOBALIS media systems - Siège social : 6 bis, rue Auguste VITU - 75015 Paris
+  <br/>
+  S.A.R.L au capital de 10 671,43 &euro; - R.C.S Paris B 413 141 193 - SIRET 413 141 193 00024 - APE 741G
+  <br/>
+  Tel: 01 82 83 51 70 / Fax: 01 82 83 51 71 - Web : http://www.globalis-ms.com - Twitter : @GLOBALISms - E-mail : infos@globalis-ms.com
+  </p>
+</div>
+<!-- STOP FOOTER -->
+</body>
+</html>

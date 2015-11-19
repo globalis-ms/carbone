@@ -1,0 +1,230 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="expires" content="-1" />
+<meta http-equiv="pragma" content="no-cache" />
+<meta name="robots" content="all" />
+<meta name="author" content="Armel FAUVEAU" />
+<meta name="description" content="Documentation CARBONE V5.3" />
+
+<title>Documentation CARBONE V5.3 Version 1.0 (06-06-2015) - Bootstrap de CARBONE</title>
+
+<link rel="stylesheet" type="text/css" media="screen" href="../share/css/screen.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="../share/css/listing.css" />
+<link rel="stylesheet" type="text/css" media="print" href="../share/css/print.css" />
+<link rel="stylesheet" type="text/css" media="print" href="../share/css/listing.css" />
+
+<script type="text/javascript" src="../share/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="../share/js/jquery.corner.min.js"></script>
+<script type="text/javascript" src="../share/js/listing.min.js"></script>
+<script type="text/javascript" src="../share/js/jquery.main.min.js"></script>
+
+</head>
+<body>
+
+<!-- START NAVIGATION -->
+<div id="nav"><div id="nav_inner"></div></div>
+<div id="nav2">
+  <a name="top"></a>
+  <div id="index">
+    <img src="../share/image/nav_toggle.jpg"  title="Table des matières" alt="Table des matières" />
+  </div>
+</div>
+<img src="../share/image/logo.png" title="Globalis" alt="Globalis" style="padding: 0 0 10px 35px;"/>
+<div id="title" class="clear">
+  <div class="left">
+    Architecture du code&nbsp;&#8250;&nbsp;Bootstrap de CARBONE
+  </div>
+  <div class="right">
+    Dernière édition le 01-02-2014 21:29 par Armel  &#8249;  <a href="../index.html">Table des matières</a>
+  </div>
+</div>
+<!-- STOP NAVIGATION -->
+
+
+<!-- START HEADER -->
+<div id="subtitle" class="clear">
+  <div class="left">
+      <a href="../architecture_code/page.html">Autopsie d'une page HTML type</a> &#8249;&#8249;
+  </div>
+  <div class="right">
+      &#8250;&#8250; <a href="../architecture_code/workflow.html">Workflow</a>
+  </div>
+</div>
+<!-- STOP HEADER -->
+
+<br clear="all" />
+
+<!-- START CONTENT -->
+<div id="content">
+<h1>Bootstrap de CARBONE</h1>
+<div id="mini_index"><h2><a href="#index1" id="rev-index1">Cas pratique</a></h2>
+<h2><a href="#index2" id="rev-index2">Différence entre local_lib.php, lib/lib_carbone.php, lib/lib_metier.php</a></h2>
+</div>
+
+<p>
+Nous allons ici détailler le bootstrap<sup>[<a href="#note1" id="rev-note1">1</a>]</sup> de CARBONE.
+</p>
+<p>
+Comme nous l'avons déjà évoqué dans la section <a href="../architecture_code/script.html">Autopsie d'un script PHP type</a> de la documentation, le début d'un script commence généralement par la séquence :
+</p>
+<pre class="code">
+&lt;?php
+// Chargement du framework
+
+require 'start_php.php';
+</pre>
+
+<p>
+Le fichier start_php.php, présent dans le répertoire include/, contient théoriquement le code suivant :
+</p>
+
+<pre class="code">
+&lt;?php
+// Level d'erreur: error_reporting(E_ALL | E_STRICT);
+
+error_reporting(E_ALL | E_STRICT);
+
+// Passage en mode Output Buffering
+
+ob_start();
+
+// Require optionnels
+
+if(file_exists('local_config.php'))
+    require 'local_config.php';
+if(file_exists('local_lib.php'))
+    require 'local_lib.php';
+
+// Require obligatoires
+
+require 'config/config.php';        // Fichier de Configuration Globale
+require 'lib/lib_carbone.php';      // Librairie Carbone
+require 'lib/class_db.php';         // Class Abstraction SGBD
+require 'lib/class_session.php';    // Class Session
+require 'open.php';                 // Ouverture SGBD et Session
+?&gt;
+</pre>
+<p>
+La ligne 4 a pour but d'initialiser le niveau d'erreur. Positionné à &laquo; E_ALL | E_STRICT &raquo;, nous avons ici la garantie de travailler avec le niveau d'erreur le plus strict. Par exemple, la moindre variable qui sera utilisée sans avoir été initialisée engendrera une erreur de type NOTICE. 
+Il conviendra de modifier ce niveau lors de l'étape de mise en production (consulter la section <a href="../divers/mise_production.html">Mise en production</a> de la documentation pour de plus amples informations).
+</p>
+<p>
+La ligne 8 permet d'utiliser la fonctionnalité « Output Buffering » de PHP <sup>[<a href="#note2" id="rev-note2">2</a>]</sup>.
+</p>
+<p>
+Les lignes 12 à 15 vérifient la présence éventuelle des fichiers local_config.php et local_lib.php afin de savoir s'il faut les inclure ou non <sup>[<a href="#note3" id="rev-note3">3</a>]</sup>.
+</p>
+<p>
+Les lignes suivantes servent à charger une demie douzaine de fichiers, tous présents dans le répertoire include/, include/config/ et include/lib/. 
+</p>
+<p>
+La ligne 19 permet d'inclure le fichier config/config.php. Sorte de « Carte d'Identité » de l'application, il contient les constantes et variables majeures (chemin, information de connexion à la base de données, valeurs par défaut, etc.).
+</p>
+<p>
+La ligne 20 permet d'inclure le fichier lib/lib_carbone.php. Il comporte des fonctions généralement utiles à l'ensemble de CARBONE.
+</p>
+<p>
+La ligne 21 permet d'inclure le fichier lib/class_db.php. Ce fichier s'occupe de charger la classe d'abstraction SGBD (AdoDB Carbone ou AdoDB) et le driver (MySQL, PostgreSQL, etc.) souhaité <sup>[<a href="#note4" id="rev-note4">4</a>]</sup>.
+</p>
+<p>
+La ligne 22 permet d'inclure le fichier lib/class_session.php  Ce fichier s'occupe de charger la classe de gestion des sessions.
+</p>
+<p>
+La ligne 23 permet d'inclure le fichier open.php. Ce fichier a des objectifs multiples : ouvrir la connexion au SGBD, ouvrir la session, vérifier les sécurités d'accès à la rubrique courante, charger le fichier de langue et de navigation, etc.
+</p>
+<p>
+A ce niveau, le gros du framework CARBONE a donc démarré. La connexion à la base de données est effective, la session ouverte, les chemins connus, les règles de navigation également.
+</p>
+
+<h2><a href="#rev-index1" id="index1">Cas pratique</a></h2>
+
+
+<p>
+Dans la pratique, il convient d'enrichir le script start_php.php en procédant à l'inclusion d'un fichier supplémentaire comportant une « Librairie Métier » propre à l'application. 
+Cette librairie embarquera idéalement des règles de gestion, tests, procédures propres à l'application en court de développement. Le fichier start_php.php contiendra alors le code suivant (ligne 22) :
+</p>
+
+<pre class="code">
+&lt;?php
+// Level d'erreur: error_reporting(E_ALL | E_STRICT);
+
+error_reporting(E_ALL | E_STRICT);
+
+// Passage en mode Output Buffering
+
+ob_start();
+
+// Require optionnels
+
+if(file_exists('local_config.php'))
+    require 'local_config.php';
+if(file_exists('local_lib.php'))
+    require 'local_lib.php';
+
+// Require obligatoires
+
+require 'config/config.php';        // Fichier de Configuration Globale
+require 'lib/lib_carbone.php';      // Librairie Carbone
+
+require 'lib/lib_metier.php';       // Librairie M&eacute;tier
+
+require 'lib/class_db.php';         // Class Abstraction SGBD
+require 'lib/class_session.php';    // Class Session
+require 'open.php';                 // Ouverture SGBD et Session
+?&gt;
+</pre>
+<p>
+Si cette librairie lib/lib_metier.php <sup>[<a href="#note5" id="rev-note5">5</a>]</sup> embarque une fonctionnalité qui pourrait présenter un intérêt pour les projets futurs, elle pourra prétendre intégrer le coeur de CARBONE (lib_test.php, lib_carbone.php, etc.) à l'occasion d'une mise à jour du framework.
+</p>
+
+<h2><a href="#rev-index2" id="index2">Différence entre local_lib.php, lib/lib_carbone.php, lib/lib_metier.php</a></h2>
+
+
+<p>
+CARBONE propose de découper l'application par rubriques et de regrouper chaque rubrique dans un répertoire spécifique. Les fichiers local_lib.php et local_config.php sont facultativement présents à la racine de chacun de ces répertoires s'ils sont nécessaires. 
+</p>
+<p>
+Le fichier local_lib.php contiendra des fonctions ou classes propres à la rubrique en cours. C'est donc une librairie locale, comme le suggère son nommage et dont la portée n'ira pas au delà du répertoire dans lequel elle est déposée. 
+</p>
+<p>
+Le fichier lib/lib_carbone.php, présent dans le répertoire include, embarque quant à lui des fonctions ou classes communes à l'ensemble de l'application. La portée est donc globale et accessible depuis chaque rubrique.
+</p>
+<p>
+Il en va de même de la lib/lib_metier.php, si ce n'est qu'elle contient des fonctions ou classes propres à l'application en court de développement.
+</p><div class="note">
+<p>[<a href="#rev-note1" id="note1">1</a>] En informatique, on désigne par  « bootstrap » un petit programme d'amorçage qui permet d'en lancer un plus gros. Ne pas confondre ici ce terme avec le framework HTML & CSS Bootstrap qui sert de socle à CARBONE.</p>
+
+<p>[<a href="#rev-note2" id="note2">2</a>] Cette fonctionnalité permet ici de lever les restrictions liées à l'envoi de données du serveur vers le client en cas de redirections tardives via la fonction header("Location:...").</p>
+
+<p>[<a href="#rev-note3" id="note3">3</a>] Depuis CARBONE V4.6, l'inclusion de ces 2 fichiers est optionnelle.</p>
+
+<p>[<a href="#rev-note4" id="note4">4</a>] Dont le choix est précisement fait dans le fichier include/config/config.php précédemment cité.</p>
+
+<p>[<a href="#rev-note5" id="note5">5</a>] Ce nommage est ici donné à titre d'exemple. Il convient de nommer cette librairie en fonction du nom du projet, par exemple, lib_<i>projet_foo_bar</i>.php.</p>
+</div></div>
+<!-- STOP CONTENT -->
+
+<!-- START FOOTER -->
+<div id="footer" class="clear">
+  <div class="left">
+  Documentation CARBONE V5.3 (Version 1.0) générée par CARBONE DOC (Version 1.3) &middot; Copyright &#169; 1997-2015&nbsp;&middot;&nbsp;<a href="http://www.globalis-ms.com/">Globalis</a>
+  </div>
+  <div class="right">
+  <a href="#top">Haut de page</a>
+  </div>
+  <br/>
+  <br/>
+  <p class="clear">
+  GLOBALIS media systems - Siège social : 6 bis, rue Auguste VITU - 75015 Paris
+  <br/>
+  S.A.R.L au capital de 10 671,43 &euro; - R.C.S Paris B 413 141 193 - SIRET 413 141 193 00024 - APE 741G
+  <br/>
+  Tel: 01 82 83 51 70 / Fax: 01 82 83 51 71 - Web : http://www.globalis-ms.com - Twitter : @GLOBALISms - E-mail : infos@globalis-ms.com
+  </p>
+</div>
+<!-- STOP FOOTER -->
+</body>
+</html>

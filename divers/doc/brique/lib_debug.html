@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="expires" content="-1" />
+<meta http-equiv="pragma" content="no-cache" />
+<meta name="robots" content="all" />
+<meta name="author" content="Armel FAUVEAU" />
+<meta name="description" content="Documentation CARBONE V5.3" />
+
+<title>Documentation CARBONE V5.3 Version 1.0 (06-06-2015) - Debuggage: lib_debug.php</title>
+
+<link rel="stylesheet" type="text/css" media="screen" href="../share/css/screen.css" />
+<link rel="stylesheet" type="text/css" media="print" href="../share/css/print.css" />
+
+<script type="text/javascript" src="../share/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="../share/js/jquery.corner.min.js"></script>
+<script type="text/javascript" src="../share/js/jquery.main.min.js"></script>
+
+</head>
+<body>
+
+<!-- START NAVIGATION -->
+<div id="nav"><div id="nav_inner"></div></div>
+<div id="nav2">
+  <a name="top"></a>
+  <div id="index">
+    <img src="../share/image/nav_toggle.jpg"  title="Table des matières" alt="Table des matières" />
+  </div>
+</div>
+<img src="../share/image/logo.png" title="Globalis" alt="Globalis" style="padding: 0 0 10px 35px;"/>
+<div id="title" class="clear">
+  <div class="left">
+    Briques élémentaires&nbsp;&#8250;&nbsp;Debuggage: lib_debug.php
+  </div>
+  <div class="right">
+    Dernière édition le 06-06-2014 15:17 par Armel  &#8249;  <a href="../index.html">Table des matières</a>
+  </div>
+</div>
+<!-- STOP NAVIGATION -->
+
+
+<!-- START HEADER -->
+<div id="subtitle" class="clear">
+  <div class="left">
+      <a href="../brique/lib_test.html">Tests: lib_test.php</a> &#8249;&#8249;
+  </div>
+  <div class="right">
+      &#8250;&#8250; <a href="../brique/javascript.html">Javascript</a>
+  </div>
+</div>
+<!-- STOP HEADER -->
+
+<br clear="all" />
+
+<!-- START CONTENT -->
+<div id="content">
+<h1>Assistant de debuggage: lib_debug.php</h1>
+<p>
+CARBONE propose quelques fonctions permettant d'aider au debuggage
+d'applications. Elles sont définies dans les fichiers include/lib/lib_carbone.php et include/lib/lib_debug.php.
+</p>
+<p>
+La première, print_rh() <sup>[<a href="#note1" id="rev-note1">1</a>]</sup>, a pour but de surcharger la fonction print_r(), native à PHP,
+en encadrant automatiquement le flux de sortie par les balises &lt;pre&gt; et &lt;/pre&gt;.
+La fonction print_rh() reçoit le nom de la variable à « dumper » en argument.
+</p>
+<p>
+La seconde, print_rc(), a pour but de produire une sortie au format JSON et de l'afficher dans la console du navigateur.
+Cela permet de ne pas « casser » la mise en page HTML par un affichage non intrusif. 
+La fonction print_rc() reçoit le nom de la variable à « dumper » en argument.
+</p>
+<p>
+Beaucoup plus évoluée, CARBONE propose également une barre de debuggage qu'il est possible d'activer en initialisant à TRUE la constante CFG_DEBUG dans include/config/config.php.
+</p>
+<p>
+La barre de debuggage de CARBONE permet d'afficher les informations suivantes :
+</p>
+<ul>
+<li>la version de l'application,</li>
+<li>la taille de l'empreinte mémoire utilisée par le script ainsi que celle de la page HTML (en Ko),</li>
+<li>le temps d'exécution du script (en ms),</li>
+<li>le log des requêtes SQL jouées par le script (hors requêtes « session ») <sup>[<a href="#note2" id="rev-note2">2</a>]</sup>,</li>
+<li>le scope (variables, constantes, $_GET, $_POST, etc.),</li>
+<li>etc.</li>
+</ul>
+
+<p>
+A noter que la fenêtre secondaire d'affichage des informations peut-être déplacée par
+simple drag and drop.
+</p><div class="note">
+<p>[<a href="#rev-note1" id="note1">1</a>] Historiquement, c'est la première fonction à avoir été écrite lors du démarrage du projet CARBONE. Pour des raisons d'optimisation, cette fonction a été déplacée depuis CARBONE Version 4.5 dans include/lib/lib_carbone.php.</p>
+
+<p>[<a href="#rev-note2" id="note2">2</a>] Attention, cette fonctionnalité ne fonctionnera que si le fichier dont le chemin est initialisé par la
+constante CFG_PATH_FILE_LOG_SQL dans le fichier include/config/config.php existe et s'il est en
+lecture et écriture.</p>
+</div></div>
+<!-- STOP CONTENT -->
+
+<!-- START FOOTER -->
+<div id="footer" class="clear">
+  <div class="left">
+  Documentation CARBONE V5.3 (Version 1.0) générée par CARBONE DOC (Version 1.3) &middot; Copyright &#169; 1997-2015&nbsp;&middot;&nbsp;<a href="http://www.globalis-ms.com/">Globalis</a>
+  </div>
+  <div class="right">
+  <a href="#top">Haut de page</a>
+  </div>
+  <br/>
+  <br/>
+  <p class="clear">
+  GLOBALIS media systems - Siège social : 6 bis, rue Auguste VITU - 75015 Paris
+  <br/>
+  S.A.R.L au capital de 10 671,43 &euro; - R.C.S Paris B 413 141 193 - SIRET 413 141 193 00024 - APE 741G
+  <br/>
+  Tel: 01 82 83 51 70 / Fax: 01 82 83 51 71 - Web : http://www.globalis-ms.com - Twitter : @GLOBALISms - E-mail : infos@globalis-ms.com
+  </p>
+</div>
+<!-- STOP FOOTER -->
+</body>
+</html>

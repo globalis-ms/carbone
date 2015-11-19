@@ -1,0 +1,342 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="expires" content="-1" />
+<meta http-equiv="pragma" content="no-cache" />
+<meta name="robots" content="all" />
+<meta name="author" content="Armel FAUVEAU" />
+<meta name="description" content="Documentation CARBONE V5.3" />
+
+<title>Documentation CARBONE V5.3 Version 1.0 (06-06-2015) - Compléter la documentation</title>
+
+<link rel="stylesheet" type="text/css" media="screen" href="../share/css/screen.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="../share/css/dhtmlx.folder.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="../share/css/listing.css" />
+<link rel="stylesheet" type="text/css" media="print" href="../share/css/print.css" />
+<link rel="stylesheet" type="text/css" media="print" href="../share/css/dhtmlx.folder.css" />
+<link rel="stylesheet" type="text/css" media="print" href="../share/css/listing.css" />
+
+<script type="text/javascript" src="../share/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="../share/js/jquery.corner.min.js"></script>
+<script type="text/javascript" src="../share/js/dhtmlx.common.min.js"></script>
+<script type="text/javascript" src="../share/js/dhtmlx.folder.min.js"></script>
+<script type="text/javascript" src="../share/js/folder.min.js"></script>
+<script type="text/javascript" src="../share/js/listing.min.js"></script>
+<script type="text/javascript" src="../share/js/jquery.main.min.js"></script>
+
+</head>
+<body>
+
+<!-- START NAVIGATION -->
+<div id="nav"><div id="nav_inner"></div></div>
+<div id="nav2">
+  <a name="top"></a>
+  <div id="index">
+    <img src="../share/image/nav_toggle.jpg"  title="Table des matières" alt="Table des matières" />
+  </div>
+</div>
+<img src="../share/image/logo.png" title="Globalis" alt="Globalis" style="padding: 0 0 10px 35px;"/>
+<div id="title" class="clear">
+  <div class="left">
+    Divers&nbsp;&#8250;&nbsp;Compléter la documentation
+  </div>
+  <div class="right">
+    Dernière édition le 01-02-2014 21:30 par Armel  &#8249;  <a href="../index.html">Table des matières</a>
+  </div>
+</div>
+<!-- STOP NAVIGATION -->
+
+
+<!-- START HEADER -->
+<div id="subtitle" class="clear">
+  <div class="left">
+      <a href="../divers/outil.html">Outils préconisés</a> &#8249;&#8249;
+  </div>
+  <div class="right">
+      
+  </div>
+</div>
+<!-- STOP HEADER -->
+
+<br clear="all" />
+
+<!-- START CONTENT -->
+<div id="content">
+<h1>Compléter la documentation</h1>
+<div id="mini_index"><h2><a href="#index1" id="rev-index1">Remarque préliminaire</a></h2>
+<h2><a href="#index2" id="rev-index2">Structure globale</a></h2>
+<h2><a href="#index3" id="rev-index3">Le répertoire share/</a></h2>
+<h2><a href="#index4" id="rev-index4">Le répertoire template/</a></h2>
+<h2><a href="#index5" id="rev-index5">Syntaxe d'un template</a></h2>
+<h2><a href="#index6" id="rev-index6">A propos des séquences de code</a></h2>
+<h2><a href="#index7" id="rev-index7">A propos des arborescences</a></h2>
+</div>
+
+<h2><a href="#rev-index1" id="index1">Remarque préliminaire</a></h2>
+
+<p>
+Le projet CARBONE DOC a pour but de faciliter la maintenance et l'enrichissement de la documentation du framework CARBONE. 
+Ceci étant, au delà du framework CARBONE, ce projet peut parfaitement être utilisé pour la documentation technique de n'importe quel autre projet.
+</p>
+<h2><a href="#rev-index2" id="index2">Structure globale</a></h2>
+
+<p>
+Le projet CARBONE DOC se compose d'un répertoire comportant 3 scripts PHP à la racine, ainsi que 2 sous répertoires. 
+Le script config.php est de loin le plus important. C'est en particulier lui qui définit le titre de la documentation ou encore son numéro de version, mais surtout l'index de cette documentation. 
+La description de cet index suit le formalisme suivant :
+</p>
+
+<pre class="code">
+
+$cfg_index   = array (
+    'foo' =&gt; array(
+        'Section Foo',
+         array(
+            'foo'     =&gt; 'Titre Foo',
+            'bar'     =&gt; 'Titre Bar',
+            'baz'     =&gt; 'Titre Baz',
+        ),
+    ),
+    'bar' =&gt; array(
+        'Section Bar',
+        array(
+            'foo'     =&gt; 'Titre Foo',
+            'bar'     =&gt; 'Titre Bar',
+            'baz'     =&gt; 'Titre Baz',
+            'fum'     =&gt; 'Titre Fum',
+            'qux'     =&gt; 'Titre Qux',
+        ),
+    ),
+);
+?&gt;
+</pre>
+
+<p>
+Nous avons ici défini 2 grandes sections, « foo »  et « bar », comportant chacune plusieurs pages.
+La première clé correspond au nom de répertoire de stockage des templates de chaque section. Cette clé pointe sur un premier tableau. 
+Le premier élément correspond au titre de la section tel qu'il apparaîtra dans l'index. Le second élément pointe vers un second tableau. 
+Ce second tableau se compose de paires clé / valeur. La clé est le nom du template (fichier html avant mise en forme, donc sans header/footer/traitements divers et portant l'extension .tpl).
+La valeur correspond au titre de la page tel qu'il apparaîtra dans l'index (et dans la balise &lt;title&gt; de la page HTML).
+</p>
+
+<center>
+<div class="folder" id="carbone_doc" style="width:640px; height:140px;" title='/carbone_doc/'></div>
+</center>
+
+<p>
+Le script engine.php est le moteur de parsing. C'est lui que l'on invoque pour générer (ou regénérer) la documentation. Il s'execute en ligne de commande en précisant le repertoire cible dans lequel sera générée la documention. 
+</p>
+
+<pre class="code">
+armel@chrome:~$ php engine.php
+usage : php engine [OPTION]... DIRECTORY
+Compile and create the documention in the target DIRECTORY
+
+-h, --help      print this help.
+-d, --debug     print lots of debugging information.
+-f, --full      create also one big page.
+-c, --clean     delete everything in the target directory.
+
+armel@chrome:~$ php engine.php webperso/doc_carbone/
+</pre>
+
+<p>
+Le script engine.php génère dans le répertoire cible:
+</p>
+
+<ul>
+<li>l'index de la documentation (ainsi que l'index glissant en haut de page) : index.html,</li>
+<li>l'ensemble des pages composant chaque section,</li>
+<li>eventuellement, l'index propre à une page en particulier <sup>[<a href="#note1" id="rev-note1">1</a>]</sup>.</li>
+<li>eventuellement, si l'option -f ou --full est invoquée, une version de la documentation sous forme de fichier unique : documentation.html,</li>
+</ul>
+
+<p>
+Il duplique également le répertoire share/ (comportant css/, js/, image/ et éventuellement structure/, php/ et xsl/ si des arborescences sont à afficher) dans le répertoire cible.
+</p>
+
+<p>
+Pour chaque template, le script engine va y associer le template d'entête et de pied de page. Il va également parser un certain nombre de choses à mettre en forme comme les notes de bas de page, les sections de code, etc.
+</p>
+
+<h2><a href="#rev-index3" id="index3">Le répertoire share/</a></h2>
+
+
+<p>
+Ce répertoire comporte divers sous répertoires permettant de stocker, en particulier, les feuilles de style CSS (répertoire css/), les scripts Javascript (répertoire js/) et les images (répertoire image/). 
+Il sert également à décrire la structure d'arborescences qui seront utilisées dans la documentation (structure comportant répertoires et fichiers vides composant l'arborescence ou les arborescences à décrire). Le répertoire php/ contiendra alors le script permettant de rendre cette structure « browseable » ainsi qu'un répertoire xsl/ (comportant une feuille xsl de mise en forme).
+</p>
+
+<h2><a href="#rev-index4" id="index4">Le répertoire template/</a></h2>
+
+
+<p>
+Ce répertoire comporte l'ensemble des templates de la documentation. A la racine se trouvent généralement 3 templates génériques : header.tpl, footer.tpl et todo.tpl. Les 2 premiers servent à décrire l'entête et le pied de page de chaque page composant la documentation. Quant à todo.tpl, il sert de template générique si un template de page vient à manquer.
+</p>
+
+<p>
+En complément, on retrouve autant de répertoires que de sections décrites dans le tableau $cfg_index du script config.php. Et dans chaque répertoire, autant de templates que de pages, elles aussi décrites dans le tableau $cfg_index du script config.php. 
+On notera au passage qu'un template porte l'extension .tpl. 
+</p>
+
+<h2><a href="#rev-index5" id="index5">Syntaxe d'un template</a></h2>
+
+
+<p>
+Aucune syntaxe particulière n'est requise. Un template accepte la syntaxe HTML traditionnelle. Cependant, on cherchera à limiter le plus possible le nombre de balises utilisées. 
+A titre d'exemple, cette documentation technique en utilise une douzaine: &lt;h[234]&gt;, &lt;p&gt;, &lt;pre&gt;, &lt;ul&gt;, &lt;li&gt;, &lt;table&gt;, &lt;tr&gt;, &lt;th&gt;, &lt;td&gt;, &lt;sup&gt; et à de rares occasions &lt;img&gt;, &lt;div&gt; et &lt;center&gt; (pour des raisons pratiques...).
+</p>
+<p>
+On notera également que la mise en forme de l'ensemble dépendra évidemment du ou des feuilles de style CSS qui lui seront appliquées et qu'il conviendra d'adapter en fonction des besoins.
+</p>
+
+<p>
+Néanmoins, le moteur prend en charge quelques opérations permettant de simplifier et optimiser certaines choses. Par exemple, 
+</p>
+<ul>
+<li>il prend en charge la gestion des notes de bas de page à introduire à l'aide des balises &lt;sup&gt; et &lt;/sup&gt;,</li>
+<li>il assure la mise en forme automatique de séquences de code, la numérotation des lignes, ainsi que l'encodage au format HTML pour peu que le code soit placé entre les balises &lt;pre class="code"&gt; et &lt;/pre&gt;,</li>
+<li>il permet l'intégration d'arborescence,</li>
+<li>il optmise le chargement des scripts Javascript et des feuilles de styles CSS<sup>[<a href="#note2" id="rev-note2">2</a>]</sup>.</li>
+</ul>
+
+<p>
+Il est évidement possible d'enrichir l'ensemble si besoin.
+</p>
+
+<p>
+Le moteur s'occupe également de remplacer certaines variables de template. Elles sont initialisées dans le fichier config.php, par le biais de constantes, ou calculées à partir des informations contenues dans le tableau à clés $gbl_cfg_index() :
+</p>
+
+<table>
+<tr>
+	<th width="30%">Variables de template</th>
+	<th>Description fonctionnelle</th>
+</tr>
+<tr>
+	<td>&#123;doc_title&#125;</td>
+	<td>Constante définie dans CFG_TITRE</td>
+</tr>
+<tr>
+	<td>&#123;doc_author&#125;</td>
+	<td>Constante définie dans CFG_AUTEUR</td>
+</tr>
+<tr>
+	<td>&#123;doc_version&#125;</td>
+	<td>Constante définie dans CFG_VERSION</td>
+</tr>
+<tr>
+	<td>&#123;doc_date&#125;</td>
+	<td>Constante définie dans CFG_DATE</td>
+</tr>
+<tr>
+	<td>&#123;page_title&#125;</td>
+	<td>Valeur définie dans $cfg_index (titre de la page)</td>
+</tr>
+<tr>
+	<td>&#123;section_title&#125;</td>
+	<td>Valeur définie dans $cfg_index (section et titre de la page)</td>
+</tr>
+<tr>
+	<td>&#123;page_prev&#125;</td>
+	<td>Valeur définie dans $cfg_index (titre de la page précédente)</td>
+</tr>
+<tr>
+	<td>&#123;page_next&#125;</td>
+	<td>Valeur définie dans $cfg_index (titre de la page suivante)</td>
+</tr>
+</table>
+
+<h2><a href="#rev-index6" id="index6">A propos des séquences de code</a></h2>
+
+
+<p>Une séquence de code est intégrée dans une page par le biais du code suivant :</p>
+
+<pre class="code">
+&lt;pre class=&quot;code&quot;&gt;
+&lt;?php
+//
+// Suite de Fibonacci
+//
+function fib($n) {
+    if ($n &lt; 2)
+        return(1);
+    else
+        return(fib($n-2) + fib($n-1));
+}
+
+print fib($argv[1]);
+?&gt;
+&lt;/pre&gt;
+</pre>
+
+<p>
+A noter qu'une mise en forme sommaire, en particulier sur la détection des commentaires et des variables, est effectuée.
+De plus, il est possible de surcharger la classe « code » en la complétant par « :firstline[n] ». Ceci permet de gérer plus finement la numérotation des lignes en précisant un indice de début.
+</p>
+
+<pre class="code:firstline[10]">
+&lt;pre class=&quot;code:firstline[10]&quot;&gt;
+//
+// Suite de Fibonacci
+//
+&lt;?php
+function fib($n) {
+    if ($n &lt; 2)
+        return(1);
+    else
+        return(fib($n-2) + fib($n-1));
+}
+
+print fib($argv[1]);
+?&gt;
+&lt;/pre&gt;
+</pre>
+
+
+<h2><a href="#rev-index7" id="index7">A propos des arborescences</a></h2>
+
+
+<p>Une arborescence est intégrée dans une page par le biais du code suivant :</p>
+
+<pre class="code">
+&lt;center&gt;
+&lt;div class=&quot;folder&quot; id=&quot;foo&quot; style=&quot;width:640px; height:140px;&quot; title='/path/'&gt;&lt;/div&gt;
+&lt;/center&gt;
+</pre>
+
+<p>
+Quelques remarques s'imposent. En premier lieu, l'attribut id doit être unique. Ne pas oublier qu'une version de la documentation sur une seule page est également générée par le moteur, si souhaité. Si l'attribut id n'est pas unique, il y aura des conflits. 
+Donc bien faire en sorte de choisir un id dont l'unicité est totale vis-à-vis de l'ensemble des pages et non, uniquement, de la page courante. 
+Quant à l'attribut title, il indique un chemin qui correspondra à la racine de l'arborescence que l'on désire visualiser. A noter que le premier slash (/) désigne la racine du répertoire structure/ qui contient les diverses arborescences que l'on compte utiliser. 
+Enfin, le style appliqué ici est juste une suggestion de présentatioon, surtout pour le width. Fixé à 640px, cela évite les surprises en cas d'impression sur papier.
+</p><div class="note">
+<p>[<a href="#rev-note1" id="note1">1</a>] Si une page est composée de plusieurs titres &lt;h2&gt;, &lt;h3&gt; voir &lt;h4&gt;, le moteur va générer un index propre à cette page. Cet index est masqué par défaut. Pour le visualiser, il faudra cliquer sur le titre &lt;h1&gt;.</p>
+
+<p>[<a href="#rev-note2" id="note2">2</a>] Cette opération est effectuée par la fonction optimize_js() présente dans le fichier lib.php. Dans la mesure ou cette fonction supprime les lignes inutiles embarquées par le template header.tpl, il est probable que des adaptations seront nécessaires si le template header.tpl vient à changer.</p>
+</div></div>
+<!-- STOP CONTENT -->
+
+<!-- START FOOTER -->
+<div id="footer" class="clear">
+  <div class="left">
+  Documentation CARBONE V5.3 (Version 1.0) générée par CARBONE DOC (Version 1.3) &middot; Copyright &#169; 1997-2015&nbsp;&middot;&nbsp;<a href="http://www.globalis-ms.com/">Globalis</a>
+  </div>
+  <div class="right">
+  <a href="#top">Haut de page</a>
+  </div>
+  <br/>
+  <br/>
+  <p class="clear">
+  GLOBALIS media systems - Siège social : 6 bis, rue Auguste VITU - 75015 Paris
+  <br/>
+  S.A.R.L au capital de 10 671,43 &euro; - R.C.S Paris B 413 141 193 - SIRET 413 141 193 00024 - APE 741G
+  <br/>
+  Tel: 01 82 83 51 70 / Fax: 01 82 83 51 71 - Web : http://www.globalis-ms.com - Twitter : @GLOBALISms - E-mail : infos@globalis-ms.com
+  </p>
+</div>
+<!-- STOP FOOTER -->
+</body>
+</html>

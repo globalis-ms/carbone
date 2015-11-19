@@ -1,0 +1,81 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    background-color: #f5f5f5;
+}
+
+body > .container-fluid {
+  padding: 60px 50px 0;
+}
+
+.container .text-muted {
+    margin: 20px 0;
+}
+
+/*
+ * Sidebar
+ */
+
+/* Hide for mobile, show later */
+.sidebar {
+  display: none;
+}
+@media (min-width: 768px) {
+    .sidebar {
+        bottom: 0;
+        left: 0;
+        z-index: 1000;
+        display: block;
+        padding: 10px 20px;
+        background-color: #f5f5f5;
+        border-right: 1px solid #eee;
+    }
+}
+
+/* Sidebar navigation */
+.nav-sidebar {
+  margin-right: -21px; /* 20px padding + 1px border */
+  /*margin-bottom: 20px;*/
+  margin-left: -20px;
+}
+.nav-sidebar > li > a {
+  padding-right: 20px;
+  padding-left: 20px;
+}
+.nav-sidebar > .active > a,
+.nav-sidebar > .active > a:hover,
+.nav-sidebar > .active > a:focus {
+  color: #fff;
+  background-color: #428bca;
+}
+
+.nav-sidebar .sidebar-divider {
+    height: 1px;
+    margin: 8px 20px;
+    overflow: hidden;
+    background-color: #e5e5e5;
+    border-bottom: 1px solid #ccc;
+}
+
+.text-pagination {
+    display: table-cell;
+    vertical-align: middle;
+    padding-right: 5px;
+}
+
+.text-pagination + .pagination {
+    display: table-cell;
+}

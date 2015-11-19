@@ -1,0 +1,277 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="expires" content="-1" />
+<meta http-equiv="pragma" content="no-cache" />
+<meta name="robots" content="all" />
+<meta name="author" content="Armel FAUVEAU" />
+<meta name="description" content="Documentation CARBONE V5.3" />
+
+<title>Documentation CARBONE V5.3 Version 1.0 (06-06-2015) - Le répertoire include/</title>
+
+<link rel="stylesheet" type="text/css" media="screen" href="../share/css/screen.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="../share/css/dhtmlx.folder.css" />
+<link rel="stylesheet" type="text/css" media="print" href="../share/css/print.css" />
+<link rel="stylesheet" type="text/css" media="print" href="../share/css/dhtmlx.folder.css" />
+
+<script type="text/javascript" src="../share/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="../share/js/jquery.corner.min.js"></script>
+<script type="text/javascript" src="../share/js/dhtmlx.common.min.js"></script>
+<script type="text/javascript" src="../share/js/dhtmlx.folder.min.js"></script>
+<script type="text/javascript" src="../share/js/folder.min.js"></script>
+<script type="text/javascript" src="../share/js/jquery.main.min.js"></script>
+
+</head>
+<body>
+
+<!-- START NAVIGATION -->
+<div id="nav"><div id="nav_inner"></div></div>
+<div id="nav2">
+  <a name="top"></a>
+  <div id="index">
+    <img src="../share/image/nav_toggle.jpg"  title="Table des matières" alt="Table des matières" />
+  </div>
+</div>
+<img src="../share/image/logo.png" title="Globalis" alt="Globalis" style="padding: 0 0 10px 35px;"/>
+<div id="title" class="clear">
+  <div class="left">
+    Architecture&nbsp;de&nbsp;l'arborescence&nbsp;&#8250;&nbsp;Le répertoire include/
+  </div>
+  <div class="right">
+    Dernière édition le 01-02-2014 21:29 par Armel  &#8249;  <a href="../index.html">Table des matières</a>
+  </div>
+</div>
+<!-- STOP NAVIGATION -->
+
+
+<!-- START HEADER -->
+<div id="subtitle" class="clear">
+  <div class="left">
+      <a href="../architecture_arbo/htaccess.html">Le fichier .htaccess</a> &#8249;&#8249;
+  </div>
+  <div class="right">
+      &#8250;&#8250; <a href="../architecture_arbo/web.html">Le répertoire web/</a>
+  </div>
+</div>
+<!-- STOP HEADER -->
+
+<br clear="all" />
+
+<!-- START CONTENT -->
+<div id="content">
+<h1>Le répertoire include/</h1>
+<div id="mini_index"><h2><a href="#index1" id="rev-index1">A la racine...</a></h2>
+<h2><a href="#index2" id="rev-index2">Le sous-répertoire config/</a></h2>
+<h2><a href="#index3" id="rev-index3">Le sous-répertoire langue/</a></h2>
+<h2><a href="#index4" id="rev-index4">Le sous-répertoire lib/</a></h2>
+</div>
+
+
+<p>
+Ce répertoire est de loin le plus important de CARBONE. Il contient les principaux scripts composant le coeur du framework ainsi que les informations permettant de paramétrer et décrire l'application (paramètres d'accès à la base de données, description de la navigation, etc.). Sa structure est la suivante  :
+</p>
+
+<center>
+<div class="folder" id="include" style="width:640px; height:210px;" title='/carbone_framework/include/'></div>
+</center>
+
+<p>
+La quasi totalité de ces fichiers sera évidement explorée en détail dans la suite de ce document.
+</p>
+
+<h2><a href="#rev-index1" id="index1">A la racine...</a></h2>
+
+
+<p>
+A la racine, nous trouvons les scripts suivants :
+</p>
+
+<table>
+<tr>
+	<th width="25%">Nom du fichier</th>
+	<th>Description fonctionnelle</th>
+</tr>
+<tr>
+	<td>open.php</td>
+	<td>Ouverture session et connexion SGBD</td>
+</tr>
+<tr>
+	<td>close.php</td>
+	<td>Fermeture session et déconnexion SGBD</td>
+</tr>
+<tr>
+	<td>start_php.php</td>
+	<td>Framework loader (bootstrap <sup>[<a href="#note1" id="rev-note1">1</a>]</sup>)</td>
+</tr>
+<tr>
+	<td>stop_php.php</td>
+	<td>Framework unloader</td>
+</tr>
+<tr>
+	<td>start_html.php</td>
+	<td>Entête de pages HTML (redirection en fonction du thème)</td>
+</tr>
+<tr>
+	<td>stop_html.php</td>
+	<td>Pied de pages HTML (redirection en fonction du thème)</td>
+</tr>
+</table>
+
+<h2><a href="#rev-index2" id="index2">Le sous-répertoire config/</a></h2>
+
+
+<p>
+Le sous-répertoire config/ contient 2 scripts dont le but est de paramétrer et décrire l'application :
+</p>
+
+<table>
+<tr>
+	<th width="25%">Nom du fichier</th>
+	<th>Description fonctionnelle</th>
+</tr>
+<tr>
+	<td>config.php</td>
+	<td>Fichier de configuration (user, password, chemins, etc.)</td>
+</tr>
+<tr>
+	<td>navigation.php</td>
+	<td>Fichier de description de la navigation</td>
+</tr>
+</table>
+
+<h2><a href="#rev-index3" id="index3">Le sous-répertoire langue/</a></h2>
+
+
+<p>
+Le sous-répertoire langue/ sert à localiser les chaînes en fonctions des langues utilisées par l'application. Il est recommandé de localiser les chaînes (libellés, messages, titres de rubriques, etc.) sous forme de constantes et de les centraliser dans ces fichiers. Il doit y avoir autant de fichiers que de langues supportées par l'application. La structure est donc la suivante :
+</p>
+
+<table>
+<tr>
+	<th width="25%">Nom du fichier</th>
+	<th>Description fonctionnelle</th>
+</tr>
+<tr>
+	<td>langue_fr.php</td>
+	<td>Fichier langue fr</td>
+</tr>
+<tr>
+	<td>...</td>
+	<td>...</td>
+</tr>
+<tr>
+	<td>langue_uk.php</td>
+	<td>Fichier langue uk</td>
+</tr>
+</table>
+
+<h2><a href="#rev-index4" id="index4">Le sous-répertoire lib/</a></h2>
+
+
+<p>
+Le sous-répertoire lib/ centralise les classes et librairies de fonctions utilisées par le framework. Il a la structure suivante :
+</p>
+
+<center>
+<div class="folder" id="lib" style="width:640px; height:210px;" title='/carbone_framework/include/lib/'></div>
+</center>
+
+<p>
+On y trouve, en particulier :
+</p>
+
+<table>
+<tr>
+	<th width="25%">Nom du fichier</th>
+	<th>Description fonctionnelle</th>
+</tr>
+<tr>
+	<td>class_db.php</td>
+	<td>Classe d'abstraction SGBD <sup>[<a href="#note2" id="rev-note2">2</a>]</sup></td>
+</tr>
+<tr>
+	<td>class_session.php</td>
+	<td>Classe de gestion des sessions</td>
+</tr>
+<tr>
+	<td>lib_carbone.php</td>
+	<td>Librairie de fonctions génériques</td>
+</tr>
+<tr>
+	<td>lib_backoffice.php</td>
+	<td>Librairie CRUD</td>
+</tr>
+<tr>
+	<td>lib_form.php</td>
+	<td>Librairie de gestion des formulaires</td>
+</tr>
+<tr>
+	<td>lib_test.php</td>
+	<td>Librairie de tests génériques </td>
+</tr>
+<tr>
+	<td>lib_debug.php</td>
+	<td>Assistant de debuggage</td>
+</tr>
+<tr>
+	<td>lib_debug_ajax.php</td>
+	<td>Assistant de debuggage (socle Ajax)</td>
+</tr>
+<tr>
+	<td>lib_xml.php</td>
+	<td>Librairie de manipulation de flux XML</td>
+</tr>
+<tr>
+	<td>lib_metier.php</td>
+	<td>Librairie de fonctions eventuellement présente et propre au projet en cours</td>
+</tr>
+<tr>
+	<td>...</td>
+	<td>...</td>
+</tr>
+<tr>
+	<td><i>adodb_carbone/</i></td>
+	<td>Répertoire contenant la classe d'abstraction AdoDB CARBONE</td>
+</tr>
+<tr>
+	<td><i>fpdf/</i></td>
+	<td>Répertoire contenant la classe de génération de PDF à la volée</td>
+</tr>
+</table>
+
+<p>
+Le sous-répertoire lib/ contient quelques sous-répertoires de classes et librairies répondant à des problématiques très précises. C'est le cas de adodb_carbone/ contentant la classe d'abstration AdoDB CARBONE et les drivers supportés (MySQL, MySQLi, PostgreSQL, etc.), ainsi qu'un répertoire fpdf/ permettant de générer des PDF à la volée.
+</p>
+<p>
+Il est classique d'enrichir le sous-répertoire lib/ par d'autres classes et librairies présentant une utilité ponctuelle sur un projet donné.
+</p>
+<div class="note">
+<p>[<a href="#rev-note1" id="note1">1</a>] A ne pas confondre avec le framework HTML & CSS également utilisé par CARBONE.</p>
+
+<p>[<a href="#rev-note2" id="note2">2</a>] Le sous-répertoire adodb_carbone/ (ou adodb/) contient, quant à lui, les drivers (un par SGBD supporté) permettant de pointer vers le SGBD cible.</p>
+</div></div>
+<!-- STOP CONTENT -->
+
+<!-- START FOOTER -->
+<div id="footer" class="clear">
+  <div class="left">
+  Documentation CARBONE V5.3 (Version 1.0) générée par CARBONE DOC (Version 1.3) &middot; Copyright &#169; 1997-2015&nbsp;&middot;&nbsp;<a href="http://www.globalis-ms.com/">Globalis</a>
+  </div>
+  <div class="right">
+  <a href="#top">Haut de page</a>
+  </div>
+  <br/>
+  <br/>
+  <p class="clear">
+  GLOBALIS media systems - Siège social : 6 bis, rue Auguste VITU - 75015 Paris
+  <br/>
+  S.A.R.L au capital de 10 671,43 &euro; - R.C.S Paris B 413 141 193 - SIRET 413 141 193 00024 - APE 741G
+  <br/>
+  Tel: 01 82 83 51 70 / Fax: 01 82 83 51 71 - Web : http://www.globalis-ms.com - Twitter : @GLOBALISms - E-mail : infos@globalis-ms.com
+  </p>
+</div>
+<!-- STOP FOOTER -->
+</body>
+</html>

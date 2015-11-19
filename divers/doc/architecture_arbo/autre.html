@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="expires" content="-1" />
+<meta http-equiv="pragma" content="no-cache" />
+<meta name="robots" content="all" />
+<meta name="author" content="Armel FAUVEAU" />
+<meta name="description" content="Documentation CARBONE V5.3" />
+
+<title>Documentation CARBONE V5.3 Version 1.0 (06-06-2015) - Les autres répertoires et fichiers</title>
+
+<link rel="stylesheet" type="text/css" media="screen" href="../share/css/screen.css" />
+<link rel="stylesheet" type="text/css" media="print" href="../share/css/print.css" />
+
+<script type="text/javascript" src="../share/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="../share/js/jquery.corner.min.js"></script>
+<script type="text/javascript" src="../share/js/jquery.main.min.js"></script>
+
+</head>
+<body>
+
+<!-- START NAVIGATION -->
+<div id="nav"><div id="nav_inner"></div></div>
+<div id="nav2">
+  <a name="top"></a>
+  <div id="index">
+    <img src="../share/image/nav_toggle.jpg"  title="Table des matières" alt="Table des matières" />
+  </div>
+</div>
+<img src="../share/image/logo.png" title="Globalis" alt="Globalis" style="padding: 0 0 10px 35px;"/>
+<div id="title" class="clear">
+  <div class="left">
+    Architecture&nbsp;de&nbsp;l'arborescence&nbsp;&#8250;&nbsp;Les autres répertoires et fichiers
+  </div>
+  <div class="right">
+    Dernière édition le 01-02-2014 21:29 par Armel  &#8249;  <a href="../index.html">Table des matières</a>
+  </div>
+</div>
+<!-- STOP NAVIGATION -->
+
+
+<!-- START HEADER -->
+<div id="subtitle" class="clear">
+  <div class="left">
+      <a href="../architecture_arbo/web.html">Le répertoire web/</a> &#8249;&#8249;
+  </div>
+  <div class="right">
+      &#8250;&#8250; <a href="../architecture_arbo/exemple.html">Un exemple d'arborescence</a>
+  </div>
+</div>
+<!-- STOP HEADER -->
+
+<br clear="all" />
+
+<!-- START CONTENT -->
+<div id="content">
+<h1>Les autres répertoires et fichiers</h1>
+<div id="mini_index"><h2><a href="#index1" id="rev-index1">Les répertoires optionnels</a></h2>
+<h2><a href="#index2" id="rev-index2">Les autres répertoires et fichiers</a></h2>
+<h3><a href="#index3" id="rev-index3">Les autres répertoires</a></h3>
+<h3><a href="#index4" id="rev-index4">Les autres fichiers</a></h3>
+</div>
+
+
+<h2><a href="#rev-index1" id="index1">Les répertoires optionnels</a></h2>
+
+<p>
+Les répertoires batch/ et data/ sont parfois présents à la racine. Le répertoire batch/ sert à stocker des scripts de maintenance (par exemple des imports / exports CSV). 
+Le repertoire data/ contiendra quant à lui, des données de référence stockées sous forme de fichiers plats (par exemple, une liste de villes, de codes postaux, etc.).. 
+Evidemment, si l'application ne fait pas appel à ces besoins, ces répertoires ne sont pas nécessaires et peuvent être supprimés.
+</p>
+
+<h2><a href="#rev-index2" id="index2">Les autres répertoires et fichiers</a></h2>
+
+
+<h3><a href="#rev-index3" id="index3">Les autres répertoires</a></h3>
+
+
+<p>
+En plus de la racine et des répertoires que nous venons de lister, CARBONE propose
+de catégoriser et regrouper les grandes fonctionnalités du site par répertoire. Prenons
+l'exemple d'un backoffice fictif de publication d'actualités et de maintien d'un annuaire
+de liens dont le périmètre fonctionnel serait globalement le suivant :
+</p>
+
+<ul>
+<li>accès uniquement après identification et authentification,</li>
+<li>deux types d'utilisateurs : administrateurs et rédacteurs,</li>
+<li>gestion des utilisateurs : ajout, modification, suppression,</li>
+<li>gestion des actualités : ajout, modification, suppression et publication,</li>
+<li>gestion des liens : ajout, modification, suppression et publication.</li>
+</ul>
+
+<p>
+Au niveau du workflow, seuls les administrateurs peuvent gérer les utilisateurs
+confirmer la publication d'une actualité ou d'un lien.
+</p>
+
+<p>
+On distingue donc ici trois grandes fonctionnalités : gestion des utilisateurs, gestion
+des actualités et gestion de liens. L'utilisation de CARBONE suggère donc de créer
+trois répertoires, à la racine, que nous appellerons utilisateur/, actualite/ et lien/. Ces
+répertoires contiendront le ou les scripts en charge d'implémenter les différentes
+fonctionnalités de notre backoffice.
+</p>
+
+<h3><a href="#rev-index4" id="index4">Les autres fichiers</a></h3>
+
+
+<p>
+A la racine de chaque répertoire se trouvent facultativement deux fichiers, qui seront chargés par le framework s'ils sont présents.
+</p>
+
+<p>
+Le premier, local_config.php, est une extension locale au fichier
+include/config/config.php. Il permet donc d'affiner certains paramétrages propres au
+répertoire courant et uniquement lui.
+</p>
+
+<p>
+Le second, local_lib.php, est une extension locale aux fichiers include/lib/lib_carbone.php et
+include/lib/lib_monprojet.php. Il permet donc d'enrichir de certaines fonctions ou classes
+les scripts présents dans le répertoire courant et uniquement lui.
+</p>
+
+<p>
+Si, en cours de développement, une fonction ou une classe, présente initialement
+dans le local_lib.php d'un répertoire, vient à être utilisée par des scripts présents dans
+un autre répertoire, alors il est bon de réfléchir à son déplacement vers
+include/lib/lib_carbone.php ou plutôt include/lib/lib_metier.php afin d'en accroître la
+visibilité à l'ensemble de l'application <sup>[<a href="#note1" id="rev-note1">1</a>]</sup>.
+</p>
+
+<p>
+Idem, par exemple, pour des constantes qui seraient déclarées dans local_config.php.
+Il pourrait être judicieux de les déplacer dans include/config/config.php afin d'en
+accroître la visibilité à l'ensemble des scripts.
+</p>
+<div class="note">
+<p>[<a href="#rev-note1" id="note1">1</a>] En pratique, le script include/lib/lib_carbone.php regroupe des fonctions et classes régulièrement utilisées par
+l'ensemble des projets développés avec CARBONE. Afin d'éviter de le polluer avec des fonctions ou classes
+utilisées un peu partout par un site donné, mais spécifique à celui-ci (donc probablement inintéressantes
+dans le cadre de projets futurs), CARBONE préconise de créer en plus de lib_carbone.php un autre « container »
+de fonctions et classes « métier », portant le nom du projet. Par exemple include/lib/lib_<i>projet_foo_bar</i>.php.</p>
+</div></div>
+<!-- STOP CONTENT -->
+
+<!-- START FOOTER -->
+<div id="footer" class="clear">
+  <div class="left">
+  Documentation CARBONE V5.3 (Version 1.0) générée par CARBONE DOC (Version 1.3) &middot; Copyright &#169; 1997-2015&nbsp;&middot;&nbsp;<a href="http://www.globalis-ms.com/">Globalis</a>
+  </div>
+  <div class="right">
+  <a href="#top">Haut de page</a>
+  </div>
+  <br/>
+  <br/>
+  <p class="clear">
+  GLOBALIS media systems - Siège social : 6 bis, rue Auguste VITU - 75015 Paris
+  <br/>
+  S.A.R.L au capital de 10 671,43 &euro; - R.C.S Paris B 413 141 193 - SIRET 413 141 193 00024 - APE 741G
+  <br/>
+  Tel: 01 82 83 51 70 / Fax: 01 82 83 51 71 - Web : http://www.globalis-ms.com - Twitter : @GLOBALISms - E-mail : infos@globalis-ms.com
+  </p>
+</div>
+<!-- STOP FOOTER -->
+</body>
+</html>

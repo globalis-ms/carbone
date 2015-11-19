@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="expires" content="-1" />
+<meta http-equiv="pragma" content="no-cache" />
+<meta name="robots" content="all" />
+<meta name="author" content="Armel FAUVEAU" />
+<meta name="description" content="Documentation CARBONE V5.3" />
+
+<title>Documentation CARBONE V5.3 Version 1.0 (06-06-2015) - A propos des sessions</title>
+
+<link rel="stylesheet" type="text/css" media="screen" href="../share/css/screen.css" />
+<link rel="stylesheet" type="text/css" media="print" href="../share/css/print.css" />
+
+<script type="text/javascript" src="../share/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="../share/js/jquery.corner.min.js"></script>
+<script type="text/javascript" src="../share/js/jquery.main.min.js"></script>
+
+</head>
+<body>
+
+<!-- START NAVIGATION -->
+<div id="nav"><div id="nav_inner"></div></div>
+<div id="nav2">
+  <a name="top"></a>
+  <div id="index">
+    <img src="../share/image/nav_toggle.jpg"  title="Table des matières" alt="Table des matières" />
+  </div>
+</div>
+<img src="../share/image/logo.png" title="Globalis" alt="Globalis" style="padding: 0 0 10px 35px;"/>
+<div id="title" class="clear">
+  <div class="left">
+    Sécurité&nbsp;&#8250;&nbsp;A propos des sessions
+  </div>
+  <div class="right">
+    Dernière édition le 01-02-2014 21:32 par Armel  &#8249;  <a href="../index.html">Table des matières</a>
+  </div>
+</div>
+<!-- STOP NAVIGATION -->
+
+
+<!-- START HEADER -->
+<div id="subtitle" class="clear">
+  <div class="left">
+      <a href="../securite/regle.html">Les règles à respecter</a> &#8249;&#8249;
+  </div>
+  <div class="right">
+      &#8250;&#8250; <a href="../securite/navigation.html">A propos de la navigation</a>
+  </div>
+</div>
+<!-- STOP HEADER -->
+
+<br clear="all" />
+
+<!-- START CONTENT -->
+<div id="content">
+<h1>A propos des sessions</h1>
+<p>
+La classe de session propose divers mécanismes de sécurité afin de pallier aux risques
+de vols de session. La constante CFG_SESSION_LEVEL permet d'opter pour tel
+ou tel mécanisme. S'agissant d'un champ de bit, il est possible de les cumuler.
+</p>
+
+<table>
+<tr>
+	<th width="30%">Champ de bits</th>
+	<th>Description du mécanisme</th>
+</tr>
+<tr>
+	<td width="30%">000 (tout les bits à zéro)</td>
+	<td>Aucun mécanisme</td>
+</tr>
+<tr>
+	<td>001 (premier bit à 1)</td>
+	<td>Contrôle sur le HTTP_USER_AGENT. Dans ce mode, 2 navigateurs d'origine ou de version différentes ne peuvent pas partager la même session à un instant donné (par exemple, IE9 et Firefox 21) !</td>
+</tr>
+<tr>
+	<td>010 (second bit à 1)</td>
+	<td>Session volatile. Dans ce mode, l'id de session change de page en page au cours de la navigation.</td>
+</tr>
+<tr>
+	<td>100 (troisième bit à 1)</td>
+	<td>Token de session. Ajoute un token de session qui peut être utilisé par la suite au niveau de la brique « backoffice » si $config['action']['token']=TRUE</td>
+</tr>
+</table>
+
+<p>
+Il est donc possible d'allumer, par exemple, les 2 premiers contrôle
+(HTTP_USER_AGENT et session volatile) en affectant à la constante CFG_SESSION_LEVEL la valeur binaire 011, soit 3 en décimale.
+A noter les points suivants :
+</p>
+
+<ul>
+<li>
+un identifiant de session standard prend 32 octets. Si le contrôle sur le
+HTTP_USER_AGENT est activé, cet identifiant passe à 40 octets;
+</li>
+<li>
+si les sessions volatiles sont activées, en mode de transmission de type url,
+l'utilisation du F5 (afin de rafraîchir la page depuis le navigateur) ne
+fonctionne pas. Attention également aux appels Ajax (par exemple au niveau de la brique « backoffice »).
+</li>
+</ul></div>
+<!-- STOP CONTENT -->
+
+<!-- START FOOTER -->
+<div id="footer" class="clear">
+  <div class="left">
+  Documentation CARBONE V5.3 (Version 1.0) générée par CARBONE DOC (Version 1.3) &middot; Copyright &#169; 1997-2015&nbsp;&middot;&nbsp;<a href="http://www.globalis-ms.com/">Globalis</a>
+  </div>
+  <div class="right">
+  <a href="#top">Haut de page</a>
+  </div>
+  <br/>
+  <br/>
+  <p class="clear">
+  GLOBALIS media systems - Siège social : 6 bis, rue Auguste VITU - 75015 Paris
+  <br/>
+  S.A.R.L au capital de 10 671,43 &euro; - R.C.S Paris B 413 141 193 - SIRET 413 141 193 00024 - APE 741G
+  <br/>
+  Tel: 01 82 83 51 70 / Fax: 01 82 83 51 71 - Web : http://www.globalis-ms.com - Twitter : @GLOBALISms - E-mail : infos@globalis-ms.com
+  </p>
+</div>
+<!-- STOP FOOTER -->
+</body>
+</html>

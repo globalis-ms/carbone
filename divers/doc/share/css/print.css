@@ -1,0 +1,37 @@
+@import "screen.css";
+
+#nav {
+ display:none;
+}
+
+#nav2 {
+ display:none;
+}
+
+#nav_inner {
+ display:none;
+}
+
+form {
+ display:none;
+}
+
+#title {
+ margin: 0 0 0 0;
+}
+
+#content {
+ margin: 0 0 0 0;
+}
+
+#subtitle {
+ margin: 0 0 0 0;
+}
+
+#footer {
+ margin: 0 0 0 0;
+}
+
+#mini_index {
+ display:none;
+}

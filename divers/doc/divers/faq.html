@@ -1,0 +1,212 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="expires" content="-1" />
+<meta http-equiv="pragma" content="no-cache" />
+<meta name="robots" content="all" />
+<meta name="author" content="Armel FAUVEAU" />
+<meta name="description" content="Documentation CARBONE V5.3" />
+
+<title>Documentation CARBONE V5.3 Version 1.0 (06-06-2015) - FAQ: Frequently Asked Questions</title>
+
+<link rel="stylesheet" type="text/css" media="screen" href="../share/css/screen.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="../share/css/listing.css" />
+<link rel="stylesheet" type="text/css" media="print" href="../share/css/print.css" />
+<link rel="stylesheet" type="text/css" media="print" href="../share/css/listing.css" />
+
+<script type="text/javascript" src="../share/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="../share/js/jquery.corner.min.js"></script>
+<script type="text/javascript" src="../share/js/listing.min.js"></script>
+<script type="text/javascript" src="../share/js/jquery.main.min.js"></script>
+
+</head>
+<body>
+
+<!-- START NAVIGATION -->
+<div id="nav"><div id="nav_inner"></div></div>
+<div id="nav2">
+  <a name="top"></a>
+  <div id="index">
+    <img src="../share/image/nav_toggle.jpg"  title="Table des matières" alt="Table des matières" />
+  </div>
+</div>
+<img src="../share/image/logo.png" title="Globalis" alt="Globalis" style="padding: 0 0 10px 35px;"/>
+<div id="title" class="clear">
+  <div class="left">
+    Divers&nbsp;&#8250;&nbsp;FAQ: Frequently Asked Questions
+  </div>
+  <div class="right">
+    Dernière édition le 01-02-2014 21:30 par Armel  &#8249;  <a href="../index.html">Table des matières</a>
+  </div>
+</div>
+<!-- STOP NAVIGATION -->
+
+
+<!-- START HEADER -->
+<div id="subtitle" class="clear">
+  <div class="left">
+      <a href="../divers/production.html">Mise en production</a> &#8249;&#8249;
+  </div>
+  <div class="right">
+      &#8250;&#8250; <a href="../divers/outil.html">Outils préconisés</a>
+  </div>
+</div>
+<!-- STOP HEADER -->
+
+<br clear="all" />
+
+<!-- START CONTENT -->
+<div id="content">
+<h1>FAQ : Frequently Asked Questions</h1>
+<div id="mini_index"><h2><a href="#index1" id="rev-index1">Comment charger un Javascript</a></h2>
+<h2><a href="#index2" id="rev-index2">J'ai déployé CARBONE et je ne parviens pas à me loguer</a></h2>
+<h2><a href="#index3" id="rev-index3">L'affichage retourné par la brique « backoffice » ne semble pas cohérent</a></h2>
+<h2><a href="#index4" id="rev-index4">Impossible d'uploader un fichier</a></h2>
+<h2><a href="#index5" id="rev-index5">Le script de ma page comporte une boucle infinie</a></h2>
+<h2><a href="#index6" id="rev-index6">Je n'ai aucun moyen de basculer désactiver magic_quotes_gpc</a></h2>
+<h2><a href="#index7" id="rev-index7">Je n'ai aucun moyen de modifier le include_path</a></h2>
+<h2><a href="#index8" id="rev-index8">Plus rien ne marche</a></h2>
+</div>
+
+
+<h2><a href="#rev-index1" id="index1">Comment charger un Javascript</a></h2>
+
+
+<p>
+Les scripts Javascript sont stockés dans le répertoire js/.
+Afin de provoquer le chargement d'un ou plusieurs scripts, vous devez utiliser la constante LOAD_JAVASCRIPT. Cette constante est prévue pour contenir la liste des scripts à charger. Chaque nom de script est séparé par un | (Alt Gr 6). 
+Cette constante doit impérativement être déclarée avant le chargement du start_html.php.
+</p>
+
+<pre class="code">
+define('LOAD_JAVASCRIPT','autocomplete/jquery.autocomplete.js|infobulle/jquery.infobulle.js');
+</pre>
+
+<p>
+Ceci provoquera le chargement automatique du script jquery.autocomplete.js présent dans js/autocomplete/ et jquery.infobulle.js présent dans js/infobulle/. 
+Il n'est pas nécessaire de charger explicitement jQuery. CARBONE se charge de détecter s'il est requis ou non.
+</p>
+
+<h2><a href="#rev-index2" id="index2">J'ai déployé CARBONE et je ne parviens pas à me loguer</a></h2>
+
+
+<p>
+Si vous avez l'impression que vous rebouclez à l'infini entre la page Login (login.php) et la page
+destination (généralement index.php), c'est probablement que l'enregistrement des
+sessions ne fonctionne pas correctement.
+</p>
+<p>
+Vérifier les paramètres de connexion à la base de données ainsi que l'existence d'une table session.
+</p>
+<p>
+Faire également attention à la constante CFG_SESSION_PATH, si vous utilisez la transmission par cookie. Cette constante est initilialisée automatiquement par le biais d'informations retournées par le serveur. Mais il arrive que, en particulier sous Windows, ces informations soient vides. 
+Retenir que :
+</p>
+<ul>
+<li>si l'adresse IP de votre serveur est <i>192.168.1.1</i></li>
+<li>si votre projet se trouve dans le répertoire <i>mon_projet</i><sup>[<a href="#note1" id="rev-note1">1</a>]</sup></li>
+<li>si il est théoriquement accessible par l'URL <i>http://192.168.1.1/mon_projet/</i></li>
+</ul>
+<p>
+Alors la constante CFG_SESSION_PATH devrait être initialisé à : <i>/mon_projet/</i>
+</p>
+<p>
+CFG_PATH_FILE et CFG_PATH_HTTP sont également initialisées automatiquement. Et il conviendra éventuellement de fixer en dur la valeur si besoin.
+</p>
+
+<h2><a href="#rev-index3" id="index3">L'affichage retourné par la brique « backoffice » ne semble pas cohérent</a></h2>
+
+
+<p>
+Vérifier le context ! S'il partage le même nom qu'une autre brique « backoffice », il y aura des effets de bords indésirables (sur les tris, la pagination, etc.).
+</p>
+
+<h2><a href="#rev-index4" id="index4">Impossible d'uploader un fichier</a></h2>
+
+
+<p>
+En premier lieu, bien vérifier que vous avez les droits sur le répertoire (généralement upload). Un chmod 777 fera l'affaire. 
+Ensuite, bien étudier si nécessaire l'exemple présent dans CARBONE (rubrique exemple, sous rubrique file).
+</p>
+
+<h2><a href="#rev-index5" id="index5">Le script de ma page comporte une boucle infinie</a></h2>
+
+
+<p>
+En cas de script provoquant, par exemple, une boucle infinie, il arrive parfois qu'un processus Apache consomme une part importante du temps CPU de la machine, pénalisant ainsi l'ensemble des autres processus (et l'ensemble des utilisateurs). 
+Pour vérifier qu'un tel processus Apache tourne effectivement en boucle et le supprimer, suivre la procédure suivante :
+</p>
+
+<ul>
+<li>se connecter en SSH sur le serveur</li>
+<li>lancer la commande top</li>
+<li>isoler le PID du processus gourmand</li>
+<li>ecrire le script PHP suivant et le placer dans son espace web perso</li>
+</ul>
+
+<pre class="code">
+&lt;?php
+$cmd='/bin/kill -9 '.$_GET['pid'];
+echo $cmd;
+exec($cmd);
+?&gt;
+</pre>
+
+<ul>
+<li>l'appeler depuis un navigateur en passant en GET le PID problématique</li>
+<li>contrôler avec la commande top que tout est rentré dans l'ordre</li>
+</ul>
+
+<p>
+Petite explication : Apache tourne avec les droits de l'utilisateur nobody faisant parti du groupe nogroup. Il faut donc être également nobody (ou root) pour pouvoir détruire un processus Apache. 
+Le fait de faire exécuter la commande kill via un script PHP lancé par Apache, permet de prendre ces droits. Ce n'est pas vous en tant qu'utilisateur qui effectuez le kill du processus, mais bien nobody.
+</p>
+
+<h2><a href="#rev-index6" id="index6">Je n'ai aucun moyen de basculer désactiver magic_quotes_gpc</a></h2>
+
+
+<p>
+Si vous ne pouvez pas désactiver magic_quotes_gpc et que celui ci est à ON (par exemple, sur un serveur mutualisé n'offrant aucun moyen d'affiner la configuration), un script est prévu à cet effet. 
+Il s'agit du script magic.php présent dans le répertoire divers/outils/. Il suffit de le placer dans le répertoire include/ et de l'appeler, idéalement depuis include/start_php.php. 
+Prendre soin d'éditer le script magic.php et de préciser, en fin de script, quelles données filtrer (par défaut, $_POST et $_GET).
+</p>
+
+<h2><a href="#rev-index7" id="index7">Je n'ai aucun moyen de modifier le include_path</a></h2>
+
+
+<p>
+Une solution consiste à définir précisement le chemin d'appel du script start_php.php et de modifier l'include_path (via la fonction ini_set() de PHP) dans ce script.
+</p>
+
+<h2><a href="#rev-index8" id="index8">Plus rien ne marche</a></h2>
+
+
+<p>En dernier recours, demander de l'aide à un chef de projet technique.</p>
+<div class="note">
+<p>[<a href="#rev-note1" id="note1">1</a>] Par rapport au DOCUMENT ROOT.</p>
+</div></div>
+<!-- STOP CONTENT -->
+
+<!-- START FOOTER -->
+<div id="footer" class="clear">
+  <div class="left">
+  Documentation CARBONE V5.3 (Version 1.0) générée par CARBONE DOC (Version 1.3) &middot; Copyright &#169; 1997-2015&nbsp;&middot;&nbsp;<a href="http://www.globalis-ms.com/">Globalis</a>
+  </div>
+  <div class="right">
+  <a href="#top">Haut de page</a>
+  </div>
+  <br/>
+  <br/>
+  <p class="clear">
+  GLOBALIS media systems - Siège social : 6 bis, rue Auguste VITU - 75015 Paris
+  <br/>
+  S.A.R.L au capital de 10 671,43 &euro; - R.C.S Paris B 413 141 193 - SIRET 413 141 193 00024 - APE 741G
+  <br/>
+  Tel: 01 82 83 51 70 / Fax: 01 82 83 51 71 - Web : http://www.globalis-ms.com - Twitter : @GLOBALISms - E-mail : infos@globalis-ms.com
+  </p>
+</div>
+<!-- STOP FOOTER -->
+</body>
+</html>

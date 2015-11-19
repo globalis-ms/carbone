@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="expires" content="-1" />
+<meta http-equiv="pragma" content="no-cache" />
+<meta name="robots" content="all" />
+<meta name="author" content="Armel FAUVEAU" />
+<meta name="description" content="Documentation CARBONE V5.3" />
+
+<title>Documentation CARBONE V5.3 Version 1.0 (06-06-2015) - Session: class_session.php</title>
+
+<link rel="stylesheet" type="text/css" media="screen" href="../share/css/screen.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="../share/css/listing.css" />
+<link rel="stylesheet" type="text/css" media="print" href="../share/css/print.css" />
+<link rel="stylesheet" type="text/css" media="print" href="../share/css/listing.css" />
+
+<script type="text/javascript" src="../share/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="../share/js/jquery.corner.min.js"></script>
+<script type="text/javascript" src="../share/js/listing.min.js"></script>
+<script type="text/javascript" src="../share/js/jquery.main.min.js"></script>
+
+</head>
+<body>
+
+<!-- START NAVIGATION -->
+<div id="nav"><div id="nav_inner"></div></div>
+<div id="nav2">
+  <a name="top"></a>
+  <div id="index">
+    <img src="../share/image/nav_toggle.jpg"  title="Table des matières" alt="Table des matières" />
+  </div>
+</div>
+<img src="../share/image/logo.png" title="Globalis" alt="Globalis" style="padding: 0 0 10px 35px;"/>
+<div id="title" class="clear">
+  <div class="left">
+    Briques élémentaires&nbsp;&#8250;&nbsp;Session: class_session.php
+  </div>
+  <div class="right">
+    Dernière édition le 01-02-2014 21:29 par Armel  &#8249;  <a href="../index.html">Table des matières</a>
+  </div>
+</div>
+<!-- STOP NAVIGATION -->
+
+
+<!-- START HEADER -->
+<div id="subtitle" class="clear">
+  <div class="left">
+      <a href="../brique/class_db.html">Abstraction SGBD: class_db.php</a> &#8249;&#8249;
+  </div>
+  <div class="right">
+      &#8250;&#8250; <a href="../brique/class_xml.html">Parsing XML: class_xml.php</a>
+  </div>
+</div>
+<!-- STOP HEADER -->
+
+<br clear="all" />
+
+<!-- START CONTENT -->
+<div id="content">
+<h1>Classe session : class_session.php</h1>
+<div id="mini_index"><h2><a href="#index1" id="rev-index1">Paramétrages</a></h2>
+<h2><a href="#index2" id="rev-index2">Connexion</a></h2>
+<h2><a href="#index3" id="rev-index3">Utilisation</a></h2>
+<h2><a href="#index4" id="rev-index4">Remarque importante</a></h2>
+</div>
+
+<p>
+CARBONE dispose de son propre support de gestion des sessions. Le support natif,
+disponible depuis PHP4, n'a pas été retenu car peu fiable.
+</p>
+
+<h2><a href="#rev-index1" id="index1">Paramétrages</a></h2>
+
+<p>
+A l'image de la couche d'abstraction SGBD, les paramétrages liés aux sessions sont
+définis dans le fichier include/config/config.php. On y trouve en particulier les
+informations suivantes :
+</p>
+<pre class="code:firstline[19]">
+// Session
+
+define ('CFG_SESSION_TABLE',  CFG_TABLE_SESSION);   // Table session
+define ('CFG_SESSION_PATH',  '/carbone_v46/');      // Racine du site, utile uniquement pour le mode cookie
+define ('CFG_SESSION_NAME',  'sid');                // Nom de l'identifiant de session utilis&eacute;
+define ('CFG_SESSION_DELAY', '3600');               // D&eacute;lai session (en s)
+define ('CFG_SESSION_TRANS', 'cookie');             // Mode de transmission : url, cookie
+define ('CFG_SESSION_LEVEL', '0');                  // Mode de s&eacute;curit&eacute; (champ de bit)
+</pre>
+<p>
+La ligne 21 précise le nom de la table qui sera utilisé pour stocker les sessions. La
+ligne 22 précise le domaine (au sens répertoire) de validité du cookie (uniquement
+utilisé si le mode de transmission est de type cookie). La ligne 23 précise le nom de
+l'id de session qui sera utilisé par la suite. La ligne 24 fixe le délai de péremption d'une
+session ouverte (ici 1 heure, soit 3600 secondes). Quant à la ligne 25, elle précise le
+mode de transmission de l'id de session. Il est possible de choisir url ou cookie. Par
+url <sup>[<a href="#note1" id="rev-note1">1</a>]</sup>, l'id de session transitera via la méthode GET. Par cookie, l'id de session
+transitera sous forme d'un cookie de session (cookie qui n'est pas écrit sur le disque
+du poste client, mais qui persiste uniquement en mémoire jusqu'à fermeture du
+navigateur). Enfin, la ligne 26 vient préciser le mode de sécurité souhaité. La
+constante CFG_SESSION_LEVEL contient une valeur correspondante à un
+champ de bits. Les différentes combinaisons possibles sont les suivantes :
+</p>
+<ul>
+<li>CFG_SESSION_LEVEL vaut "0" : Aucune protection particulière</li>
+<li>CFG_SESSION_LEVEL vaut "3" : Contrôle du HTTP_USER_AGENT + Session volatile</li>
+<li>CFG_SESSION_LEVEL vaut "5" : Contrôle du HTTP_USER_AGENT + Token de session</li>
+<li>CFG_SESSION_LEVEL vaut "6" : Session volatile + Token de session</li>
+<li>CFG_SESSION_LEVEL vaut "7" : Contrôle du HTTP_USER_AGENT + Session volatile + Token de session</li>
+</ul>
+<p>
+Consulter la section <a href="../securite/session.html">A propos des sessions</a> de la documentation pour de plus amples informations.
+</p>
+
+<h2><a href="#rev-index2" id="index2">Connexion</a></h2>
+
+<p>
+Cette étape est assurée par le script include/open.php. Elle est transparente pour le
+développeur.
+</p>
+
+<h2><a href="#rev-index3" id="index3">Utilisation</a></h2>
+
+<p>
+Voici un exemple de code montrant comment enregistrer une donnée en session, et comment la récupérer :
+</p>
+<pre class="code">
+$foo=&quot;bidule&quot;;
+
+// Enregistrement d'une donn&eacute;e (paire cl&eacute;/valeur)
+
+$session-&gt;register($foo, '12345');
+
+// R&eacute;cupp&eacute;ration de la donn&eacute;e
+
+echo $session-&gt;get_var($foo);       // Retournera 12345
+echo $session-&gt;get_var('bidule');   // Retournera &eacute;galement 12345
+
+// Suppression de la donn&eacute;e
+
+$session-&gt;unregister($foo);
+
+$bar=$session-&gt;get_var($foo);
+if(empty($bar))
+    echo &quot;oui&quot;;                     // Retournera oui
+else
+    echo &quot;non&quot;;  
+</pre>
+<p>
+Voir le code de la classe session pour en comprendre le fonctionnement en détail.
+</p>
+<h2><a href="#rev-index4" id="index4">Remarque importante</a></h2>
+
+<p>
+Pour que les données soient correctement enregistrées en session (et donc persistantes de page en page), il est impératif de &laquo; commiter &raquo; la session courante. Cette opération est réalisée lorsque la session est fermée (via la méthode $session->close() qui est appelée automatiquement dans le script include/stop.php).
+Il est donc conseillé de veiller à fermer correctement la session en cours, en particulier lors d'une redirection prématurée. A ce titre, la fonction redirect() (présente dans include/lib/lib_carbone.php), permet d'effectuer une redirection proprement (en fermant correctement la session et la connexion au SGBD).
+</p><div class="note">
+<p>[<a href="#rev-note1" id="note1">1</a>] Attention ici ! Si vous optez pour la transmission de l'id de session par url (via la méthode GET), cela interdit
+par la suite la possibilité de copier/coller des urls (si un utilisateur désir indiquer une url à un autre
+utilisateur). Idem, avec des effets plus sournois comme l'analyse de REFERER dans le logs d'Apache. Un
+danger existe donc ici. Il conviendra d'être vigilant.</p>
+</div></div>
+<!-- STOP CONTENT -->
+
+<!-- START FOOTER -->
+<div id="footer" class="clear">
+  <div class="left">
+  Documentation CARBONE V5.3 (Version 1.0) générée par CARBONE DOC (Version 1.3) &middot; Copyright &#169; 1997-2015&nbsp;&middot;&nbsp;<a href="http://www.globalis-ms.com/">Globalis</a>
+  </div>
+  <div class="right">
+  <a href="#top">Haut de page</a>
+  </div>
+  <br/>
+  <br/>
+  <p class="clear">
+  GLOBALIS media systems - Siège social : 6 bis, rue Auguste VITU - 75015 Paris
+  <br/>
+  S.A.R.L au capital de 10 671,43 &euro; - R.C.S Paris B 413 141 193 - SIRET 413 141 193 00024 - APE 741G
+  <br/>
+  Tel: 01 82 83 51 70 / Fax: 01 82 83 51 71 - Web : http://www.globalis-ms.com - Twitter : @GLOBALISms - E-mail : infos@globalis-ms.com
+  </p>
+</div>
+<!-- STOP FOOTER -->
+</body>
+</html>

@@ -1,0 +1,1052 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="expires" content="-1" />
+<meta http-equiv="pragma" content="no-cache" />
+<meta name="robots" content="all" />
+<meta name="author" content="Armel FAUVEAU" />
+<meta name="description" content="Documentation CARBONE V5.3" />
+
+<title>Documentation CARBONE V5.3 Version 1.0 (06-06-2015) - Formulaires: lib_form.php</title>
+
+<link rel="stylesheet" type="text/css" media="screen" href="../share/css/screen.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="../share/css/listing.css" />
+<link rel="stylesheet" type="text/css" media="print" href="../share/css/print.css" />
+<link rel="stylesheet" type="text/css" media="print" href="../share/css/listing.css" />
+
+<script type="text/javascript" src="../share/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="../share/js/jquery.corner.min.js"></script>
+<script type="text/javascript" src="../share/js/listing.min.js"></script>
+<script type="text/javascript" src="../share/js/jquery.main.min.js"></script>
+
+</head>
+<body>
+
+<!-- START NAVIGATION -->
+<div id="nav"><div id="nav_inner"></div></div>
+<div id="nav2">
+  <a name="top"></a>
+  <div id="index">
+    <img src="../share/image/nav_toggle.jpg"  title="Table des matières" alt="Table des matières" />
+  </div>
+</div>
+<img src="../share/image/logo.png" title="Globalis" alt="Globalis" style="padding: 0 0 10px 35px;"/>
+<div id="title" class="clear">
+  <div class="left">
+    Briques élémentaires&nbsp;&#8250;&nbsp;Formulaires: lib_form.php
+  </div>
+  <div class="right">
+    Dernière édition le 02-06-2015 20:08 par Armel  &#8249;  <a href="../index.html">Table des matières</a>
+  </div>
+</div>
+<!-- STOP NAVIGATION -->
+
+
+<!-- START HEADER -->
+<div id="subtitle" class="clear">
+  <div class="left">
+      <a href="../brique/class_xml.html">Parsing XML: class_xml.php</a> &#8249;&#8249;
+  </div>
+  <div class="right">
+      &#8250;&#8250; <a href="../brique/lib_backoffice.html">CRUD: lib_backoffice.php</a>
+  </div>
+</div>
+<!-- STOP HEADER -->
+
+<br clear="all" />
+
+<!-- START CONTENT -->
+<div id="content">
+<h1>Formulaires : lib_form.php</h1>
+<div id="mini_index"><h2><a href="#index1" id="rev-index1">Présentation des différents items</a></h2>
+<h3><a href="#index2" id="rev-index2">Item « form » : initialisation du formulaire</a></h3>
+<h3><a href="#index3" id="rev-index3">Item « hidden » : champ caché</a></h3>
+<h3><a href="#index4" id="rev-index4">Item « input » : champ de saisie texte simple</a></h3>
+<h3><a href="#index5" id="rev-index5">Item « checkbox » : champ case à cocher</a></h3>
+<h3><a href="#index6" id="rev-index6">Item « radiobox » : champ radio bouton</a></h3>
+<h3><a href="#index7" id="rev-index7">Item « textarea » : champ de saisie texte multilignes</a></h3>
+<h3><a href="#index8" id="rev-index8">Item « select » : liste </a></h3>
+<h3><a href="#index9" id="rev-index9">Item « button » : bouton </a></h3>
+<h3><a href="#index10" id="rev-index10">Item « info » : champ info</a></h3>
+<h2><a href="#index11" id="rev-index11">Contrôle des données du formulaire</a></h2>
+<h2><a href="#index12" id="rev-index12">Mise en page et template</a></h2>
+<h2><a href="#index13" id="rev-index13">Remarque à propos des légendes</a></h2>
+<h2><a href="#index14" id="rev-index14">Gestion des messages d'erreurs</a></h2>
+<h3><a href="#index15" id="rev-index15">Considérations générales</a></h3>
+<h3><a href="#index16" id="rev-index16">Construction des messages d'erreurs</a></h3>
+<h3><a href="#index17" id="rev-index17">Affichage des messages d'erreurs</a></h3>
+<h2><a href="#index18" id="rev-index18">Remarque à propos de l'affichage des messages</a></h2>
+</div>
+
+<p>
+CARBONE propose une collection de fonctions permettant de simplifier et
+d'automatiser la création et le contrôle de formulaire. L'idée est de décrire l'ensemble
+du formulaire par le biais d'un tableau associatif <sup>[<a href="#note1" id="rev-note1">1</a>]</sup>, chaque élément du formulaire étant
+lui même décrit par un tableau associatif.
+</p>
+<p>
+Débutons par un exemple :
+</p>
+
+<pre class="code">
+// Construction du Formulaire
+
+$form_structure = array(
+    'form' =&gt; array(
+        'item' =&gt; 'form',
+        'action' =&gt; $url,
+        'legende' =&gt; STR_FORM_LEGENDE,
+    ),
+
+    'login_email' =&gt; array(
+        'item' =&gt; 'input', 
+        'tpl' =&gt; '[(3){libelle}(4){form}(5){legende}]', 
+        'libelle' =&gt; STR_LOGIN_LIBELLE_EMAIL, 
+        'legende' =&gt; STR_LOGIN_LEGENDE_EMAIL, 
+        'accesskey' =&gt; 'E',
+        'value' =&gt; $data['login_email'],
+        'test' =&gt; array(
+            'test_user_function' =&gt; 'test_mail',
+            'test_error_message' =&gt; STR_FORM_E_FATAL_FIELD_SAISIE,
+        ),
+        'require' =&gt; TRUE, 
+        'js' =&gt; 'onfocus=&quot;this.className=\'focus\';&quot; onblur=&quot;this.className=\'normal\';&quot;',
+    ),
+
+    'login_password' =&gt; array(
+        'item' =&gt; 'input',
+        'tpl' =&gt; '[(3){libelle}(4){form}(5){legende}]', 
+        'libelle' =&gt; STR_LOGIN_LIBELLE_PASSWORD,
+        'legende' =&gt; STR_LOGIN_LEGENDE_PASSWORD, 
+        'accesskey' =&gt; 'P',
+        'value' =&gt; $data['login_password'],
+        'type' =&gt; 'password',
+        'require' =&gt; TRUE, 
+        'js' =&gt; 'onfocus=&quot;this.className=\'focus\';&quot; onblur=&quot;this.className=\'normal\';&quot;',
+    ),
+
+    'submit' =&gt; array(
+        'item' =&gt; 'button',
+        'tpl' =&gt; '[(3){libelle}(9){form} ...', 
+        'value' =&gt; STR_FORM_SUBMIT,
+        'type' =&gt; 'submit',
+    ),
+
+    'reset' =&gt; array(
+        'item' =&gt; 'button',
+        'tpl' =&gt; '{form}]', 
+        'value' =&gt; STR_FORM_RESET,
+        'type' =&gt; 'reset',
+    ),
+
+);
+</pre>
+
+<p>
+Ce tableau décrit un formulaire d'identification / authentification avec :
+</p>
+
+<ul>
+<li>un champ input (type « text » par défaut) de saisie du login <sup>[<a href="#note2" id="rev-note2">2</a>]</sup>,</li>
+<li>un champ input (type « password ») de saisie du mot de passe,</li>
+<li>un bouton type « submit » de soumission,</li>
+<li>un bouton type « reset » de réinitialisation.</li>
+</ul>
+
+<p>
+Quelques clés (dont l'ordre importe peu) sont communes à la majorité des éléments,
+c'est en particulier le cas des clés suivantes :
+</p>
+
+<ul>
+<li>la clé « item »  a pour but de décrire le type ou la famille d'élément de
+formulaire que nous définissons par la suite dans le tableau : input, textarea,
+button, select, etc. Cette clé est parfois complétée par la clé « type » afin, par exemple ici, de distinguer un 
+champ input de type « text » d'un champ input de type « password »,</li>
+<li>la clé « libelle »  permet de définir le titre que l'on désire voir afficher devant
+l'élément formulaire (donc à gauche du champ),</li>
+<li>la clé « legende »  permet de définir une légende (qui sera affichée à droite du
+champ),</li>
+<li>la clé « require » , quant à elle, prend la valeur TRUE ou FALSE. Si elle est
+initialisée à TRUE alors le champ sera considéré comme obligatoire au
+moment de la soumission. Dès lors, suite à la soumission du formulaire, si un
+tel champ est vide, un message d'erreur sera affiché (automatiquement),</li>
+<li>la clé « js »  permet éventuellement d'associer un événement et traitement Javascript à
+un champ. Par extension, il permet également de jouer sur les comportements CSS,</li>
+<li>la clé « tpl »  est en charge de décrire la mise en page de l'élément en cours de
+définition.</li>
+<li>la clé « test »  permet de définir un appel vers une fonction de test et de
+renseigner le message d'erreur qui sera éventuellement affiché.</li>
+</ul>
+
+<p>
+Quelque peu spécifique, la clé « tpl »  sera décrite un peu plus tard. Nous commencerons
+par lister les différents « item » que sait gérer CARBONE par le biais de cette librairie
+de gestion de formulaires.
+</p>
+
+<h2><a href="#rev-index1" id="index1">Présentation des différents items</a></h2>
+
+
+<!-- -->
+<!-- Element form -->
+<!-- -->
+
+<h3><a href="#rev-index2" id="index2">Item « form » : initialisation du formulaire</a></h3>
+
+
+<table>
+<tr>
+	<th width="30%">Clé</th>
+	<th>Description fonctionnelle</th>
+</tr>
+<tr>
+	<td>item</td>
+	<td><b>form</b></td>
+</tr>
+<tr>
+	<td>action</td>
+	<td>URL du script vers lequel poster</td>
+</tr>
+<tr>
+	<td>name</td>
+	<td>Tag name</td>
+</tr>
+<tr>
+	<td>method</td>
+	<td>Par défaut POST</td>
+</tr>
+<tr>
+	<td>target</td>
+	<td>Par défaut _SELF</td>
+</tr>
+<tr>
+	<td>legende</td>
+	<td>Légende (global à l'ensemble du formulaire)</td>
+</tr>
+<tr>
+	<td>format</td>
+	<td>Par défaut 'horizontal' (sinon 'inline')</td>
+</tr>
+<tr>
+	<td>js</td>
+	<td>Chaîne JS avec événements et traitements, mise en forme CSS</td>
+</tr>
+</table>
+
+<pre class="code">
+'form' =&gt; array(
+    'item' =&gt; 'form',
+    'action' =&gt; $url,
+    'legende' =&gt; STR_FORM_LEGENDE,
+),
+</pre>
+
+<!-- -->
+<!-- Element hidden -->
+<!-- -->
+
+<h3><a href="#rev-index3" id="index3">Item « hidden » : champ caché</a></h3>
+
+
+<table>
+<tr>
+	<th width="30%">Clé</th>
+	<th>Description fonctionnelle</th>
+</tr>
+<tr>
+	<td>item</td>
+	<td><b>hidden</b></td>
+</tr>
+<tr>
+	<td>value</td>
+	<td>Valeur</td>
+</tr>
+</table>
+
+<pre class="code">
+'foo' =&gt; array(
+    'item' =&gt; 'hidden',
+    'value' =&gt; $data['foo'],
+),
+</pre>
+
+<!-- -->
+<!-- Element input -->
+<!-- -->
+
+<h3><a href="#rev-index4" id="index4">Item « input » : champ de saisie texte simple</a></h3>
+
+
+<table>
+<tr>
+	<th width="30%">Clé</th>
+	<th>Description fonctionnelle</th>
+</tr>
+<tr>
+	<td>item</td>
+	<td><b>input</b></td>
+</tr>
+<tr>
+	<td>tpl</td>
+	<td>Template d'affichage</td>
+</tr>
+<tr>
+	<td>libelle</td>
+	<td>Libellé du champ</td>
+</tr>
+<tr>
+	<td>value</td>
+	<td>Valeur</td>
+</tr>
+<tr>
+	<td>legende</td>
+	<td>Légende du champ</td>
+</tr>
+<tr>
+	<td>maxlength</td>
+	<td>Longueur maximale du champ (avant blocage de la saisie)</td>
+</tr>
+<tr>
+	<td>prepend</td>
+	<td>Icone à placer devant le champ</td>
+</tr>
+<tr>
+	<td>append</td>
+	<td>Icone à placer derrière le champ</td>
+</tr>
+<tr>
+	<td>placeholder</td>
+	<td>Placeholder du champ</td>
+</tr>
+<tr>
+	<td>accesskey</td>
+	<td>Lettre (accessible via la combinaison de touches Alt+Shift+Lettre)</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>Type de saisie : text (par défaut), password, etc.</td>
+</tr>
+<tr>
+	<td>test</td>
+	<td>
+        Tableau de test comportant :
+        <ul>
+        <li>test_user_function : le nom de la fonction utilisateur</li>
+        <li>test_error_message : le libellé du message d'erreur</li>
+        </ul>
+        </td>
+</tr>
+<tr>
+	<td>require</td>
+	<td>Champ requis (TRUE) ou non (FALSE)</td>
+</tr>
+<tr>
+	<td>js</td>
+	<td>Chaîne JS avec événements et traitements, mise en forme CSS</td>
+</tr>
+</table>
+
+<pre class="code">
+'foo' =&gt; array(
+    'item' =&gt; 'input',
+    'tpl' =&gt; '[(3){libelle}(4){form}(5){legende}]', 
+    'libelle' =&gt; STR_LIBELLE_FOO,
+    'value' =&gt; $data['foo'],
+    'maxlength' =&gt; 255,
+    'require' =&gt; TRUE,
+    'js' =&gt; 'style=&quot;text-transform: uppercase;&quot; ',
+),
+</pre>
+
+<!-- -->
+<!-- Element checkbox -->
+<!-- -->
+
+<h3><a href="#rev-index5" id="index5">Item « checkbox » : champ case à cocher</a></h3>
+
+
+<table>
+<tr>
+	<th width="30%">Clé</th>
+	<th>Description fonctionnelle</th>
+</tr>
+<tr>
+	<td>item</td>
+	<td><b>checkbox</b></td>
+</tr>
+<tr>
+	<td>tpl</td>
+	<td>Template d'affichage</td>
+</tr>
+<tr>
+	<td>libelle</td>
+	<td>Libellé du champ</td>
+</tr>
+<tr>
+	<td>legende</td>
+	<td>Légende du champ</td>
+</tr>
+<tr>
+	<td>checked</td>
+	<td>Eléments selectionnés</td>
+</tr>
+<tr>
+	<td>checkbox</td>
+	<td>Tableau de 0 à n avec tous les éléments</td>
+</tr>
+<tr>
+	<td>test</td>
+	<td>
+        Tableau de test comportant :
+        <ul>
+        <li>test_user_function : le nom de la fonction utilisateur</li>
+        <li>test_error_message : le libellé du message d'erreur</li>
+        </ul>
+        </td>
+</tr>
+<tr>
+	<td>format</td>
+	<td>Par défaut 'inline' (sinon 'vertical')</td>
+</tr>
+<tr>
+	<td>require</td>
+	<td>Champ requis (TRUE) ou non (FALSE)</td>
+</tr>
+<tr>
+	<td>js</td>
+	<td>Chaîne JS avec événements et traitements, mise en forme CSS</td>
+</tr>
+</table>
+
+<pre class="code">
+'foo' =&gt; array(
+    'item' =&gt; 'checkbox',
+    'tpl' =&gt; '[(3){libelle}(6){form}(3){legende}]', 
+    'libelle' =&gt; STR_LIBELLE_FOO,
+    'checked' =&gt; $data['champ2'],
+    'checkbox' =&gt; array(
+        array('value' =&gt; '0', 'label' =&gt; STR_NON, 'tpl' =&gt; ' {form} {label} '),
+        array('value' =&gt; '1', 'label' =&gt; STR_OUI, 'tpl' =&gt; ' {form} {label} '),
+        array('value' =&gt; '2', 'label' =&gt; STR_MAYBE, 'tpl' =&gt; ' {form} {label} '),
+    ),
+    'require' =&gt; TRUE,
+),
+</pre>
+
+<!-- -->
+<!-- Element radiobox -->
+<!-- -->
+
+<h3><a href="#rev-index6" id="index6">Item « radiobox » : champ radio bouton</a></h3>
+
+
+<table>
+<tr>
+	<th width="30%">Clé</th>
+	<th>Description fonctionnelle</th>
+</tr>
+<tr>
+	<td>item</td>
+	<td><b>radiobox</b></td>
+</tr>
+<tr>
+	<td>tpl</td>
+	<td>Template d'affichage</td>
+</tr>
+<tr>
+	<td>libelle</td>
+	<td>Libellé du champ</td>
+</tr>
+<tr>
+	<td>legende</td>
+	<td>Légende du champ</td>
+</tr>
+<tr>
+	<td>checked</td>
+	<td>Eléments selectionnés</td>
+</tr>
+<tr>
+	<td>radiobox</td>
+	<td>Tableau de 0 à n avec tous les éléments</td>
+</tr>
+<tr>
+	<td>test</td>
+	<td>
+        Tableau de test comportant :
+        <ul>
+        <li>test_user_function : le nom de la fonction utilisateur</li>
+        <li>test_error_message : le libellé du message d'erreur</li>
+        </ul>
+        </td>
+</tr>
+<tr>
+	<td>format</td>
+	<td>Par défaut 'inline' (sinon 'vertical')</td>
+</tr>
+<tr>
+	<td>require</td>
+	<td>Champ requis (TRUE) ou non (FALSE)</td>
+</tr>
+<tr>
+	<td>js</td>
+	<td>Chaîne JS avec événements et traitements, mise en forme CSS</td>
+</tr>
+</table>
+
+<pre class="code">
+'foo' =&gt; array(
+    'item' =&gt; 'radiobox',
+    'tpl' =&gt; '[(3){libelle}(6){form}(3){legende}]', 
+    'libelle' =&gt; STR_LIBELLE_FOO,
+    'checked' =&gt; $data['foo'],
+    'radiobox' =&gt; array(
+        array('value' =&gt; '0', 'label' =&gt; STR_NON, 'tpl' =&gt; ' {form} {label} '),
+        array('value' =&gt; '1', 'label' =&gt; STR_OUI, 'tpl' =&gt; ' {form} {label} '),
+    ),
+    'require' =&gt; TRUE,
+),
+</pre>
+
+<!-- -->
+<!-- Element textarea -->
+<!-- -->
+
+<h3><a href="#rev-index7" id="index7">Item « textarea » : champ de saisie texte multilignes</a></h3>
+
+
+<table>
+<tr>
+	<th width="30%">Clé</th>
+	<th>Description fonctionnelle</th>
+</tr>
+<tr>
+	<td>item</td>
+	<td><b>textarea</b></td>
+</tr>
+<tr>
+	<td>tpl</td>
+	<td>Template d'affichage</td>
+</tr>
+<tr>
+	<td>libelle</td>
+	<td>Libellé du champ</td>
+</tr>
+<tr>
+	<td>legende</td>
+	<td>Légende du champ</td>
+</tr>
+<tr>
+	<td>value</td>
+	<td>Valeur</td>
+</tr>
+<tr>
+	<td>rows</td>
+	<td>Nombre de lignes</td>
+</tr>
+<tr>
+	<td>cols</td>
+	<td>Nombre de colonnes</td>
+</tr>
+<tr>
+	<td>test</td>
+	<td>
+        Tableau de test comportant :
+        <ul>
+        <li>test_user_function : le nom de la fonction utilisateur</li>
+        <li>test_error_message : le libellé du message d'erreur</li>
+        </ul>
+        </td>
+</tr>
+<tr>
+	<td>require</td>
+	<td>Champ requis (TRUE) ou non (FALSE)</td>
+</tr>
+<tr>
+	<td>js</td>
+	<td>Chaîne JS avec événements et traitements, mise en forme CSS</td>
+</tr>
+</table>
+
+<pre class="code">
+'foo' =&gt; array(
+    'item' =&gt; 'textarea',
+    'tpl' =&gt; '[(3){libelle}(9){form}]', 
+    'libelle' =&gt; STR_LIBELLE_FOO,
+    'value' =&gt; $data['foo'],
+    'rows' =&gt; '10',
+    'cols' =&gt; '30',
+    'require' =&gt; TRUE,
+),
+</pre>
+
+<!-- -->
+<!-- Element select -->
+<!-- -->
+
+<h3><a href="#rev-index8" id="index8">Item « select » : liste </a></h3>
+
+
+<table>
+<tr>
+	<th width="30%">Clé</th>
+	<th>Description fonctionnelle</th>
+</tr>
+<tr>
+	<td>item</td>
+	<td><b>select</b></td>
+</tr>
+<tr>
+	<td>tpl</td>
+	<td>Template d'affichage</td>
+</tr>
+<tr>
+	<td>libelle</td>
+	<td>Libellé du champ</td>
+</tr>
+<tr>
+	<td>legende</td>
+	<td>Légende du champ</td>
+</tr>
+<tr>
+	<td>value</td>
+	<td>Valeur</td>
+</tr>
+<tr>
+	<td>selected</td>
+	<td>Chaîne (si select simple) ou tableau (si select multiple) des éléments sélectionnés</td>
+</tr>
+
+<tr>
+	<td>multiple</td>
+	<td>Multiple TRUE ou FALSE</td>
+</tr>
+<tr>
+	<td>optgroup</td>
+	<td>OPTGROUP TRUE ou FALSE</td>
+</tr>
+<tr>
+	<td>size</td>
+	<td>Si multiple, nombre de lignes visibles</td>
+</tr>
+<tr>
+	<td>test</td>
+	<td>
+        Tableau de test comportant :
+        <ul>
+        <li>test_user_function : le nom de la fonction utilisateur</li>
+        <li>test_error_message : le libellé du message d'erreur</li>
+        </ul>
+    </td>
+</tr>
+<tr>
+	<td>require</td>
+	<td>Champ requis (TRUE) ou non (FALSE)</td>
+</tr>
+<tr>
+	<td>js</td>
+	<td>Chaîne JS avec événements et traitements, mise en forme CSS</td>
+</tr>
+</table>
+
+<pre class="code">
+'foo' =&gt; array(
+    'item' =&gt; 'select',
+    'tpl' =&gt; '[(3){libelle}(4){form}(5){legende}]', 
+    'libelle' =&gt; STR_LIBELLE_FOO,
+    'value' =&gt; get_theme(), // Appel d'une fonction externe retournant un tableau &agrave; cl&eacute; des valeurs
+    'selected' =&gt; $data['foo'],
+    'multiple' =&gt; TRUE,
+    'require' =&gt; TRUE,
+    'size' =&gt; 5,
+),
+</pre>
+
+<!-- -->
+<!-- Element button -->
+<!-- -->
+
+<h3><a href="#rev-index9" id="index9">Item « button » : bouton </a></h3>
+
+
+<table>
+<tr>
+	<th width="30%">Clé</th>
+	<th>Description fonctionnelle</th>
+</tr>
+<tr>
+	<td>item</td>
+	<td><b>button</b></td>
+</tr>
+<tr>
+	<td>tpl</td>
+	<td>Template d'affichage</td>
+</tr>
+<tr>
+	<td>libelle</td>
+	<td>Libellé du champ</td>
+</tr>
+<tr>
+	<td>legende</td>
+	<td>Légende du champ</td>
+</tr>
+<tr>
+	<td>value</td>
+	<td>Valeur</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>Type de bouton : submit, reset, button, etc.</td>
+</tr>
+<tr>
+	<td>require</td>
+	<td>Champ requis (TRUE) ou non (FALSE)</td>
+</tr>
+<tr>
+	<td>js</td>
+	<td>Chaîne JS avec événements et traitements, mise en forme CSS</td>
+</tr>
+</table>
+
+<pre class="code">
+'foo' =&gt; array(
+    'item' =&gt; 'button',
+    'tpl' =&gt; '[(3){libelle}(4){form}(5){legende}]', 
+    'value' =&gt; STR_OK,
+    'type' =&gt; 'submit',
+),
+</pre>
+
+<!-- -->
+<!-- Element info -->
+<!-- -->
+
+<h3><a href="#rev-index10" id="index10">Item « info » : champ info</a></h3>
+
+
+<table>
+<tr>
+    <th width="30%">Clé</th>
+    <th>Description fonctionnelle</th>
+</tr>
+<tr>
+    <td>item</td>
+    <td><b>info</b></td>
+</tr>
+<tr>
+    <td>value</td>
+    <td>Valeur</td>
+</tr>
+</table>
+
+<pre class="code">
+'foo' =&gt; array(
+    'item' =&gt; 'info',
+    'value' =&gt; STR_MESSAGE,
+),
+</pre>
+
+<h2><a href="#rev-index11" id="index11">Contrôle des données du formulaire</a></h2>
+
+
+<p>
+Il est possible d'associer un contrôle des données à une structure de formulaire, au
+fur et mesure pour chacun des champs définis :
+</p>
+
+<ul>
+<li>le premier contrôle se base sur la clé « require » qui permet de définir si un champ
+est requis</li>
+<li>les tests complémentaires sont renseignés à l'aide de la clé « test » qui permet de
+définir la fonction qui devra être utilisée pour tester la conformité des valeurs
+(sous-clé « test_user_function »), le message qui devra être affiché si une erreur est
+rencontrée (sous-clé « test_error_message »).</li>
+</ul>
+
+<p>
+Des fonctions standard sont disponibles pour les tests. 
+Consulter la section <a href="../brique/lib_test.html">Tests: lib_test.php</a> de la documentation pour de plus amples informations. 
+</p>
+
+<h2><a href="#rev-index12" id="index12">Mise en page et template</a></h2>
+
+
+<p>
+La clé « tpl », commune à la majorité des éléments que nous venons de lister, est en
+charge de décrire la mise en page de l'élément en cours de définition. Le fonctionnement repose sur le sysème de grille de Bootstrap sur 12 colonnes. Généralement, on trouvera :
+</p>
+<ul>
+<li>en première cellule, le libellé du champ (défini par la clé « libelle »), c'est-à-dire,
+le titre que l'on désire afficher devant l'élément formulaire,</li>
+<li>en seconde cellule, l'élément de formulaire lui-même,</li>
+<li>en troisième cellule, la légende (définie par la clé « legende ») et venant par
+exemple ajouter un commentaire d'aide à la saisie.</li>
+</ul>
+
+<p>
+Un tel template de sortie est décrit pour les champs « email » et « password » de notre tout premier 
+exemple de structure de formulaire que nous avons présenté en introduction. A ce titre, nous avions précisé le formalisme :
+</p>
+
+<pre class="code">
+...
+    'tpl' =&gt; '[(3){libelle}(4){form}(5){legende}]',
+...
+</pre>
+
+<p>
+Les crochets suggèrent l'ouverture et la fermeture d'une ligne. Quant aux parenthèses, elles suggèrent les ruptures entre les cellules et précisent les largeurs. Ici, le template de sortie sera équivalent à :
+</p>
+
+<pre class="code">
+&lt;div class=&quot;col-xs-3&quot;&gt;{libelle}&lt;/div&gt;
+&lt;div class=&quot;col-xs-4&quot;&gt;{form}&lt;/div&gt;
+&lt;div class=&quot;col-xs-5&quot;&gt;{legende}&lt;/div&gt;
+</pre>
+
+<p>
+On notera au passage que la somme des largeurs est bien égale à 12 (= 3 + 4 + 5), notre grille étant composée de 12 colonnes.
+</p>
+
+<p>
+Si la clé « tpl » avait contenu ceci :
+</p>
+
+<pre class="code">
+...
+    'tpl' =&gt; '[(3){libelle}(9){form}]',
+...
+</pre>
+
+<p>
+Le template de sortie aurait été équivalent à :
+</p>
+
+<pre class="code">
+&lt;div class=&quot;col-xs-3&quot;&gt;{libelle}&lt;/div&gt;
+&lt;div class=&quot;col-xs-9&quot;&gt;{form}&lt;/div&gt;
+</pre>
+
+<p>
+Plus compliqué, le cas des deux champs  « submit » et  « reset », on remarque que le
+template de sortie est un peu différent :
+</p>
+
+
+<pre class="code">
+'submit' =&gt; array(
+    'item' =&gt; 'button',
+    'tpl' =&gt; '[(3){libelle}(9){form} ...', 
+    'value' =&gt; STR_FORM_SUBMIT,
+    'type' =&gt; 'submit',
+),
+
+'reset' =&gt; array(
+    'item' =&gt; 'button',
+    'tpl' =&gt; '{form}]', 
+    'value' =&gt; STR_FORM_RESET,
+    'type' =&gt; 'reset',
+),
+</pre>
+
+<p>
+Le template défini au niveau du champ « submit » va débuter une nouvelle ligne. Le
+libellé est vide (car non défini explicitement par la clé « libelle »). La première cellule
+sera donc vide elle aussi. La seconde cellule comportera le bouton « submit ». Mais la
+ligne n'est pas fermée (pas de crochet fermant en fin de template).
+</p>
+<p>
+On reste donc au niveau de la seconde cellule pour poursuivre avec le champ « reset » .
+Le bouton « reset »  sera donc affiché lui aussi dans la seconde cellule et la ligne sera fermée.
+</p>
+<p>
+Récapitulons en présentant un schéma de la sortie qu'engendrera le premier exemple de structure de formulaire :
+</p>
+
+<center>
+<table style="width:640px;">
+
+<tr>
+<td style="width:180px;">Libellé Email</td>
+<td style="width:240px;"><input type="text" /></td>
+<td style="width:300px;">Légende Email</td>
+</tr>
+
+<tr>
+<td style="width:180px;">Libellé Password</td>
+<td style="width:240px;"><input type="password" /></td>
+<td style="width:300px;">Légende Password</td>
+</tr>
+
+<tr>
+<td style="width:180px; background: url(../share/image/background.png);"><i>Cellule vide</i></td>
+<td colspan="2" style="width:540px;"><input type="button" value="Submit" /> <input type="button" value="Reset" /></td>
+</tr>
+
+</table>
+</center>
+
+<h2><a href="#rev-index13" id="index13">Remarque à propos des légendes</a></h2>
+
+
+<p>
+Comme nous l'avons vu, lors de la définition d'un élément de formulaire, il est
+possible de préciser une légende (aide à la saisie, message de mise en garde, etc.). Si
+la chaîne définissant cette légende débute par un _ (underscore), le message sera
+affiché sous la forme d'un « tooltip ».
+</p>
+
+<h2><a href="#rev-index14" id="index14">Gestion des messages d'erreurs</a></h2>
+
+
+<h3><a href="#rev-index15" id="index15">Considérations générales</a></h3>
+
+
+<p>
+Généralement, la vérification de la saisie d'un formulaire se déroule en 2 étapes:
+<ul>
+    <li> Etape 1 - Tests primaires: vérification des champs requis et contrôle de conformité vis à vis des tests unitaires</li>
+    <li> Etape 2 - Tests secondaires : vérification de règles de gestion « métiers »</li>
+</ul>
+</p>
+
+<h3><a href="#rev-index16" id="index16">Construction des messages d'erreurs</a></h3>
+
+
+<p>
+La structure d'un formulaire est initialement envoyée à la fonction form_check() qui va retourner un tableau associatif $form_error contenant le resultat des tests primaires.
+</p>
+
+<pre class="code">
+// form_check retourne un tableau ayant la structure suivante :
+//
+//     $form_error=array(
+//        'fatal' =&gt; array(),
+//        'warning' =&gt; array(),
+//     );
+//
+//     'fatal' contient les erreurs bloquantes
+//     'warning' contiendra les erreurs non bloquantes &eacute;ventuellements issues des tests secondaires
+
+$form_error=form_check($form_structure);
+</pre>
+
+<p>
+Par convention, le tableau $form_error['fatal'] contiendra des erreurs bloquantes, alors que $form_error['warning'] contiendra éventuellement des erreurs non bloquantes ayant, par exemple, un caractère informatif (mais n'empéchant pas la validation des données).
+</p>
+
+<p>
+Si, à l'issue de l'appel à la fonction form_check(), le tableau $form_error['fatal'] est vide, on peut alors entamer une phase de tests secondaires. Par exemple, vérifier lors de la création d'un compte utilisateur, que le login n'existe pas déjà en base. Ou encore, que le mot de passe n'est pas équivalent au prénom, pour anticiper des problématiques de sécurité, etc. Les règles de gestion « métiers » sont vastes et dépendront du projet. Il est alors possible de compléter, lors de ces tests secondaires, les tableaux $form_error['fatal'] et  $form_error['warning'], en fonction du caractère bloquant ou non des erreurs à lever.
+</p>
+
+<p>
+Si une erreur concerne un ou plusieurs champs en particulier, il est possible de l'indiquer clairement
+</p>
+
+<pre class="code">
+// Message 'fatal' non li&eacute; &agrave; un &eacute;l&eacute;ment de formulaire en particulier
+$form_error['fatal'][] = STR_UTILISATEUR_E_FATAL_1;
+...
+// Message 'fatal' li&eacute; au champ 'password
+$form_error['fatal']['password'] = STR_UTILISATEUR_E_FATAL_2;'
+...
+// Message 'warning' li&eacute; aux champs 'prenom' et 'password'
+$form_error['warning']['prenom, password'] = STR_UTILISATEUR_E_WARNING_1;
+</pre>
+
+<p>
+Préciser à quel champ se réfère un message, permettra de le mettre en évidence par la colorisation du label du champ (ou de plusieurs champs).
+</p>
+
+<h3><a href="#rev-index17" id="index17">Affichage des messages d'erreurs</a></h3>
+
+
+<p>
+L'affichage des messages d'erreurs est réalisée par l'appel à la fonction form_message(), qui peut recevoir différents arguments. Seuls les 2 premiers arguments sont requis. La description fonctionnelle est la suivante:
+</p>
+
+<table>
+<tr>
+    <th width="30%">Argument</th>
+    <th>Description fonctionnelle</th>
+</tr>
+<tr>
+    <td>libelle</td>
+    <td>Le libellé du message (par exemple, STR_FORM_E_FATAL ou STR_FORM_E_WARNING)</td>
+</tr>
+<tr>
+    <td>message</td>
+    <td>Le message ou le tableau de messages à afficher (par exemple $form_error['fatal'])</td>
+</tr>
+<tr>
+    <td>css</td>
+    <td>La css d'affichage: 'error' (par défaut), 'warning', 'info' ou 'success'
+        <ul>
+            <li>error: rouge (défaut)</li>
+            <li>warning: orange</li>
+            <li>info: bleu</li>
+            <li>success: vert</li>
+        </ul>
+    </td>
+</tr>
+<tr>
+    <td>type</td>
+    <td>Le type de message: 'normal' (par défaut), 'modal' ou 'session'
+        <ul>
+            <li>normal: affichage dans la page (défaut)</li>
+            <li>modal: affichage dans une fenêtre modal</li>
+            <li>session: affichage différé dans le coin haut droit</li>
+        </ul>
+    </td>
+</tr>
+<tr>
+    <td>selecteur</td>
+    <td>La colorisation des labels: 'TRUE' (par défaut) ou 'FALSE'</td>
+</tr>
+</table>
+
+<pre class="code">
+// Affichage des messages d'erreurs 'fatal' (par d&eacute;faut)
+echo form_message(STR_FORM_E_FATAL, $form_error['fatal']);
+...
+// Affichage d'un simple message d'erreur 'warning' en bleu (css 'info') et de type 'session'
+echo form_message(STR_FORM_E_WARNING, STR_UTILISATEUR_E_INFO_1, 'info', 'session');
+</pre>
+<h2><a href="#rev-index18" id="index18">Remarque à propos de l'affichage des messages</a></h2>
+
+
+<p>
+Hors context des formulaires, il est possible d'utiliser la fonction message() afin d'afficher des messages sur une page. La fonction form_message() n'est qu'un alias de la fonction message(). Cette fonction, présente dans la lib_carbone.php, reçoit donc les mêmes arguments et fonctionne de la même manière.
+</p>
+<div class="note">
+<p>[<a href="#rev-note1" id="note1">1</a>] Un tableau associatif est un tableau à clés.</p>
+
+<p>[<a href="#rev-note2" id="note2">2</a>] L'adresse email est souvent choisie comme login car elle présente l'avantage d'être unique et de pouvoir
+implémenter simplement un système de rappel de mot de passe par email (tout le monde se souvient de
+son email).</p>
+</div></div>
+<!-- STOP CONTENT -->
+
+<!-- START FOOTER -->
+<div id="footer" class="clear">
+  <div class="left">
+  Documentation CARBONE V5.3 (Version 1.0) générée par CARBONE DOC (Version 1.3) &middot; Copyright &#169; 1997-2015&nbsp;&middot;&nbsp;<a href="http://www.globalis-ms.com/">Globalis</a>
+  </div>
+  <div class="right">
+  <a href="#top">Haut de page</a>
+  </div>
+  <br/>
+  <br/>
+  <p class="clear">
+  GLOBALIS media systems - Siège social : 6 bis, rue Auguste VITU - 75015 Paris
+  <br/>
+  S.A.R.L au capital de 10 671,43 &euro; - R.C.S Paris B 413 141 193 - SIRET 413 141 193 00024 - APE 741G
+  <br/>
+  Tel: 01 82 83 51 70 / Fax: 01 82 83 51 71 - Web : http://www.globalis-ms.com - Twitter : @GLOBALISms - E-mail : infos@globalis-ms.com
+  </p>
+</div>
+<!-- STOP FOOTER -->
+</body>
+</html>

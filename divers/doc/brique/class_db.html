@@ -1,0 +1,316 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="expires" content="-1" />
+<meta http-equiv="pragma" content="no-cache" />
+<meta name="robots" content="all" />
+<meta name="author" content="Armel FAUVEAU" />
+<meta name="description" content="Documentation CARBONE V5.3" />
+
+<title>Documentation CARBONE V5.3 Version 1.0 (06-06-2015) - Abstraction SGBD: class_db.php</title>
+
+<link rel="stylesheet" type="text/css" media="screen" href="../share/css/screen.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="../share/css/listing.css" />
+<link rel="stylesheet" type="text/css" media="print" href="../share/css/print.css" />
+<link rel="stylesheet" type="text/css" media="print" href="../share/css/listing.css" />
+
+<script type="text/javascript" src="../share/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="../share/js/jquery.corner.min.js"></script>
+<script type="text/javascript" src="../share/js/listing.min.js"></script>
+<script type="text/javascript" src="../share/js/jquery.main.min.js"></script>
+
+</head>
+<body>
+
+<!-- START NAVIGATION -->
+<div id="nav"><div id="nav_inner"></div></div>
+<div id="nav2">
+  <a name="top"></a>
+  <div id="index">
+    <img src="../share/image/nav_toggle.jpg"  title="Table des matières" alt="Table des matières" />
+  </div>
+</div>
+<img src="../share/image/logo.png" title="Globalis" alt="Globalis" style="padding: 0 0 10px 35px;"/>
+<div id="title" class="clear">
+  <div class="left">
+    Briques élémentaires&nbsp;&#8250;&nbsp;Abstraction SGBD: class_db.php
+  </div>
+  <div class="right">
+    Dernière édition le 01-02-2014 21:29 par Armel  &#8249;  <a href="../index.html">Table des matières</a>
+  </div>
+</div>
+<!-- STOP NAVIGATION -->
+
+
+<!-- START HEADER -->
+<div id="subtitle" class="clear">
+  <div class="left">
+      <a href="../architecture_code/workflow.html">Workflow</a> &#8249;&#8249;
+  </div>
+  <div class="right">
+      &#8250;&#8250; <a href="../brique/class_session.html">Session: class_session.php</a>
+  </div>
+</div>
+<!-- STOP HEADER -->
+
+<br clear="all" />
+
+<!-- START CONTENT -->
+<div id="content">
+<h1>Classe d'abstraction SGBD : class_db.php</h1>
+<div id="mini_index"><h2><a href="#index1" id="rev-index1">Paramétrages</a></h2>
+<h2><a href="#index2" id="rev-index2">Connexion</a></h2>
+<h2><a href="#index3" id="rev-index3">Utilisation</a></h2>
+<h3><a href="#index4" id="rev-index4">Connexion : connect()</a></h3>
+<h3><a href="#index5" id="rev-index5">Déconnexion : close()</a></h3>
+<h3><a href="#index6" id="rev-index6">Requête : execute()</a></h3>
+<h3><a href="#index7" id="rev-index7">Décompte du nombre d'enregistrement : recordcount()</a></h3>
+<h3><a href="#index8" id="rev-index8">Last insert id : insert_id()</a></h3>
+<h3><a href="#index9" id="rev-index9">Requête SELECT...LIMIT : selectlimit()</a></h3>
+<h3><a href="#index10" id="rev-index10">Remontée d'une colonne d'une ligne : getone()</a></h3>
+<h3><a href="#index11" id="rev-index11">Remontée de plusieurs colonnes d'une ligne : getrow()</a></h3>
+<h3><a href="#index12" id="rev-index12">Remontée de plusieurs colonnes de plusieurs lignes : fetchrow()</a></h3>
+</div>
+
+<p>
+CARBONE propose deux couches d'abstraction <sup>[<a href="#note1" id="rev-note1">1</a>]</sup> SGBD : AdoDB et AdoDB CARBONE. La
+seconde est une version ultra simplifiée de la première. Si les principaux
+développements sont réalisés avec MySQL, l'utilisation d'un autre SGBD sera
+grandement simplifiée. D'où un gain important pour le développeur et des possibilités
+intéressantes d'évolution et de modularité.
+Dans la pratique, la version simplifiée, AdoDB CARBONE, sera suffisante. Le recours à
+AdoDB sera réservé à des développements très spécifiques (impliquant plusieurs
+SGBD ou nécessitant un niveau d'abstraction élevé).
+</p>
+
+<h2><a href="#rev-index1" id="index1">Paramétrages</a></h2>
+
+<p>
+Les paramétrages liés au SGBD sont définis dans le fichier include/config/config.php.
+On y trouve en particulier les informations suivantes :
+</p>
+<pre class="code">
+// Database
+
+define ('CFG_CLASS', 'adodb_carbone');  // Class d'abstraction utilis&eacute;e
+define ('CFG_TYPE', 'mysql');           // Type de sgbd cibl&eacute; (mysql, postgres, ...)
+
+define ('CFG_HOST', 'localhost');       // Host
+define ('CFG_USER', 'username');        // User
+define ('CFG_PASS', 'password');        // Pass
+define ('CFG_BASE', 'carbone_v45');     // Base
+
+// Tables
+
+define ('CFG_TABLE_PREFIX', '');                            // Prefix sur les tables (public. pour postgres)
+define ('CFG_TABLE_SESSION', CFG_TABLE_PREFIX.'session');   // Table session
+define ('CFG_TABLE_USER', CFG_TABLE_PREFIX.'user');         // Table user
+define ('CFG_TABLE_DATA', CFG_TABLE_PREFIX.'data');         // Table data
+</pre>
+<p>
+Les lignes 3 et 4 servent à définir la couche d'abstraction qui sera utilisée (adodb ou
+adodb_carbone) ainsi que le type de SGBD cible. A noter que adodb_carbone ne
+supporte qu'un nombre limité de SGBD : mysql, postgres, mssql, sqlite.
+</p>
+<p>
+Les lignes 6 à 8 définissent host, username et password d'accès au SGBD. La ligne 9
+précise le nom de la base. Quant aux lignes 13 et suivantes, elles définissent un
+préfixe de table <sup>[<a href="#note2" id="rev-note2">2</a>]</sup> (par défaut vide) ainsi que chacune des tables qui seront utilisées
+par l'application.
+</p>
+<p>
+Par la suite, en particulier lors de la construction des requêtes, ce sont ces constantes
+qui permettront de référencer telle ou telle table, ceci afin de gagner en modularité <sup>[<a href="#note3" id="rev-note3">3</a>]</sup>.
+</p>
+
+<h2><a href="#rev-index2" id="index2">Connexion</a></h2>
+
+
+<p>
+Cette étape est assurée par le script include/open.php. Elle est transparente pour le
+développeur.
+</p>
+
+<h2><a href="#rev-index3" id="index3">Utilisation</a></h2>
+
+
+<p>
+Nous allons détailler succinctement les méthodes proposées par AdoDB CARBONE. Ces
+méthodes sont suffisantes dans 99% des cas. Elles sont totalement compatibles avec
+AdoDB (qui en propose, elle, beaucoup plus).
+</p>
+
+<h3><a href="#rev-index4" id="index4">Connexion : connect()</a></h3>
+
+
+<pre class="code">
+//
+// M&eacute;thode connect()
+// Ouvertue de la connexion SGBD
+//
+
+$db = ADONewConnection(CFG_TYPE);
+$db-&gt;connect(CFG_HOST, CFG_USER, CFG_PASS, CFG_BASE);
+
+if(!$db){
+    die(&quot;Pas de connexion&quot;);
+}
+</pre>
+
+<h3><a href="#rev-index5" id="index5">Déconnexion : close()</a></h3>
+
+
+<pre class="code">
+//
+// M&eacute;thode close()
+// Fermeture de la connexion SGBD
+//
+
+$db-&gt;close();
+</pre>
+
+<h3><a href="#rev-index6" id="index6">Requête : execute()</a></h3>
+
+
+<pre class="code">
+//
+// M&eacute;thode execute()
+// Exemple de requ&ecirc;te INSERT
+//
+
+$sql = 'INSERT INTO '.CFG_TABLE_USER.' ';
+$sql.= '(nom, prenom, email, password) ';
+$sql.= 'VALUES (';
+$sql.= $db-&gt;qstr(uniqid('nom_')).', ';
+$sql.= $db-&gt;qstr(uniqid('prenom_')).', ';
+$sql.= $db-&gt;qstr(uniqid('email_')).', ';
+$sql.= $db-&gt;qstr(uniqid('password_'));
+$sql.= ')';
+
+$db-&gt;execute($sql);
+</pre>
+
+<h3><a href="#rev-index7" id="index7">Décompte du nombre d'enregistrement : recordcount()</a></h3>
+
+
+<pre class="code">
+//
+// M&eacute;thode recordcount()
+// Exemple de calcul de nombre d'enregistrement
+//
+
+$sql = 'SELECT nom, prenom FROM '.CFG_TABLE_USER;
+
+$recordset = $db-&gt;execute($sql);
+print_r($recordset-&gt;recordcount());
+</pre>
+
+<h3><a href="#rev-index8" id="index8">Last insert id : insert_id()</a></h3>
+
+
+<pre class="code">
+//
+// M&eacute;thode insert_id()
+// Exemple de r&eacute;cup&eacute;ration de dernier id
+//
+
+$id=$db-&gt;insert_id(CFG_TABLE_USER, 'user_id');
+print_r($id);
+</pre>
+
+<h3><a href="#rev-index9" id="index9">Requête SELECT...LIMIT : selectlimit()</a></h3>
+
+
+<pre class="code">
+//
+// M&eacute;thode selectlimit()
+// Exemple de requ&ecirc;te SELECT...LIMIT (ici 3 enregistrements &agrave; partir du premier)
+//
+
+$sql = 'SELECT nom, prenom, email FROM '.CFG_TABLE_USER;
+
+$recordset = $db-&gt;selectlimit($sql, 3, 0);
+while ($row = $recordset-&gt;fetchrow()) {
+    print_r($row);
+}
+</pre>
+
+<h3><a href="#rev-index10" id="index10">Remontée d'une colonne d'une ligne : getone()</a></h3>
+
+
+<pre class="code">
+//
+// M&eacute;thode getone()
+// Exemple de remont&eacute;e d'une colonne d'une ligne
+//
+
+$sql = 'SELECT nom FROM '.CFG_TABLE_USER.' ';
+$sql.= 'WHERE user_id='.$id;
+
+print_r($db-&gt;getone($sql));
+</pre>
+
+<h3><a href="#rev-index11" id="index11">Remontée de plusieurs colonnes d'une ligne : getrow()</a></h3>
+
+
+<pre class="code">
+//
+// M&eacute;thode getrow()
+// Exemple de remont&eacute;e de plusieurs colonnes d'une ligne
+//
+
+$sql = 'SELECT nom, prenom FROM '.CFG_TABLE_USER.' ';
+$sql.= 'WHERE user_id='.$id;
+
+print_r($db-&gt;getrow($sql));
+</pre>
+
+<h3><a href="#rev-index12" id="index12">Remontée de plusieurs colonnes de plusieurs lignes : fetchrow()</a></h3>
+
+
+<pre class="code">
+//
+// M&eacute;thode fetchrow()
+// Exemple de remont&eacute;e de plusieurs colonnes de plusieurs lignes
+//
+
+$sql = 'SELECT nom, prenom, email FROM '.CFG_TABLE_USER;
+
+$recordset = $db-&gt;execute($sql);
+while ($row = $recordset-&gt;fetchrow()) {
+    print_r($row);
+}
+</pre><div class="note">
+<p>[<a href="#rev-note1" id="note1">1</a>] Attention, PDO, intégré à PHP5.1 n'est pas une couche d'abstraction. PDO propose uniquement
+d'harmoniser et standardiser les appels et retours vers les SGBD majeurs.</p>
+
+<p>[<a href="#rev-note2" id="note2">2</a>] Ce préfixe est utile si l'application doit utiliser une base existante et contenant une table portant le même
+nom qu'une table utilisée par le framework, par exemple, session ou user.</p>
+
+<p>[<a href="#rev-note3" id="note3">3</a>] Si l'on désire changer le nom d'une table en cours de développement ou lors d'une évolution future, une simple édition du fichier include/config/config.php suffira.</p>
+</div></div>
+<!-- STOP CONTENT -->
+
+<!-- START FOOTER -->
+<div id="footer" class="clear">
+  <div class="left">
+  Documentation CARBONE V5.3 (Version 1.0) générée par CARBONE DOC (Version 1.3) &middot; Copyright &#169; 1997-2015&nbsp;&middot;&nbsp;<a href="http://www.globalis-ms.com/">Globalis</a>
+  </div>
+  <div class="right">
+  <a href="#top">Haut de page</a>
+  </div>
+  <br/>
+  <br/>
+  <p class="clear">
+  GLOBALIS media systems - Siège social : 6 bis, rue Auguste VITU - 75015 Paris
+  <br/>
+  S.A.R.L au capital de 10 671,43 &euro; - R.C.S Paris B 413 141 193 - SIRET 413 141 193 00024 - APE 741G
+  <br/>
+  Tel: 01 82 83 51 70 / Fax: 01 82 83 51 71 - Web : http://www.globalis-ms.com - Twitter : @GLOBALISms - E-mail : infos@globalis-ms.com
+  </p>
+</div>
+<!-- STOP FOOTER -->
+</body>
+</html>

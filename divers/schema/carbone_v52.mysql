@@ -1,0 +1,83 @@
+-- phpMyAdmin SQL Dump
+-- version 3.4.8
+-- http://www.phpmyadmin.net
+--
+-- Client: localhost
+-- Généré le : Lun 03 Juin 2013 à 17:19
+-- Version du serveur: 5.5.19
+-- Version de PHP: 5.3.15
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Base de données: `carbone_v51`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `data`
+--
+
+DROP TABLE IF EXISTS `data`;
+CREATE TABLE IF NOT EXISTS `data` (
+  `data_id` int(11) NOT NULL AUTO_INCREMENT,
+  `online` tinyint(3) NOT NULL DEFAULT '0',
+  `titre` varchar(255) NOT NULL DEFAULT '',
+  `data_1` text NOT NULL DEFAULT '',
+  `data_2` text NOT NULL DEFAULT '',
+  `data_3` text NOT NULL DEFAULT '',
+  `upload_1` varchar(255) NOT NULL DEFAULT '',
+  `upload_2` varchar(255) NOT NULL DEFAULT '',
+  `url` varchar(255) NOT NULL DEFAULT '',
+  UNIQUE KEY `data_id` (`data_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `session`
+--
+
+DROP TABLE IF EXISTS `session`;
+CREATE TABLE IF NOT EXISTS `session` (
+  `session_id` varchar(255) NOT NULL DEFAULT '',
+  `data` mediumtext NOT NULL,
+  `expire` varchar(14) DEFAULT NULL,
+  PRIMARY KEY (`session_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `user`
+--
+
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE IF NOT EXISTS `user` (
+  `user_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `actif` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `acl` varchar(255) NOT NULL DEFAULT '',
+  `poste` varchar(255) NOT NULL DEFAULT '',
+  `nom` varchar(255) NOT NULL DEFAULT '',
+  `prenom` varchar(255) NOT NULL DEFAULT '',
+  `email` varchar(255) NOT NULL DEFAULT '',
+  `password` varchar(255) NOT NULL DEFAULT '',
+  `password_reset` varchar(255) NOT NULL DEFAULT '',
+  `couleur` varchar(255) NOT NULL DEFAULT '',
+  `theme` varchar(255) NOT NULL DEFAULT '',
+  `langue` varchar(255) NOT NULL DEFAULT '',
+  `last` datetime DEFAULT NULL,
+  PRIMARY KEY (`user_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=297 ;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
