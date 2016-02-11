@@ -202,7 +202,8 @@ if(!empty($_GET['action'])) {
                     'tpl' => '[(3){libelle}(4){form}(5){legende}]',
                     'libelle' => STR_FORMULAIRE_LIBELLE_UPLOAD,
                     'value' => $data['champ11'],
-                    'path' => CFG_PATH_FILE_UPLOAD,
+                    'path_file' => CFG_PATH_FILE_UPLOAD,
+                    'path_http' => CFG_PATH_HTTP_UPLOAD,
                     'maxsize'=>100*1024,                                            // Taille max (100 Ko)
                     'type'=>array('application/pdf', 'image/pjpeg', 'image/gif'),   // Format(s) accepté(s)
                     'extension'=>array('pdf', 'jpeg', 'jpg', 'gif'),                // Extension(s) acceptée(s)
