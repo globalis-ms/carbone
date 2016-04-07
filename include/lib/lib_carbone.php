@@ -110,7 +110,7 @@ function load_head($css, $js) {
         $head.="\t<!--start js-->\n";
         $head.=$js;
     }
-    
+
     $head.="\t<!--stop js-->\n";
 
     return $head;
@@ -151,7 +151,7 @@ function optimize_head($flux='', $type) {
         }
 
         if($type=='css') {
-            // Changement des url : a adapter si besoin 
+            // Changement des url : a adapter si besoin
             //$file = preg_replace("/url(.*)(['\"]\.\.|\.\.)(.*)(['\"]\))(.*)/", "url(..$3)$5", $file);
             //$file = preg_replace("/url(.*)(\.\.)(.*)\)(.*)/", "url(../theme/".$cfg_profil['theme']."$3)$4", $file);
             $file = str_replace('../fonts/', '../theme/'.$cfg_profil['theme'].'/fonts/', $file);
@@ -384,7 +384,7 @@ function form($data, $edit) {
 
 function backoffice($structure, $db=FALSE) {
     require_once 'lib_backoffice.php';     // Lib de gestion des briques backoffice (CRUD)
-    
+
     global $session;
     if($db==FALSE)
         global $db;
@@ -793,17 +793,9 @@ function email($to, $subject, $message, $type='text', $header='', $param='', $pj
 
     $charset = 'iso-8859-1';
     // Vérification de l'usage d'utf8
-    if(preg_match('%^(?:
-        [\x09\x0A\x0D\x20-\x7E] # ASCII
-        | [\xC2-\xDF][\x80-\xBF] # non-overlong 2-byte
-        | \xE0[\xA0-\xBF][\x80-\xBF] # excluding overlongs
-        | [\xE1-\xEC\xEE\xEF][\x80-\xBF]{2} # straight 3-byte
-        | \xED[\x80-\x9F][\x80-\xBF] # excluding surrogates
-        | \xF0[\x90-\xBF][\x80-\xBF]{2} # planes 1-3
-        | [\xF1-\xF3][\x80-\xBF]{3} # planes 4-15
-        | \xF4[\x80-\x8F][\x80-\xBF]{2} # plane 16
-        )*$%xs', $subject.$message))
+    if(mb_detect_encoding($subject . $message, 'UTF-8', true)) {
         $charset = 'utf-8';
+    }
 
     // S'il y a des caractères spéciaux dans le sujet, on l'encode
     if(preg_match_all('/[\000-\010\013\014\016-\037\177-\377]/', $subject, $matches))
@@ -875,7 +867,7 @@ function email($to, $subject, $message, $type='text', $header='', $param='', $pj
 /*
  * Fonction utf8_encode_mixed($param, $encode_key=FALSE)
  * -----
- * Permet d'encoder un tableau (et eventuellement les clés) en UTF8 
+ * Permet d'encoder un tableau (et eventuellement les clés) en UTF8
  * -----
  * @param   mixed       $param                  la valeur à convertir
  * @param   boolean     $encode_key             si c'est un tableau, les clés doivent-elles être converties
@@ -885,11 +877,11 @@ function email($to, $subject, $message, $type='text', $header='', $param='', $pj
  * $Author: armel $
  * $Copyright: GLOBALIS media systems $
  */
- 
+
 function utf8_encode_mixed($param, $encode_key=FALSE) {
    if(is_array($param)) {
         $result = array();
-        foreach($param as $k => $v) {                
+        foreach($param as $k => $v) {
             $key = ($encode_key)? utf8_encode($k) : $k;
             $result[$key] = utf8_encode_mixed( $v, $encode_key);
         }
@@ -905,7 +897,7 @@ function utf8_encode_mixed($param, $encode_key=FALSE) {
 /*
  * Fonction utf8_decode_mixed($param, $decode_key=FALSE)
  * -----
- * Permet de decoder un tableau (et eventuellement les clés) en UTF8 
+ * Permet de decoder un tableau (et eventuellement les clés) en UTF8
  * -----
  * @param   mixed       $param                  la valeur à convertir
  * @param   boolean     $encode_key             si c'est un tableau, les clés doivent-elles être converties
@@ -915,11 +907,11 @@ function utf8_encode_mixed($param, $encode_key=FALSE) {
  * $Author: armel $
  * $Copyright: GLOBALIS media systems $
  */
- 
+
 function utf8_decode_mixed($param, $decode_key=FALSE) {
    if(is_array($param)) {
         $result = array();
-        foreach($param as $k => $v) {                
+        foreach($param as $k => $v) {
             $key = ($decode_key)? utf8_decode($k) : $k;
             $result[$key] = utf8_decode_mixed( $v, $decode_key);
         }
@@ -949,7 +941,7 @@ function check_acl() {
 
     global $navigation;
     global $cfg_profil;
-    
+
     $url=parse_url(CFG_PATH_HTTP);
     $script=(!empty($url['path']))?str_replace($url['path'], '', $_SERVER['SCRIPT_NAME']):$_SERVER['SCRIPT_NAME'];
     //$script=str_replace($url['path'], '', $_SERVER['SCRIPT_NAME']);
@@ -1011,14 +1003,14 @@ function check_get($acl, $return=TRUE) {
         }
     }
 
-    // Cas ou l'on retourne qu'un booleen 
+    // Cas ou l'on retourne qu'un booleen
 
     if($return==TRUE) {
 
-        // Si pas d'ACL, on retourne TRUE, 
+        // Si pas d'ACL, on retourne TRUE,
         // Sinon, on construit un tableau avec les données en GET à purger
 
-        if(empty($get))     
+        if(empty($get))
             return TRUE;
         else
             $clean=array();
@@ -1031,7 +1023,7 @@ function check_get($acl, $return=TRUE) {
             }
         }
 
-        // Si le tableau avec les données en GET à purger est vide, on retourne TRUE, 
+        // Si le tableau avec les données en GET à purger est vide, on retourne TRUE,
         // Sinon, on purge toutes les données avant de retourner TRUE
 
         if(empty($clean))
@@ -1040,7 +1032,7 @@ function check_get($acl, $return=TRUE) {
             foreach($get as $a => $b) {
                 unset($_GET[$a]);
             }
-            return TRUE;          
+            return TRUE;
         }
     }
 
@@ -1098,14 +1090,14 @@ function check_post($acl, $return=TRUE) {
         }
     }
 
-    // Cas ou l'on retourne qu'un booleen 
+    // Cas ou l'on retourne qu'un booleen
 
     if($return==TRUE) {
 
-        // Si pas d'ACL, on retourne TRUE, 
+        // Si pas d'ACL, on retourne TRUE,
         // Sinon, on construit un tableau avec les données en GET à purger
 
-        if(empty($post))     
+        if(empty($post))
             return TRUE;
         else
             $clean=array();
@@ -1117,7 +1109,7 @@ function check_post($acl, $return=TRUE) {
             }
         }
 
-        // Si le tableau avec les données en GET à purger est vide, on retourne TRUE, 
+        // Si le tableau avec les données en GET à purger est vide, on retourne TRUE,
         // Sinon, on purge les données avant de retourner TRUE
 
         if(empty($clean))
@@ -1126,7 +1118,7 @@ function check_post($acl, $return=TRUE) {
             foreach($clean as $a => $b) {
                 unset($_POST[$b]);
             }
-            return TRUE;          
+            return TRUE;
         }
     }
 
@@ -1179,7 +1171,7 @@ function check_bo($acl, $ressource) {
         }
     }
 
-    return $result;    
+    return $result;
 }
 
 /*
@@ -1221,7 +1213,7 @@ function clean_string($string, $strip_tags=TRUE) {
  */
 
 function message($libelle, $message, $css='danger', $type='normal', $selecteur=TRUE) {
-    
+
     global $session;
 
     $flux='';
@@ -1338,7 +1330,7 @@ function message($libelle, $message, $css='danger', $type='normal', $selecteur=T
  * -----
  *
  * -----
- * 
+ *
  * -----
  * $Author: armel $
  * $Copyright: GLOBALIS media systems $
@@ -1349,7 +1341,7 @@ function growl() {
 
     $growl=$session->get_var('growl');
 
-    if(!empty($growl)) {    
+    if(!empty($growl)) {
         foreach($growl as $key => $value) {
             $tmp='';
 
@@ -1378,14 +1370,14 @@ function growl() {
                 <script type="text/javascript" src="'.CFG_PATH_HTTP_WEB.'/js/growl/bootstrap.growl.min.js"></script>
                 <script type="text/javascript"><!--
                     $.bootstrapGrowl("<span class=\"label label-'.$value['label'].'\">'.$value['libelle'].'</span>'.$tmp.'", {
-                      ele: "body", 
+                      ele: "body",
                       type: "'.$value['css'].'",
-                      offset: {from: "top", amount: 20}, 
-                      align: "right", 
+                      offset: {from: "top", amount: 20},
+                      align: "right",
                       width: "auto",
                       delay: 5000,
                       allow_dismiss: true,
-                      stackup_spacing: 10 
+                      stackup_spacing: 10
                     });
                 // --></script>
             ';
