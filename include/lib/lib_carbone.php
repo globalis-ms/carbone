@@ -777,6 +777,11 @@ function delete_accent($chaine) {
  * $Copyright: GLOBALIS media systems $
  */
 function email($to, $subject, $message, $type='text', $header='', $param='', $pj = array()) {
+    // Interception de l'email si la constante CFG_EMAIL_INTERCEPTION est définie et non vide dans la config
+    if (defined('CFG_EMAIL_INTERCEPTION') && !empty(CFG_EMAIL_INTERCEPTION) && filter_var(CFG_EMAIL_INTERCEPTION, FILTER_VALIDATE_EMAIL)) {
+        $to = CFG_EMAIL_INTERCEPTION;
+    }
+
     // Vérification de l'existence des pièces jointes
     if(!empty($pj)){
         $tmp = $pj;
