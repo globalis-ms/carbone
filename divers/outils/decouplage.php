@@ -116,7 +116,7 @@ $bug=0;
 $tmp=substr($_SERVER['PWD'], 0, strpos($_SERVER['PWD'], '/divers/outils'));
 $root=dirname($tmp);
 $avant='/'.basename($tmp);
-$apres=substr($destination, strlen($root));
+$apres=substr($destination, mb_strlen($root,'UTF-8'));
 
 foreach(array($fo, $bo) as $var) {
     $file=$destination.'/'.$var.'/.htaccess';
@@ -171,7 +171,7 @@ foreach($decouplage as $file => $replace) {
             if($key!='CARBONE')
                 $new=str_replace($key, str_replace('%s', $var, $value), $new, $count);
             else
-                $new=str_replace($key, str_replace('%s', strtoupper($var), $value), $new, $count);
+                $new=str_replace($key, str_replace('%s', mb_strtoupper($var,'UTF-8'), $value), $new, $count);
             $total+=$count;
         }
         if($total!==$check) {

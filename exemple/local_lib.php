@@ -13,6 +13,6 @@
  */
 
 function rename_example($data) {
-    return strtolower(microtime(TRUE).strrchr($_FILES[$data.'_tmp']['name'], '.'));
+    return mb_strtolower(microtime(TRUE).strrchr($_FILES[$data.'_tmp']['name'], '.'),'UTF-8');
 }
 ?>
