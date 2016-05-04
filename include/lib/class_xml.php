@@ -47,7 +47,7 @@ class gxml {
      */
 
     function _tag_open($parser, $tag, $attributes) {
-        $tag = strtolower($tag);
+        $tag = mb_strtolower($tag,'UTF-8');
         $attributes = array_change_key_case($attributes, CASE_LOWER);
         if($this->deport_parsing) {
 
@@ -56,7 +56,7 @@ class gxml {
                 $tab_attributes[] = $key.'="'.$value.'"';
             }
 
-            if(strtolower($tag) == 'br') {
+            if(mb_strtolower($tag,'UTF-8') == 'br') {
                 $this->deport_parsing .= '<br />';
             } else {
                 $this->deport_parsing .= '<'.$tag.' '.implode(' ',$tab_attributes).'>';
@@ -109,13 +109,13 @@ class gxml {
     }
 
     function _tag_close($parser, $tag) {
-        $tag = strtolower($tag);
+        $tag = mb_strtolower($tag,'UTF-8');
         if(in_array($tag, $this->exception)) {
             $this->node[$this->current_node]['cdata'] = $this->deport_parsing;
             $this->deport_parsing = FALSE;
         }
         if($this->deport_parsing) {
-            if(strtolower($tag) != 'br') {
+            if(mb_strtolower($tag,'UTF-8') != 'br') {
                 $this->deport_parsing .= '</'.$tag.'>';
             }
         } else {

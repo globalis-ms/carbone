@@ -580,7 +580,7 @@ class LoremIpsumGenerator {
 		
 	function getContent($count, $format = 'html', $loremipsum = true)
 	{
-		$format = strtolower($format);
+		$format = mb_strtolower($format,'UTF-8');
 		
 		if($count <= 0)
 			return '';

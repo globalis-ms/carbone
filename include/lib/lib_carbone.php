@@ -525,7 +525,7 @@ function add_upload($data) {
         if(function_exists($_FILES[$data.'_tmp']['rename']))
             $final_name=call_user_func($_FILES[$data.'_tmp']['rename'], $data);
         else
-            $final_name = strtolower(uniqid('').strrchr($_FILES[$data.'_tmp']['name'], '.'));
+            $final_name = mb_strtolower(uniqid('').strrchr($_FILES[$data.'_tmp']['name'], '.'),'UTF-8');
 
         // On supprime eventuellement l'ancien fichier
 

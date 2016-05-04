@@ -156,7 +156,7 @@ function debug_get_info($value) {
     global $session;
             
     $titre=$value;    
-    $value=strtolower($value);
+    $value=mb_strtolower($value,'UTF-8');
 
     if($value=='get')
         $foo=print_r($_GET, true);

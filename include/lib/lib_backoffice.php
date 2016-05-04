@@ -824,7 +824,7 @@ function backoffice_kernel($structure, $db) {
                 foreach($foo as $val) {
                     if(($val['type']=='global' || $val['type']=='local') && isset($config['help']['action'])) {
                         if(is_array($val['label']))
-                            $val['label']=implode(' '.strtolower(STR_OR).' ', $val['label']);
+                            $val['label']=implode(' '.mb_strtolower(STR_OR,'UTF-8').' ', $val['label']);
                         $tmp.=sprintf($config['help']['action'], $val['label'], mb_strtolower($val['label'], "UTF-8"));
                     }
                 }
