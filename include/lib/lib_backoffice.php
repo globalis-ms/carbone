@@ -1451,8 +1451,8 @@ function backoffice_kernel($structure, $db) {
             if(isset($export['format']) && !empty($export['format'])) {
                 $format='';
                 foreach($export['format'] as $value) {
-                    if (defined('STR_BACKOFFICE_EXPORT_FORMAT_'.strtoupper($value)))
-                        $texte_format=constant('STR_BACKOFFICE_EXPORT_FORMAT_'.strtoupper($value));
+                    if (defined('STR_BACKOFFICE_EXPORT_FORMAT_'.mb_strtoupper($value,'UTF-8')))
+                        $texte_format=constant('STR_BACKOFFICE_EXPORT_FORMAT_'.mb_strtoupper($value,'UTF-8'));
                     else
                         $texte_format=$value;
 

@@ -227,7 +227,7 @@ class gxml {
         $result = array();
         if(count($this->node)) {
             foreach($this->node as $index => $element) {
-                if(strtoupper($element['tag']) == strtoupper($tag_name)) {
+                if(mb_strtoupper($element['tag'],'UTF-8') == mb_strtoupper($tag_name,'UTF-8')) {
                     $correct = TRUE;
                     if(is_array($attr) && count($attr)) {
                         foreach($attr as $id => $value) {

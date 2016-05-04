@@ -205,7 +205,7 @@ elseif($user) {
         $sql.= $db->qstr($actif).', ';
         $sql.= $db->qstr($acl).', ';
         $sql.= $db->qstr($poste).', ';
-        $sql.= $db->qstr(strtoupper(delete_accent($nom))).', ';
+        $sql.= $db->qstr(mb_strtoupper(delete_accent($nom),'UTF-8')).', ';
         $sql.= $db->qstr($prenom).', ';
         $sql.= $db->qstr($email).', ';
         $sql.= $db->qstr(hash('sha512', $password)).', ';

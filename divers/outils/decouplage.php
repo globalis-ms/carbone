@@ -171,7 +171,7 @@ foreach($decouplage as $file => $replace) {
             if($key!='CARBONE')
                 $new=str_replace($key, str_replace('%s', $var, $value), $new, $count);
             else
-                $new=str_replace($key, str_replace('%s', strtoupper($var), $value), $new, $count);
+                $new=str_replace($key, str_replace('%s', mb_strtoupper($var,'UTF-8'), $value), $new, $count);
             $total+=$count;
         }
         if($total!==$check) {
