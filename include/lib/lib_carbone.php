@@ -473,7 +473,7 @@ function get_url($url, $name='', $value='') {
             // Protection xss
             //
             strip_tags($v);
-            $v=htmlspecialchars($v, ENT_QUOTES);
+            $v=htmlspecialchars($v, ENT_QUOTES, 'UTF-8');
 
             if($k==$name) {
                 $flag=TRUE;
@@ -1195,9 +1195,9 @@ function check_bo($acl, $ressource) {
 
 function clean_string($string, $strip_tags=TRUE) {
     if ($strip_tags)
-        return htmlspecialchars(strip_tags($string), ENT_QUOTES);
+        return htmlspecialchars(strip_tags($string), ENT_QUOTES, 'UTF-8');
     else
-        return htmlspecialchars($string, ENT_QUOTES);
+        return htmlspecialchars($string, ENT_QUOTES, 'UTF-8');
 }
 
 /*

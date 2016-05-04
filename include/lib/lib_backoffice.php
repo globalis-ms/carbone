@@ -1141,7 +1141,7 @@ function backoffice_kernel($structure, $db) {
                 if($rowspan===TRUE) {   // Si rowspan
                     if(isset($foo[$key][$dat['field']])) {
                         if($dat['field'][0]!='_')
-                            $cellule_value=htmlspecialchars(strip_tags($foo[$key][$dat['field']]), ENT_QUOTES);
+                            $cellule_value=htmlspecialchars(strip_tags($foo[$key][$dat['field']]), ENT_QUOTES, 'UTF-8');
                         else
                             $cellule_value=$foo[$key][$dat['field']];
                         $cellule_rowspan=$foo[$key][$dat['field'].'_rowspan'];
@@ -1160,7 +1160,7 @@ function backoffice_kernel($structure, $db) {
                 else {  // Si pas de rowspan
                     if($val[$dat['field']]!='') {
                         if($dat['field'][0]!='_')
-                            $flux_data.="<td data-field=\"".$dat['field']."\">".htmlspecialchars(strip_tags($val[$dat['field']]), ENT_QUOTES)."</td>\n";
+                            $flux_data.="<td data-field=\"".$dat['field']."\">".htmlspecialchars(strip_tags($val[$dat['field']]), ENT_QUOTES, 'UTF-8')."</td>\n";
                         else
                             $flux_data.="<td data-field=\"".$dat['field']."\">".$val[$dat['field']]."</td>\n";
                     }
