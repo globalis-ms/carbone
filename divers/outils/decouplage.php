@@ -116,7 +116,7 @@ $bug=0;
 $tmp=substr($_SERVER['PWD'], 0, strpos($_SERVER['PWD'], '/divers/outils'));
 $root=dirname($tmp);
 $avant='/'.basename($tmp);
-$apres=substr($destination, strlen($root));
+$apres=substr($destination, mb_strlen($root,'UTF-8'));
 
 foreach(array($fo, $bo) as $var) {
     $file=$destination.'/'.$var.'/.htaccess';

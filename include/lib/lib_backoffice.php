@@ -408,7 +408,7 @@ function backoffice_kernel($structure, $db) {
 
                             $tmp.=$tmp_separator;
                         }
-                        //$tmp=substr($tmp, 0, -(strlen($tmp_separator)));
+                        //$tmp=substr($tmp, 0, -(mb_strlen($tmp_separator,'UTF-8')));
                     break;
                     case 'alpha' :
                         for($loop=65;$loop<91;$loop++) {
@@ -421,7 +421,7 @@ function backoffice_kernel($structure, $db) {
 
                             $tmp.=$tmp_separator;
                         }
-                        //$tmp=substr($tmp, 0, -(strlen($tmp_separator)));
+                        //$tmp=substr($tmp, 0, -(mb_strlen($tmp_separator,'UTF-8')));
                     break;
                     case 'liste' :
                     
@@ -439,7 +439,7 @@ function backoffice_kernel($structure, $db) {
                         
                         $tmp.="</form>\n";
 
-                        //$tmp=substr($tmp, 0, -(strlen($tmp_separator)));
+                        //$tmp=substr($tmp, 0, -(mb_strlen($tmp_separator,'UTF-8')));
                     break;
                     case 'select' :
                         $tmp.= "<form class=\"form-inline\" action=\"".$session->url($script['name'])."\">\n";
@@ -549,11 +549,11 @@ function backoffice_kernel($structure, $db) {
             }
 
             if($session_context['logical'][$i]!='')
-                $tmp=substr($tmp, 0, -(strlen($session_context['logical'][$i])));
+                $tmp=substr($tmp, 0, -(mb_strlen($session_context['logical'][$i],'UTF-8')));
             $tmp_where_complement.='('.$tmp.') '.$config['logical'].' ';
         }
 
-        $tmp_where_complement=substr($tmp_where_complement, 0, -(strlen($config['logical'])+1));
+        $tmp_where_complement=substr($tmp_where_complement, 0, -(mb_strlen($config['logical'],'UTF-8')+1));
 
         if($tmp_where_complement!='') {
             if(isset($tmp_where[1]))

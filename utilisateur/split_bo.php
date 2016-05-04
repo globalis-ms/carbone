@@ -79,7 +79,7 @@ $structure= array(
     ',
 );
 
-//echo strlen(backoffice($structure));
+//echo mb_strlen(backoffice($structure),'UTF-8');
 $foo=backoffice($structure);
 
 //

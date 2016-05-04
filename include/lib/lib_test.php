@@ -265,7 +265,7 @@ function test_date_time($input) {
     $sep  = substr($input, 10, 1);
     $time = substr($input, 11, 8);
 
-    if (strlen($input) == 19 && test_date($date) && $sep == ' ' && test_iso_time($time))
+    if (mb_strlen($input,'UTF-8') == 19 && test_date($date) && $sep == ' ' && test_iso_time($time))
         return TRUE;
     else
         return FALSE;
@@ -289,7 +289,7 @@ function test_iso_date_time($input) {
     $sep  = substr($input, 10, 1);
     $time = substr($input, 11, 8);
 
-    if (strlen($input) == 19 && test_iso_date($date) && $sep == ' ' && test_iso_time($time))
+    if (mb_strlen($input,'UTF-8') == 19 && test_iso_date($date) && $sep == ' ' && test_iso_time($time))
         return TRUE;
     else
         return FALSE;

@@ -645,7 +645,7 @@ function date_iso_to($date_iso, $format="d-m-Y H:i:s") {
 
 function date_to_iso($date, $format="d-m-Y H:i:s") {
     $j = 0;
-    for($i = 0; $i < strlen($format); $i++){
+    for($i = 0; $i < mb_strlen($format,'UTF-8'); $i++){
         switch($format{$i}){
             case 'Y' :  $date_iso['Y'] = $date{$j++};
                         $date_iso['Y'].= $date{$j++};
@@ -719,10 +719,10 @@ function abstract_string($param) {
 
     // Correction Armel (22/03/2004)
 
-    if (strlen($string) < $length)
+    if (mb_strlen($string,'UTF-8') < $length)
         return $string;
     else
-        $length = strlen($string);
+        $length = mb_strlen($string,'UTF-8');
 
     $length--;
     while (!in_array($string[$length],$liste) && $length!==0)
