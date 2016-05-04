@@ -42,11 +42,24 @@ function test_upload($name, $element) {
         $erreur[]=STR_FORM_E_FATAL_UPLOAD_CANT_WRITE;
 
     // Type Mime incorrect
-    if(isset($element['type']) && !empty($element['type']) && !in_array(strtolower($_FILES[$name.'_tmp']['type']), $element['type'])) {
-        if(sizeof($element['type'])>1)
-            $erreur[]=sprintf(STR_FORM_E_FATAL_UPLOAD_BAD_TYPE, strtolower($_FILES[$name.'_tmp']['type']), 's', 's', implode(', ', $element['type']));
-        else
-            $erreur[]=sprintf(STR_FORM_E_FATAL_UPLOAD_BAD_TYPE, strtolower($_FILES[$name.'_tmp']['type']), '', '', implode(', ', $element['type']));
+    if(isset($element['type']) && !empty($element['type'])){
+        $is_erreur_typemime=FALSE;
+        if (function_exists('finfo_file')){
+            $typemime = finfo_open(FILEINFO_MIME_TYPE);
+            $fichier_typemime=mb_strtolower(finfo_file($typemime,$_FILES[$name.'_tmp']['tmp_name']),'UTF-8');
+            if (!empty($fichier_typemime) && !in_array($fichier_typemime,$element['type'])){
+                $is_erreur_typemime=TRUE;
+            }
+        }
+        else if (!in_array(strtolower($_FILES[$name.'_tmp']['type']), $element['type'])) {
+            $is_erreur_typemime=TRUE;
+        }
+        if ($is_erreur_typemime){
+            if(sizeof($element['type'])>1)
+                $erreur[]=sprintf(STR_FORM_E_FATAL_UPLOAD_BAD_TYPE, strtolower($_FILES[$name.'_tmp']['type']), 's', 's', implode(', ', $element['type']));
+            else
+                $erreur[]=sprintf(STR_FORM_E_FATAL_UPLOAD_BAD_TYPE, strtolower($_FILES[$name.'_tmp']['type']), '', '', implode(', ', $element['type']));
+        }
     }
 
     // Type Mime incorrect
