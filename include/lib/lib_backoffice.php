@@ -1241,7 +1241,7 @@ function backoffice_kernel($structure, $db) {
                                         $tmp.=sprintf($act['js'], $b[$act['on']]);
                                     else {
                                         foreach($act['on'] as $on) {
-                                            $act['js']=preg_replace('/%s/', addslashes(htmlentities($val[$on])), $act['js'], 1);
+                                            $act['js']=preg_replace('/%s/', addslashes(htmlentities($val[$on], ENT_COMPAT, 'UTF-8')), $act['js'], 1);
                                         }
                                         $tmp.=$act['js'];
                                     }
