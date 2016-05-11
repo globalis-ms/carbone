@@ -473,7 +473,7 @@ function get_url($url, $name='', $value='') {
             // Protection xss
             //
             strip_tags($v);
-            $v=htmlspecialchars($v, ENT_QUOTES);
+            $v=htmlspecialchars($v, ENT_QUOTES, 'UTF-8');
 
             if($k==$name) {
                 $flag=TRUE;
@@ -525,7 +525,7 @@ function add_upload($data) {
         if(function_exists($_FILES[$data.'_tmp']['rename']))
             $final_name=call_user_func($_FILES[$data.'_tmp']['rename'], $data);
         else
-            $final_name = strtolower(uniqid('').strrchr($_FILES[$data.'_tmp']['name'], '.'));
+            $final_name = mb_strtolower(uniqid('').strrchr($_FILES[$data.'_tmp']['name'], '.'),'UTF-8');
 
         // On supprime eventuellement l'ancien fichier
 
@@ -645,7 +645,7 @@ function date_iso_to($date_iso, $format="d-m-Y H:i:s") {
 
 function date_to_iso($date, $format="d-m-Y H:i:s") {
     $j = 0;
-    for($i = 0; $i < strlen($format); $i++){
+    for($i = 0; $i < mb_strlen($format,'UTF-8'); $i++){
         switch($format{$i}){
             case 'Y' :  $date_iso['Y'] = $date{$j++};
                         $date_iso['Y'].= $date{$j++};
@@ -719,10 +719,10 @@ function abstract_string($param) {
 
     // Correction Armel (22/03/2004)
 
-    if (strlen($string) < $length)
+    if (mb_strlen($string,'UTF-8') < $length)
         return $string;
     else
-        $length = strlen($string);
+        $length = mb_strlen($string,'UTF-8');
 
     $length--;
     while (!in_array($string[$length],$liste) && $length!==0)
@@ -1195,9 +1195,9 @@ function check_bo($acl, $ressource) {
 
 function clean_string($string, $strip_tags=TRUE) {
     if ($strip_tags)
-        return htmlspecialchars(strip_tags($string), ENT_QUOTES);
+        return htmlspecialchars(strip_tags($string), ENT_QUOTES, 'UTF-8');
     else
-        return htmlspecialchars($string, ENT_QUOTES);
+        return htmlspecialchars($string, ENT_QUOTES, 'UTF-8');
 }
 
 /*

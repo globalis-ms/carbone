@@ -14,7 +14,7 @@ if (!$q) return;
 $tableau = file('../data/prenom.dat');
 
 foreach ($tableau as $key=>$value) {
-    if (strpos(strtolower($value), $q) !== FALSE) {
+    if (strpos(mb_strtolower($value,'UTF-8'), $q) !== FALSE) {
         echo "$value\n";
     }
 }

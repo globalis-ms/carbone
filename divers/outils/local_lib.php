@@ -143,7 +143,7 @@ class JSMin {
 
     public function __construct($input) {
         $this->input       = str_replace("\r\n", "\n", $input);
-        $this->inputLength = strlen($this->input);
+        $this->inputLength = mb_strlen($this->input,'UTF-8');
     }
 
     // -- Protected Instance Methods ---------------------------------------------
@@ -580,7 +580,7 @@ class LoremIpsumGenerator {
 		
 	function getContent($count, $format = 'html', $loremipsum = true)
 	{
-		$format = strtolower($format);
+		$format = mb_strtolower($format,'UTF-8');
 		
 		if($count <= 0)
 			return '';

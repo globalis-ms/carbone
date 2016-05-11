@@ -188,8 +188,8 @@ elseif($user) {
         $poste=$tableau_poste[array_rand($tableau_poste, 1)];
         $nom=trim($tableau_nom[array_rand($tableau_nom, 1)]);
         $prenom=trim($tableau_nom[array_rand($tableau_nom, 1)]);
-        $email=strtolower(delete_accent($prenom).'.'.delete_accent($nom).'@globalis-ms.com');
-        $password=strtolower(delete_accent($prenom));
+        $email=mb_strtolower(delete_accent($prenom).'.'.delete_accent($nom).'@globalis-ms.com','UTF-8');
+        $password=mb_strtolower(delete_accent($prenom),'UTF-8');
         $couleur=trim($tableau_couleur[array_rand($tableau_couleur, 1)]);
         $theme=$tableau_theme[array_rand($tableau_theme, 1)];
         $langue=$tableau_langue[array_rand($tableau_langue, 1)];
@@ -205,7 +205,7 @@ elseif($user) {
         $sql.= $db->qstr($actif).', ';
         $sql.= $db->qstr($acl).', ';
         $sql.= $db->qstr($poste).', ';
-        $sql.= $db->qstr(strtoupper(delete_accent($nom))).', ';
+        $sql.= $db->qstr(mb_strtoupper(delete_accent($nom),'UTF-8')).', ';
         $sql.= $db->qstr($prenom).', ';
         $sql.= $db->qstr($email).', ';
         $sql.= $db->qstr(hash('sha512', $password)).', ';

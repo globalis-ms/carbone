@@ -154,7 +154,7 @@ if(!empty($_GET['action'])) {
                                 if(preg_match('/[^a-zA-Z0-9]/',$_POST['password']))
                                     $form_error['fatal']['password'][] = STR_UTILISATEUR_E_FATAL_1;
 
-                                if(strlen($_POST['password'])<4)
+                                if(mb_strlen($_POST['password'],'UTF-8')<4)
                                     $form_error['fatal']['password'][] = STR_UTILISATEUR_E_FATAL_2;
                             }
                         }

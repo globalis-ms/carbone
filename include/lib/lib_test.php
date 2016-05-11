@@ -42,32 +42,33 @@ function test_upload($name, $element) {
         $erreur[]=STR_FORM_E_FATAL_UPLOAD_CANT_WRITE;
 
     // Type Mime incorrect
+
     if(isset($element['type']) && !empty($element['type'])){
         $is_erreur_typemime=FALSE;
         if (function_exists('finfo_file')){
             $typemime = finfo_open(FILEINFO_MIME_TYPE);
-            $fichier_typemime=mb_strtolower(finfo_file($typemime,$_FILES[$name.'_tmp']['tmp_name']),'UTF-8');
+            $fichier_typemime=mb_strtolower(finfo_file($typemime,$_FILES[$name.'_tmp']['tmp_name']), 'UTF-8');
             if (!empty($fichier_typemime) && !in_array($fichier_typemime,$element['type'])){
                 $is_erreur_typemime=TRUE;
             }
         }
-        else if (!in_array(strtolower($_FILES[$name.'_tmp']['type']), $element['type'])) {
+        else if (!in_array(mb_strtolower($_FILES[$name.'_tmp']['type'], 'UTF-8'), $element['type'])) {
             $is_erreur_typemime=TRUE;
         }
         if ($is_erreur_typemime){
             if(sizeof($element['type'])>1)
-                $erreur[]=sprintf(STR_FORM_E_FATAL_UPLOAD_BAD_TYPE, strtolower($_FILES[$name.'_tmp']['type']), 's', 's', implode(', ', $element['type']));
+                $erreur[]=sprintf(STR_FORM_E_FATAL_UPLOAD_BAD_TYPE, mb_strtolower($_FILES[$name.'_tmp']['type'], 'UTF-8'), 's', 's', implode(', ', $element['type']));
             else
-                $erreur[]=sprintf(STR_FORM_E_FATAL_UPLOAD_BAD_TYPE, strtolower($_FILES[$name.'_tmp']['type']), '', '', implode(', ', $element['type']));
+                $erreur[]=sprintf(STR_FORM_E_FATAL_UPLOAD_BAD_TYPE, mb_strtolower($_FILES[$name.'_tmp']['type'], 'UTF-8'), '', '', implode(', ', $element['type']));
         }
     }
 
     // Type Mime incorrect
-    if(isset($element['extension']) && !empty($element['extension']) && !in_array(strtolower(substr(strrchr($_FILES[$name.'_tmp']['name'], '.'), 1)), $element['extension'])) {
+    if(isset($element['extension']) && !empty($element['extension']) && !in_array(mb_strtolower(substr(strrchr($_FILES[$name.'_tmp']['name'], '.'), 1), 'UTF-8'), $element['extension'])) {
         if(sizeof($element['extension'])>1)
-            $erreur[]=sprintf(STR_FORM_E_FATAL_UPLOAD_BAD_EXT, '.'.strtolower(substr(strrchr($_FILES[$name.'_tmp']['name'], '.'), 1)), 's', 's', '.'.implode(', .', $element['extension']));
+            $erreur[]=sprintf(STR_FORM_E_FATAL_UPLOAD_BAD_EXT, '.'.mb_strtolower(substr(strrchr($_FILES[$name.'_tmp']['name'], '.'), 1), 'UTF-8'), 's', 's', '.'.implode(', .', $element['extension']));
         else
-            $erreur[]=sprintf(STR_FORM_E_FATAL_UPLOAD_BAD_EXT, '.'.strtolower(substr(strrchr($_FILES[$name.'_tmp']['name'], '.'), 1)), '', '', '.'.implode(', .', $element['extension']));
+            $erreur[]=sprintf(STR_FORM_E_FATAL_UPLOAD_BAD_EXT, '.'.mb_strtolower(substr(strrchr($_FILES[$name.'_tmp']['name'], '.'), 1), 'UTF-8'), '', '', '.'.implode(', .', $element['extension']));
     }
 
     // Si pas d'erreur, on complète la structure $_FILES par divers éléments
@@ -278,7 +279,7 @@ function test_date_time($input) {
     $sep  = substr($input, 10, 1);
     $time = substr($input, 11, 8);
 
-    if (strlen($input) == 19 && test_date($date) && $sep == ' ' && test_iso_time($time))
+    if (mb_strlen($input,'UTF-8') == 19 && test_date($date) && $sep == ' ' && test_iso_time($time))
         return TRUE;
     else
         return FALSE;
@@ -302,7 +303,7 @@ function test_iso_date_time($input) {
     $sep  = substr($input, 10, 1);
     $time = substr($input, 11, 8);
 
-    if (strlen($input) == 19 && test_iso_date($date) && $sep == ' ' && test_iso_time($time))
+    if (mb_strlen($input,'UTF-8') == 19 && test_iso_date($date) && $sep == ' ' && test_iso_time($time))
         return TRUE;
     else
         return FALSE;
