@@ -215,7 +215,7 @@ function form_parser($structure, $visu = FALSE) {
                     $value = $structure[$k]['value'];
                     if(isset($structure[$k]['type']) && $structure[$k]['type'] == 'password'){
                         if($structure[$k]['value'] != ''){
-                            $value = str_repeat('*', strlen($structure[$k]['value']));
+                            $value = str_repeat('*', mb_strlen($structure[$k]['value'],'UTF-8'));
                         }
                     }
                     if($k[0]!='_')          // Le _ identifie un champ potentiellement dangereux et sujet aux xss
@@ -315,7 +315,7 @@ function form_parser($structure, $visu = FALSE) {
 
         foreach($structure_visu as $name => $element) {
             if($element['item'] == 'info') {
-                $tpl_length=strlen($element['tpl']);
+                $tpl_length=mb_strlen($element['tpl'],'UTF-8');
                 if($element['tpl'][0]=='[' && $element['tpl'][$tpl_length-1]==']') {
                     $structure_visu['view_back']['tpl'] = $element['tpl'];
                     break;
@@ -795,7 +795,7 @@ function form_parser($structure, $visu = FALSE) {
                     // Cas des optgroup
                     if(isset($optgroup) && $optgroup==TRUE && (isset($key[0]) && $key[0]=='<'))
                         $form_tmp.=sprintf(" <optgroup label=\"%s\">\n", $val);
-                    elseif(isset($optgroup) && $optgroup==TRUE && (isset($key[strlen($key)-1]) && $key[strlen($key)-1]=='>'))
+                    elseif(isset($optgroup) && $optgroup==TRUE && (isset($key[mb_strlen($key,'UTF-8')-1]) && $key[mb_strlen($key,'UTF-8')-1]=='>'))
                         $form_tmp.=sprintf(" </optgroup>\n");
                     else {
                         // Pour les selects simples

@@ -72,7 +72,7 @@ if(!$arg || $help==TRUE) {
 $js=file_get_contents($source);
 
 if($debug) {
-    $tmp=strlen($js);
+    $tmp=mb_strlen($js,'UTF-8');
 
     $kilo=(int)(($tmp)/(1024));
     $byte=($tmp)%(1024);
@@ -88,7 +88,7 @@ if($debug) {
 $jsmin=JSMin::minify($js);
 
 if($debug) {
-    $tmp=strlen($jsmin);
+    $tmp=mb_strlen($jsmin,'UTF-8');
 
     $kilo=(int)(($tmp)/(1024));
     $byte=($tmp)%(1024);

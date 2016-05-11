@@ -359,7 +359,7 @@ if(!empty($_GET['action']))
                     $sql = 'actif =     '.$db->qstr($_POST['actif']).', ';
                     $sql.= 'acl =       '.$db->qstr($_POST['acl']).', ';
                     $sql.= 'poste =     '.$db->qstr($_POST['poste']).', ';
-                    $sql.= 'nom =       '.$db->qstr(strtoupper(delete_accent($_POST['nom']))).', ';
+                    $sql.= 'nom =       '.$db->qstr(mb_strtoupper(delete_accent($_POST['nom']),'UTF-8')).', ';
                     $sql.= 'prenom =    '.$db->qstr($_POST['prenom']).', ';
                     $sql.= 'email =     '.$db->qstr($_POST['email']).', ';
 

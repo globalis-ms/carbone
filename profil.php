@@ -216,7 +216,7 @@ if(!empty($_GET['action'])) {
                         if(!empty($_POST['password'])) {
                             $sql.= 'password = '.$db->qstr(hash('sha512', $_POST['password'])).', ';
                         }
-                        $sql.= 'nom = 		'.$db->qstr(strtoupper(delete_accent($_POST['nom']))).', ';
+                        $sql.= 'nom = 		'.$db->qstr(mb_strtoupper(delete_accent($_POST['nom']),'UTF-8')).', ';
                         $sql.= 'prenom = 	'.$db->qstr($_POST['prenom']).', ';
                         $sql.= 'theme = 	'.$db->qstr($_POST['theme']).', ';
                         $sql.= 'langue = 	'.$db->qstr($_POST['langue']).' ';

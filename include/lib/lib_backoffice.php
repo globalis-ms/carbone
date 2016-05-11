@@ -408,7 +408,7 @@ function backoffice_kernel($structure, $db) {
 
                             $tmp.=$tmp_separator;
                         }
-                        //$tmp=substr($tmp, 0, -(strlen($tmp_separator)));
+                        //$tmp=substr($tmp, 0, -(mb_strlen($tmp_separator,'UTF-8')));
                     break;
                     case 'alpha' :
                         for($loop=65;$loop<91;$loop++) {
@@ -421,7 +421,7 @@ function backoffice_kernel($structure, $db) {
 
                             $tmp.=$tmp_separator;
                         }
-                        //$tmp=substr($tmp, 0, -(strlen($tmp_separator)));
+                        //$tmp=substr($tmp, 0, -(mb_strlen($tmp_separator,'UTF-8')));
                     break;
                     case 'liste' :
                     
@@ -439,7 +439,7 @@ function backoffice_kernel($structure, $db) {
                         
                         $tmp.="</form>\n";
 
-                        //$tmp=substr($tmp, 0, -(strlen($tmp_separator)));
+                        //$tmp=substr($tmp, 0, -(mb_strlen($tmp_separator,'UTF-8')));
                     break;
                     case 'select' :
                         $tmp.= "<form class=\"form-inline\" action=\"".$session->url($script['name'])."\">\n";
@@ -549,11 +549,11 @@ function backoffice_kernel($structure, $db) {
             }
 
             if($session_context['logical'][$i]!='')
-                $tmp=substr($tmp, 0, -(strlen($session_context['logical'][$i])));
+                $tmp=substr($tmp, 0, -(mb_strlen($session_context['logical'][$i],'UTF-8')));
             $tmp_where_complement.='('.$tmp.') '.$config['logical'].' ';
         }
 
-        $tmp_where_complement=substr($tmp_where_complement, 0, -(strlen($config['logical'])+1));
+        $tmp_where_complement=substr($tmp_where_complement, 0, -(mb_strlen($config['logical'],'UTF-8')+1));
 
         if($tmp_where_complement!='') {
             if(isset($tmp_where[1]))
@@ -824,7 +824,7 @@ function backoffice_kernel($structure, $db) {
                 foreach($foo as $val) {
                     if(($val['type']=='global' || $val['type']=='local') && isset($config['help']['action'])) {
                         if(is_array($val['label']))
-                            $val['label']=implode(' '.strtolower(STR_OR).' ', $val['label']);
+                            $val['label']=implode(' '.mb_strtolower(STR_OR,'UTF-8').' ', $val['label']);
                         $tmp.=sprintf($config['help']['action'], $val['label'], mb_strtolower($val['label'], "UTF-8"));
                     }
                 }
@@ -1141,7 +1141,7 @@ function backoffice_kernel($structure, $db) {
                 if($rowspan===TRUE) {   // Si rowspan
                     if(isset($foo[$key][$dat['field']])) {
                         if($dat['field'][0]!='_')
-                            $cellule_value=htmlspecialchars(strip_tags($foo[$key][$dat['field']]), ENT_QUOTES);
+                            $cellule_value=htmlspecialchars(strip_tags($foo[$key][$dat['field']]), ENT_QUOTES, 'UTF-8');
                         else
                             $cellule_value=$foo[$key][$dat['field']];
                         $cellule_rowspan=$foo[$key][$dat['field'].'_rowspan'];
@@ -1160,7 +1160,7 @@ function backoffice_kernel($structure, $db) {
                 else {  // Si pas de rowspan
                     if($val[$dat['field']]!='') {
                         if($dat['field'][0]!='_')
-                            $flux_data.="<td data-field=\"".$dat['field']."\">".htmlspecialchars(strip_tags($val[$dat['field']]), ENT_QUOTES)."</td>\n";
+                            $flux_data.="<td data-field=\"".$dat['field']."\">".htmlspecialchars(strip_tags($val[$dat['field']]), ENT_QUOTES, 'UTF-8')."</td>\n";
                         else
                             $flux_data.="<td data-field=\"".$dat['field']."\">".$val[$dat['field']]."</td>\n";
                     }
@@ -1241,7 +1241,7 @@ function backoffice_kernel($structure, $db) {
                                         $tmp.=sprintf($act['js'], $b[$act['on']]);
                                     else {
                                         foreach($act['on'] as $on) {
-                                            $act['js']=preg_replace('/%s/', addslashes(htmlentities($val[$on])), $act['js'], 1);
+                                            $act['js']=preg_replace('/%s/', addslashes(htmlentities($val[$on], ENT_COMPAT, 'UTF-8')), $act['js'], 1);
                                         }
                                         $tmp.=$act['js'];
                                     }
@@ -1451,8 +1451,8 @@ function backoffice_kernel($structure, $db) {
             if(isset($export['format']) && !empty($export['format'])) {
                 $format='';
                 foreach($export['format'] as $value) {
-                    if (defined('STR_BACKOFFICE_EXPORT_FORMAT_'.strtoupper($value)))
-                        $texte_format=constant('STR_BACKOFFICE_EXPORT_FORMAT_'.strtoupper($value));
+                    if (defined('STR_BACKOFFICE_EXPORT_FORMAT_'.mb_strtoupper($value,'UTF-8')))
+                        $texte_format=constant('STR_BACKOFFICE_EXPORT_FORMAT_'.mb_strtoupper($value,'UTF-8'));
                     else
                         $texte_format=$value;
 

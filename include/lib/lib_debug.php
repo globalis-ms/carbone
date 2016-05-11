@@ -156,7 +156,7 @@ function debug_get_info($value) {
     global $session;
             
     $titre=$value;    
-    $value=strtolower($value);
+    $value=mb_strtolower($value,'UTF-8');
 
     if($value=='get')
         $foo=print_r($_GET, true);
@@ -245,7 +245,7 @@ function debug_print_console($get_defined_vars) {
     list($usec, $sec) = explode(" ", microtime());
     $time_end=((float)$usec + (float)$sec);
     
-    $page_size=strlen(ob_get_contents());
+    $page_size=mb_strlen(ob_get_contents(),'UTF-8');
     
     $database=debug_get_database();
 
