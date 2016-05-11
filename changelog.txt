@@ -138,7 +138,7 @@ Correction de bugs et amélioration de la visualisation en mode automatique (act
 <b>CARBONE V5.0.000 Beta 2 - 19 février 2013</b>
 
 Correction de bugs sur la lib_backoffice:
-- patch de Lionel (suite à un patch de Bruno),
+- patch de Lionel (suite à un patch de Bruno) pour la gestion des paramètres GET du script name dans les briques backoffice,
 - patch de Jean sur l'usage de l'option 'script' avec les actions 'group',
 - correction de bugs et amélioration de la fonction export() avec support du CSV (merci Julien L).
 
@@ -146,7 +146,8 @@ Passage d'un while...list en foreach dans la lib_carbone (load_profil()).
 
 <b>CARBONE V5.0.000 Beta 1 - 25 juillet 2012</b>
 
-Intégration du framework Boostrap (version 2).
+Intégration du framework Boostrap (version 2), avec adaptation des scripts JS utilisés et suppression de scripts JS rendus obsolètes (corner, layer, infobulle)
+Remplacement des scripts JS utilisés pour les calendriers et pour l'éditeur WYSIWYG
 Passage au format UTF-8.
 Ajout d'un fichier build.xml (Phing)
 Ajout d'un fichier robots.txt
