@@ -3,6 +3,7 @@
 Amélioration du support UTF8 (merci Carine et Sébastien).
 Ajout d'une fonctionnalité d'interception d'email (merci Stanislas).
 Amélioration du test sur le type MIME lors des upload (merci Carine).
+Correction d'un bug de régression sur les exports Excel. 
 
 <b>CARBONE V5.3.001 - 03 juillet 2015 - Pluton</b>
 
