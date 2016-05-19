@@ -10,12 +10,16 @@ class ADODB_mysql extends ADOConnection{
         $this->link = mysql_connect($hostname, $username, $password, true);
 
         if(!$this->link){
-            exit($this->ErrorMsg());
+            echo $this->ErrorMsg();
+            return FALSE;
         }
 
         if(!mysql_select_db($database_name, $this->link)){
-            exit($this->ErrorMsg());
+            echo $this->ErrorMsg();
+            return FALSE;
         }
+        
+        return TRUE;
     }
 
     function Execute($sql){
@@ -56,7 +60,8 @@ class ADODB_mysql extends ADOConnection{
     }
 
     function ErrorMsg(){
-        return '['.mysql_errno($this->link).'] '.mysql_error($this->link);
+        if (!empty($this->link))
+            return '['.mysql_errno($this->link).'] '.mysql_error($this->link);
     }
 }
 

@@ -2,9 +2,9 @@
 //
 // Ajout du js de gestion des messages en session (growl)
 //
-
-growl();
-
+if ($indicateur_db === TRUE)
+    growl();
+    
 //
 // Chargement du stop_html.php 
 //
@@ -36,6 +36,6 @@ if((CFG_OPTIMISATION_LEVEL&2)==2) {
 // Affichage de la debug bar
 //
 
-if(CFG_DEBUG)
+if($indicateur_db === TRUE && CFG_DEBUG)
     echo debug_print_console(array());
 ?>

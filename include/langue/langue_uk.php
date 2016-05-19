@@ -105,6 +105,13 @@ define('STR_FORM_E_FATAL_UPLOAD_BAD_EXT', 'Extension &laquo;%s&raquo; non valide
 define('STR_FORM_E_WARNING', 'A titre indicatif');
 
 //
+// Page Base de données indisponible (nobdd.php)
+//
+define('STR_NOBDD_TITRE',               'Database not available.');
+define('STR_NOBDD_MESSAGE',             'A technical issue prevents proper functionning of the system %s.');
+define('STR_NOBDD_MESSAGE_BACK',        'Click <a href=\'%s\'>here</a> to go back to homepage.');
+
+//
 // Page login (login.php)
 //
 
