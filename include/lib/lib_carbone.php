@@ -951,6 +951,7 @@ function check_acl() {
     $script=(!empty($url['path']))?str_replace($url['path'], '', $_SERVER['SCRIPT_NAME']):$_SERVER['SCRIPT_NAME'];
     //$script=str_replace($url['path'], '', $_SERVER['SCRIPT_NAME']);
     $url=CFG_PATH_HTTP.$script;
+    $url=preg_replace('/([^:])(\/{2,})/', '$1/', $url); // Patch secu double slash...
 
     foreach($navigation as $k => $v) {
         if(strstr($v['url'], $url)) {
@@ -996,6 +997,7 @@ function check_get($acl, $return=TRUE) {
     $script=(!empty($url['path']))?str_replace($url['path'], '', $_SERVER['SCRIPT_NAME']):$_SERVER['SCRIPT_NAME'];
     //$script=str_replace($url['path'], '', $_SERVER['SCRIPT_NAME']);
     $url=CFG_PATH_HTTP.$script;
+    $url=preg_replace('/([^:])(\/{2,})/', '$1/', $url); // Patch secu double slash...
 
     // Capture de l'entrée URL dans le tableau de navigation
 
@@ -1076,6 +1078,7 @@ function check_post($acl, $return=TRUE) {
     $script=(!empty($url['path']))?str_replace($url['path'], '', $_SERVER['SCRIPT_NAME']):$_SERVER['SCRIPT_NAME'];
     //$script=str_replace($url['path'], '', $_SERVER['SCRIPT_NAME']);
     $url=CFG_PATH_HTTP.$script;
+    $url=preg_replace('/([^:])(\/{2,})/', '$1/', $url); // Patch secu double slash...
 
     // Trim du POST
 
@@ -1162,6 +1165,7 @@ function check_bo($acl, $ressource) {
     $script=(!empty($url['path']))?str_replace($url['path'], '', $_SERVER['SCRIPT_NAME']):$_SERVER['SCRIPT_NAME'];
     //$script=str_replace($url['path'], '', $_SERVER['SCRIPT_NAME']);
     $url=CFG_PATH_HTTP.$script;
+    $url=preg_replace('/([^:])(\/{2,})/', '$1/', $url); // Patch secu double slash...
 
     // Capture de l'entrée URL dans le tableau de navigation
 
