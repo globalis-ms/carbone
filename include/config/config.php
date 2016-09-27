@@ -94,9 +94,9 @@ define ('CFG_PATH_HTTP_IMAGE', CFG_PATH_HTTP_WEB.'/image');                 // C
 define ('CFG_PATH_HTTP_UPLOAD', CFG_PATH_HTTP_WEB.'/upload');               // Chemin http upload
 
 define ('CFG_TITRE', 'Carbone');                                            // Titre de l'application
-define ('CFG_VERSION', '5.3.002');                                          // Version de l'application
-define ('CFG_VERSION_CARBONE', '5.3.002 Mercure');                          // Version de Carbone
-define ('CFG_DATE', '14/05/2016');                                          // Date de dernières révision de l'application
+define ('CFG_VERSION', '5.3.003');                                          // Version de l'application
+define ('CFG_VERSION_CARBONE', '5.3.003 Mercure');                          // Version de Carbone
+define ('CFG_DATE', '27/09/2016');                                          // Date de dernières révision de l'application
 define ('CFG_EMAIL', 'armel.fauveau@globalis-ms.com');                        // Email générique de contact
 
 define ('CFG_GLOBALIS_TITRE', 'GLOBALIS media systems');                                        // Globalis Titre

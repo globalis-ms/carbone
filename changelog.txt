@@ -1,3 +1,7 @@
+<b>CARBONE V5.3.003 - 27 septembre 2016 - Mercure</b>
+
+Patch sécurité dans la gestion des ACL (merci Josua).
+
 <b>CARBONE V5.3.002 - 14 mai 2016 - Mercure</b>
 
 Amélioration du support UTF8 (merci Carine et Sébastien).
