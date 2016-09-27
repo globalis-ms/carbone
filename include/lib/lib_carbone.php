@@ -515,28 +515,88 @@ function add_upload($data) {
     // Lors de l'étape de test (test_upload), la structure $_FILES a été enrichie
     // Deux clefs ont été ajoutée : rename (fonction de renommage) et path (chemin de stockage final)
 
-    // print_rh($_FILES);
+    $file_upload = $_FILES[$data . '_tmp'];
 
-    if(isset($_FILES[$data.'_tmp']['error']) && ($_FILES[$data.'_tmp']['error']==0)) {
-        $final_name='';
+    $file_array = format_files_array($file_upload);
 
-        // Renommage
-
-        if(function_exists($_FILES[$data.'_tmp']['rename']))
-            $final_name=call_user_func($_FILES[$data.'_tmp']['rename'], $data);
-        else
-            $final_name = mb_strtolower(uniqid('').strrchr($_FILES[$data.'_tmp']['name'], '.'),'UTF-8');
-
-        // On supprime eventuellement l'ancien fichier
-
-        if(isset($_POST[$data]) && $_POST[$data]!='')
-            unlink($_FILES[$data.'_tmp']['path'].'/'.$_POST[$data]);
-
-        // On déplace le fichier
-
-        move_uploaded_file($_FILES[$data.'_tmp']['tmp_name'], $_FILES[$data.'_tmp']['path'].'/'.$final_name);
-        $_POST[$data]=$final_name;
+    $return = [];
+    if (!is_array($file_array)) {
+        $file_array = array($file_array);
     }
+
+    foreach ($file_array as $file) {
+        switch ($file['error']) {
+            // No Error
+            case UPLOAD_ERR_OK:
+                $final_name = '';
+
+                // Renommage
+                if (function_exists($file['rename'])) {
+                    $final_name = call_user_func($file['rename'], $file);
+                } else if (is_array($file['rename']) && method_exists($file['rename'][0], file['rename'][1])) {
+                    call_user_method(file['rename'][1], file['rename'][0], $file);
+                } else {
+                    $final_name = strtolower(uniqid('') . strrchr($file['name'], '.'));
+                }
+
+                // On supprime eventuellement l'ancien fichier
+                if (isset($_POST[$data]) && $_POST[$data] != '') {
+                    unlink($file['path'] . '/' . $_POST[$data]);
+                }
+
+                // On déplace le fichier
+                if (!empty($file['is_uploaded'])) {
+                    if (rename($file['tmp_name'], $file['path'] . '/' . $final_name)) {
+                        $return[] = ['success' => true, 'filename' => $final_name];
+                    } else {
+                        unlink($file['path'] . '/' . $final_name);
+                        $return[] = ['success' => false, 'error' => 'Impossible de déplacer le fichier dans le dossier cible.'];
+                    }
+                } else if (move_uploaded_file($file['tmp_name'], $file['path'] . '/' . $final_name)) {
+                    $return[] = ['success' => true, 'filename' => $final_name];
+                } else {
+                    $return[] = ['success' => false, 'error' => 'Impossible de déplacer le fichier dans le dossier cible.'];
+                }
+            break;
+
+            // Dépasse la directive upload_max_filesize
+            case UPLOAD_ERR_INI_SIZE:
+                $return[] = ['success' => false, 'error' => 'La taille dépasse la valeur "upload_max_filesize" définie dans la configuration du serveur.'];
+                break;
+
+            // Dépasse le champ MAX_FILE_SIZE
+            case UPLOAD_ERR_FORM_SIZE:
+                $return[] = ['success' => false, 'error' => 'La taille dépasse la valeur du champ MAX_FILE_SIZE.'];
+                break;
+
+            // Fichier téléchargé en partie seulement
+            case UPLOAD_ERR_PARTIAL:
+                $return[] = ['success' => false, 'error' => 'Seul une partie du fichier a été reçue.'];
+                break;
+
+            // Aucun fichier transféré
+            case UPLOAD_ERR_NO_FILE:
+                $return[] = ['success' => false, 'error' => 'Aucun fichier n\'a été transféré.'];
+                break;
+
+            // Aucun dossier temporaire trouvé
+            case UPLOAD_ERR_NO_TMP_DIR:
+                $return[] = ['success' => false, 'error' => 'Aucun répertoire temporaire n\'a été défini, impossible d\'écrire le fichier.'];
+                break;
+
+            // Impossible d'écrire sur le disque
+            case UPLOAD_ERR_CANT_WRITE:
+                $return[] = ['success' => false, 'error' => 'Impossible d\'écrire le fichier sur le disque.'];
+                break;
+
+            // Une extension a PHP a bloqué le transfert
+            case UPLOAD_ERR_EXTENSION:
+                $return[] = ['success' => false, 'error' => 'Une extension PHP a bloqué le transfert du fichier.'];
+                break;
+        }
+    }
+
+    $_POST[$data] = $return;
 }
 
 /*
@@ -1390,4 +1450,35 @@ function growl() {
         $session->unregister('growl');
     }
 }
-?>
+
+/*
+ * Fonction format_files_array()
+ * -----
+ * Facilite la lecture du tableau $_FILES en cas de multiple upload, et normalise dans le cas du single
+ * -----
+ * @param   array      $file_array              un des éléments de $_FILES
+ * -----
+ * @return  array                               l'élément normalisépour faciliter l'exploitation
+* -----
+ * $Author: Sébastien Muller $
+ * $Copyright: GLOBALIS media systems $
+ */
+function format_files_array($file_array) {
+    if (!empty($file_array)) {
+        $return = array();
+
+        foreach ($file_array as $key => $arr) {
+            if (!is_array($arr)) {
+                $return[0][$key] = $arr;
+            } else {
+                foreach ($arr as $k => $value) {
+                    $return[$k][$key] = $value;
+                }
+            }
+        }
+
+        return $return;
+    }
+
+    return false;
+}

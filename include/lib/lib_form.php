@@ -386,16 +386,18 @@ function form_parser($structure, $visu = FALSE) {
                 if(empty($js))      $js='';
                 if(empty($class))   $class='well';
 
-                if($upload_detected){
+                $field_session_status = '';
+                if ($upload_detected) {
                     $enctype = 'enctype="multipart/form-data"';
-                }else{
+                    $field_session_status = '<input type="hidden" name="PHP_SESSION_UPLOAD_PROGRESS" value="' . CFG_UPLOAD_PROGRESS_NAME . '" />';
+                } else {
                     $enctype = '';
                 }
                 //On enregistre le nom contextuel du formulaire
                 $form_name = $name;
 
 
-                $form = sprintf('<form class="%s %s" role="form" action="%s" method="%s" id="%s" name="%s" target="%s" %s%s>'."\n", $format, $class, $action, $method, $name, $name, $target, $enctype, $js).$form;
+                $form = sprintf('<form class="%s %s" role="form" action="%s" method="%s" id="%s" name="%s" target="%s" %s%s>%s'."\n", $format, $class, $action, $method, $name, $name, $target, $enctype, $js, $field_session_status).$form;
 
                 break;
 
@@ -443,18 +445,41 @@ function form_parser($structure, $visu = FALSE) {
             //      'label'     => '[string]',                      Label du champ
             //      'path_file' => '[string]',                      Chemin de stockage fichier
             //      'path_http' => '[string]',                      Chemin de stockage http
+            //      'multiple'  => bool,                            Accepte plusieurs fichiers
+            //      'drag'      => bool,                            Accepte le dépôt de fichiers
             // ),
 
             case 'upload' :
 
                 extract($element);
 
-                if(empty($value))        $value='';
-                if(empty($path_file))    $path_file=CFG_PATH_FILE_UPLOAD;
-                if(empty($path_http))    $path_http=CFG_PATH_HTTP_UPLOAD;
+                if(empty($value))        $value = '';
+                if(empty($drag))         $drag = false;
+                if(empty($path_file))    $path_file = CFG_PATH_FILE_UPLOAD;
+                if(empty($path_http))    $path_http = CFG_PATH_HTTP_UPLOAD;
 
                 $form_tmp.="\n";
                 $form_tmp.= '<input type="hidden" name="'.$name.'" value="'.$value."\"/>\n";
+
+                $name_tmp = $name . '_tmp' . ($multiple ? '[]' : '');
+
+                $drop_label = STR_UPLOAD_SEND;
+                $drag_label = '';
+                if ($multiple) {
+                    if ($drag) {
+                        $drag_label = STR_UPLOAD_MULTIPLE_DRAG;
+                    } else {
+                        $drag_label = STR_UPLOAD_MULTIPLE_NODRAG;
+                    }
+                } else {
+                    if ($drag) {
+                        $drag_label = STR_UPLOAD_SINGLE_DRAG;
+                    } else {
+                        $drag_label = STR_UPLOAD_SINGLE_NODRAG;
+                    }
+                }
+                $selected_label = STR_UPLOAD_SINGLE_SELECTED;
+                $selected_multiple_label = STR_UPLOAD_MULTIPLE_SELECTED;
 
                 if(!empty($value)) {
                     $tmp_ext=explode('.', basename($path_file.'/'.$value));
@@ -464,8 +489,8 @@ function form_parser($structure, $visu = FALSE) {
                     else
                         $tmp_img=CFG_PATH_HTTP_IMAGE.'/upload/default.png';
 
-                    if(isset($require) && $require==TRUE) {
-                        $form_tmp .= sprintf('<input type="file" name="%s"/>'."\n", $name.'_tmp');
+                    if (isset($require) && $require === TRUE) {
+                        $form_tmp .= sprintf('<input type="file" name="%s" ' . ($multiple ? 'multiple' : '') . ' />'."\n", $name_tmp);
                     }
 
                     $form_tmp .= sprintf("<a class=\"btn btn-link\" data-toggle=\"modal\" data-target=\"#%s\"><i class=\"glyphicon glyphicon-eye-open\"></i> ".STR_FORM_VIEW."</a> \n", crc32($value));
@@ -507,7 +532,16 @@ function form_parser($structure, $visu = FALSE) {
                     }
                 }
                 else {
-                    $form_tmp .= sprintf(' <input type="file" name="%s"/>'."\n", $name.'_tmp');
+                    $input_id = crc32($name_tmp);
+                    $input = sprintf(' <input type="file" name="%s" id="%s" %s />'."\n", $name_tmp, $input_id, ($multiple ? 'multiple' : ''));
+                    $draggable_classes = $drag ? 'is-drag-upload' : '';
+                    $form_tmp.= <<<DRAG
+                        <div class="upload-field-drag-box $draggable_classes" data-for-field="$name_tmp">
+                            <div class="upload-field-drag-box-progress"></div>
+                            <label class="upload-field-drag-box-content" data-drop-label="$drop_label" data-empty-label="$drag_label" data-selected-label="$selected_label" data-selected-multiple-label="$selected_multiple_label" for="$input_id"></label>
+                        </div>
+                        $input
+DRAG;
                 }
 
                 break;
@@ -826,7 +860,7 @@ function form_parser($structure, $visu = FALSE) {
                         }
                     }
                 }
-                
+
                 if(isset($optgroup) && $optgroup==TRUE)
                     $form_tmp.=sprintf(" </optgroup>\n");
 

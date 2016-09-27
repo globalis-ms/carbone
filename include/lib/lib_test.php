@@ -14,76 +14,88 @@
  */
 
 function test_upload($name, $element) {
+    global $session;
 
-    $erreur=array();
+    $files = [];
 
-    // Taille supérieur au upload_max_filesize (php)
-    if($_FILES[$name.'_tmp']['error']==1)
-        $erreur[]=STR_FORM_E_FATAL_UPLOAD_MAX_FILESIZE;
+    // On vérifie
+    if (isset($_POST[$name . '_ajax'])) {
+        $ajax_files = $session->get_var('ajax_upload');
+        $_FILES[$name . '_tmp'] = $ajax_files[$name . '_tmp'];
+        $files = format_files_array($ajax_files[$name . '_tmp']);
+    }
 
-    // Taille supérieur au max_file_size (html) ou à la valeur indiquée dans la structure
-    if($_FILES[$name.'_tmp']['error']==2 || (isset($element['maxsize']) && is_int($element['maxsize']) && $_FILES[$name.'_tmp']['size']>$element['maxsize']))
-        $erreur[]=STR_FORM_E_FATAL_UPLOAD_FORM_SIZE;
+    if (empty($files)) {
+        $files = format_files_array($_FILES[$name . '_tmp']);
+    }
 
-    // Taille nulle (cnrs)
-    if($_FILES[$name.'_tmp']['error']!=1 && $_FILES[$name.'_tmp']['size']==0)
-        $erreur[]=STR_FORM_E_FATAL_UPLOAD_ZERO_SIZE;
+    $erreur = array();
+    $nb_files = 0;
+    if (is_array($files)) {
+        foreach ($files as &$file_array) {
+            $nb_files++;
+            // Taille supérieur au upload_max_filesize (php)
+            if($file_array['error']==1)
+                $erreur[]=STR_FORM_E_FATAL_UPLOAD_MAX_FILESIZE;
 
-    // Téléchargement partiel
-    if($_FILES[$name.'_tmp']['error']==3)
-        $erreur[]=STR_FORM_E_FATAL_UPLOAD_PARTIAL;
+            // Taille supérieur au max_file_size (html) ou à la valeur indiquée dans la structure
+            if($file_array['error']==2 || (isset($element['maxsize']) && is_int($element['maxsize']) && $file_array['size']>$element['maxsize']))
+                $erreur[]=STR_FORM_E_FATAL_UPLOAD_FORM_SIZE;
 
-    // Pas de répertoire temporaire
-    if($_FILES[$name.'_tmp']['error']==6)
-        $erreur[]=STR_FORM_E_FATAL_UPLOAD_NO_TMP_DIR;
+            // Taille nulle (cnrs)
+            if($file_array['error']!=1 && $file_array['size']==0)
+                $erreur[]=STR_FORM_E_FATAL_UPLOAD_ZERO_SIZE;
 
-    // Ecriture impossible
-    if($_FILES[$name.'_tmp']['error']==7)
-        $erreur[]=STR_FORM_E_FATAL_UPLOAD_CANT_WRITE;
+            // Téléchargement partiel
+            if($file_array['error']==3)
+                $erreur[]=STR_FORM_E_FATAL_UPLOAD_PARTIAL;
 
-    // Type Mime incorrect
+            // Pas de répertoire temporaire
+            if($file_array['error']==6)
+                $erreur[]=STR_FORM_E_FATAL_UPLOAD_NO_TMP_DIR;
 
-    if(isset($element['type']) && !empty($element['type'])){
-        $is_erreur_typemime=FALSE;
-        if (function_exists('finfo_file')){
-            $typemime = finfo_open(FILEINFO_MIME_TYPE);
-            $fichier_typemime=mb_strtolower(finfo_file($typemime,$_FILES[$name.'_tmp']['tmp_name']), 'UTF-8');
-            if (!empty($fichier_typemime) && !in_array($fichier_typemime,$element['type'])){
-                $is_erreur_typemime=TRUE;
+            // Ecriture impossible
+            if($file_array['error']==7)
+                $erreur[]=STR_FORM_E_FATAL_UPLOAD_CANT_WRITE;
+
+            // Type Mime incorrect
+            if(isset($element['type']) && !empty($element['type']) && !in_array(strtolower($file_array['type']), $element['type'])) {
+                if(sizeof($element['type'])>1)
+                    $erreur[]=sprintf(STR_FORM_E_FATAL_UPLOAD_BAD_TYPE, strtolower($file_array['type']), 's', 's', implode(', ', $element['type']));
+                else
+                    $erreur[]=sprintf(STR_FORM_E_FATAL_UPLOAD_BAD_TYPE, strtolower($file_array['type']), '', '', implode(', ', $element['type']));
+            }
+
+            // Type Mime incorrect
+            if(isset($element['extension']) && !empty($element['extension']) && !in_array(strtolower(substr(strrchr($file_array['name'], '.'), 1)), $element['extension'])) {
+                if(sizeof($element['extension'])>1)
+                    $erreur[]=sprintf(STR_FORM_E_FATAL_UPLOAD_BAD_EXT, '.'.strtolower(substr(strrchr($file_array['name'], '.'), 1)), 's', 's', '.'.implode(', .', $element['extension']));
+                else
+                    $erreur[]=sprintf(STR_FORM_E_FATAL_UPLOAD_BAD_EXT, '.'.strtolower(substr(strrchr($file_array['name'], '.'), 1)), '', '', '.'.implode(', .', $element['extension']));
+            }
+
+            // Si pas d'erreur, on complète la structure $_FILES par divers éléments
+            // Le mode de renomage
+            // Le chemin de stockage (CFG_PATH_FILE_UPLOAD par défaut)
+            if(empty($erreur)) {
+                if (isset($element['rename'])) {
+                    $_FILES[$name . '_tmp']['rename'] = $element['rename'];
+                } else {
+                    $_FILES[$name . '_tmp']['rename'] = '';
+                }
+
+                if (isset($element['path_file'])) {
+                    $_FILES[$name . '_tmp']['path'] = $element['path_file'];
+                } else {
+                    $_FILES[$name . '_tmp']['path'] = CFG_PATH_FILE_UPLOAD;
+                }
+
+                $_FILES[$name . '_tmp']['rename'] = array_fill(0, $nb_files, $_FILES[$name . '_tmp']['rename']);
+                $_FILES[$name . '_tmp']['path'] = array_fill(0, $nb_files, $_FILES[$name . '_tmp']['path']);
             }
         }
-        else if (!in_array(mb_strtolower($_FILES[$name.'_tmp']['type'], 'UTF-8'), $element['type'])) {
-            $is_erreur_typemime=TRUE;
-        }
-        if ($is_erreur_typemime){
-            if(sizeof($element['type'])>1)
-                $erreur[]=sprintf(STR_FORM_E_FATAL_UPLOAD_BAD_TYPE, mb_strtolower($_FILES[$name.'_tmp']['type'], 'UTF-8'), 's', 's', implode(', ', $element['type']));
-            else
-                $erreur[]=sprintf(STR_FORM_E_FATAL_UPLOAD_BAD_TYPE, mb_strtolower($_FILES[$name.'_tmp']['type'], 'UTF-8'), '', '', implode(', ', $element['type']));
-        }
-    }
-
-    // Type Mime incorrect
-    if(isset($element['extension']) && !empty($element['extension']) && !in_array(mb_strtolower(substr(strrchr($_FILES[$name.'_tmp']['name'], '.'), 1), 'UTF-8'), $element['extension'])) {
-        if(sizeof($element['extension'])>1)
-            $erreur[]=sprintf(STR_FORM_E_FATAL_UPLOAD_BAD_EXT, '.'.mb_strtolower(substr(strrchr($_FILES[$name.'_tmp']['name'], '.'), 1), 'UTF-8'), 's', 's', '.'.implode(', .', $element['extension']));
-        else
-            $erreur[]=sprintf(STR_FORM_E_FATAL_UPLOAD_BAD_EXT, '.'.mb_strtolower(substr(strrchr($_FILES[$name.'_tmp']['name'], '.'), 1), 'UTF-8'), '', '', '.'.implode(', .', $element['extension']));
-    }
-
-    // Si pas d'erreur, on complète la structure $_FILES par divers éléments
-    // Le mode de renomage
-    // Le chemin de stockage (CFG_PATH_FILE_UPLOAD par défaut)
-    if(empty($erreur)) {
-        if(isset($element['rename']))
-            $_FILES[$name.'_tmp']['rename']=$element['rename'];
-        else
-            $_FILES[$name.'_tmp']['rename']='';
-
-        if(isset($element['path_file']))
-            $_FILES[$name.'_tmp']['path']=$element['path_file'];
-        else
-            $_FILES[$name.'_tmp']['path']=CFG_PATH_FILE_UPLOAD;
+    } else {
+        $erreur[] = 'Aucun fichier à transférer.';
     }
 
     return($erreur);

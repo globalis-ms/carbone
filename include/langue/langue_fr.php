@@ -105,6 +105,17 @@ define('STR_FORM_E_FATAL_UPLOAD_BAD_EXT', 'Extension &laquo;%s&raquo; non valide
 define('STR_FORM_E_WARNING', 'A titre indicatif');
 
 //
+// Upload
+//
+define('STR_UPLOAD_SEND',              'Envoyer');
+define('STR_UPLOAD_MULTIPLE_DRAG',     'Déposer ou sélectionner des fichiers');
+define('STR_UPLOAD_MULTIPLE_NODRAG',   'Sélectionner des fichier');
+define('STR_UPLOAD_MULTIPLE_SELECTED', '%d fichiers sélectionnés'); // Remplacé via String.replace en js, pas un sprintf
+define('STR_UPLOAD_SINGLE_DRAG',       'Déposer ou sélectionner un fichier');
+define('STR_UPLOAD_SINGLE_NODRAG',     'Sélectionner un fichier');
+define('STR_UPLOAD_SINGLE_SELECTED',   'Fichier sélectionné');
+
+//
 // Page login (login.php)
 //
 
