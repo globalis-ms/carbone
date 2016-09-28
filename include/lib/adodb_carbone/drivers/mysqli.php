@@ -8,11 +8,14 @@ class ADODB_mysqli extends ADOConnection{
     }
 
     function Connect($hostname, $username, $password, $database_name){
-        if(!($this->link = mysqli_connect($hostname, $username, $password, $database_name))){
-            exit($this->ErrorMsg());
+        if(!($this->link = @mysqli_connect($hostname, $username, $password, $database_name))){
+            if(CFG_DEBUG)
+                echo($this->ErrorMsg().' [Could\'t connect]');
+            return FALSE;
         }
+        return TRUE;
     }
-
+    
     function Execute($sql){
         $rs = new ADORecordSet_mysqli();
 
@@ -64,7 +67,8 @@ class ADODB_mysqli extends ADOConnection{
     }
 
     function ErrorMsg(){
-        return '['.mysqli_errno($this->link).'] '.mysqli_error($this->link);
+        if (!empty($this->link))
+            return '['.mysqli_errno($this->link).'] '.mysqli_error($this->link);
     }
 }
 

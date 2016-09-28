@@ -217,5 +217,13 @@ if($session->session_expired == FALSE && (!empty($session_user_id))) {
     );
 }
 
+array_push($navigation, array(
+    'level'     => 0,
+    'libelle'   => STR_NOBDD_TITRE,
+    'url'       => CFG_PATH_HTTP.'/nobdd.php',
+    'acl'       => '',
+    'class'     => '',
+));
+
 require dirname(__FILE__).'/../../'.'web/theme/'.$cfg_profil['theme'].'/navigation.php';
 ?>

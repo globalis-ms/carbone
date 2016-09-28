@@ -10,15 +10,17 @@
                         $flux.=CFG_TITRE.' V'.CFG_VERSION.' ('.ucwords(str_replace('_', ' ', CFG_CLASS)).'::'.ucwords(CFG_TYPE).')'.' - '.CFG_DATE;
                         if(!empty($session_user_id))
                             $flux.= ' - '.$cfg_profil['nom'].' '.$cfg_profil['prenom']."\n";
-    
-                        $foo=@$session->count();
-    
-                        $flux.= ' - '.$foo.' ';
-                        if($foo > 1)
-                            $flux.=sprintf(STR_CONNECT, 's', 's');
-                        else
-                            $flux.=sprintf(STR_CONNECT, ' ', ' ');
-    
+                        
+                        if ($indicateur_db === TRUE){
+                            $foo=@$session->count();
+        
+                            $flux.= ' - '.$foo.' ';
+                            if($foo > 1)
+                                $flux.=sprintf(STR_CONNECT, 's', 's');
+                            else
+                                $flux.=sprintf(STR_CONNECT, ' ', ' ');
+                        }
+                        
                         echo $flux;
                     ?>    
                 
