@@ -1,34 +1,17 @@
 #
-# Paramétrages Apache
+# Parametrages Apache
 #
 
 # Gestion des erreurs 404
 
-ErrorDocument 404 /dev/carbone/
+ErrorDocument 404 /armel/carbone/
 
-# Evite l'affichage du contenu d'un répertoire dépourvu de document d'index (upload, theme, data, etc.) 
+# Evite l'affichage du contenu d'un repertoire depourvu de document d'index (upload, theme, data, etc.) 
 
 Options -Indexes
 
 #
-# Paramétrages PHP
-#
-
-php_value   include_path            /Users/armel/WebRoot/dev/carbone/include:.
-php_value   magic_quotes_gpc        0 
-php_value   max_execution_time      0
-
-# Parametrages APC Cache (0 = off, 1 = on)
-
-php_value apc.cache_by_default	   0 
-
-# Parametrages Xdebug
-
-php_value xdebug.profiler_enable            0
-php_value xdebug.profiler_enable_trigger    1
-
-#
-# Paramétrages WebPerf
+# Parametrages WebPerf
 #
 
 # Parametrages mod_deflate
