@@ -45,7 +45,7 @@ clean_all: clean_cache clean_file
 
 clean_cache:
 	@ $(ECHO) -n "Suppression des fichiers cache : "
-	@ cd web/cache; rm -f *
+	@ if [ -d "web/cache" ]; then cd "web/cache"; rm -f *; fi
 	@ $(ECHO) "OK"
 
 clean_file:
