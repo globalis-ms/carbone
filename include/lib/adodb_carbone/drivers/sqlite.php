@@ -10,8 +10,11 @@ class ADODB_sqlite extends ADOConnection{
         $this->link = sqlite_open($hostname);
 
         if(!$this->link){
-            exit($this->ErrorMsg());
+            echo $this->ErrorMsg();
+            return FALSE;
         }
+        
+        return TRUE;
     }
 
     function Execute($sql){

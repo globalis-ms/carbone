@@ -9,8 +9,11 @@ class ADODB_mysqli extends ADOConnection{
 
     function Connect($hostname, $username, $password, $database_name){
         if(!($this->link = mysqli_connect($hostname, $username, $password, $database_name))){
-            exit($this->ErrorMsg());
+            echo $this->ErrorMsg();
+            return FALSE;
         }
+        
+        return TRUE;
     }
 
     function Execute($sql){

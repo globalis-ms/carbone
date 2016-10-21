@@ -10,8 +10,11 @@ class ADODB_postgres extends ADOConnection{
         $this->link = pg_connect('host='.$hostname.' port=5432 dbname='.$database_name.' user='.$username.' password='.$password);
 
         if(!$this->link){
-            exit($this->ErrorMsg());
+           echo $this->ErrorMsg();
+           return FALSE;
         }
+        
+        return TRUE;
     }
 
     function Execute($sql){

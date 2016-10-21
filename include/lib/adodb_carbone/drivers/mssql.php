@@ -10,12 +10,16 @@ class ADODB_mssql extends ADOConnection{
         $this->link = mssql_connect($hostname, $username, $password);
 
         if(!$this->link){
-            exit($this->ErrorMsg());
+            echo $this->ErrorMsg();
+            return FALSE;
         }
 
         if(!mssql_select_db($database_name, $this->link)){
-            exit($this->ErrorMsg());
+            echo $this->ErrorMsg();
+            return FALSE;
         }
+        
+        return TRUE;
     }
 
     function Execute($sql){
