@@ -866,7 +866,7 @@ function email($to, $subject, $message, $type='text', $header='', $param='', $pj
     //echo $body, "\n\n";
 
     // Envoi du message
-    mail($to, $subject, $body, $header, $param);
+    return mail($to, $subject, $body, $header, $param);
 }
 
 /*
