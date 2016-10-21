@@ -1,12 +1,12 @@
 <?php
 //
-// Ouvertue de la connexion SGBD
+// Ouverture de la connexion SGBD
 //
 
 $db =ADONewConnection(CFG_TYPE);
-$db->connect(CFG_HOST, CFG_USER, CFG_PASS, CFG_BASE);
+$indicateur_db = $db->connect(CFG_HOST, CFG_USER, CFG_PASS, CFG_BASE);
 
-if(!$db){
+if($indicateur_db === FALSE){
     die("Pas de connexion");
 }
 
