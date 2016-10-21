@@ -123,6 +123,7 @@ function form_parser($structure, $visu = FALSE) {
     // On retravaille le tableau $structure afin de présenter uniquement des champs de type info
 
     if($visu){
+        $is_view_back=TRUE;
         $structure_visu=array();
         foreach($structure as $k => $v){
 
@@ -286,10 +287,25 @@ function form_parser($structure, $visu = FALSE) {
                     break;
 
                 case 'form' :
-                case 'hidden' :
-                case 'button' :
-
+                    if (isset($structure[$k]['view_back']) && $structure[$k]['view_back'] === FALSE){
+                        $is_view_back=FALSE;
+                    }
+                    
                     unset($structure[$k]);
+                    break;
+                    
+                case 'hidden' :
+                    unset($structure[$k]);
+                    break;
+                    
+                case 'button' :
+                    if (isset($structure[$k]['view']) && $structure[$k]['view'] === TRUE) {
+                        $is_view_back=FALSE;
+                    }
+                    else {
+                        unset($structure[$k]);
+                    }
+                    break;
             }
             if(isset($structure[$k]['value']) && $structure[$k]['item'] != 'upload'){
                 $structure[$k]['value'].= ' ';
@@ -302,29 +318,34 @@ function form_parser($structure, $visu = FALSE) {
             }
         }
 
-        // Construction du bouton de retour
+        // Traitement éventuel du bouton de retour
+        
+        if ($is_view_back === TRUE){
+        
+            // Construction du bouton de retour
 
-        $structure_visu['view_back'] = array(
-            'item' => 'button',
-            'value' => STR_RETOUR,
-            'type' => 'button',
-            'js' => 'onclick="window.location=\''.$session->url($_SERVER['PHP_SELF']).'\'"',
-        );
+            $structure_visu['view_back'] = array(
+                'item' => 'button',
+                'value' => STR_RETOUR,
+                'type' => 'button',
+                'js' => 'onclick="window.location=\''.$session->url($_SERVER['PHP_SELF']).'\'"',
+            );
 
-        // Recherche d'un tpl eligible pour formater le bouton de retour
+            // Recherche d'un tpl eligible pour formater le bouton de retour
 
-        foreach($structure_visu as $name => $element) {
-            if($element['item'] == 'info') {
-                $tpl_length=mb_strlen($element['tpl'],'UTF-8');
-                if($element['tpl'][0]=='[' && $element['tpl'][$tpl_length-1]==']') {
-                    $structure_visu['view_back']['tpl'] = $element['tpl'];
-                    break;
+            foreach($structure_visu as $name => $element) {
+                if($element['item'] == 'info') {
+                    $tpl_length=mb_strlen($element['tpl'],'UTF-8');
+                    if($element['tpl'][0]=='[' && $element['tpl'][$tpl_length-1]==']') {
+                        $structure_visu['view_back']['tpl'] = $element['tpl'];
+                        break;
+                    }
+                    else
+                        $structure_visu['view_back']['tpl'] = '[(2){libelle}(8){form}(2){legende}]';
                 }
-                else
-                    $structure_visu['view_back']['tpl'] = '[(2){libelle}(8){form}(2){legende}]';
             }
         }
-
+        
         // print_rh($structure_visu);
 
         $structure=$structure_visu;
