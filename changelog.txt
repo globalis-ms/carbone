@@ -54,6 +54,7 @@ Amélioration de la gestion des ACL:
 - les accès aux ressources backoffice 'data' peuvent être controlées depuis le tableau de navigation,
 - les accès aux ressources backoffice 'filtre' peuvent être controlées depuis le tableau de navigation,
 - les accès aux ressources backoffice 'export' peuvent être controlées depuis le tableau de navigation.
+- le label à utiliser pour les actions doubles dans les fonctions "result" associées aux briques backoffice est désormais "action1,action2" au lieu de "action1|action2"
 
 <b>CARBONE V5.1.008 - 15 mars 2014</b>
 
