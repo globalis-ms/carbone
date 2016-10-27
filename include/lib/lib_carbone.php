@@ -778,7 +778,7 @@ function delete_accent($chaine) {
  */
 function email($to, $subject, $message, $type='text', $header='', $param='', $pj = array()) {
     // Interception de l'email si la constante CFG_EMAIL_INTERCEPTION est définie et non vide dans la config
-    if (defined('CFG_EMAIL_INTERCEPTION') && !empty(CFG_EMAIL_INTERCEPTION) && filter_var(CFG_EMAIL_INTERCEPTION, FILTER_VALIDATE_EMAIL)) {
+    if (defined('CFG_EMAIL_INTERCEPTION') && CFG_EMAIL_INTERCEPTION != '' && filter_var(CFG_EMAIL_INTERCEPTION, FILTER_VALIDATE_EMAIL)) {
         $to = CFG_EMAIL_INTERCEPTION;
     }
 
