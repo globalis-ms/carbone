@@ -823,9 +823,40 @@ function backoffice_kernel($structure, $db) {
                 $bar=array();
                 foreach($foo as $val) {
                     if(($val['type']=='global' || $val['type']=='local') && isset($config['help']['action'])) {
-                        if(is_array($val['label']))
+                        $val['label_action']=$val['label'];
+
+                        if (isset($val['format']) && ($val['format']=='image' || $val['format']=='icon') && isset($val['src']) && $val['src']!=''){
+                            if ($val['type']=='global' && $val['format']=='image'){
+                                $val['label_action'] = sprintf('<img src="%s" alt="%s" title="%s">',$val['src'],$val['label'],$val['label']);
+                            }
+                            else if ($val['type']=='global' && $val['format']=='icon'){
+                                $val['label_action'] = sprintf('<span class="%s" alt="%s" title="%s"></span> %s',$val['src'],$val['label'],$val['label'],$val['label']);
+                            }
+                            else {
+                                if ($val['format']=='image'){
+                                    $tpl = '<img src="%s" alt="%s" title="%s">';
+                                }
+                                else {
+                                    $tpl = '<span class="%s" alt="%s" title="%s"></span>';
+                                }
+                                
+                                if (is_array($val['label']) && is_array($val['src']) && count($val['label_action']) == count($val['src'])){
+                                    $nb_label = count($val['label']);
+                                    for($cpt=0;$cpt<$nb_label;$cpt++){
+                                        $val['label_action'][$cpt] = sprintf($tpl,$val['src'][$cpt],$val['label'][$cpt],$val['label'][$cpt]);
+                                    }
+                                }
+                                else {
+                                    $val['label_action'] = sprintf($tpl,$val['src'],$val['label'],$val['label']);
+                                }
+                            }
+                        }
+                        
+                        if(is_array($val['label'])){
+                            $val['label_action']=implode(' '.mb_strtolower(STR_OR,'UTF-8').' ', $val['label_action']);
                             $val['label']=implode(' '.mb_strtolower(STR_OR,'UTF-8').' ', $val['label']);
-                        $tmp.=sprintf($config['help']['action'], $val['label'], mb_strtolower($val['label'], "UTF-8"));
+                        }
+                        $tmp.=sprintf($config['help']['action'], $val['label_action'], mb_strtolower($val['label'], "UTF-8"));
                     }
                 }
             }
