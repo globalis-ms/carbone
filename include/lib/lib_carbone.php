@@ -1352,6 +1352,13 @@ function growl() {
 
     if(!empty($growl)) {
         $is_load_growl=FALSE;
+        
+        if (defined('CFG_GROWL_DELAY') && CFG_GROWL_DELAY != ''){
+            $delai_growl=CFG_GROWL_DELAY;
+        }
+        else {
+            $delai_growl=5000;
+        }
         foreach($growl as $key => $value) {
             $tmp='';
 
@@ -1391,7 +1398,7 @@ function growl() {
                       offset: {from: "top", amount: 20},
                       align: "right",
                       width: "auto",
-                      delay: 5000,
+                      delay: '.$delai_growl.',
                       allow_dismiss: true,
                       stackup_spacing: 10
                     });
