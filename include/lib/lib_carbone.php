@@ -1351,6 +1351,7 @@ function growl() {
     $growl=$session->get_var('growl');
 
     if(!empty($growl)) {
+        $is_load_growl=FALSE;
         foreach($growl as $key => $value) {
             $tmp='';
 
@@ -1374,9 +1375,15 @@ function growl() {
 
             else
                 $tmp="<p>".$value['message']."</p>";
-
+            
+            if (!$is_load_growl){
+                echo '
+                    <script type="text/javascript" src="'.CFG_PATH_HTTP_WEB.'/js/growl/bootstrap.growl.min.js"></script>
+                ';
+                $is_load_growl=TRUE;
+            }
+            
             echo '
-                <script type="text/javascript" src="'.CFG_PATH_HTTP_WEB.'/js/growl/bootstrap.growl.min.js"></script>
                 <script type="text/javascript"><!--
                     $.bootstrapGrowl("<span class=\"label label-'.$value['label'].'\">'.$value['libelle'].'</span>'.$tmp.'", {
                       ele: "body",
