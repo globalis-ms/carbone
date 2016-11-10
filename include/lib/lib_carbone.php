@@ -1339,7 +1339,7 @@ function message($libelle, $message, $css='danger', $type='normal', $selecteur=T
  * -----
  *
  * -----
- *
+ * @return  string                              le flux HTML
  * -----
  * $Author: armel $
  * $Copyright: GLOBALIS media systems $
@@ -1348,9 +1348,12 @@ function message($libelle, $message, $css='danger', $type='normal', $selecteur=T
 function growl() {
     global $session;
 
+    $flux='';
+    
     $growl=$session->get_var('growl');
 
     if(!empty($growl)) {
+        $is_load_growl=FALSE;
         foreach($growl as $key => $value) {
             $tmp='';
 
@@ -1374,9 +1377,15 @@ function growl() {
 
             else
                 $tmp="<p>".$value['message']."</p>";
-
-            echo '
-                <script type="text/javascript" src="'.CFG_PATH_HTTP_WEB.'/js/growl/bootstrap.growl.min.js"></script>
+            
+            if (!$is_load_growl){
+                $flux.= '
+                    <script type="text/javascript" src="'.CFG_PATH_HTTP_WEB.'/js/growl/bootstrap.growl.min.js"></script>
+                ';
+                $is_load_growl=TRUE;
+            }
+            
+            $flux.= '
                 <script type="text/javascript"><!--
                     $.bootstrapGrowl("<span class=\"label label-'.$value['label'].'\">'.$value['libelle'].'</span>'.$tmp.'", {
                       ele: "body",
@@ -1393,5 +1402,7 @@ function growl() {
         }
         $session->unregister('growl');
     }
+    
+    return $flux;
 }
 ?>

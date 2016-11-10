@@ -3,7 +3,7 @@
 // Ajout du js de gestion des messages en session (growl)
 //
 
-growl();
+echo growl();
 
 //
 // Chargement du stop_html.php 
