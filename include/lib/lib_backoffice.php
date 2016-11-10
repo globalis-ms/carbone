@@ -613,6 +613,11 @@ function backoffice_kernel($structure, $db) {
     }
     */
     
+    // Désactivation éventuelle de la navigation en cas d'export de tous les résultats
+    if (isset($_GET['format']) && isset($export['format']) && in_array($_GET['format'],$export['format']) && isset($_GET['context']) && $_GET['context']==$context['name'] && isset($export['all']) && $export['all'] == TRUE){
+        unset($navigation);
+    }
+    
     // Requete avec clause LIMIT : Récuppération des données
 
     if(isset($navigation)) {
