@@ -495,6 +495,7 @@ if(empty($_GET['action'])){
         ),
         'export' => array(
             'format'    => array('pdf', 'csv', 'yml'),    // pdf, csv ou yml
+            'all'       => TRUE,                          // export de tous les résultats
         ),
         'js' => '
             <script type="text/javascript">
