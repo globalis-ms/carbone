@@ -316,7 +316,7 @@ class session {
     }
 
     // }}}
-    // {{{ logout()
+    // {{{ destroy()
 
     /**
      * Suppression de la session dans la table.
@@ -329,12 +329,9 @@ class session {
     function destroy() {
         global $db;
 
-        // Purge des sessions qui traine
+        // Purge des sessions obsolètes qui traînent
 
-        $sql = 'DELETE FROM '.$this->session_table_name.' WHERE ';
-        $sql.= 'expire < '.$db->qstr(date('YmdHis'));
-
-        $db->execute($sql);
+        $this->purge();
 
         // Purge de la session en court
 
@@ -344,6 +341,29 @@ class session {
         $db->execute($sql);
 
         unset($this->session_id);
+    }
+    
+    // }}}
+    // {{{ purge()
+
+    /**
+     * Suppression des sessions obsolètes qui traînent dans la table.
+     *
+     * @param   string
+     *
+     * @return  string
+     */
+
+    function purge() {
+        global $db;
+
+        // Purge des sessions obsolètes qui traînent
+
+        $sql = 'DELETE FROM '.$this->session_table_name.' WHERE ';
+        $sql.= 'expire < '.$db->qstr(date('YmdHis'));
+
+        $db->execute($sql);
+
     }
 
     // }}}
