@@ -1,5 +1,15 @@
 <b>CARBONE V5.3.003 - 27 septembre 2016 - Mercure</b>
 
+Mise en place de la possibilité de faire un export direct de tous les résultats d'une brique backoffice (merci Carine).
+Mise en place d'une fonction permettant de purger les sessions obsolètes (merci Carine).
+Correction de l'inclusion du JS et adaptation des modalites de retour dans la fonction growl permettant d'afficher les messages (merci Carine).
+Amélioration de l'aide pour les actions au format image/icon au niveau de la brique backoffice (merci Carine).
+Rétablissement de la rétro-compatibilité PHP5.4 sur les interceptions d'email (merci Carine).
+Amélioration de la tâche clean_cache dans Makefile.
+Mise en place du fichier .user.ini et adaptation du fichier .htaccess.
+Possibilité de débrayer l'affichage automatique du bouton de retour en visualisation d'une brique form (merci Carine).
+Mise en coherence du comportement obtenu en cas d'echec de connexion a la base de donnees des classes adodb et adodb_carbone (merci Carine).
+Ajout de la possibilite de tracer les envois effectues via la fonction email (merci Carine).
 Patch sécurité dans la gestion des ACL (merci Josua).
 
 <b>CARBONE V5.3.002 - 14 mai 2016 - Mercure</b>
