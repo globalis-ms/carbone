@@ -9,7 +9,7 @@
 <meta name="author" content="Armel FAUVEAU" />
 <meta name="description" content="Documentation CARBONE V5.3" />
 
-<title>Documentation CARBONE V5.3 Version 1.0 (19-11-2015) - CRUD: lib_backoffice.php</title>
+<title>Documentation CARBONE V5.3 Version 1.1 (14-11-2016) - CRUD: lib_backoffice.php</title>
 
 <link rel="stylesheet" type="text/css" media="screen" href="../share/css/screen.css" />
 <link rel="stylesheet" type="text/css" media="screen" href="../share/css/listing.css" />
@@ -38,7 +38,7 @@
     Briques élémentaires&nbsp;&#8250;&nbsp;CRUD: lib_backoffice.php
   </div>
   <div class="right">
-    Dernière édition le 01-02-2014 21:30 par Armel  &#8249;  <a href="../index.html">Table des matières</a>
+    Dernière édition le 14-11-2016 17:06 par Armel  &#8249;  <a href="../index.html">Table des matières</a>
   </div>
 </div>
 <!-- STOP NAVIGATION -->
@@ -625,7 +625,9 @@ La brique « backoffice » intègre un mécanisme de navigation multipage. Il es
 
 
 <p>
-Il est possible d'exporter les données affichées vers un format PDF ou Excel.</p>
+Il est possible d'exporter les données affichées vers un format PDF, Excel ou CSV. 
+Mais il est également possible de définir son propre format d'export. Dans ce cas, il suffit de nommer ce format et de développer une fonction qui porte le même nom. Un exemple de fonction d'export au format YML est présent dans utilisateur/local_lib.php.
+</p>
 
 <h4><a href="#rev-index16" id="index16">La clé « export »</a></h4>
 
@@ -634,7 +636,8 @@ Il est possible d'exporter les données affichées vers un format PDF ou Excel.<
 
 <pre class="code">
 'export' =&gt; array(
-    'format'    =&gt; array('pdf', 'excel'),    // pdf ou excel
+    'format'    =&gt; array('pdf', 'excel', 'foobar'),    // pdf, excel ou foobar (format d'export &agrave; d&eacute;crire)
+    'all' =&gt; TRUE
 ),
 </pre>
 
@@ -646,6 +649,10 @@ Il est possible d'exporter les données affichées vers un format PDF ou Excel.<
 <tr>
 	<td>format</td>
 	<td>Le tableau du ou des formats proposés</td>
+</tr>
+<tr>
+    <td>all</td>
+    <td>Si TRUE, permet de faire un export direct de tous les résultats d'une brique backoffice (FALSE par défaut)</td>
 </tr>
 </table>
 
@@ -714,7 +721,7 @@ Combiner un filtre de type « input » avec le plugin jQuery « autocomplete » 
 <!-- START FOOTER -->
 <div id="footer" class="clear">
   <div class="left">
-  Documentation CARBONE V5.3 (Version 1.0) générée par CARBONE DOC (Version 1.3) &middot; Copyright &#169; 1997-2015&nbsp;&middot;&nbsp;<a href="http://www.globalis-ms.com/">Globalis</a>
+  Documentation CARBONE V5.3 (Version 1.1) générée par CARBONE DOC (Version 1.3) &middot; Copyright &#169; 1997-2016&nbsp;&middot;&nbsp;<a href="http://www.globalis-ms.com/">Globalis</a>
   </div>
   <div class="right">
   <a href="#top">Haut de page</a>
