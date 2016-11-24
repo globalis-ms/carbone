@@ -103,6 +103,10 @@ define ('CFG_GLOBALIS_TITRE', 'GLOBALIS media systems');                        
 define ('CFG_GLOBALIS_HTTP', 'http://www.globalis-ms.com');                                     // Globalis Url
 define ('CFG_GLOBALIS_ALT', 'e-SSII PHP, SSII Web, ingénierie Web : GLOBALIS media systems');   // Globalis Alt
 
+// Upload
+
+define('CFG_UPLOAD_PROGRESS_NAME', 'CARBONE_UPLOAD');               // Variable utilisée pour la progression des uploads en session
+
 // Chemin fichier de log
 
 define ('CFG_PATH_FILE_LOG_SQL', '/tmp/carbone.log');       // Chemin fichier log SQL
