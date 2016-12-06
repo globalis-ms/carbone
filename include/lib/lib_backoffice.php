@@ -44,7 +44,7 @@ function backoffice_kernel($structure, $db) {
                             unset($action[$a]);
                             break;
                         }
-                    }            
+                    }
                 }
                 else {
                     if(!in_array($b['field'], $acl_action))
@@ -62,7 +62,7 @@ function backoffice_kernel($structure, $db) {
                 else {
                     $acl_action[]=$b['field'];
                 }
-            }        
+            }
         }
     }
 
@@ -164,9 +164,9 @@ function backoffice_kernel($structure, $db) {
         $session_context['page'] =1;
 
     // Traitement des GET
-    
+
     // Vérification de la validité de la clause "where" (faille d'injection: la clause "where" porte bien sur un champ existant)
-    
+
     if(isset($_GET[$context['name'].'_where'])) {
         $is_valid_where=FALSE;
         foreach($filtre as $value) {
@@ -254,7 +254,7 @@ function backoffice_kernel($structure, $db) {
     }
 
     if(isset($_GET[$context['name'].'_order'])) {
-    
+
         // Vérification de la validité de la clause "order" (faille d'injection: la clause "order" porte bien sur un champ existant et ordonnancable)
 
         foreach($data as $value) {
@@ -264,9 +264,9 @@ function backoffice_kernel($structure, $db) {
                     $session_context['type']='ASC';
                 else
                     $session_context['type']='DESC';
-    
+
                 break;
-            }   
+            }
         }
     }
 
@@ -304,7 +304,7 @@ function backoffice_kernel($structure, $db) {
     //--------------------------------------------------------------
     // Zone debug
     //--------------------------------------------------------------
-    
+
     /*
     if(isset($debug)) {
         if(isset($debug['GET']) && $debug['GET']===TRUE) {
@@ -324,7 +324,7 @@ function backoffice_kernel($structure, $db) {
         }
     }
     */
-    
+
     //--------------------------------------------------------------
     // Zone filtre
     //--------------------------------------------------------------
@@ -363,27 +363,27 @@ function backoffice_kernel($structure, $db) {
             $flux_filtre.="<div id=\"".$context['name']."-collapse-filtre\" class=\"collapse bo-help-flux\">\n";
             $flux_filtre.="<table class=\"well\"><tr><td>".$tmp."</td></tr></table>\n";
             $flux_filtre.="</div>\n";
-        }        
-        
+        }
+
         //$flux_filtre.="<div class='layer_titre'>".STR_BACKOFFICE_HELP_TITRE."</div>\n";
         //$flux_filtre.="<div class='layer_flux'>".$tmp."</div>\n";
     }
 
     if(!empty($filtre)) {
-    
+
         $flux_filtre.="\n<!-- /.bo-filtre debut -->\n\n";
         $flux_filtre.="<div class=\"bo-filtre\">\n";
         $flux_filtre.="<table>\n";
         $flux_filtre.="<tr>\n";
         $flux_filtre.="<th colspan=\"2\" width=\"80%\" align=\"left\">\n";
-        $flux_filtre.=STR_BACKOFFICE_FILTRE;        
+        $flux_filtre.=STR_BACKOFFICE_FILTRE;
         $flux_filtre.="</th>\n";
         $flux_filtre.="<th colspan=\"1\" width=\"20%\" align=\"right\">\n";
         $flux_filtre.="<form class=\"bo-filtre pull-right\" action=\"".$session->url($script['name'])."\" method=\"post\" name=\"".$context['name']."_reset\">\n";
-        
+
         if(isset($filtre) && !empty($filtre) && isset($config['help']['filtre']))
             $flux_filtre.="<button type=\"button\" value=\"".STR_BACKOFFICE_HELP_TITRE."\" class=\"btn btn-default btn-sm\" data-toggle=\"collapse\" data-target=\"#".$context['name']."-collapse-filtre\"><i class=\" glyphicon glyphicon-info-sign\"></i> ".STR_BACKOFFICE_HELP_TITRE."</button>\n";
-            
+
         $flux_filtre.="<button type=\"submit\" value=\"".STR_RESET."\" class=\"btn btn-default btn-sm\" name=\"".$context['name']."_reset\"><i class=\"glyphicon glyphicon-refresh\"></i> ".STR_RESET."</button>\n";
         $flux_filtre.="</form>\n";
         $flux_filtre.="</th>\n";
@@ -424,7 +424,7 @@ function backoffice_kernel($structure, $db) {
                         //$tmp=substr($tmp, 0, -(mb_strlen($tmp_separator,'UTF-8')));
                     break;
                     case 'liste' :
-                    
+
                         $tmp.="<form>\n";
 
                         foreach($fil['value'] as $k => $v) {
@@ -436,7 +436,7 @@ function backoffice_kernel($structure, $db) {
 
                             //$tmp.=$tmp_separator;
                         }
-                        
+
                         $tmp.="</form>\n";
 
                         //$tmp=substr($tmp, 0, -(mb_strlen($tmp_separator,'UTF-8')));
@@ -444,7 +444,7 @@ function backoffice_kernel($structure, $db) {
                     case 'select' :
                         $tmp.= "<form class=\"form-inline\" action=\"".$session->url($script['name'])."\">\n";
                         $tmp.= '<select class="form-control input-sm" name="'.$context['name'].'_where" onchange="window.location.href=\''.$session->url($script['name'].'?'.$context['name'].'_where='.$fil['field']).'&amp;single=TRUE&amp;'.$context['name'].'_value=\'+this.options[this.selectedIndex].value;">'."\n";
-                                                
+
                         foreach($fil['value'] as $k => $v) {
                             if(isset($session_context['where'][$fil['field']]) && current($session_context['value'][$fil['field']])==$k)
                                 $selected = ' selected="selected"';
@@ -586,7 +586,7 @@ function backoffice_kernel($structure, $db) {
 
     if(isset($requete['select_user_function']) && $requete['select_user_function']!=FALSE)
         call_user_func_array($requete['select_user_function'], array(&$sql));
-        
+
     //--------------------------------------------------------------
     // Zone debug
     //--------------------------------------------------------------
@@ -612,12 +612,12 @@ function backoffice_kernel($structure, $db) {
         }
     }
     */
-    
+
     // Désactivation éventuelle de la navigation en cas d'export de tous les résultats
     if (isset($_GET['format']) && isset($export['format']) && in_array($_GET['format'],$export['format']) && isset($_GET['context']) && $_GET['context']==$context['name'] && isset($export['all']) && $export['all'] == TRUE){
         unset($navigation);
     }
-    
+
     // Requete avec clause LIMIT : Récuppération des données
 
     if(isset($navigation)) {
@@ -743,7 +743,7 @@ function backoffice_kernel($structure, $db) {
                 $tmp.='<a href="'.$tmp_url.'" class="btn btn-default btn-sm"><li class="'.$act['src'].'"></li> '.$act['label'].'</a>';
             else
                 $tmp.='<a href="'.$tmp_url.'">'.$act['label'].'</a>&nbsp;';
-                
+
             $tmp.="\n";
         }
     }
@@ -785,7 +785,7 @@ function backoffice_kernel($structure, $db) {
     //--------------------------------------------------------------
     // Zone export
     //--------------------------------------------------------------
-    
+
     if(isset($_GET['format']) && isset($export['format']) && in_array($_GET['format'],$export['format']) && isset($_GET['context']) && $_GET['context']==$context['name']) {
         export($_GET['format'], $value, $data, $structure['context']['name']);
         die();
@@ -844,7 +844,7 @@ function backoffice_kernel($structure, $db) {
                                 else {
                                     $tpl = '<span class="%s" alt="%s" title="%s"></span>';
                                 }
-                                
+
                                 if (is_array($val['label']) && is_array($val['src']) && count($val['label_action']) == count($val['src'])){
                                     $nb_label = count($val['label']);
                                     for($cpt=0;$cpt<$nb_label;$cpt++){
@@ -856,7 +856,7 @@ function backoffice_kernel($structure, $db) {
                                 }
                             }
                         }
-                        
+
                         if(is_array($val['label'])){
                             $val['label_action']=implode(' '.mb_strtolower(STR_OR,'UTF-8').' ', $val['label_action']);
                             $val['label']=implode(' '.mb_strtolower(STR_OR,'UTF-8').' ', $val['label']);
@@ -892,7 +892,7 @@ function backoffice_kernel($structure, $db) {
 
             //$flux_data.="<div class='layer_titre'>".STR_BACKOFFICE_HELP_TITRE."</div>\n";
             //$flux_data.="<div class='layer_flux'>".$tmp."</div>\n";
-            
+
             $flux_data.="<div id=\"".$context['name']."-collapse-data\" class=\"collapse bo-help-flux\">\n";
             $flux_data.="<table class=\"well\"><tr><td>".$tmp."</td></tr></table>\n";
             $flux_data.="</div>\n";
@@ -946,7 +946,7 @@ function backoffice_kernel($structure, $db) {
 
         if($action_group)
             $flux_data.="<th width=\"10\"><input type=\"checkbox\" /></th>\n";
-            
+
         if($session_context['type']=='DESC')
             $tmp_order='<span class="label label-info"><i class="glyphicon glyphicon-circle-arrow-down"></i></span>';
         else
@@ -978,7 +978,7 @@ function backoffice_kernel($structure, $db) {
         if($action) {
 
             // On vérifie qu'il y a des actions global ou local
-            
+
             $action_locale=false;
             foreach($action as $act) {
                 if(isset($act['type']) && ($act['type']=='global' || $act['type']== 'local')) {
@@ -992,18 +992,18 @@ function backoffice_kernel($structure, $db) {
                 //
                 // Affichage des 'action global'
                 //
-    
+
                 $action_active=array();
                 foreach($action as $act) {
                     $tmp='';
 
                     if(isset($act['type']) && $act['type']=='global') {
-    
+
                         if(isset($act['script']) && $act['script']!='')
                             $tmp_url=$session->url($act['script'].'?'.$script['action']['label'].'='.$act['field']);
                         else
                             $tmp_url=$session->url($script['name'].'?'.$script['action']['label'].'='.$act['field']);
-    
+
                         if(isset($act['format']) && $act['format']=='button')
                             $tmp.='<a href="'.$tmp_url.'"><button type="button" class="btn btn-default btn-sm" value="'.$act['label'].'" onclick=\'location.href="'.$tmp_url.'"\'>'.$act['label'].'</button></a>';
                         elseif(isset($act['format']) && $act['format']=='image' && isset($act['src']) && $act['src']!='')
@@ -1016,20 +1016,20 @@ function backoffice_kernel($structure, $db) {
                     if($tmp!='')
                         $action_active[]=$tmp;
                 }
-    
+
                 //print_rh($action);
-    
+
                 foreach($action as $val){
                     if($val['type'] == 'global'){
                         $action_global[] = $val;
                     }
                 }
-    
+
                 //print_rh($action_global);
                 //reset($action_active);
-    
+
                 $action_nb=sizeof($action_active);
-    
+
                 if(isset($config['action']['hide']) && $config['action']['hide']==TRUE) {
                     if(isset($_COOKIE['carbone_cookie_backoffice']) && strstr($_COOKIE['carbone_cookie_backoffice'], $context['name'].'|'))
                         $flux_data.="<th align=\"center\" style=\"display:none;\"";
@@ -1038,16 +1038,16 @@ function backoffice_kernel($structure, $db) {
                 }
                 else
                     $flux_data.="<th align=\"center\"";
-    
+
                 if(isset($config['action']['width']))
                     $flux_data.=" style=\"width:".$config['action']['width']."\">\n";
                 else
                     $flux_data.=">\n";
 
-                $flux_data.="<div class=\"bo-global\">\n";    
+                $flux_data.="<div class=\"bo-global\">\n";
                 $flux_data.="<table>\n";
                 $flux_data.="<tr>\n";
-    
+
                 if($action_nb==0)
                     $flux_data.="<th>&nbsp;</th>\n";
                 else {
@@ -1055,20 +1055,20 @@ function backoffice_kernel($structure, $db) {
                         $flux_data.="<th>".$val."</th>\n";
                     }
                 }
-    
+
                 // on ajoute l'aide eventuel
                 if(isset($config['help']['data']) && $config['help']['data']!='')
                     $flux_data.="<th><button type=\"button\" value=\"".STR_BACKOFFICE_HELP_TITRE."\" class=\"btn btn-default btn-sm\" data-toggle=\"collapse\" data-target=\"#".$context['name']."-collapse-data\"><i class=\" glyphicon glyphicon-info-sign\"></i> ".STR_BACKOFFICE_HELP_TITRE."</button></th>\n";
-                            
+
                 if(isset($config['action']['hide']) && $config['action']['hide']==TRUE)
                     $flux_data.="<th class=\"bo-hide-on\"><button class=\"btn btn-default btn-sm\"><i class=\"glyphicon glyphicon-resize-small\"></i></button></th>\n";
-    
+
                 $flux_data.="</tr>\n";
                 $flux_data.="</table>\n";
                 $flux_data.="</div>\n";
-    
+
                 $flux_data.="</th>\n";
-    
+
                 if(isset($config['action']['hide']) && $config['action']['hide']==TRUE) {
                     if(isset($_COOKIE['carbone_cookie_backoffice']) && strstr($_COOKIE['carbone_cookie_backoffice'], $context['name'].'|'))
                         $flux_data.="<th class=\"bo-hide-off\" style=\"width:10px;\" rowspan=\"".(count($value)+1)."\"><button class=\"btn btn-default btn-sm\"><i class=\"glyphicon glyphicon-resize-full\"></i></button></th>\n";
@@ -1078,9 +1078,9 @@ function backoffice_kernel($structure, $db) {
                 else
                     $flux_data.="<th class=\"bo-hide-off\" style=\"width:10px; display:none;\" rowspan=\"".(count($value)+1)."\"><button class=\"btn btn-default btn-sm\"><i class=\"glyphicon glyphicon-resize-full\"></i></button></th>\n";
             }
-    
+
         }
-    
+
         $flux_data.="</tr>\n";
         $flux_data.="</thead>\n";
 
@@ -1221,7 +1221,7 @@ function backoffice_kernel($structure, $db) {
                         if(is_array($act['label']))
                             $act['label_legende']=implode('/', $act['label']);
                         else
-                            $act['label_legende']=$act['label']; 
+                            $act['label_legende']=$act['label'];
 
                         if(is_array($act['field']))
                             $field_implode=implode(',', $act['field']);
@@ -1237,7 +1237,7 @@ function backoffice_kernel($structure, $db) {
 
                                 if(isset($act['format']) && $act['format']=='image' && isset($act['src']) && $act['src']!='')
                                     $act['src']=$act['src'][($val[$field_implode]-1)];
-                                
+
                                 if(isset($act['format']) && $act['format']=='icon' && isset($act['src']) && $act['src']!='')
                                     $act['src']=$act['src'][($val[$field_implode]-1)];
 
@@ -1259,7 +1259,7 @@ function backoffice_kernel($structure, $db) {
                             else
                                 $tmp.="<a href='".$session->url($script['name'].'?'.$script['action']['label'].'='.$act['field']);
                             */
-                            
+
                             $tmp.="<a href=\"".$tmp_url."&amp;".$script['id']['label']."=".$val[$script['id']['value']]."\"";
 
                             // Ajout de la class
@@ -1387,17 +1387,17 @@ function backoffice_kernel($structure, $db) {
                     $tmp_action ='';
                     if(isset($act['js']) && $act['js']!='')
                         $tmp_action .= $act['js'];
-                    /*                    
+                    /*
                     if(isset($act['script']) && $act['script']!='')
                         $tmp_url=$session->url($act['script'].'?'.$script['action']['label'].'='.$act['field']).'" class="'.$act['field'].'" '.$tmp_action;
                     else
                         $tmp_url=$session->url($script['name'].'?'.$script['action']['label'].'='.$act['field']).'" class="'.$act['field'].'" '.$tmp_action;
                     */
-                        
-                    if(isset($act['script']) && $act['script']!='') 
-                        $tmp_url=$session->url($act['script'].'?'.$script['action']['label'].'='.$act['field']).'" class="'.$act['field'].' '.$tmp_action; 
-                    else 
-                        $tmp_url=$session->url($script['name'].'?'.$script['action']['label'].'='.$act['field']).'" class="'.$act['field'].' '.$tmp_action; 
+
+                    if(isset($act['script']) && $act['script']!='')
+                        $tmp_url=$session->url($act['script'].'?'.$script['action']['label'].'='.$act['field']).'" class="'.$act['field'].' '.$tmp_action;
+                    else
+                        $tmp_url=$session->url($script['name'].'?'.$script['action']['label'].'='.$act['field']).'" class="'.$act['field'].' '.$tmp_action;
 
                     if(isset($act['format']) && $act['format']=='button')
                         $flux_data.='<a href="'.$tmp_url.'"><button type="button" class="btn btn-default btn-xs" value="'.$act['label'].'" onclick=\'location.href="'.$tmp_url.'"\'>'.$act['label']."</button></a>\n";
@@ -1414,7 +1414,7 @@ function backoffice_kernel($structure, $db) {
                         $flux_data.='<a href="'.$session->url($d['script'].'?'.$script['action']['label'].'='.$act['field']).'" class="'.$act['field'].'" '.$tmp_action.'>';
                     else
                         $flux_data.='<a href="'.$session->url($script['name'].'?'.$script['action']['label'].'='.$act['field']).'" class="'.$act['field'].'" '.$tmp_action.'>';
-                        
+
                     if(isset($act['format']) && $act['format']=='button')
                         $flux_data.='<button type="button" class="btn btn-default btn-xs">';
 
@@ -1425,7 +1425,7 @@ function backoffice_kernel($structure, $db) {
             $flux_data.="</div>\n\n";
             $flux_data.="</form>\n";
         }
-        
+
         $flux_data.="</div>\n\n";
         $flux_data.="<!-- /.data fin -->\n\n";
 
@@ -1438,10 +1438,10 @@ function backoffice_kernel($structure, $db) {
             //--------------------------------------------------------------
             // Construction de la zone de navigation multipage
             //--------------------------------------------------------------
-            
-            $navigation_template_left   ="<!-- /.bo-navig-export debut -->\n\n<div class=\"bo-navig-export\">\n<table>\n<tr>\n<td class=\"bo-navig-export-item\">\n%s</td>\n";
-            $navigation_template_center ="<td class=\"bo-navig-export-page\"><ul class=\"pagination pagination-sm\">\n%s</ul></td>\n";
-            $navigation_template_right  ="<td class=\"bo-navig-export-export\"><ul class=\"pagination pagination-sm\">\n%s</ul></td>\n</tr>\n</table>\n</div>\n\n<!-- /.bo-navig-export fin -->\n\n";
+
+            $navigation_template_left   ="<!-- /.bo-navig-export debut -->\n\n<div class='row bo-navig-export'>\n<div class='col-xs-12 col-sm-7 col-md-5'>\n%s\n</div>\n";
+            $navigation_template_center ="<div class='col-xs-12 col-sm-5 col-md-4 text-center'><ul class=\"pagination pagination-sm\">\n%s\n</ul></div>\n";
+            $navigation_template_right  ="<div class='col-xs-12 col-sm-12 col-md-3 text-right'><ul class=\"pagination pagination-sm\">\n%s\n</ul></div>\n</div>\n\n<!-- /.bo-navig-export fin -->\n\n";
 
             if(isset($navigation)) {
 
@@ -1530,7 +1530,7 @@ function backoffice_kernel($structure, $db) {
                 });
                 $('#".$context['name']."-collapse-data').collapse({
                     toggle:false
-                });              
+                });
             });
         // --></script>
         ";
@@ -1646,7 +1646,7 @@ function navig_string($page, $total_link, $page_link, $balise_number, $script) {
 
         $navig="\n".$debut_navig.$navig.$fin_navig."\n";
     }
-        
+
     if(trim($navig)=="<li class=\"active\"><span>1 <span class=\"sr-only\">(current)</span></span></li>")
         $navig='';
 

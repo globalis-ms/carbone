@@ -24,7 +24,7 @@ body {
 
 .marge {
     padding-right:20px;
-    border-right:1px solid #e5e5e5;    
+    border-right:1px solid #e5e5e5;
 }
 
 /* CSS class well */
@@ -45,7 +45,7 @@ body {
 
 .well .libelle {
     text-align: right;
-    padding-right:10px;  
+    padding-right:10px;
     font-weight: normal;
 }
 
@@ -59,7 +59,7 @@ body {
 }
 
 .well legend {
-    border:none;    
+    border:none;
 }
 
 .well td {
@@ -73,7 +73,7 @@ body {
 }
 
 .bo-help-flux td {
-    padding:10px 10px 10px 10px;    
+    padding:10px 10px 10px 10px;
 }
 
 /* CSS backoffice bo-filtre */
@@ -137,7 +137,7 @@ body {
 
 .bo-global table {
     margin: 0;
-} 
+}
 
 .bo-global th {
     border:none;
@@ -150,7 +150,7 @@ body {
 
 .bo-local table {
     margin: 0;
-} 
+}
 
 .bo-local td {
     margin:0;
@@ -163,7 +163,7 @@ body {
 
 .bo-local-legende table {
     margin: 0;
-} 
+}
 
 .bo-local-legende td {
     margin:0;
@@ -190,23 +190,14 @@ body {
     margin: 15px 0;
 }
 
-.bo-navig-export table {
-    width:100%;
+.bo-navig-export [class*="col-"] {
+    margin-bottom: 10px;
 }
 
-.bo-navig-export-item {
-    width:30%;
+.bo-navig-export ul {
+    margin: 0;
 }
 
-.bo-navig-export-page {
-    width:55%;
-    text-align: center;
-}
-
-.bo-navig-export-export {
-    width:15%;
-    text-align: right;
-}
 
 /* CSS divers */
 
