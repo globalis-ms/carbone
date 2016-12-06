@@ -6,7 +6,7 @@
 
 ErrorDocument 404 /armel/carbone/
 
-# Evite l'affichage du contenu d'un repertoire depourvu de document d'index (upload, theme, data, etc.) 
+# Evite l'affichage du contenu d'un repertoire depourvu de document d'index (upload, theme, data, etc.)
 
 Options -Indexes
 
@@ -29,4 +29,4 @@ Options -Indexes
 
 # Parametrages eTag si plusieurs serveurs frontaux
 
-# FileETag MTime Size 
+# FileETag MTime Size
