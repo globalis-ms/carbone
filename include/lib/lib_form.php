@@ -50,7 +50,7 @@ function form_template($require, $tpl, $libelle, $label, $legende, $form, $name,
             foreach($cols as $col) {
                 $tmp = explode(',', $col);
                 if(!isset($tmp[1])) {
-                    $tmp[1] = 'xs';
+                    $tmp[1] = 'sm';
                 }
                 $classe.='col-'.$tmp[1].'-'.$tmp[0].' ';
             }
@@ -290,14 +290,14 @@ function form_parser($structure, $visu = FALSE) {
                     if (isset($structure[$k]['view_back']) && $structure[$k]['view_back'] === FALSE){
                         $is_view_back=FALSE;
                     }
-                    
+
                     unset($structure[$k]);
                     break;
-                    
+
                 case 'hidden' :
                     unset($structure[$k]);
                     break;
-                    
+
                 case 'button' :
                     if (isset($structure[$k]['view']) && $structure[$k]['view'] === TRUE) {
                         $is_view_back=FALSE;
@@ -319,9 +319,9 @@ function form_parser($structure, $visu = FALSE) {
         }
 
         // Traitement éventuel du bouton de retour
-        
+
         if ($is_view_back === TRUE){
-        
+
             // Construction du bouton de retour
 
             $structure_visu['view_back'] = array(
@@ -345,7 +345,7 @@ function form_parser($structure, $visu = FALSE) {
                 }
             }
         }
-        
+
         // print_rh($structure_visu);
 
         $structure=$structure_visu;
@@ -847,7 +847,7 @@ function form_parser($structure, $visu = FALSE) {
                         }
                     }
                 }
-                
+
                 if(isset($optgroup) && $optgroup==TRUE)
                     $form_tmp.=sprintf(" </optgroup>\n");
 
