@@ -97,7 +97,8 @@ define ('CFG_TITRE', 'Carbone');                                            // T
 define ('CFG_VERSION', '5.3.003');                                          // Version de l'application
 define ('CFG_VERSION_CARBONE', '5.3.003 Mercure');                          // Version de Carbone
 define ('CFG_DATE', '27/09/2016');                                          // Date de dernières révision de l'application
-define ('CFG_EMAIL', 'armel.fauveau@globalis-ms.com');                        // Email générique de contact
+define ('CFG_EMAIL', 'armel.fauveau@globalis-ms.com');                      // Email générique de contact
+define ('CFG_GROWL_DELAY', '');                                             // Délai d'affichage des messages avec growl
 
 define ('CFG_GLOBALIS_TITRE', 'GLOBALIS media systems');                                        // Globalis Titre
 define ('CFG_GLOBALIS_HTTP', 'http://www.globalis-ms.com');                                     // Globalis Url
