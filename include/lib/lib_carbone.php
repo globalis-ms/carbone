@@ -56,6 +56,8 @@ function print_rc($data) {
 function load_scripts() {
     global $cfg_profil;
 
+    $html = '';
+
     $js = [];
 
     if(defined('LOAD_JAVASCRIPT') && LOAD_JAVASCRIPT!='') {
@@ -108,6 +110,8 @@ function load_scripts() {
 function load_styles() {
     global $cfg_profil;
 
+    $html = '';
+    
     $css = [];
 
     if(defined('LOAD_CSS') && LOAD_CSS!='') {
