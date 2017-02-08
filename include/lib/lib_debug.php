@@ -326,8 +326,6 @@ function debug_print_console($get_defined_vars) {
         
                     </div>
             </nav><!-- /.navbar -->';
-    
-    $flux.="\n\n<script type=\"text/javascript\" src=\"".CFG_PATH_HTTP_WEB."/js/debug/debug.min.js\"></script>\n\n";
 
     if(isset($_COOKIE['carbone_cookie_debug_info_left']) && isset($_COOKIE['carbone_cookie_debug_info_top']))
         $flux.="<div id=\"debug_info\" onmouseover=\"document.getElementById('debug_info').style.cursor='pointer'; document.getElementById('debug_info').style.opacity='1.0'; document.getElementById('debug_info').style.filter='alpha(opacity:100)';\" onmouseout=\"document.getElementById('debug_info').style.opacity='0.6'; document.getElementById('debug_info').style.filter='alpha(opacity:60)';\" onmousedown=\"dragStart(event, 'debug_info')\" style=\"display:yes; position:absolute; left:".$_COOKIE['carbone_cookie_debug_info_left']."; top:".$_COOKIE['carbone_cookie_debug_info_top'].";\">";

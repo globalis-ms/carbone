@@ -121,43 +121,43 @@ elseif($user) {
 
     $sql="
     INSERT INTO `user` (`user_id`, `actif`, `acl`, `poste`, `nom`, `prenom`, `email`, `password`, `couleur`, `theme`, `langue`, `last`) VALUES
-    ( 1, 1, 'admin', 'Directeur',   'FAUVEAU', 'Armel', 'armel.fauveau@globalis-ms.com', '".hash('sha512','armel')."', 'bleu', 'bootstrap', 'fr', '2009-07-06 03:05:44'),
-    ( 2, 1, 'admin', 'Directeur',   'HOVART', 'Frédéric', 'fred.hovart@globalis-ms.com', '".hash('sha512','frederic')."', 'bleu', 'bootstrap', 'fr', '2006-03-14 09:59:22'),
-    ( 3, 1, 'admin', 'Chef de projet', 'OGER', 'Julien', 'julien.oger@globalis-ms.com', '".hash('sha512','julien')."', 'bleu', 'bootstrap', 'fr', '2006-11-27 15:35:59'),
-    ( 4, 1, 'admin', 'Chef de projet', 'REIGNAULT', 'Carine', 'carine.reignault@globalis-ms.com', '".hash('sha512','carine')."', 'bleu', 'bootstrap', 'fr', '2009-07-06 02:55:26'),
-    ( 5, 1, 'admin', 'Chef de projet', 'WERWINSKI', 'Ludovic', 'ludovic.werwinski@globalis-ms.com', '".hash('sha512','ludovic')."', 'bleu', 'bootstrap', 'fr', '2009-06-30 04:27:33'),
-    ( 6, 1, 'admin', 'Développeur', 'RALU', 'Magali', 'magali.ralu@globalis-ms.com', '".hash('sha512','magali')."', 'bleu', 'bootstrap', 'fr', '2009-07-06 03:00:19'),
-    ( 7, 1, 'admin', 'Développeur', 'HOURDEAUX', 'Christophe', 'christophe.hourdeaux@globalis-ms.com', '".hash('sha512','christophe')."', 'bleu', 'bootstrap', 'fr', '2009-07-06 02:57:48'),
-    ( 8, 1, 'admin', 'Commercial', 'GUIAS', 'Stéphane', 'stephane.guias@globalis-ms.com', '".hash('sha512','stephane')."', 'bleu', 'bootstrap', 'fr', '2009-07-06 02:57:48'),
-    ( 9, 1, 'admin', 'Développeur', 'LAURENCE', 'Aurelie', 'aurelie.laurence@globalis-ms.com', '".hash('sha512','aurelie')."', 'bleu', 'bootstrap', 'fr', '2009-07-06 03:01:12'),
-    (10, 1, 'admin', 'Développeur', 'LIARD', 'Julien', 'julien.liard@globalis-ms.com', '".hash('sha512','julien')."', 'bleu', 'bootstrap', 'fr', '2009-07-06 03:01:12'),
-    (11, 1, 'admin', 'Développeur', 'DUBUS', 'Sylvain', 'sylvain.dubus@globalis-ms.com', '".hash('sha512','sylvain')."', 'bleu', 'bootstrap', 'fr', '2009-07-06 03:01:12'),
-    (12, 1, 'admin', 'Développeur', 'GUERRY', 'Matthieu', 'matthieu.guerry@globalis-ms.com', '".hash('sha512','matthieu')."', 'bleu', 'bootstrap', 'fr', '2009-07-06 03:01:12'),
-    (13, 1, 'admin', 'Chef de projet', 'JAKUBIAK', 'Alexandre', 'alexandre.jakubiak@globalis-ms.com', '".hash('sha512','alexandre')."', 'bleu', 'bootstrap', 'fr', '2009-07-06 03:01:12'),
-    (14, 1, 'admin', 'Développeur', 'DORR', 'Romain', 'romain.dorr@globalis-ms.com', '".hash('sha512','romain')."', 'bleu', 'bootstrap', 'fr', '2009-07-06 03:01:12'),
-    (15, 1, 'admin', 'Développeur', 'GUGERT', 'Romain', 'romain.gugert@globalis-ms.com', '".hash('sha512','romain')."', 'bleu', 'bootstrap', 'fr', '2009-07-06 03:01:12'),
-    (16, 1, 'admin', 'Développeur', 'LEPLAT', 'Pierre', 'pierre.leplat@globalis-ms.com', '".hash('sha512','pierre')."', 'bleu', 'bootstrap', 'fr', '2009-07-06 03:01:12'),
-    (17, 1, 'admin', 'Développeur', 'CHERNOVA', 'Natalia', 'natalia.chernova@globalis-ms.com', '".hash('sha512','natalia')."', 'bleu', 'bootstrap', 'fr', '2009-07-06 03:01:12'),
-    (18, 1, 'admin', 'Chef de projet', 'AUBERT', 'Mathieu', 'mathieu.aubert@globalis-ms.com', '".hash('sha512','mathieu')."', 'bleu', 'bootstrap', 'fr', '2009-07-06 03:01:12'),
-    (19, 1, 'admin', 'Développeur', 'MULLER', 'Sébastien', 'sebastien.muller@globalis-ms.com', '".hash('sha512','sebastien')."', 'bleu', 'bootstrap', 'fr', '2009-07-06 03:01:12'),
-    (20, 1, 'admin', 'Développeur', 'YANG', 'Zaifeng', 'zaifeng.yang@globalis-ms.com', '".hash('sha512','zaifeng')."', 'bleu', 'bootstrap', 'fr', '2009-07-06 03:01:12'),
-    (21, 1, 'admin', 'Développeur', 'RINVILLE', 'Evans', 'evans.rinville@globalis-ms.com', '".hash('sha512','evans')."', 'bleu', 'bootstrap', 'fr', '2009-07-06 03:01:12'),
-    (22, 1, 'admin', 'Développeur', 'BRODIN', 'Stanislas', 'stanislas.brodin@globalis-ms.com', '".hash('sha512','stanislas')."', 'bleu', 'bootstrap', 'fr', '2009-07-06 03:01:12'),
-    (23, 1, 'admin', 'Développeur', 'DELCROIX', 'Lucas', 'lucas.delcroix@globalis-ms.com', '".hash('sha512','lucas')."', 'bleu', 'bootstrap', 'fr', '2009-07-06 03:01:12'),
-    (24, 1, 'admin', 'Commercial', 'FRACHON', 'Aurelia', 'aurelia.frachon@globalis-ms.com', '".hash('sha512','aurelia')."', 'bleu', 'bootstrap', 'fr', '2009-07-06 03:01:12'),
-    (25, 1, 'admin', 'Développeur', 'EURANIE', 'Mickael', 'mickael.euranie@globalis-ms.com', '".hash('sha512','mickael')."', 'bleu', 'bootstrap', 'fr', '2009-07-06 03:01:12'),
-    (26, 1, 'admin', 'Développeur', 'LELIEVRE', 'Laurent', 'laurent.lelievre@globalis-ms.com', '".hash('sha512','laurent')."', 'bleu', 'bootstrap', 'fr', '2009-07-06 03:01:12'),
-    (27, 1, 'admin', 'Développeur', 'BROCHANT', 'Sulivan', 'sulivan.brochan@globalis-ms.com', '".hash('sha512','sulivan')."', 'bleu', 'bootstrap', 'fr', '2009-07-06 03:01:12'),
-    (28, 1, 'admin', 'Développeur', 'DARGHAM', 'Pierre', 'pierre.dargham@globalis-ms.com', '".hash('sha512','pierre')."', 'bleu', 'bootstrap', 'fr', '2009-07-06 03:01:12'),
+    ( 1, 1, 'admin', 'Directeur',   'FAUVEAU', 'Armel', 'armel.fauveau@globalis-ms.com', '".hash('sha512','armel')."', 'bleu', 'carbone', 'fr', '2009-07-06 03:05:44'),
+    ( 2, 1, 'admin', 'Directeur',   'HOVART', 'Frédéric', 'fred.hovart@globalis-ms.com', '".hash('sha512','frederic')."', 'bleu', 'carbone', 'fr', '2006-03-14 09:59:22'),
+    ( 3, 1, 'admin', 'Chef de projet', 'OGER', 'Julien', 'julien.oger@globalis-ms.com', '".hash('sha512','julien')."', 'bleu', 'carbone', 'fr', '2006-11-27 15:35:59'),
+    ( 4, 1, 'admin', 'Chef de projet', 'REIGNAULT', 'Carine', 'carine.reignault@globalis-ms.com', '".hash('sha512','carine')."', 'bleu', 'carbone', 'fr', '2009-07-06 02:55:26'),
+    ( 5, 1, 'admin', 'Chef de projet', 'WERWINSKI', 'Ludovic', 'ludovic.werwinski@globalis-ms.com', '".hash('sha512','ludovic')."', 'bleu', 'carbone', 'fr', '2009-06-30 04:27:33'),
+    ( 6, 1, 'admin', 'Développeur', 'RALU', 'Magali', 'magali.ralu@globalis-ms.com', '".hash('sha512','magali')."', 'bleu', 'carbone', 'fr', '2009-07-06 03:00:19'),
+    ( 7, 1, 'admin', 'Développeur', 'HOURDEAUX', 'Christophe', 'christophe.hourdeaux@globalis-ms.com', '".hash('sha512','christophe')."', 'bleu', 'carbone', 'fr', '2009-07-06 02:57:48'),
+    ( 8, 1, 'admin', 'Commercial', 'GUIAS', 'Stéphane', 'stephane.guias@globalis-ms.com', '".hash('sha512','stephane')."', 'bleu', 'carbone', 'fr', '2009-07-06 02:57:48'),
+    ( 9, 1, 'admin', 'Développeur', 'LAURENCE', 'Aurelie', 'aurelie.laurence@globalis-ms.com', '".hash('sha512','aurelie')."', 'bleu', 'carbone', 'fr', '2009-07-06 03:01:12'),
+    (10, 1, 'admin', 'Développeur', 'LIARD', 'Julien', 'julien.liard@globalis-ms.com', '".hash('sha512','julien')."', 'bleu', 'carbone', 'fr', '2009-07-06 03:01:12'),
+    (11, 1, 'admin', 'Développeur', 'DUBUS', 'Sylvain', 'sylvain.dubus@globalis-ms.com', '".hash('sha512','sylvain')."', 'bleu', 'carbone', 'fr', '2009-07-06 03:01:12'),
+    (12, 1, 'admin', 'Développeur', 'GUERRY', 'Matthieu', 'matthieu.guerry@globalis-ms.com', '".hash('sha512','matthieu')."', 'bleu', 'carbone', 'fr', '2009-07-06 03:01:12'),
+    (13, 1, 'admin', 'Chef de projet', 'JAKUBIAK', 'Alexandre', 'alexandre.jakubiak@globalis-ms.com', '".hash('sha512','alexandre')."', 'bleu', 'carbone', 'fr', '2009-07-06 03:01:12'),
+    (14, 1, 'admin', 'Développeur', 'DORR', 'Romain', 'romain.dorr@globalis-ms.com', '".hash('sha512','romain')."', 'bleu', 'carbone', 'fr', '2009-07-06 03:01:12'),
+    (15, 1, 'admin', 'Développeur', 'GUGERT', 'Romain', 'romain.gugert@globalis-ms.com', '".hash('sha512','romain')."', 'bleu', 'carbone', 'fr', '2009-07-06 03:01:12'),
+    (16, 1, 'admin', 'Développeur', 'LEPLAT', 'Pierre', 'pierre.leplat@globalis-ms.com', '".hash('sha512','pierre')."', 'bleu', 'carbone', 'fr', '2009-07-06 03:01:12'),
+    (17, 1, 'admin', 'Développeur', 'CHERNOVA', 'Natalia', 'natalia.chernova@globalis-ms.com', '".hash('sha512','natalia')."', 'bleu', 'carbone', 'fr', '2009-07-06 03:01:12'),
+    (18, 1, 'admin', 'Chef de projet', 'AUBERT', 'Mathieu', 'mathieu.aubert@globalis-ms.com', '".hash('sha512','mathieu')."', 'bleu', 'carbone', 'fr', '2009-07-06 03:01:12'),
+    (19, 1, 'admin', 'Développeur', 'MULLER', 'Sébastien', 'sebastien.muller@globalis-ms.com', '".hash('sha512','sebastien')."', 'bleu', 'carbone', 'fr', '2009-07-06 03:01:12'),
+    (20, 1, 'admin', 'Développeur', 'YANG', 'Zaifeng', 'zaifeng.yang@globalis-ms.com', '".hash('sha512','zaifeng')."', 'bleu', 'carbone', 'fr', '2009-07-06 03:01:12'),
+    (21, 1, 'admin', 'Développeur', 'RINVILLE', 'Evans', 'evans.rinville@globalis-ms.com', '".hash('sha512','evans')."', 'bleu', 'carbone', 'fr', '2009-07-06 03:01:12'),
+    (22, 1, 'admin', 'Développeur', 'BRODIN', 'Stanislas', 'stanislas.brodin@globalis-ms.com', '".hash('sha512','stanislas')."', 'bleu', 'carbone', 'fr', '2009-07-06 03:01:12'),
+    (23, 1, 'admin', 'Développeur', 'DELCROIX', 'Lucas', 'lucas.delcroix@globalis-ms.com', '".hash('sha512','lucas')."', 'bleu', 'carbone', 'fr', '2009-07-06 03:01:12'),
+    (24, 1, 'admin', 'Commercial', 'FRACHON', 'Aurelia', 'aurelia.frachon@globalis-ms.com', '".hash('sha512','aurelia')."', 'bleu', 'carbone', 'fr', '2009-07-06 03:01:12'),
+    (25, 1, 'admin', 'Développeur', 'EURANIE', 'Mickael', 'mickael.euranie@globalis-ms.com', '".hash('sha512','mickael')."', 'bleu', 'carbone', 'fr', '2009-07-06 03:01:12'),
+    (26, 1, 'admin', 'Développeur', 'LELIEVRE', 'Laurent', 'laurent.lelievre@globalis-ms.com', '".hash('sha512','laurent')."', 'bleu', 'carbone', 'fr', '2009-07-06 03:01:12'),
+    (27, 1, 'admin', 'Développeur', 'BROCHANT', 'Sulivan', 'sulivan.brochan@globalis-ms.com', '".hash('sha512','sulivan')."', 'bleu', 'carbone', 'fr', '2009-07-06 03:01:12'),
+    (28, 1, 'admin', 'Développeur', 'DARGHAM', 'Pierre', 'pierre.dargham@globalis-ms.com', '".hash('sha512','pierre')."', 'bleu', 'carbone', 'fr', '2009-07-06 03:01:12'),
 
-    (50, 1, 'user', 'Stagiaire', 'STAGE1', 'Stage1', 'stage1@globalis-ms.com', '".hash('sha512','stage1')."', 'rouge', 'bootstrap', 'fr', '2009-07-06 03:01:12'),
-    (51, 1, 'user', 'Stagiaire', 'STAGE2', 'Stage2', 'stage2@globalis-ms.com', '".hash('sha512','stage2')."', 'rouge', 'bootstrap', 'fr', '2009-07-06 03:01:12'),
-    (52, 1, 'user', 'Stagiaire', 'STAGE3', 'Stage3', 'stage3@globalis-ms.com', '".hash('sha512','stage3')."', 'rouge', 'bootstrap', 'fr', '2009-07-06 03:01:12'),
-    (53, 1, 'user', 'Stagiaire', 'STAGE4', 'Stage4', 'stage4@globalis-ms.com', '".hash('sha512','stage4')."', 'rouge', 'bootstrap', 'fr', '2009-07-06 03:01:12'),
-    (54, 1, 'user', 'Stagiaire', 'STAGE5', 'Stage5', 'stage5@globalis-ms.com', '".hash('sha512','stage5')."', 'rouge', 'bootstrap', 'fr', '2009-07-06 03:01:12'),
-    (55, 1, 'user', 'Stagiaire', 'STAGE6', 'Stage6', 'stage6@globalis-ms.com', '".hash('sha512','stage6')."', 'rouge', 'bootstrap', 'fr', '2009-07-06 03:01:12'),
+    (50, 1, 'user', 'Stagiaire', 'STAGE1', 'Stage1', 'stage1@globalis-ms.com', '".hash('sha512','stage1')."', 'rouge', 'carbone', 'fr', '2009-07-06 03:01:12'),
+    (51, 1, 'user', 'Stagiaire', 'STAGE2', 'Stage2', 'stage2@globalis-ms.com', '".hash('sha512','stage2')."', 'rouge', 'carbone', 'fr', '2009-07-06 03:01:12'),
+    (52, 1, 'user', 'Stagiaire', 'STAGE3', 'Stage3', 'stage3@globalis-ms.com', '".hash('sha512','stage3')."', 'rouge', 'carbone', 'fr', '2009-07-06 03:01:12'),
+    (53, 1, 'user', 'Stagiaire', 'STAGE4', 'Stage4', 'stage4@globalis-ms.com', '".hash('sha512','stage4')."', 'rouge', 'carbone', 'fr', '2009-07-06 03:01:12'),
+    (54, 1, 'user', 'Stagiaire', 'STAGE5', 'Stage5', 'stage5@globalis-ms.com', '".hash('sha512','stage5')."', 'rouge', 'carbone', 'fr', '2009-07-06 03:01:12'),
+    (55, 1, 'user', 'Stagiaire', 'STAGE6', 'Stage6', 'stage6@globalis-ms.com', '".hash('sha512','stage6')."', 'rouge', 'carbone', 'fr', '2009-07-06 03:01:12'),
 
-    (75, 1, 'guest', 'Démonstrateur', 'BAR', 'Foo', 'foo.bar@globalis-ms.com', '".hash('sha512','foo')."', 'magenta', 'bootstrap', 'fr', '2009-07-06 03:01:12');
+    (75, 1, 'guest', 'Démonstrateur', 'BAR', 'Foo', 'foo.bar@globalis-ms.com', '".hash('sha512','foo')."', 'magenta', 'carbone', 'fr', '2009-07-06 03:01:12');
     ";
 
     $db->execute($sql);
@@ -170,7 +170,7 @@ elseif($user) {
 
     $tableau_nom = file('../../data/prenom.dat');
     $tableau_couleur = file('../../data/couleur.dat');
-    $tableau_theme = array('bootstrap', 'cerulean', 'simplex', 'slate', 'united', 'bootstrap_vertical');
+    $tableau_theme = array('carbone');
     $tableau_langue = array('fr', 'uk');
     $tableau_poste =  array(
                     'Démonstrateur',

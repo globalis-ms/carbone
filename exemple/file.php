@@ -7,12 +7,15 @@ require 'start_php.php';
 
 define('RUBRIQUE_TITRE',  STR_EXEMPLE_TITRE.'::'.STR_FILE_TITRE);
 
-// Embarquement des scripts coté client <script javascript>
+// Embarquement des scripts et styles additionnels nécessaires
 
-if(!empty($_GET['action']) && ($_GET['action']=='add' || $_GET['action']=='edit'))
-    define('LOAD_JAVASCRIPT','');
-else
-    define('LOAD_JAVASCRIPT','backoffice/jquery.backoffice.js');
+if (!empty($_GET['action']) && ($_GET['action']=='add' || $_GET['action']=='edit')) {
+    define('LOAD_JAVASCRIPT', '');
+    define('LOAD_CSS', '');
+} else {
+    define('LOAD_JAVASCRIPT', 'backoffice/jquery.backoffice.js');
+    define('LOAD_CSS', '');
+}
 
 // Attention :
 // Cas particulier de la brique UPLOAD

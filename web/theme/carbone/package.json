@@ -1,0 +1,19 @@
+{
+  "name": "carbone-theme",
+  "version": "1.0.0",
+  "description": "Thème de base Carbone",
+  "main": "",
+  "dependencies": {},
+  "devDependencies": {
+    "imagemin-cli": "^3.0.0",
+    "node-sass": "^4.2.0",
+    "uglify": "^0.1.5"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+  },
+  "author": "Sylvain Dubus",
+  "license": "MIT"
+}

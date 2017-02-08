@@ -7,12 +7,15 @@ require 'start_php.php';
 
 define('RUBRIQUE_TITRE', STR_UTILISATEUR_TITRE);
 
-// Embarquement des scripts coté client <script javascript>
+// Embarquement des scripts et styles additionnels nécessaires
 
-if(!empty($_GET['action']) && ($_GET['action']=='add' || $_GET['action']=='edit'))
-    define('LOAD_JAVASCRIPT','autocomplete/jquery.autocomplete.js|multiselect/jquery.multiselect.js');
-else
-    define('LOAD_JAVASCRIPT','backoffice/jquery.backoffice.js|notice/jquery.notice.js');
+if (!empty($_GET['action']) && ($_GET['action']=='add' || $_GET['action']=='edit')) {
+    define('LOAD_JAVASCRIPT', 'autocomplete/jquery.autocomplete.js|multiselect/jquery.multiselect.js');
+    define('LOAD_CSS', 'autocomplete.css');
+} else {
+    define('LOAD_JAVASCRIPT', 'backoffice/jquery.backoffice.js|notice/jquery.notice.js');
+    define('LOAD_CSS', 'notice.css');
+}
 
 // Début de l'affichage
 

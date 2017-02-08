@@ -41,156 +41,162 @@ function print_rc($data) {
 }
 
 /*
- * Fonction load_head($css, $js)
+ * Fonction load_scripts()
  * -----
- * Chargement des script JS
+ * Chargement des scripts spécifiques
  * -----
- * @param   array       $css                    tableau contenant les feuilles CSS à charger
- * @param   array       $js                     tableau contenant les scripts JS à charger
- * @global  const       LOAD_JAVASCRIPT         constante contenant les scripts JS à charger
+ * @global  const       LOAD_JAVASCRIPT         constante contenant les scripts spécifiques JS à charger
  * -----
- * @return  string                              flux HTML de chargement des feuilles CSS et scripts JS
+ * @return  string                              flux HTML de chargement des scripts JS
  * -----
- * $Author: armel $
+ * $Author: sylvain $
  * $Copyright: GLOBALIS media systems $
  */
 
-function load_head($css, $js) {
-    global $session;
+function load_scripts() {
     global $cfg_profil;
 
-    $head='';
+    $js = [];
 
     if(defined('LOAD_JAVASCRIPT') && LOAD_JAVASCRIPT!='') {
         $tmp=explode('|', LOAD_JAVASCRIPT);
         $tmp=array_unique($tmp);
+        // Si nécessaire, ajout du fichier de script de debug
+        if (CFG_DEBUG) {
+            $tmp[] = "debug/debug.js";
+        }
         // On charge les scripts en cherchant éventuellement les versions minified
         foreach($tmp as $value) {
-            $filename_file=substr(CFG_PATH_FILE_WEB."/js/".$value, 0, -3);
-            $filename_http=substr(CFG_PATH_HTTP_WEB."/js/".$value, 0, -3);
-            if(file_exists($filename_file.".min.js"))
-                $js[]="\t<script type=\"text/javascript\" src=\"".$filename_http.".min.js"."\"></script>\n";
-            else
-                $js[]="\t<script type=\"text/javascript\" src=\"".$filename_http.".js"."\"></script>\n";
+            $filename_file=substr(CFG_PATH_FILE_WEB."/theme/".$cfg_profil['theme']."/dist/scripts_specific/".$value, 0, -3);
+            $filename_http=substr(CFG_PATH_HTTP_WEB."/theme/".$cfg_profil['theme']."/dist/scripts_specific/".$value, 0, -3);
+            if(file_exists($filename_file.".min.js")) {
+                $js[]="\n\t\t<script type=\"text/javascript\" src=\"".$filename_http.".min.js"."\"></script>";
+            } else {
+                $js[]="\n\t\t<script type=\"text/javascript\" src=\"".$filename_http.".js"."\"></script>";
+            }
+        }
+    }
 
-            if(strstr($value, 'wysihtml5'))
-                //$js[]="\t<script type=\"text/javascript\" src=\"".CFG_PATH_HTTP_WEB."/js/bootstrap_wysihtml5/wysihtml5-0.3.0.min.js\"></script>\n";
-                $css[]="\t<link rel=\"stylesheet\" href=\"".CFG_PATH_HTTP_WEB."/theme/".$cfg_profil['theme']."/css/bootstrap-wysihtml5.css\" type=\"text/css\" />\n";
-            elseif(strstr($value, 'datepicker'))
-                $css[]="\t<link rel=\"stylesheet\" href=\"".CFG_PATH_HTTP_WEB."/theme/".$cfg_profil['theme']."/css/datepicker.css\" type=\"text/css\" />\n";
-            elseif(strstr($value, 'autocomplete'))
-                $css[]="\t<link rel=\"stylesheet\" href=\"".CFG_PATH_HTTP_WEB."/theme/".$cfg_profil['theme']."/css/autocomplete.css\" type=\"text/css\" />\n";
-            elseif(strstr($value, 'notice'))
-                $css[]="\t<link rel=\"stylesheet\" href=\"".CFG_PATH_HTTP_WEB."/theme/".$cfg_profil['theme']."/css/notice.css\" type=\"text/css\" />\n";
+    // Supression des doublons eventuels et chainage
 
+    $js=implode('', array_unique($js));
+
+    // Mise en cache eventuelle
+
+    if((CFG_OPTIMISATION_LEVEL&1)==1) {
+        $html.=optimize_specific_assets($js, 'js');
+    } else {
+        $html.=$js;
+    }
+
+    return $html."\n";
+}
+
+/*
+ * Fonction load_styles()
+ * -----
+ * Chargement des styles spécifiques
+ * -----
+ * @global  const       LOAD_CSS                constante contenant les styles CSS à charger
+ * -----
+ * @return  string                              flux HTML de chargement des feuilles CSS
+ * -----
+ * $Author: sylvain $
+ * $Copyright: GLOBALIS media systems $
+ */
+
+function load_styles() {
+    global $cfg_profil;
+
+    $css = [];
+
+    if(defined('LOAD_CSS') && LOAD_CSS!='') {
+        $tmp=explode('|', LOAD_CSS);
+        $tmp=array_unique($tmp);
+        // On charge les styles
+        foreach($tmp as $value) {
+            $css[]="\n\t\t<link rel=\"stylesheet\" type=\"text/css\" href=\"".CFG_PATH_HTTP_WEB."/theme/".$cfg_profil['theme']."/dist/styles_specific/".$value."\" />";
         }
     }
 
     // Supression des doublons eventuels et chainage
 
     $css=implode('', array_unique($css));
-    $js=implode('', array_unique($js));
-
-    // On contrôle s'il faut charger jquery
-
-    if(!(strstr($js, 'jquery-1.11.0.min.js')) && strstr($js, 'jquery.'))
-        $js="\t<script type=\"text/javascript\" src=\"".CFG_PATH_HTTP_WEB."/js/jquery-1.11.0.min.js\"></script>\n".$js;
 
     // Mise en cache eventuelle
 
     if((CFG_OPTIMISATION_LEVEL&1)==1) {
-        $head.="\n\t<!--css-->\n";
-        $head.=optimize_head($css, $type="css");
-        $head.="\t<!--start js-->\n";
-        $head.=optimize_head($js, $type="js");
-    }
-    else {
-        $head.="\n\t<!--css-->\n";
-        $head.=$css;
-        $head.="\t<!--start js-->\n";
-        $head.=$js;
+        $html.=optimize_specific_assets($css, 'css');
+    } else {
+        $html.=$css;
     }
 
-    $head.="\t<!--stop js-->\n";
-
-    return $head;
+    return $html."\n";
 }
 
 /*
- * Fonction optimize_head($js)
+ * Fonction optimize_specific_assets($js, $type)
  * -----
- * Optimisation du <head></head>
+ * Optimisation des scripts et des styles chargés individuellement
  * -----
  * @param   string      $flux                   variable contenant le flux html
- * @param   string      $type                   variable contenant le type (css ou js)
+ * @param   string      $type                   variable contenant le type (js ou css)
  * -----
  * @return  string                              flux optimisé a mettre en cache
  * -----
- * $Author: armel $
+ * $Author: sylvain $
  * $Copyright: GLOBALIS media systems $
  */
 
-function optimize_head($flux='', $type) {
+function optimize_specific_assets($flux='', $type) {
     global $cfg_profil;
 
+    $theme_path = CFG_PATH_FILE_WEB.'/theme/'.$cfg_profil['theme'];
+
     $html='';
-    $file='';
+
+    // Récupération de la liste des fichiers
     preg_match_all('/="'.addcslashes(CFG_PATH_HTTP_WEB, '/').'(.*)"/Uims', $flux, $tmp);
+    $filelist = $tmp[1];
 
-    // on tri la liste pour eviter les doublons et garder des crc conformes
-
-    $list=$tmp[1];
-    sort($list);
-    $crc32=CFG_VERSION.'.'.sprintf("%u",crc32(implode(':', $list)));
-    $filename=CFG_PATH_FILE_WEB.'/cache/'.$crc32.'.'.$type;
-
-    if(!file_exists($filename)) {
-        foreach($tmp[1] as $value) {
-            $file.="\n\n";
-            $file.=file_get_contents(CFG_PATH_FILE_WEB.$value);
+    if (!empty($filelist) && in_array($type, ['js', 'css'])) {
+        $crc32=CFG_VERSION.'.'.sprintf("%u",crc32(implode(':', $filelist)));
+        if ($type == 'js') {
+            $filename = $theme_path.'/dist/scripts/cache/'.$crc32.'.'.$type;
+        } elseif ($type == 'css') {
+            $filename = $theme_path.'/dist/styles/cache/'.$crc32.'.'.$type;
         }
 
-        if($type=='css') {
-            // Changement des url : a adapter si besoin
-            //$file = preg_replace("/url(.*)(['\"]\.\.|\.\.)(.*)(['\"]\))(.*)/", "url(..$3)$5", $file);
-            //$file = preg_replace("/url(.*)(\.\.)(.*)\)(.*)/", "url(../theme/".$cfg_profil['theme']."$3)$4", $file);
-            $file = str_replace('../fonts/', '../theme/'.$cfg_profil['theme'].'/fonts/', $file);
-            $file = str_replace('../image/', '../theme/'.$cfg_profil['theme'].'/image/', $file);
-            // Suppression des blancs multiples
-            $file = preg_replace('# +#', ' ', $file);
-            // Suppression des tabulations et des nouvelles lignes
-            $file = str_replace(array("\n\r", "\r\n", "\r", "\n", "\t"), '', $file);
-            // Suppression des commentaires
-            $file = preg_replace('~/\*(?s:.*?)\*/|^\s*//.*~m', '', $file);
-            // Traitement des "espace , espace", "espace ; espace", des "espace : espace", des "espace {"
-            $file = str_replace(array(' ,',', ',' , '), ',', $file);
-            $file = str_replace(array(' ;','; ',' ; '), ';', $file);
-            $file = str_replace(array(' :',': ',' : '), ':', $file);
-            $file = str_replace(array(' {','{ ',' { '), '{', $file);
-            $file = str_replace(array(' }','} ',' } '), '}', $file);
-            // Traitement des 0px vers 0
-            $file = str_replace(array(': 0px',':0px'), ':0', $file);
-            $file = str_replace(' 0px', ' 0', $file);
+        if (!file_exists($filename)) {
+            $content = '';
+            // Concaténation des fichiers nécessaires
+            foreach ($filelist as $file) {
+                $content .= file_get_contents(CFG_PATH_FILE_WEB.$file);
+            }
+
+            // Enregistrement du fichier concaténé
+            file_put_contents($filename, $content);
+            chmod($filename, 0777);
+
+            // Détermination de la commande de minification
+            if ($type == 'js') {
+                $cmd = $theme_path.'/node_modules/uglify-js/bin/uglifyjs '.$filename.' -o '.$theme_path.'/dist/scripts/cache/ --source-map '.$filename.'.map -p relative';
+            } elseif ($type == 'css') {
+                $cmd = $theme_path.'/node_modules/node-sass/bin/node-sass --output-style=compressed '.$filename.' -o '.$theme_path.'/dist/styles/cache/ --source-map '.$theme_filepath.'/dist/styles/cache/';
+            }
+
+            // Exécution de la commande de minification
+            // En cas d'échec, rien ne se produit et on charge le fichier concaténé mais non minifié
+            exec($cmd);
         }
 
-        file_put_contents($filename, $file);
+        if ($type == 'js') {
+            $html .= "<script type=\"text/javascript\" src=\"".str_replace(CFG_PATH_FILE_WEB, CFG_PATH_HTTP_WEB, $filename)."\"></script>";
+        } elseif ($type == 'css') {
+            $html .= "<link rel=\"stylesheet\" type=\"text/css\" href=\"".str_replace(CFG_PATH_FILE_WEB, CFG_PATH_HTTP_WEB, $filename)."\">";
+        }
     }
 
-    if($type=='css') {
-        $html.="\t<link rel=\"stylesheet\" href=\"".CFG_PATH_HTTP_WEB."/cache/".$crc32.'.'.$type."\" type=\"text/css\" />\n";
-    }
-    elseif($type=='js') {
-        $html.= "\t<script type=\"text/javascript\" src=\"".CFG_PATH_HTTP_WEB."/cache/".$crc32.'.'.$type."\"></script>\n";
-        /*
-        $html.= "\t<script type=\"text/javascript\"><!--\n";
-        $html.= "\t    var script = document.createElement('script');\n";
-        $html.= "\t    script.src = '".CFG_PATH_HTTP_WEB."/cache/".$crc32.'.'.$type."';\n";
-        $html.= "\t    script.type = 'text/javascript';\n";
-        $html.= "\t    document.getElementsByTagName('head')[0].appendChild(script);\n";
-        $html.= "\t// --></script>\n";
-        */
-
-    }
     return $html;
 }
 
@@ -1353,7 +1359,6 @@ function growl() {
     $growl=$session->get_var('growl');
 
     if(!empty($growl)) {
-        $is_load_growl=FALSE;
         foreach($growl as $key => $value) {
             $tmp='';
 
@@ -1377,13 +1382,6 @@ function growl() {
 
             else
                 $tmp="<p>".$value['message']."</p>";
-            
-            if (!$is_load_growl){
-                $flux.= '
-                    <script type="text/javascript" src="'.CFG_PATH_HTTP_WEB.'/js/growl/bootstrap.growl.min.js"></script>
-                ';
-                $is_load_growl=TRUE;
-            }
             
             $flux.= '
                 <script type="text/javascript"><!--
