@@ -7,9 +7,10 @@ require 'start_php.php';
 
 define('RUBRIQUE_TITRE', STR_EXEMPLE_TITRE.'::'.STR_FORMULAIRE_TITRE);
 
-// Embarquement des scripts coté client <script javascript>
+// Embarquement des scripts et styles additionnels nécessaires
 
-define('LOAD_JAVASCRIPT','autocomplete/jquery.autocomplete.js|datepicker/bootstrap.datepicker.js|datepicker/locales/bootstrap-datepicker.fr.js|multiselect/jquery.multiselect.js|textarea/jquery.textarea.js');
+define('LOAD_JAVASCRIPT', 'autocomplete/jquery.autocomplete.js|datepicker/bootstrap.datepicker.js|datepicker/locales/bootstrap-datepicker.fr.js|multiselect/jquery.multiselect.js|textarea/jquery.textarea.js');
+define('LOAD_CSS', 'autocomplete.css|datepicker.css');
 
 // Début de l'affichage
 

@@ -7,9 +7,10 @@ require 'start_php.php';
 
 define('RUBRIQUE_TITRE', STR_RESET_TITRE);
 
-// Embarquement des scripts coté client <script javascript>
+// Embarquement des scripts et styles additionnels nécessaires
 
-define('LOAD_JAVASCRIPT','');
+define('LOAD_JAVASCRIPT', '');
+define('LOAD_CSS', '');
 
 // Début de l'affichage
 

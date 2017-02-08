@@ -45,7 +45,8 @@ clean_all: clean_cache clean_file
 
 clean_cache:
 	@ $(ECHO) -n "Suppression des fichiers cache : "
-	@ if [ -d "web/cache" ]; then cd "web/cache"; rm -f *; fi
+	@ if [ -d "web/theme/carbone/dist/scripts/cache" ]; then cd "web/theme/carbone/dist/scripts/cache"; rm -f *; fi
+	@ if [ -d "web/theme/carbone/dist/styles/cache" ]; then cd "web/theme/carbone/dist/styles/cache"; rm -f *; fi
 	@ $(ECHO) "OK"
 
 clean_file:

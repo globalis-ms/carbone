@@ -1,0 +1,40 @@
+.notice-item {
+    background-image: url('../images/background.png');
+    padding:12px;
+    border: 1px solid #999;
+    color: #555;
+    position: fixed;
+    width:500px;
+    top:50%;
+    left:50%;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    opacity:0.9;
+    filter:alpha(opacity=90);
+}
+
+.notice-item button {
+    margin-right:10px;
+}
+
+.notice-item .close {
+    position: absolute;
+    font-weight: bold;
+    right:5px;
+    top:0px;
+    cursor: pointer;
+}
+    
+.notice-item .action {
+    padding-top:15px;
+    text-align:center;
+}
+
+.notice-overlay {
+    background-color:#888;
+    left:0;
+    opacity:0.3;
+    position: absolute;
+    top:0;
+    filter:alpha(opacity=30);
+}

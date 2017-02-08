@@ -19,12 +19,15 @@ elseif(!empty($_GET['action']) && $_GET['action']=='edit')  {
 else
     define('RUBRIQUE_TITRE', STR_ONGLET_TITRE.' > '.STR_ONGLET_SOUS_TITRE);
 
-// Embarquement des scripts coté client <script javascript>
+// Embarquement des scripts et styles additionnels nécessaires
 
-if(!empty($_GET['action']) && ($_GET['action']=='add' || $_GET['action']=='edit'))
-    define('LOAD_JAVASCRIPT','autocomplete/jquery.autocomplete.js|multiselect/jquery.multiselect.js');
-else
-    define('LOAD_JAVASCRIPT','backoffice/jquery.backoffice.js');
+if (!empty($_GET['action']) && ($_GET['action']=='add' || $_GET['action']=='edit')) {
+    define('LOAD_JAVASCRIPT', 'autocomplete/jquery.autocomplete.js|multiselect/jquery.multiselect.js');
+    define('LOAD_CSS', 'autocomplete.css');
+} else {
+    define('LOAD_JAVASCRIPT', 'backoffice/jquery.backoffice.js');
+    define('LOAD_CSS', '');
+}
 
 // Début de l'affichage
 
@@ -226,7 +229,7 @@ if(!empty($_GET['action']))
                         $("#poste").autocomplete(["'.implode('","', get_poste()).'"], {minChars:3});
                         $("#prenom").autocomplete("../utilisateur/prenom.php", {minChars:3});
                     });
-                // --></script>
+                </script>
             ';
 
             // form_check retourne un tableau ayant la structure suivante :

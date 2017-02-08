@@ -7,9 +7,10 @@ require 'start_php.php';
 
 define('RUBRIQUE_TITRE', STR_EXEMPLE_TITRE.'::'.STR_EDITEUR_TITRE);
 
-// Embarquement des scripts coté client <script javascript>
+// Embarquement des scripts et styles additionnels nécessaires
 
-define('LOAD_JAVASCRIPT','wysihtml5/wysihtml5-0.3.0.min.js|wysihtml5/bootstrap.wysihtml5.js');
+define('LOAD_JAVASCRIPT', 'wysihtml5/wysihtml5-0.3.0.min.js|wysihtml5/bootstrap.wysihtml5.js');
+define('LOAD_CSS', 'bootstrap-wysihtml5.css');
 
 // Début de l'affichage
 

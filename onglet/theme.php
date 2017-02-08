@@ -15,9 +15,10 @@ elseif(!empty($_GET['action']) && $_GET['action']=='edit')  {
 else
     define('RUBRIQUE_TITRE', STR_ONGLET_TITRE.' > '.STR_ONGLET_SOUS_TITRE);
 
-// Embarquement des scripts coté client <script javascript>
+// Embarquement des scripts et styles additionnels nécessaires
 
-define('LOAD_JAVASCRIPT','');
+define('LOAD_JAVASCRIPT', '');
+define('LOAD_CSS', '');
 
 // Début de l'affichage
 
