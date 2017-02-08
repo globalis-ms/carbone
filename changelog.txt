@@ -1,3 +1,14 @@
+<b>CARBONE V5.3.004 - 8 février 2017 - Jupiter</b>
+
+Suppression des anciens thèmes et ajout d'un nouveau thème générique "carbone" (merci Sylvain).
+Déplacement des fichiers JS dans le thème (merci Sylvain).
+Réorganisation de l'arborescence front (merci Sylvain).
+Ajout de la gestion des node modules (merci Sylvain).
+Ajout des commandes make pour la concaténation/minification des assets globaux (merci Sylvain).
+Mise en cache des assets spécifiques via les node modules (merci Sylvain).
+Ajout de la possibilité d'ajouter des styles spécifiquement à une page via la constante LOAD_CSS (merci Sylvain).
+Correctif sur l'affichage des sélecteurs dans les formulaires (merci Sylvain).
+
 <b>CARBONE V5.3.003 - 27 septembre 2016 - Mercure</b>
 
 Mise en place de la possibilité de faire un export direct de tous les résultats d'une brique backoffice (merci Carine).
