@@ -808,9 +808,9 @@ function form_parser($structure, $visu = FALSE) {
                 if(empty($id))      $id=$name;
 
                 if($multiple===TRUE)
-                    $form_tmp = sprintf ('<div class="form-group"><select class="form-control" name="%s%s" id="%s" %s size="%s" %s>'."\n", $name, '[]', $id, ' multiple', $size, $js);
+                    $form_tmp = sprintf ('<select class="form-control" name="%s%s" id="%s" %s size="%s" %s>'."\n", $name, '[]', $id, ' multiple', $size, $js);
                 else
-                    $form_tmp = sprintf ('<div class="form-group"><select class="form-control" name="%s" id="%s" %s>'."\n", $name, $id, $js);
+                    $form_tmp = sprintf ('<select class="form-control" name="%s" id="%s" %s>'."\n", $name, $id, $js);
 
                 foreach($value as $key=>$val) {
                     // Cas des optgroup
@@ -851,7 +851,7 @@ function form_parser($structure, $visu = FALSE) {
                 if(isset($optgroup) && $optgroup==TRUE)
                     $form_tmp.=sprintf(" </optgroup>\n");
 
-                $form_tmp.="</select></div>";
+                $form_tmp.="</select>";
 
                 break;
 
