@@ -1,4 +1,4 @@
-<b>CARBONE V5.3.004 - 8 février 2017 - Jupiter</b>
+<b>CARBONE V5.4.001 - 9 février 2017 -Proxima</b>
 
 Suppression des anciens thèmes et ajout d'un nouveau thème générique "carbone" (merci Sylvain).
 Déplacement des fichiers JS dans le thème (merci Sylvain).
