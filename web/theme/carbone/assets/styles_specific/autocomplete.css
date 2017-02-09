@@ -17,6 +17,7 @@
 	border: 1px solid #ddd;
 	background-color: #fff;
 	overflow: hidden;
+	z-index: 3;
 }
 
 .ac_results ul {
@@ -48,10 +49,6 @@
 	font: menu;
 	font-size: 12px;
 	overflow: hidden;
-}
-
-.ac_loading {
-	background : Window url('../images/indicator.gif') right center no-repeat;
 }
 
 .ac_over {
