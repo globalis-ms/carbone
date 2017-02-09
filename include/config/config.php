@@ -22,7 +22,7 @@ switch (CFG_ENV) {
         define ('CFG_HOST', 'localhost');       // Host
         define ('CFG_USER', 'username');        // User
         define ('CFG_PASS', 'password');        // Pass
-        define ('CFG_BASE', 'carbone_v53');     // Base
+        define ('CFG_BASE', 'carbone_v54');     // Base
 
         // Option
 
@@ -50,7 +50,7 @@ switch (CFG_ENV) {
         define ('CFG_HOST', 'localhost');       // Host
         define ('CFG_USER', 'username');        // User
         define ('CFG_PASS', 'password');        // Pass
-        define ('CFG_BASE', 'carbone_v53');     // Base
+        define ('CFG_BASE', 'carbone_v54');     // Base
 
         // Option
 
@@ -94,9 +94,9 @@ define ('CFG_PATH_HTTP_IMAGE', CFG_PATH_HTTP_WEB.'/image');                 // C
 define ('CFG_PATH_HTTP_UPLOAD', CFG_PATH_HTTP_WEB.'/upload');               // Chemin http upload
 
 define ('CFG_TITRE', 'Carbone');                                            // Titre de l'application
-define ('CFG_VERSION', '5.3.004');                                          // Version de l'application
-define ('CFG_VERSION_CARBONE', '5.3.004 Jupiter');                          // Version de Carbone
-define ('CFG_DATE', '08/02/2017');                                          // Date de dernières révision de l'application
+define ('CFG_VERSION', '5.4.001');                                          // Version de l'application
+define ('CFG_VERSION_CARBONE', '5.4.001 Proxima');                          // Version de Carbone
+define ('CFG_DATE', '09/02/2017');                                          // Date de dernières révision de l'application
 define ('CFG_EMAIL', 'armel.fauveau@globalis-ms.com');                        // Email générique de contact
 
 define ('CFG_GLOBALIS_TITRE', 'GLOBALIS media systems');                                        // Globalis Titre
