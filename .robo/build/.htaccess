@@ -1,0 +1,44 @@
+#
+# Parametrages Apache
+#
+
+# Evite l'affichage du contenu d'un repertoire depourvu de document d'index (upload, theme, data, etc.)
+
+Options -Indexes
+
+#
+# Parametrages WebPerf
+#
+
+# Parametrages mod_deflate
+
+# AddOutputFilterByType DEFLATE application/x-httpd-php application/javascript text/css text/html text/plain
+
+# Parametrages mod_expires (à reserver à la production, 30j*24h*60m*60s=2592000s)
+
+# ExpiresActive On
+# ExpiresByType image/gif                A2592000
+# ExpiresByType image/png                A2592000
+# ExpiresByType image/jpeg               A2592000
+# ExpiresByType text/css                 A2592000
+# ExpiresByType application/javascript   A2592000
+
+# Parametrages eTag si plusieurs serveurs frontaux
+
+# FileETag MTime Size
+
+#
+# Parametrages PHP
+#
+
+<IfModule mod_php5.c>
+    php_value include_path $$INCLUDE_PATH$$:.
+    php_value max_execution_time 0
+    php_value opcache.enable 0
+</IfModule>
+
+<IfModule mod_php7.c>
+    php_value include_path $$INCLUDE_PATH$$:.
+    php_value max_execution_time 0
+    php_value opcache.enable 0
+</IfModule>

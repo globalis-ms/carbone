@@ -1,0 +1,11 @@
+/.rsyncignore
+/.robo
+/RoboFile.php
+/divers/doc
+/divers/schema
+/divers/outils
+/divers/phpinfo.php
+/web/upload/*
+/web/theme/carbone/node_modules
+/Makefile
+.gitignore
