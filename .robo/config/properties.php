@@ -75,7 +75,7 @@ return [
         ],
         'DB_NAME' => [
             'question' => 'Database name',
-            'default' => 'carbone_v53',
+            'default' => 'carbone_v54',
         ],
         'DB_TABLE_PREFIX' => [
             'question' => 'Database table prefix',
@@ -103,5 +103,18 @@ return [
             'question' => 'Include file path',
             'default' => '/usr/local/apache/htdocs/carbone_v54/include'
         ],
-    ]
+    ],
+
+    // Remote Config
+    'remote' => [
+        'REMOTE_HOST' => [
+            'question' => 'Remote hostname',
+        ],
+        'REMOTE_USER' => [
+            'question' => 'Remote username',
+        ],
+        'REMOTE_PATH' => [
+            'question' => 'Remote path',
+        ]
+    ],
 ];
